@@ -5,6 +5,12 @@
 - R
 - Quarto
 
+## How to Build Portal
+
+```bash
+Rscript demetrius.R
+```
+
 ## Steps to Process Contributions
 
 `demetrius.R` will read `content-contributions.csv` and perform
