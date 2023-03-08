@@ -24,7 +24,7 @@ download_contribution <- function(contribution_row) {
     log_info('Download of {contribution_row["link"]} completed.')
 }
 
-apply(all_contributions, 1, download_contribution)
+invisible(apply(all_contributions, 1, download_contribution))
 
 test_line_and_install <- function(quarto_line) {
     regex_match <- str_match(quarto_line, 'library\\((.*)\\)')
@@ -61,8 +61,8 @@ render_quarto_to_html <- function(contribution_row) {
 }
 
 quarto_to_portal <- function(contribution_row) {
-    html_file_path <- file.path(contribution_row["slang"], 'index.html'))
-    if (file.exists(html_file_path) {
+    html_file_path <- file.path(contribution_row["slang"], 'index.html')
+    if (file.exists(html_file_path)) {
         log_info('{html_file_path} already exists. Skipping it.')
         return(0)
     }
@@ -71,4 +71,4 @@ quarto_to_portal <- function(contribution_row) {
     render_quarto_to_html(contribution_row)
 }
 
-apply(all_contributions, 1, quarto_to_portal)
+invisible(apply(all_contributions, 1, quarto_to_portal))
