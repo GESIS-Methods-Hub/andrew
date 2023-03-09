@@ -85,6 +85,23 @@ render_quarto_to_md <- function(contribution_row) {
     log_info('Created {md_file_path}.')
 }
 
+render_quarto_to_ipynb <- function(contribution_row) {
+    tmp_ipynb_file_path <- file.path(contribution_row["tmp_path"], 'index.ipynb')
+    ipynb_file_path <- file.path(contribution_row["slang"], 'index.ipynb')
+
+    if (file.exists(ipynb_file_path)) {
+        log_info('{md_file_path} exists. Skipping convertion to markdown.')
+        return(0)
+    }
+
+    log_info('Converting {contribution_row["tmp_path"]}/index.qmd to Jupyter Notebook ...')
+    setwd(contribution_row["tmp_path"])
+    system(paste("jupytext --to ipynb index.qmd"))
+    setwd('../..')
+    file.copy(tmp_ipynb_file_path, ipynb_file_path)
+    log_info('Created {ipynb_file_path}.')
+}
+
 quarto_to_portal <- function(contribution_row) {
     download_contribution(contribution_row)
 
@@ -93,6 +110,7 @@ quarto_to_portal <- function(contribution_row) {
     dir.create(contribution_row["slang"], recursive = TRUE)
     render_quarto_to_html(contribution_row)
     render_quarto_to_md(contribution_row)
+    render_quarto_to_ipynb(contribution_row)
 }
 
 invisible(apply(all_contributions, 1, quarto_to_portal))

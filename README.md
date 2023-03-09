@@ -5,6 +5,7 @@
 - R
   - devtools
 - Quarto
+- jupytext
 
 ## How to Build Portal
 
