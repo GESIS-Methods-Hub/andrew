@@ -39,8 +39,6 @@ test_line_and_install <- function(quarto_line) {
     }
 }
 
- regex_match <- str_match('devtools::install_github("schochastics/networkdata")', 'devtools::install')
-
 extract_r_dependencies_from_quarto <- function(contribution_row) {
     if (!dir.exists(contribution_row["tmp_path"])) {
         log_info('{contribution_row["tmp_path"]} does NOT exist. Skipping convertion to HTML.')
@@ -82,6 +80,7 @@ render_quarto_to_md <- function(contribution_row) {
     system(paste("quarto render index.qmd --to md --metadata prefer-html:true"))
     setwd('../..')
     file.copy(tmp_md_file_path, md_file_path)
+
     log_info('Created {md_file_path}.')
 }
 
