@@ -3,6 +3,7 @@
 ## Dependencies
 
 - R
+  - devtools
 - Quarto
 
 ## How to Build Portal

@@ -25,19 +25,21 @@ download_contribution <- function(contribution_row) {
     log_info('Download of {contribution_row["link"]} completed.')
 }
 
-invisible(apply(all_contributions, 1, download_contribution))
-
 test_line_and_install <- function(quarto_line) {
     regex_match <- str_match(quarto_line, 'library\\((.*)\\)')
 
-    if (anyNA(regex_match)) {
-        return(0)
-    }
-
-    if(!require(regex_match[2], character.only=TRUE)) {
+    if(!anyNA(regex_match) & !require(regex_match[2], character.only=TRUE)) {
         install.packages(regex_match[2])
     }
+
+    regex_match <- str_match(quarto_line, 'devtools::install')
+
+    if(!anyNA(regex_match)) {
+        eval(parse(text=quarto_line))
+    }
 }
+
+ regex_match <- str_match('devtools::install_github("schochastics/networkdata")', 'devtools::install')
 
 extract_r_dependencies_from_quarto <- function(contribution_row) {
     if (!dir.exists(contribution_row["tmp_path"])) {
@@ -50,26 +52,47 @@ extract_r_dependencies_from_quarto <- function(contribution_row) {
 }
 
 render_quarto_to_html <- function(contribution_row) {
-    if (!dir.exists(contribution_row["tmp_path"])) {
-        log_info('{contribution_row["tmp_path"]} does NOT exist. Skipping convertion to HTML.')
+    tmp_html_file_path <- file.path(contribution_row["tmp_path"], 'index.html')
+    html_file_path <- file.path(contribution_row["slang"], 'index.html')
+
+    if (file.exists(html_file_path)) {
+        log_info('{html_file_path} exists. Skipping convertion to HTML.')
         return(0)
     }
 
-    log_info('Converting {contribution_row["tmp_path"]}/index.qmd to HTML')
+    log_info('Converting {contribution_row["tmp_path"]}/index.qmd to HTML ...')
     setwd(contribution_row["tmp_path"])
-    system("quarto render index.qmd --to html")
+    system(paste("quarto render index.qmd --to html"))
     setwd('../..')
+    file.copy(tmp_html_file_path, html_file_path)
+    log_info('Created {html_file_path}.')
+}
+
+render_quarto_to_md <- function(contribution_row) {
+    tmp_md_file_path <- file.path(contribution_row["tmp_path"], 'index.md')
+    md_file_path <- file.path(contribution_row["slang"], 'index.md')
+
+    if (file.exists(md_file_path)) {
+        log_info('{md_file_path} exists. Skipping convertion to markdown.')
+        return(0)
+    }
+
+    log_info('Converting {contribution_row["tmp_path"]}/index.qmd to markdown ...')
+    setwd(contribution_row["tmp_path"])
+    system(paste("quarto render index.qmd --to md"))
+    setwd('../..')
+    file.copy(tmp_md_file_path, md_file_path)
+    log_info('Created {md_file_path}.')
 }
 
 quarto_to_portal <- function(contribution_row) {
-    html_file_path <- file.path(contribution_row["tmp_path"], 'index.html')
-    if (file.exists(html_file_path)) {
-        log_info('{html_file_path} already exists. Skipping it.')
-        return(0)
-    }
+    download_contribution(contribution_row)
 
     extract_r_dependencies_from_quarto(contribution_row)
+
+    dir.create(contribution_row["slang"], recursive = TRUE)
     render_quarto_to_html(contribution_row)
+    render_quarto_to_md(contribution_row)
 }
 
 invisible(apply(all_contributions, 1, quarto_to_portal))
