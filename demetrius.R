@@ -63,6 +63,7 @@ render_quarto_to_html <- function(contribution_row) {
     system(paste("quarto render index.qmd --to html"))
     setwd('../..')
     file.copy(tmp_html_file_path, html_file_path)
+    system(paste("cp -r ", file.path(contribution_row["tmp_path"], 'index_files'), contribution_row["slang"]))
     log_info('Created {html_file_path}.')
 }
 
@@ -80,7 +81,7 @@ render_quarto_to_md <- function(contribution_row) {
     system(paste("quarto render index.qmd --to md --metadata prefer-html:true"))
     setwd('../..')
     file.copy(tmp_md_file_path, md_file_path)
-
+    system(paste("cp -r ", file.path(contribution_row["tmp_path"], 'index.markdown_strict_files'), contribution_row["slang"]))
     log_info('Created {md_file_path}.')
 }
 
