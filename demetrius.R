@@ -28,7 +28,7 @@ download_contribution <- function(contribution_row) {
 test_line_and_install <- function(quarto_line) {
     regex_match <- str_match(quarto_line, 'library\\((.*)\\)')
 
-    if(!anyNA(regex_match) & !require(regex_match[2], character.only=TRUE)) {
+    if(!anyNA(regex_match) && !require(regex_match[2], character.only=TRUE)) {
         install.packages(regex_match[2])
     }
 
