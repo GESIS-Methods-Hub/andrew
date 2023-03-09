@@ -1,19 +1,37 @@
 project:
   type: website
+  render:
+    - "*.qmd"
 
 website:
-  title: "."
+  title: "GESIS - Methods Hub"
+  search:
+    type: textbox
   navbar:
+    logo: img/logos/gs_home_logo_en.svg
+    logo-href: https://gesis.org
+    title: false
     left:
       - href: index.qmd
         text: Home
       - about.qmd
-
+  page-footer:
+    center: |
+      ![](/img/logos/leibniz_logo_en_white.svg) [Imprint](https://www.gesis.org/en/institute/imprint/) | [Data protection](https://www.gesis.org/en/institute/data-protection/) | [Terms of Use](https://notebooks.gesis.org/terms_of_use/) © GESIS
 format:
   html:
-    theme: cosmo
-    css: styles.css
+    page-layout: full
+    include-in-header: gesis_header.html	
+    template-partials:
+      - title-block.html
+      - title-metadata.html
+    theme: 
+      - litera
+      - methods_hub.scss
     toc: true
-
+    grid:
+      sidebar-width: 250px
+      body-width: 900px
+      margin-width: 300px
 
 

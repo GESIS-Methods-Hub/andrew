@@ -1,0 +1,296 @@
+@font-face {
+    font-family: 'Source Sans';
+    src: url('fonts/sourcesanspro-regular-webfont.woff2') format('woff2'),
+         url('fonts/sourcesanspro-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Source Serif';
+    src: url('fonts/sourceserifpro-regular-webfont.woff2') format('woff2'),
+         url('fonts/sourceserifpro-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Source Code';
+    src: url('fonts/sourcecodepro-variablefont_wght-webfont.woff2') format('woff2'),
+         url('fonts/sourcecodepro-variablefont_wght-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+/*-- scss:defaults --*/
+$body-bg: #EDEDED !default;
+$body-color: #333333;
+$link-color: #333333;
+$font-family-sans-serif: 'Source Sans';
+$font-family-monospace: 'Source Code';
+
+$navbar-bg: #EDEDED;
+$navbar-fg: #58748f;
+$navbar-hl: #ff6100;
+
+/*-- scss:rules --*/
+
+:root {
+
+    --gesis-color-blue: #58748f;
+    --gesis-color-blue-60: #7990a5;
+    --gesis-color-blue-30: #cdd5dd;
+    --gesis-color-blue-15: #e6eaee;
+    --gesis-color-orange: #ff6100;
+    --gesis-color-orange-80: #f1873d;
+    --gesis-color-orange-60: #f6a86e;
+    --gesis-color-orange-40: #fac79f;
+    --gesis-color-orange-20: #eed2bc;
+    --gesis-color-white: #fff;
+    --gesis-color-grey: #ededed;
+    --gesis-color-grey-80: #333;
+    --gesis-color-grey-60: #666;
+    --gesis-color-grey-40: #999;
+    --gesis-color-grey-20: #ccc;
+    --gesis-color-grey-10: #e6e6e6;
+    --gesis-color-grey-5: #f0f0f0;
+    --gesis-color-black: #000;
+    --gesis-color-cews: #971d6a;
+    --gesis-color-cews-20: #f4c7e3;
+    --gesis-background-color: #333;
+    --gesis-accent-background-color: #fff;
+    --gesis-normal-color: #58748f;
+    --gesis-attention-color: #ff6100;
+    --gesis-attention-20-color: #eed2bc;
+}
+
+a {
+    color: var(--gesis-normal-color)
+}
+
+a:hover {
+    color: var(--gesis-attention-color)
+}
+
+p {
+    font-family: "Source Sans", sans-serif;
+}
+
+/* footer*/
+
+.nav-footer {
+    background-color: var(--gesis-color-grey-80);
+    color: white;
+}
+
+.nav-footer a{
+    color: white;
+}
+
+.nav-footer a:hover{
+    color: var(--gesis-color-orange)
+}
+
+/*tabs*/
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+    color: white;
+    background-color: var(--gesis-attention-color);
+    border-color: rgba(0,0,0,.1);
+}
+
+.nav-tabs .nav-link{
+    color: white;
+    background-color: var(--gesis-normal-color);
+    border-top-left-radius: 0rem;
+    border-top-right-radius: 0rem;
+    border: 1px solid transparent;
+}
+
+.nav-tabs .nav-link:hover{
+    color: white;
+    background-color: var(--gesis-attention-color);
+    border-top-left-radius: 0rem;
+    border-top-right-radius: 0rem;
+    border: 1px solid transparent;
+}
+
+
+.tab-content {
+    margin-top: 0px;
+    border-left: var(--gesis-normal-color) 1px solid;
+    border-right: var(--gesis-normal-color) 1px solid;
+    border-bottom: var(--gesis-normal-color) 1px solid;
+    margin-left: 0;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+
+div.sidebar-item-container .active{
+    color: var(--gesis-color-orange);
+}
+
+/* Code*/
+
+div.sourceCode{
+    background-color: var(--gesis-accent-background-color);
+}
+
+p code:not(.sourceCode), li code:not(.sourceCode) {
+    background-color: var(--gesis-color-grey);
+    padding: .2em;
+    color: var(--gesis-color-blue)
+}
+
+code {
+    font-size: 0.875em;
+    color: var(--gesis-color-blue);
+    background-color: var(--gesis-color-grey);
+    border-radius: .25rem;
+    padding: .125rem .25rem;
+    word-wrap: break-word;
+}
+
+/*navbar*/
+
+.navbar {
+    font-size: .9625rem;
+    border-top: 1rem solid var(--gesis-color-blue);
+    border-bottom: none;
+    border-right: none;
+    border-left: none;
+}
+
+.navbar-logo {
+    max-height: 37px;
+    width: auto;
+    padding-right: 4px;
+}
+
+.quarto-title-block{
+    background-color: var(--gesis-color-grey-5);
+}
+
+/* turn it into gesis website style */
+body,header{
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: var(--gesis-background-color);
+}
+
+.quarto-container{
+    background-color: var(--gesis-color-grey-5);
+}
+
+#quarto-content{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* callout=gesis accordion */
+
+.callout .callout-caption-container {
+    padding-left: 0.75rem;
+}
+
+.callout-header[aria-expanded="true"]:before {
+    font-family: bootstrap-icons;
+    content: '\f229';
+    padding-left: 0.2rem;
+}
+
+.callout-header[aria-expanded="false"]:before {
+    font-family: bootstrap-icons;
+    content:"\f235";
+    padding-left: 0.2rem;
+ }
+
+
+div.callout-header{
+    background-color: var(--gesis-normal-color);
+    border: 0px solid var(--gesis-normal-color);
+    color: white;
+}
+
+div.callout-header:hover{
+    background-color: var(--gesis-attention-color);
+    border: 0px solid var(--gesis-attention-color);
+    color: white;
+}
+
+.callout.callout-style-simple {
+    padding: .0em .0em;
+    border: 0px solid var(--gesis-normal-color);
+    
+}
+
+.callout {
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+    border-radius: .0rem;
+    overflow-wrap: break-word;
+}
+
+.callout.callout-captioned>.callout-header {
+    padding-top: .4em;
+    margin-bottom: 0.0em;
+}
+.callout-body{
+    padding-top: 0.5rem;
+    border-left: 1px solid var(--gesis-normal-color);
+    border-right: 1px solid var(--gesis-normal-color);
+    border-bottom: 1px solid var(--gesis-normal-color);
+}
+
+.callout.callout-captioned .callout-body {
+    margin-top: .0em;
+}
+
+/* buttons*/
+
+button {
+    background-color: var(--gesis-normal-color);
+    color: #fff;
+    border: none;
+    word-break: break-word;
+    padding: .45rem .8rem;
+    touch-action: manipulation;
+}
+
+button a{
+    color: #fff;
+    text-decoration: none;
+}
+
+button a:hover{
+    color: #fff;
+    text-decoration: none;
+}
+
+button:hover{
+    background-color: var(--gesis-attention-color);
+}
+
+.gs_mouseover_box a, .gs_mouseover_box span {
+    display: inline-flex;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    text-decoration: none;
+    padding: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.gs_mouseover_box {
+    background-color: var(--gesis-color-blue);
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-align: center;
+    overflow: hidden;
+}
