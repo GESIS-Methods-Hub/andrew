@@ -1,1 +1,4 @@
 /.quarto/
+/_site
+/.RData
+/.Rhistory
