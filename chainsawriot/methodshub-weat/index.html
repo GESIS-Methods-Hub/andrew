@@ -580,33 +580,33 @@ features      japan
 <div class="cell">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>dense_vectors</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>               [,1]        [,2]        [,3]       [,4]        [,5]
-berlin   0.80619537  0.22014860 -0.05741642  0.4689222  0.15054015
-is       1.11418138  1.04578617 -1.05663669 -0.1305720  0.81711190
-the     -0.79216201  0.32517742 -1.17533236 -0.6778833 -0.04056867
-capital -1.61506572  0.25779652 -1.02456943 -0.3268378 -0.46231326
-of      -1.16524472 -0.35263073 -0.15435883  0.2964248 -0.06216060
-germany  0.07224971  0.04526850  0.60957599  0.4415409  0.50098602
-paris    1.56942307  0.62257267 -0.68820524  0.2715866  0.46087052
-france   0.11890793  0.01604314  1.02062786  0.2115346  0.32164169
-tokyo    0.34852463 -0.82968356  0.99175957  0.3477999  0.70556615
-japan   -0.17971302 -0.03943596  0.90964364  0.3848821 -0.01829693
-cat      0.15534500 -0.23082108 -0.23879180  0.5202856 -0.25701556
-weird    0.47183597  0.29542986  0.02280804 -0.2776988  0.24793204
-nice     0.81337747  0.50829920  0.17827663 -0.2414998  0.62589361</code></pre>
+<pre><code>               [,1]        [,2]        [,3]       [,4]         [,5]
+berlin   0.77918879  0.21208042 -0.07132330  0.4925249  0.189580184
+is       1.16086095  1.01241508 -1.01838103 -0.1447198  0.790620808
+the     -0.73136964  0.37743063 -1.04409075 -0.7518618 -0.176935665
+capital -1.54693014  0.36360589 -0.98095972 -0.3935615 -0.539922935
+of      -1.14130401 -0.32691299 -0.11775594  0.2495889 -0.094822524
+germany  0.06611616  0.03316522  0.57966503  0.4630908  0.522708175
+paris    1.56014156  0.55376481 -0.68117470  0.2649566  0.513216846
+france   0.11016152 -0.01683029  0.98754538  0.2280311  0.337818682
+tokyo    0.29452090 -0.84479144  0.95821081  0.3724941  0.732802202
+japan   -0.18245297 -0.06432590  0.88502500  0.3942100  0.007273912
+cat      0.15718355 -0.21789368 -0.22891218  0.5354714 -0.248785788
+weird    0.46984731  0.25676397  0.01264314 -0.2650027  0.227891321
+nice     0.83476522  0.49226904  0.19221554 -0.2512290  0.585083363</code></pre>
 </div>
 </div>
 <p>And the row vectors can be compared using cosine similarity. Now, we can see that the similarity between “berlin” and “paris” is higher than “berlin” and “cat”.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cosine</span>(dense_vectors[<span class="st">"berlin"</span>,], dense_vectors[<span class="st">"paris"</span>,])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>         [,1]
-[1,] 0.887433</code></pre>
+<pre><code>          [,1]
+[1,] 0.8845276</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cosine</span>(dense_vectors[<span class="st">"berlin"</span>,], dense_vectors[<span class="st">"cat"</span>,])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          [,1]
-[1,] 0.4398874</code></pre>
+[1,] 0.4646039</code></pre>
 </div>
 </div>
 </section>
@@ -616,18 +616,18 @@ nice     0.81337747  0.50829920  0.17827663 -0.2414998  0.62589361</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cosine</span>(dense_vectors[<span class="st">"paris"</span>,], dense_vectors[<span class="st">"nice"</span>,])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>         [,1]
-[1,] 0.752617</code></pre>
+<pre><code>          [,1]
+[1,] 0.7588269</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cosine</span>(dense_vectors[<span class="st">"tokyo"</span>,], dense_vectors[<span class="st">"nice"</span>,])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          [,1]
-[1,] 0.2154463</code></pre>
+[1,] 0.1920778</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cosine</span>(dense_vectors[<span class="st">"berlin"</span>,], dense_vectors[<span class="st">"nice"</span>,])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>        [,1]
-[1,] 0.64179</code></pre>
+<pre><code>          [,1]
+[1,] 0.6405644</code></pre>
 </div>
 </div>
 </section>
