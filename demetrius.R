@@ -12,15 +12,16 @@ pre_process_contributions_list <- function(contribution_row) {
 }
 
 all_contributions$slang <- apply(all_contributions, 1, pre_process_contributions_list)
+all_contributions$tmp_path <- str_c("_", all_contributions$slang)
 
 download_contribution <- function(contribution_row) {
-    if (dir.exists(contribution_row["slang"])) {
-        log_info('{contribution_row["slang"]} already exists. Skipping download of {contribution_row["link"]}.')
+    if (dir.exists(contribution_row["tmp_path"])) {
+        log_info('{contribution_row["tmp_path"]} already exists. Skipping download of {contribution_row["link"]}.')
         return(0)
     }
 
     log_info('Downloading {contribution_row["link"]} ...')
-    system(paste("git clone", contribution_row["link"], contribution_row["slang"]))
+    system(paste("git clone", contribution_row["link"], contribution_row["tmp_path"]))
     log_info('Download of {contribution_row["link"]} completed.')
 }
 
@@ -39,29 +40,29 @@ test_line_and_install <- function(quarto_line) {
 }
 
 extract_r_dependencies_from_quarto <- function(contribution_row) {
-    if (!dir.exists(contribution_row["slang"])) {
-        log_info('{contribution_row["slang"]} does NOT exist. Skipping convertion to HTML.')
+    if (!dir.exists(contribution_row["tmp_path"])) {
+        log_info('{contribution_row["tmp_path"]} does NOT exist. Skipping convertion to HTML.')
         return(0)
     }
 
-    all_quarto_lines <- readLines(file.path(contribution_row["slang"], 'index.qmd'))
+    all_quarto_lines <- readLines(file.path(contribution_row["tmp_path"], 'index.qmd'))
     lapply(all_quarto_lines, test_line_and_install)
 }
 
 render_quarto_to_html <- function(contribution_row) {
-    if (!dir.exists(contribution_row["slang"])) {
-        log_info('{contribution_row["slang"]} does NOT exist. Skipping convertion to HTML.')
+    if (!dir.exists(contribution_row["tmp_path"])) {
+        log_info('{contribution_row["tmp_path"]} does NOT exist. Skipping convertion to HTML.')
         return(0)
     }
 
-    log_info('Converting {contribution_row["slang"]}/index.qmd to HTML')
-    setwd(contribution_row["slang"])
+    log_info('Converting {contribution_row["tmp_path"]}/index.qmd to HTML')
+    setwd(contribution_row["tmp_path"])
     system("quarto render index.qmd --to html")
     setwd('../..')
 }
 
 quarto_to_portal <- function(contribution_row) {
-    html_file_path <- file.path(contribution_row["slang"], 'index.html')
+    html_file_path <- file.path(contribution_row["tmp_path"], 'index.html')
     if (file.exists(html_file_path)) {
         log_info('{html_file_path} already exists. Skipping it.')
         return(0)
