@@ -79,7 +79,7 @@ render_quarto_to_md <- function(contribution_row) {
 
     log_info('Converting {contribution_row["tmp_path"]}/index.qmd to markdown ...')
     setwd(contribution_row["tmp_path"])
-    system(paste("quarto render index.qmd --to md"))
+    system(paste("quarto render index.qmd --to md --metadata prefer-html:true"))
     setwd('../..')
     file.copy(tmp_md_file_path, md_file_path)
     log_info('Created {md_file_path}.')
