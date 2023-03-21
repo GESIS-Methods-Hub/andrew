@@ -4,6 +4,7 @@ author: David Schoch
 abstract: Tutorial of the package `networkdata`.
 image: ../../img/logos/gesis-methods-hub-logo-square.png
 github: https://github.com/schochastics/netVizR/
+commit: 965e4bafc2c6e9469f2ef394e8f36a8f835ed296
 ---
 
 # Introduction
