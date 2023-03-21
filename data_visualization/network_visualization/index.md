@@ -2,7 +2,8 @@
 title: "Data Visualization"
 listing: 
   - id: methods
-    contents: "*.md"
+    contents:
+      - "../../schochastics/netVizR/index.md"
     type: table
 ---
 
