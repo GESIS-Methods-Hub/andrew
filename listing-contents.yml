@@ -1,0 +1,20 @@
+- category: Gallery
+  description: |
+    Explore the Gallery of reusable code
+  tiles:
+    - title: Fundamentals
+      subtitle: Introductions to R and Python
+      href: gallery/setup/
+      thumbnail: img/icons/folder.svg
+    - title: Data Gathering
+      subtitle: non essential workflows
+      href: gallery/data_gathering/
+      thumbnail: img/icons/archive.svg
+    - title: Preprocessing & Analysis
+      subtitle: Data Visualization
+      href: gallery/data_analysis/
+      thumbnail: img/icons/data.svg
+    - title: Data Visualization
+      subtitle: Data Visualization
+      href: gallery/data_visualization/
+      thumbnail: img/icons/chart.svg
