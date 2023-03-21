@@ -1,49 +1,9 @@
 ---
 title: Network Visualizations in R
 author: David Schoch
+abstract: Tutorial of the package `networkdata`.
+image: ../../img/logos/gesis-methods-hub-logo-square.png
 ---
-
-
-<script src="index_files/libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
-<script src="index_files/libs/jquery-3.5.1/jquery.min.js"></script>
-<script src="index_files/libs/threejs-111/three.min.js"></script>
-<script src="index_files/libs/threejs-111/Detector.js"></script>
-<script src="index_files/libs/threejs-111/Projector.js"></script>
-<script src="index_files/libs/threejs-111/CanvasRenderer.js"></script>
-<script src="index_files/libs/threejs-111/TrackballControls.js"></script>
-<script src="index_files/libs/threejs-111/StateOrbitControls.js"></script>
-<script src="index_files/libs/scatterplotThree-binding-0.3.3/scatterplotThree.js"></script>
-<link href="index_files/libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
-<script src="index_files/libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-
-
--   [Introduction](#introduction)
-    -   [Required libraries](#required-libraries)
-    -   [Quick plots](#quick-plots)
--   [The basics of ggraph](#the-basics-of-ggraph)
-    -   [Layout](#layout)
-    -   [Edges](#edges)
-    -   [Nodes](#nodes)
-    -   [Scales](#scales)
-    -   [Themes](#themes)
--   [Another full example](#another-full-example)
--   [Code through: Recreate the polblogs
-    viz](#code-through-recreate-the-polblogs-viz)
--   [Miscellaneous](#miscellaneous)
-    -   [use the ggforce](#use-the-ggforce)
--   [FAQ](#faq)
--   [snahelper](#snahelper)
--   [Advanced layouts](#advanced-layouts)
-    -   [Concentric layouts](#concentric-layouts)
-    -   [Backbone layout](#backbone-layout)
-    -   [Dynamic networks](#dynamic-networks)
-    -   [Multilevel networks](#multilevel-networks)
-        -   [Complete layout](#complete-layout)
-        -   [Separate layouts for both
-            levels](#separate-layouts-for-both-levels)
-        -   [Fix only one level](#fix-only-one-level)
-        -   [3D with threejs](#d-with-threejs)
--   [Further reading](#further-reading)
 
 # Introduction
 
