@@ -12,9 +12,9 @@ website:
     logo-href: https://gesis.org
     title: false
     left:
-      - href: index.qmd
+      - href: index.md
         text: Home
-      - about.qmd
+      - about.md
   page-footer:
     center: |
       ![](/img/logos/leibniz_logo_en_white.svg) [Imprint](https://www.gesis.org/en/institute/imprint/) | [Data protection](https://www.gesis.org/en/institute/data-protection/) | [Terms of Use](https://notebooks.gesis.org/terms_of_use/) © GESIS
