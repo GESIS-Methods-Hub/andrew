@@ -3,6 +3,7 @@ title: Network Visualizations in R
 author: David Schoch
 abstract: Tutorial of the package `networkdata`.
 image: ../../img/logos/gesis-methods-hub-logo-square.png
+github: https://github.com/schochastics/netVizR/
 ---
 
 # Introduction
