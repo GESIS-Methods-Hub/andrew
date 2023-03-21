@@ -1,7 +1,7 @@
 project:
   type: website
   render:
-    - "*.qmd"
+    - "*.md"
 
 website:
   title: "GESIS - Methods Hub"
