@@ -1,0 +1,12 @@
+- category: Gallery
+  description: |
+    Explore the Gallery of reusable code
+  tiles:
+    - title: Basic Data Visualisation
+      subtitle: Bar charts
+      href: basic_visualisation
+      thumbnail: ../../img/icons/chart.svg
+    - title: Network Visualisation
+      subtitle: Network charts
+      href: network_visualisation
+      thumbnail: ../../img/icons/chart.svg

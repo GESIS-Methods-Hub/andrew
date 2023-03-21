@@ -7,7 +7,6 @@ listing:
     template: gallery/ejs/overview.ejs
     contents: listing-contents.yml
 css: 
- - index.css
  - gallery/gallery.css
 ---
 

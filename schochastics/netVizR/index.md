@@ -1,6 +1,8 @@
-# Network Visualizations in R
-David Schoch
-2022-01-16
+---
+title: Network Visualizations in R
+author: David Schoch
+---
+
 
 <script src="index_files/libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
 <script src="index_files/libs/jquery-3.5.1/jquery.min.js"></script>
