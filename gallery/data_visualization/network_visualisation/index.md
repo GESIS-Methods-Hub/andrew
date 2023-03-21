@@ -4,7 +4,7 @@ listing:
   - id: methods
     contents:
       - "../../../schochastics/netVizR/index.md"
-    type: table
+    type: grid
 ---
 
 :::{.column-screen}
