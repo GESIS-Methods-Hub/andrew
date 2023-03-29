@@ -45,8 +45,11 @@ extract_r_dependencies_from_quarto <- function(contribution_row) {
         return(0)
     }
 
-    all_quarto_lines <- readLines(file.path(contribution_row["tmp_path"], 'index.qmd'))
-    lapply(all_quarto_lines, test_line_and_install)
+    quarto_filename <- file.path(contribution_row["tmp_path"], 'index.qmd')
+    if (file.exists(quarto_filename)) {
+       all_quarto_lines <- readLines()
+       lapply(all_quarto_lines, test_line_and_install)
+    }
 }
 
 render_quarto_to_html <- function(contribution_row) {
@@ -102,14 +105,59 @@ render_quarto_to_ipynb <- function(contribution_row) {
     log_info('Created {ipynb_file_path}.')
 }
 
+render_ipynb_to_md <- function(contribution_row) {
+    tmp_md_file_path <- file.path(contribution_row["tmp_path"], 'index.md')
+    md_file_path <- file.path(contribution_row["slang"], 'index.md')
+
+    log_info('Converting {contribution_row["tmp_path"]}/index.md to markdown ...')
+    setwd(contribution_row["tmp_path"])
+    system(paste("quarto render index.ipynb --to md --metadata prefer-html:true"))
+    setwd('../..')
+    file.copy(tmp_md_file_path, md_file_path)
+    system(paste("cp -r ", file.path(contribution_row["tmp_path"], 'index.markdown_strict_files'), contribution_row["slang"]))
+    log_info('Created {md_file_path}.')
+}
+
+render_md_to_md <- function(contribution_row) {
+    tmp_md_file_path <- file.path(contribution_row["tmp_path"], 'index.md')
+    md_file_path <- file.path(contribution_row["slang"], 'index.md')
+
+    log_info('Converting {contribution_row["tmp_path"]}/index.md to markdown ...')
+    setwd(contribution_row["tmp_path"])
+    system(paste("quarto render index.md --to md --metadata prefer-html:true"))
+    setwd('../..')
+    file.copy(tmp_md_file_path, md_file_path)
+    system(paste("cp -r ", file.path(contribution_row["tmp_path"], 'index.markdown_strict_files'), contribution_row["slang"]))
+    log_info('Created {md_file_path}.')
+}
+
 quarto_to_portal <- function(contribution_row) {
     download_contribution(contribution_row)
 
-    extract_r_dependencies_from_quarto(contribution_row)
+    quarto_filename <- file.path(contribution_row["tmp_path"], 'index.qmd')
+    jupyter_filename <- file.path(contribution_row["tmp_path"], 'index.ipynb')
+    md_filename <- file.path(contribution_row["tmp_path"], 'index.md')
 
     dir.create(contribution_row["slang"], recursive = TRUE)
-    render_quarto_to_md(contribution_row)
-    render_quarto_to_ipynb(contribution_row)
+
+    if (file.exists(quarto_filename)) {
+        extract_r_dependencies_from_quarto(contribution_row)
+
+        render_quarto_to_md(contribution_row)
+        render_quarto_to_ipynb(contribution_row)
+    }
+
+    if (file.exists(jupyter_filename)) {
+        # extract_r_dependencies_from_jupyter(contribution_row)
+
+        render_jupyter_to_md(contribution_row)
+        #render_jupyter_to_quarto(contribution_row)
+    }
+
+    if (file.exists(md_filename)) {
+        render_md_to_md(contribution_row)
+        #render_md_to_ipynb(contribution_row)
+    }
 
     system(paste("git add ", contribution_row["slang"]))
 }
