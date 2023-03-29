@@ -11,7 +11,7 @@ update third party content:
     - git add -f git-test.txt
     - git commit -m '[bot] Markdown file update'
     - git checkout -b main
-    - git remote set-url https://methods-hub-bot:${methods_hub_bot_token}@git.gesis.org/methods-hub/portal.git
+    - git remote set-url origin https://methods-hub-bot:${methods_hub_bot_token}@git.gesis.org/methods-hub/portal.git
     - git push origin main
 
 pages:
