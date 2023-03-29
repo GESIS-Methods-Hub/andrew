@@ -1,7 +1,28 @@
-update third party content:
+build and register methods hub docker image:
   stage: build
   only:
     - main
+  rules:
+    - if:
+      changes:
+        paths:
+          - Dockerfile
+	  - env.yaml
+  image: docker-private.gesis.intra/gesis/dc:5.7
+  services:
+    - name:  docker-private.gesis.intra/gesis/dind:5.5
+      alias: docker
+  script:
+    - docker build --no-cache --pull -t docker-private-snapshots.gesis.intra/gesis/methods-hub/portal:latest .
+    - docker push docker-private-snapshots.gesis.intra/gesis/methods-hub/portal:latest
+
+.update third party content:
+  stage: build
+  only:
+    - main
+  rules:
+    - if: $CI_COMMIT_AUTHOR != "Methods Hub bot <methods-hub-bot@gesis.org>"
+  allow_failure: true
   image: bitnami/git
   script:
     - git --version
@@ -10,7 +31,7 @@ update third party content:
     - date > git-test.txt
     - git add -f git-test.txt
     - git commit -m '[bot] Markdown file update'
-    - git checkout -b main
+    - git checkout -f -b main
     - git remote set-url origin https://methods-hub-bot:${methods_hub_bot_token}@git.gesis.org/methods-hub/portal.git
     - git push origin main
 
@@ -18,6 +39,8 @@ pages:
   stage: deploy
   only:
     - main
+  rules:
+    - if: $CI_COMMIT_AUTHOR == "Methods Hub bot <methods-hub-bot@gesis.org>"
   image: docker-private-snapshots.gesis.intra/gesis/methods-hub/quarto:latest
   script:
     - quarto check

@@ -1,9 +1,5 @@
-FROM mambaorg/micromamba
-USER root
-RUN apt update \
-    && apt install -y curl \
-    && rm -rf /var/lib/apt/lists/* \
-    && curl -L $(curl https://quarto.org/docs/download/_prerelease.json | grep -oP "(?<=\"download_url\":\s\")https.*${ARCH}\.deb") -o /tmp/quarto.deb \
-    && dpkg -i /tmp/quarto.deb \
-    && rm /tmp/quarto.deb
-USER $MAMBA_USER
+FROM docker-private-snapshots.gesis.intra/gesis/methods-hub/quarto:latest
+COPY --chown=$MAMBA_USER:$MAMBA_USER env.yaml /tmp/env.yaml
+RUN micromamba install -y -n base -f /tmp/env.yaml \
+    && micromamba clean --all --yes \
+    && rm -rf /opt/conda/conda-meta /tmp/env.yaml
