@@ -1,5 +1,10 @@
+stages:
+  - container
+  - build
+  - deploy
+
 build and register methods hub docker image:
-  stage: build
+  stage: container
   rules:
     - if: $CI_COMMIT_BRANCH == 'main'
       changes:
