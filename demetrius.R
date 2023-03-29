@@ -105,7 +105,7 @@ render_quarto_to_ipynb <- function(contribution_row) {
     log_info('Created {ipynb_file_path}.')
 }
 
-render_ipynb_to_md <- function(contribution_row) {
+render_jupyter_to_md <- function(contribution_row) {
     tmp_md_file_path <- file.path(contribution_row["tmp_path"], 'index.md')
     md_file_path <- file.path(contribution_row["slang"], 'index.md')
 
