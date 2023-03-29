@@ -10,6 +10,7 @@ update third party content:
     - date > git-test.txt
     - git add -f git-test.txt
     - git commit -m '[bot] Markdown file update'
+    - git checkout -b main
     - git push origin main
 
 pages:
