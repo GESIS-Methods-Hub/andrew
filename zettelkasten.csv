@@ -1,0 +1,25 @@
+level,sublevel
+Fundamentals,Basic Setup
+Fundamentals,Advanced Setup
+Fundamentals,Regular Expressions
+Fundamentals,Data Management
+Fundamentals,Project Management
+Fundamentals,Reproducibility
+Data Gathering,HTML/CSS
+Data Gathering,Web Scraping
+Data Gathering,APIs
+Data Gathering,Social Media APIs
+Data Gathering,Search Engines
+Data Gathering,Google Trends
+Data Gathering,Sensors
+Data Gathering,Data Donations
+Preprocessing & Analysis,Demographics
+Text as Data,Basic Text Mining
+Text as Data,Feature Extraction
+Text as Data,Detection
+Text as Data,Advanced Topics
+Text as Data,Pretrained Models
+Network Data,Basic Network Analysis
+Network Data,Advanced Network Analysis
+Data Visualization,Basic Data Visualization
+Data Visualization,Network Visualization
