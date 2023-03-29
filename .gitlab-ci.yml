@@ -13,21 +13,20 @@ build and register methods hub docker image:
     - docker build --no-cache --pull -t docker-private-snapshots.gesis.intra/gesis/methods-hub/portal:latest .
     - docker push docker-private-snapshots.gesis.intra/gesis/methods-hub/portal:latest
 
-.update third party content:
+update third party content:
   stage: build
   rules:
     - if: $CI_COMMIT_BRANCH == 'main' && $CI_COMMIT_AUTHOR != "Methods Hub bot <methods-hub-bot@gesis.org>"
   allow_failure: true
-  image: bitnami/git
+  image: docker-private-snapshots.gesis.intra/gesis/methods-hub/portal:latest
   script:
     - git --version
     - git config --global user.name 'Methods Hub bot'
     - git config --global user.email 'methods-hub-bot@gesis.org'
-    - date > git-test.txt
-    - git add -f git-test.txt
-    - git commit -m '[bot] Markdown file update'
-    - git checkout -f -b main
     - git remote set-url origin https://methods-hub-bot:${methods_hub_bot_token}@git.gesis.org/methods-hub/portal.git
+    - git checkout -f -b main
+    - Rscript --verbose --vanilla demetrius.R
+    - git commit -m '[bot] Markdown file update'
     - git push origin main
 
 pages:
