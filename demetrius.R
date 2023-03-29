@@ -108,9 +108,10 @@ quarto_to_portal <- function(contribution_row) {
     extract_r_dependencies_from_quarto(contribution_row)
 
     dir.create(contribution_row["slang"], recursive = TRUE)
-    render_quarto_to_html(contribution_row)
     render_quarto_to_md(contribution_row)
     render_quarto_to_ipynb(contribution_row)
+
+    system(paste("git add ", contribution_row["slang"]))
 }
 
 invisible(apply(all_contributions, 1, quarto_to_portal))
