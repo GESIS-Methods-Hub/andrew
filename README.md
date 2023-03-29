@@ -1,5 +1,7 @@
 # Exploration of ideas for Web Portal for the GESIS Methods Hub
 
+Preview: http://methods-hub.git.gesis.org/portal
+
 ## Dependencies
 
 - R
