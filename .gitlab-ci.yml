@@ -7,7 +7,7 @@ build and register methods hub docker image:
       changes:
         paths:
           - Dockerfile
-	  - env.yaml
+          - env.yaml
   image: docker-private.gesis.intra/gesis/dc:5.7
   services:
     - name:  docker-private.gesis.intra/gesis/dind:5.5
