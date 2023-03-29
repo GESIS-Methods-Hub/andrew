@@ -24,7 +24,6 @@ format:
     include-in-header: gesis_header.html	
     template-partials:
       - title-block.html
-      - title-metadata.html
     theme: 
       - litera
       - methods_hub.scss
