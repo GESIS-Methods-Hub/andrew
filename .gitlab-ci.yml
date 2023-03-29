@@ -1,4 +1,19 @@
+update third party content:
+  stage: build
+  only:
+    - main
+  image: bitnami/git
+  script:
+    - git --version
+    - git config --global user.name 'Methods Hub bot'
+    - git config --global user.email 'methods-hub-bot@gesis.org'
+    - date > git-test.txt
+    - git add -f git-test.txt
+    - git commit -m '[bot] Markdown file update'
+    - git push origin main
+
 pages:
+  stage: deploy
   only:
     - main
   image: docker-private-snapshots.gesis.intra/gesis/methods-hub/quarto:latest
