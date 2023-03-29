@@ -1,5 +1,11 @@
-# Quantifying implicit associations among words using word embeddings
-Chung-hong Chan (GESIS)
+---
+title: Quantifying implicit associations among words using word embeddings
+author: Chung-hong Chan
+abstract: Tutorial of the package `weat`.
+image: ../../img/logos/gesis-methods-hub-logo-square.png
+github: https://github.com/chainsawriot/methodshub-weat
+commit: 965e4bafc2c6e9469f2ef394e8f36a8f835ed296
+---
 
 ``` r
 library(magrittr)
