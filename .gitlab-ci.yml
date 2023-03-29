@@ -1,9 +1,7 @@
 build and register methods hub docker image:
   stage: build
-  only:
-    - main
   rules:
-    - if: true
+    - if: $CI_COMMIT_BRANCH == 'main'
       changes:
         paths:
           - Dockerfile
@@ -18,10 +16,8 @@ build and register methods hub docker image:
 
 .update third party content:
   stage: build
-  only:
-    - main
   rules:
-    - if: $CI_COMMIT_AUTHOR != "Methods Hub bot <methods-hub-bot@gesis.org>"
+    - if: $CI_COMMIT_BRANCH == 'main' && $CI_COMMIT_AUTHOR != "Methods Hub bot <methods-hub-bot@gesis.org>"
   allow_failure: true
   image: bitnami/git
   script:
@@ -37,10 +33,8 @@ build and register methods hub docker image:
 
 pages:
   stage: deploy
-  only:
-    - main
   rules:
-    - if: $CI_COMMIT_AUTHOR == "Methods Hub bot <methods-hub-bot@gesis.org>"
+    - if: $CI_COMMIT_BRANCH == 'main' && $CI_COMMIT_AUTHOR == "Methods Hub bot <methods-hub-bot@gesis.org>"
   image: docker-private-snapshots.gesis.intra/gesis/methods-hub/quarto:latest
   script:
     - quarto check
