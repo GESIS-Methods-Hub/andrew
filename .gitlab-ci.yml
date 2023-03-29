@@ -1,0 +1,12 @@
+pages:
+  only:
+    - main
+  image: docker-private-snapshots.gesis.intra/gesis/methods-hub/quarto:latest
+  script:
+    - quarto check
+    - quarto render -t html --output-dir public
+  artifacts:
+    paths:
+      - public
+
+
