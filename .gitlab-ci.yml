@@ -3,7 +3,7 @@ build and register methods hub docker image:
   only:
     - main
   rules:
-    - if:
+    - if: true
       changes:
         paths:
           - Dockerfile
