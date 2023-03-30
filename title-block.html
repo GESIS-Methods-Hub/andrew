@@ -8,20 +8,20 @@
     $for(author)$
     <p class="author">$author$</p>
     $endfor$
+
+    $if(method.git_date)$
+    <p>Last update on $method.git_date$</p>
+    $endif$
   </div>
 
   $if(method)$
   <div>
-    $if(method.github)$
-    <a class="btn btn-primary" href="$method.github$/tree/$commit$" role="button">View on GitHub</a>
+    $if(method.github_https)$
+    <a class="btn btn-primary" href="$method.github_https$/tree/$method.git_hash$" role="button">View on GitHub</a>
     <a class="btn btn-primary" href="#" role="button">Open on Binder</a>
     $endif$
-    $if(method.jupyter)$
     <a class="btn btn-primary" href="index.ipynb" role="button">Download as Jupyter Notebook</a>
-    $endif$
-    $if(method.quarto)$
     <a class="btn btn-primary" href="index.qmd" role="button">Download as Quarto</a>
-    $endif$
   </div>
   $endif$
 

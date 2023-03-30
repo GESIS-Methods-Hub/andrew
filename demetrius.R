@@ -13,6 +13,7 @@ pre_process_contributions_list <- function(contribution_row) {
 
 all_contributions$slang <- apply(all_contributions, 1, pre_process_contributions_list)
 all_contributions$tmp_path <- str_c("_", all_contributions$slang)
+all_contributions$https <- str_replace(all_contributions$link, '.git$', '')
 
 download_contribution <- function(contribution_row) {
     if (dir.exists(contribution_row["tmp_path"])) {
@@ -130,7 +131,17 @@ render_md_to_md <- function(contribution_row) {
     log_info('Converting {contribution_row["tmp_path"]}/index.md to markdown ...')
     setwd(contribution_row["tmp_path"])
     git_hash <- system("git rev-parse HEAD", intern = TRUE)
-    system(paste0("quarto render index.md --to md --metadata prefer-html:true --template ../../_templates/methods_hub.md --output index.md-tmp ", "--variable git_hash:", git_hash
+    git_date <- system('git log -1 --format="%as"', intern = TRUE)
+    system(paste(
+        "quarto",
+        "render", "index.md",
+        "--to", "md",
+        "--metadata", "prefer-html:true",
+        "--template", "../../_templates/methods_hub.md",
+        "--output", "index.md-tmp",
+        "--variable", paste0("github_https:", contribution_row["https"]),
+        "--variable", paste0("git_hash:", git_hash),
+        "--variable", paste0("git_date:", git_date)
     ))
     setwd('../..')
     file.copy(tmp_md_file_path, md_file_path, overwrite=TRUE)
