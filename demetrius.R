@@ -16,13 +16,17 @@ all_contributions$tmp_path <- str_c("_", all_contributions$slang)
 
 download_contribution <- function(contribution_row) {
     if (dir.exists(contribution_row["tmp_path"])) {
-        log_info('{contribution_row["tmp_path"]} already exists. Skipping download of {contribution_row["link"]}.')
-        return(0)
+        log_info('{contribution_row["tmp_path"]} already exists.')
+        log_info('Skipping download of {contribution_row["link"]}.')
+        log_info('Updating copy of {contribution_row["link"]}.')
+        system(paste("git", "clean", "--force", "-x"))
+        system(paste("git", "pull"))
+    } else {
+        log_info('{contribution_row["tmp_path"]} not found.')
+        log_info('Downloading {contribution_row["link"]} ...')
+        system(paste("git clone", contribution_row["link"], contribution_row["tmp_path"]))
+        log_info('Download of {contribution_row["link"]} completed.')
     }
-
-    log_info('Downloading {contribution_row["link"]} ...')
-    system(paste("git clone", contribution_row["link"], contribution_row["tmp_path"]))
-    log_info('Download of {contribution_row["link"]} completed.')
 }
 
 test_line_and_install <- function(quarto_line) {
