@@ -2,11 +2,9 @@
 
 library(logger)
 
-library(stringr)
+library(tidyverse)
 
-library(dplyr)
-
-zettelkasten <- read.csv('zettelkasten.csv', header=TRUE)
+zettelkasten <- read_csv('zettelkasten.csv')
 
 # Populate zettelkasten with data to use downstream
 
@@ -130,6 +128,7 @@ create_2nd_level_page <- function(zettelkasten_row) {
 }
 
 zettelkasten |>
+    filter(!is.na(sublevel)) |>
     apply(1, create_2nd_level_page) |>
     invisible()
 
@@ -145,6 +144,44 @@ listing_tiles_template <- "    - title: ${title}
       subtitle: ${subtitle}
       href: ${href}
       thumbnail: ${thumbnail}"
+
+# Create listing for root level
+
+create_listing_root_level <- function(subset_data) {
+    listing_tiles <- subset_data |>
+        rowwise() |>
+        mutate(
+            listing_tiles = str_interp(
+                listing_tiles_template,
+                list(
+                    title = level,
+                    subtitle = subtitle,
+                    href = level_slang,
+                    thumbnail = thumbnail
+                )
+            )
+        ) |>
+        pull(listing_tiles) |>
+        str_flatten(collapse="\n")
+
+    listing <- str_interp(
+        listing_template,
+        list(
+            tiles = listing_tiles
+        )
+    )
+
+    listing_path <- file.path("listing-contents.yml")
+
+    writeLines(listing, con = listing_path)
+}
+
+zettelkasten |>
+    filter(is.na(sublevel)) |>
+    create_listing_root_level() |>
+    invisible()
+
+# Create listing for 1st level
 
 create_listing_1st_level <- function(subset_data, key) {
     listing_tiles <- subset_data |>
@@ -176,6 +213,7 @@ create_listing_1st_level <- function(subset_data, key) {
 }
 
 zettelkasten |>
+    filter(!is.na(sublevel)) |>
     group_by(level_path) |>
     group_walk(create_listing_1st_level) |>
     invisible()
