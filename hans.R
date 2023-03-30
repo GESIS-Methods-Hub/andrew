@@ -48,9 +48,9 @@ old_gallery |>
     lapply(clean_gallery) |>
     invisible()
 
-# Create updated pages
+# Create pages for 1st level
 
-gallery_index_page_template <- "---
+gallery_1st_level_index_page_template <- "---
 title: '${title}'
 sidebar: false
 toc: false
@@ -64,6 +64,46 @@ css:
 
 :::{.column-screen}
 
+:::{#overview}
+:::
+
+:::
+"
+
+create_1st_level_page <-  function(subset_data, key) {
+    dir.create(key$level_path, recursive = TRUE)
+
+    gallery_index_page <- str_interp(
+        gallery_1st_level_index_page_template,
+        list(title = key$level)
+    )
+
+    gallery_index_path <- file.path(key$level_path, "index.md")
+
+    writeLines(gallery_index_page, con = gallery_index_path)
+}
+
+zettelkasten |>
+    group_by(level, level_path) |>
+    group_walk(create_1st_level_page) |>
+    invisible()
+
+# Create pages for 2nd level
+
+gallery_2nd_level_index_page_template <- "---
+title: '${title}'
+sidebar: false
+toc: false
+listing:
+  - id: overview
+    template: ../../ejs/overview.ejs
+    contents: listing-contents.yml
+css: 
+ - ../../gallery.css
+---
+
+:::{.column-screen}
+
 ${abstract}
 
 :::{#overview}
@@ -72,11 +112,11 @@ ${abstract}
 :::
 "
 
-create_page <- function(zettelkasten_row) {
+create_2nd_level_page <- function(zettelkasten_row) {
     dir.create(zettelkasten_row["sublevel_path"], recursive = TRUE)
 
     gallery_index_page <- str_interp(
-        gallery_index_page_template,
+        gallery_2nd_level_index_page_template,
         list(title = zettelkasten_row["sublevel"], abstract = zettelkasten_row["abstract"])
     )
 
@@ -86,7 +126,7 @@ create_page <- function(zettelkasten_row) {
 }
 
 zettelkasten |>
-    apply(1, create_page) |>
+    apply(1, create_2nd_level_page) |>
     invisible()
 
 # Create listing
