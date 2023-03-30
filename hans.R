@@ -55,7 +55,7 @@ toc: false
 listing:
   - id: ${slang}-listing
     template: ../ejs/overview.ejs
-    contents: listing-contents.yml
+    contents: listing-contents-{slang}.yml
 css: 
  - ../gallery.css
 ---
@@ -95,7 +95,7 @@ toc: false
 listing:
   - id: ${slang}-listing
     template: ../../ejs/overview.ejs
-    contents: listing-contents.yml
+    contents: listing-contents-${slang}.yml
 css: 
  - ../../gallery.css
 ---
@@ -156,7 +156,7 @@ create_listing_root_level <- function(subset_data) {
                 list(
                     title = level,
                     subtitle = subtitle,
-                    href = level_slang,
+                    href = level_path,
                     thumbnail = thumbnail
                 )
             )
@@ -207,13 +207,16 @@ create_listing_1st_level <- function(subset_data, key) {
         )
     )
 
-    listing_path <- file.path(key$level_path[1], "listing-contents.yml")
+    listing_path <- file.path(
+        key$level_path[1],
+        paste0("listing-contents", key$level_slang[1], ".yml")
+    )
 
     writeLines(listing, con = listing_path)
 }
 
 zettelkasten |>
     filter(!is.na(sublevel)) |>
-    group_by(level_path) |>
+    group_by(level_path, level_slang) |>
     group_walk(create_listing_1st_level) |>
     invisible()
