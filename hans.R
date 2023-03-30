@@ -13,7 +13,7 @@ zettelkasten <- read.csv('zettelkasten.csv', header=TRUE)
 zettelkasten$level_slang <- zettelkasten$level |>
     str_to_lower() |>
     str_replace_all(" ", "-") |>
-    str_replace_all("&", "-and-")
+    str_replace_all("&", "and")
 
 zettelkasten$sublevel_slang <- zettelkasten$sublevel |>
     str_to_lower() |>
