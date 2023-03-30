@@ -209,7 +209,7 @@ create_listing_1st_level <- function(subset_data, key) {
 
     listing_path <- file.path(
         key$level_path[1],
-        paste0("listing-contents", key$level_slang[1], ".yml")
+        paste0("listing-contents-", key$level_slang[1], ".yml")
     )
 
     writeLines(listing, con = listing_path)
