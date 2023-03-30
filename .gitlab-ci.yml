@@ -38,8 +38,13 @@ pages:
   stage: deploy
   rules:
     - if: $CI_COMMIT_BRANCH == 'main' && $CI_COMMIT_AUTHOR == "Methods Hub bot <methods-hub-bot@gesis.org>"
-  image: docker-private-snapshots.gesis.intra/gesis/methods-hub/quarto:latest
+    - if: $CI_COMMIT_BRANCH == 'main'
+      changes:
+        - hans.R
+        - zettelkasten.csv
+  image: docker-private-snapshots.gesis.intra/gesis/methods-hub/portal:latest
   script:
+    - Rscript --verbose --vanilla hans.R
     - quarto check
     - quarto render -t html --output-dir public
   artifacts:
