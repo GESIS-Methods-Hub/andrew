@@ -44,7 +44,9 @@ clean_gallery <- function(gallery_room_name) {
     }
 }
 
-lapply(old_gallery, clean_gallery)
+old_gallery |>
+    lapply(clean_gallery) |>
+    invisible()
 
 # Create updated pages
 
@@ -83,55 +85,53 @@ create_page <- function(zettelkasten_row) {
     writeLines(gallery_index_page, con = gallery_index_path)
 }
 
-apply(zettelkasten, 1, create_page)
+zettelkasten |>
+    apply(1, create_page) |>
+    invisible()
 
 # Create listing
 
 listing_template <- "- category: Gallery
   description: |
     Explore the Gallery of reusable code
-  tiles:"
+  tiles:
+${tiles}"
 
-listing_title_template <- "    - title: ${title}
+listing_tiles_template <- "    - title: ${title}
       subtitle: ${subtitle}
       href: ${href}
       thumbnail: ${thumbnail}"
 
-
-
-create_listing_title <- function(title, subtitle, href, thumbnail) {
-    str_interp(
-        listing_title_template,
-        list(
-            title = title,
-            subtitle = subtitle,
-            href = href,
-            thumbnail = thumbnail
-        )
-    )
-}
-
 create_listing_1st_level <- function(subset_data, key) {
-    print(subset_data)
-    print(key)
-
-    subset_data |>
+    listing_tiles <- subset_data |>
         rowwise() |>
         mutate(
-            listing_title = create_listing_title(
-                sublevel,
-                subtitle,
-                sublevel_slang,
-                thumbnail
+            listing_tiles = str_interp(
+                listing_tiles_template,
+                list(
+                    title = sublevel,
+                    subtitle = subtitle,
+                    href = sublevel_slang,
+                    thumbnail = thumbnail
+                )
             )
         ) |>
-        print()
+        pull(listing_tiles) |>
+        str_flatten(collapse="\n")
+
+    listing <- str_interp(
+        listing_template,
+        list(
+            tiles = listing_tiles
+        )
+    )
 
     listing_path <- file.path(key$level_path[1], "listing-contents.yml")
 
-    writeLines(listing_template, con = listing_path)
+    writeLines(listing, con = listing_path)
 }
 
 zettelkasten |>
     group_by(level_path) |>
-    group_walk(create_listing_1st_level)
+    group_walk(create_listing_1st_level) |>
+    invisible()
