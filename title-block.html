@@ -1,4 +1,4 @@
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block column-screen">
   <div class="quarto-title">
     <h1 class="title">$title$</h1>
     $if(subtitle)$
@@ -10,14 +10,20 @@
     $endfor$
   </div>
 
+  $if(method)$
   <div>
-    $if(github)$
-    <a class="btn btn-primary" href="$github$/tree/$commit$" role="button">View on GitHub</a>
+    $if(method.github)$
+    <a class="btn btn-primary" href="$method.github$/tree/$commit$" role="button">View on GitHub</a>
     <a class="btn btn-primary" href="#" role="button">Open on Binder</a>
     $endif$
+    $if(method.jupyter)$
     <a class="btn btn-primary" href="index.ipynb" role="button">Download as Jupyter Notebook</a>
+    $endif$
+    $if(method.quarto)$
     <a class="btn btn-primary" href="index.qmd" role="button">Download as Quarto</a>
+    $endif$
   </div>
+  $endif$
 
   $if(categories)$
   $if(quarto-template-params.title-block-categories)$
