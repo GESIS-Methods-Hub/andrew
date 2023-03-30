@@ -55,7 +55,7 @@ title: '${title}'
 sidebar: false
 toc: false
 listing:
-  - id: overview
+  - id: ${slang}-listing
     template: ../ejs/overview.ejs
     contents: listing-contents.yml
 css: 
@@ -64,7 +64,7 @@ css:
 
 :::{.column-screen}
 
-:::{#overview}
+:::{#${slang}-listing}
 :::
 
 :::
@@ -75,7 +75,7 @@ create_1st_level_page <-  function(subset_data, key) {
 
     gallery_index_page <- str_interp(
         gallery_1st_level_index_page_template,
-        list(title = key$level)
+        list(title = key$level, slang= key$level_slang)
     )
 
     gallery_index_path <- file.path(key$level_path, "index.md")
@@ -84,7 +84,7 @@ create_1st_level_page <-  function(subset_data, key) {
 }
 
 zettelkasten |>
-    group_by(level, level_path) |>
+    group_by(level, level_slang, level_path) |>
     group_walk(create_1st_level_page) |>
     invisible()
 
@@ -95,7 +95,7 @@ title: '${title}'
 sidebar: false
 toc: false
 listing:
-  - id: overview
+  - id: ${slang}-listing
     template: ../../ejs/overview.ejs
     contents: listing-contents.yml
 css: 
@@ -106,7 +106,7 @@ css:
 
 ${abstract}
 
-:::{#overview}
+:::{#${slang}-listing}
 :::
 
 :::
@@ -117,7 +117,11 @@ create_2nd_level_page <- function(zettelkasten_row) {
 
     gallery_index_page <- str_interp(
         gallery_2nd_level_index_page_template,
-        list(title = zettelkasten_row["sublevel"], abstract = zettelkasten_row["abstract"])
+        list(
+            title = zettelkasten_row["sublevel"],
+            abstract = zettelkasten_row["abstract"],
+            slang = zettelkasten_row["sublevel_slang"]
+        )
     )
 
     gallery_index_path <- file.path(zettelkasten_row["sublevel_path"], "index.md")
