@@ -1,18 +1,19 @@
-<header id="title-block-header" class="quarto-title-block column-screen">
-  <div class="quarto-title">
-    <h1 class="title">$title$</h1>
-    $if(subtitle)$
-    <p class="subtitle lead">$subtitle$</p>
-    $endif$
+<div id="title-block-header">
+  $if(title)$
+  <h1 class="title">$title$</h1>
+  $endif$
+  
+  $if(subtitle)$
+  <p class="subtitle lead">$subtitle$</p>
+  $endif$
 
-    $for(author)$
-    <p class="author">$author$</p>
-    $endfor$
+  $for(author)$
+  <p class="author">$author$</p>
+  $endfor$
 
-    $if(method.git_date)$
-    <p>Last update on $method.git_date$</p>
-    $endif$
-  </div>
+  $if(method.git_date)$
+  <p>Last update on $method.git_date$</p>
+  $endif$
 
   $if(method)$
   <div>
@@ -27,9 +28,9 @@
 
   $if(categories)$
   $if(quarto-template-params.title-block-categories)$
-  <div class="quarto-categories">
+  <div class="categories">
     $for(categories)$
-    <div class="quarto-category">$categories$</div>
+    <div class="category">$categories$</div>
     $endfor$
   </div>
   $endif$
@@ -80,4 +81,4 @@
   </div>
   $endif$
 
-</header>
+</div>
