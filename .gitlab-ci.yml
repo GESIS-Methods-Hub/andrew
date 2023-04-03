@@ -31,6 +31,7 @@ update third party content:
     - git config --global --add safe.directory /builds/methods-hub/portal
     - git remote set-url origin https://methods-hub-bot:${methods_hub_bot_token}@git.gesis.org/methods-hub/portal.git
     - Rscript --verbose --vanilla demetrius.R
+    - rm -f .git/COMMIT_EDITMSG
     - git commit -m '[bot] Markdown file update'
     - git push origin HEAD:main
 
