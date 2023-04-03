@@ -24,8 +24,8 @@ format:
       - title-block.html
     theme: 
       - litera
-      - sass/gesis.scss
-      - sass/methods_hub.scss
+      - _sass/gesis.scss
+      - _sass/methods_hub.scss
     toc: false
 
 
