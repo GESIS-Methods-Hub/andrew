@@ -25,7 +25,7 @@ format:
     theme: 
       - litera
       - methods_hub.scss
-    toc: true
+    toc: false
     grid:
       sidebar-width: 250px
       body-width: 900px
