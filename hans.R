@@ -94,8 +94,9 @@ sidebar: false
 toc: false
 listing:
   - id: ${slang}-listing
-    contents: listing-contents-${slang}.yml
     type: grid
+    contents:
+      - ../../../GESIS-Methods-Hub/minimal-example-md/index.md
 css: 
  - ../../gallery.css
 ---
