@@ -19,7 +19,7 @@
   <div>
     $if(method.github_https)$
     <a class="btn btn-primary" href="$method.github_https$/tree/$method.git_hash$" role="button">View on GitHub</a>
-    <a class="btn btn-primary" href="#" role="button">Open on Binder</a>
+    <a class="btn btn-primary" href="https://notebooks.gesis.org/binder/v2/gh/$method.github_user_name$/$method.github_repository_name$/$method.git_hash$" role="button">Open on Binder</a>
     $endif$
     <a class="btn btn-primary" href="index.ipynb" role="button">Download as Jupyter Notebook</a>
     <a class="btn btn-primary" href="index.qmd" role="button">Download as Quarto</a>

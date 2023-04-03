@@ -12,6 +12,12 @@ method:
 $if(github_https)$
   github_https: $github_https$
 $endif$
+$if(github_user_name)$
+  github_user_name: $github_user_name$
+$endif$
+$if(github_repository_name)$
+  github_repository_name: $github_repository_name$
+$endif$
 $if(git_hash)$
   git_hash: $git_hash$
 $endif$

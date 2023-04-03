@@ -12,6 +12,8 @@ pre_process_contributions_list <- function(contribution_row) {
 }
 
 all_contributions$slang <- apply(all_contributions, 1, pre_process_contributions_list)
+all_contributions <- all_contributions |>
+    separate(slang, c("user_name", "repository_name"), sep='/', remove=FALSE)
 all_contributions$tmp_path <- str_c("_", all_contributions$slang)
 all_contributions$https <- str_replace(all_contributions$link, '.git$', '')
 
@@ -140,6 +142,8 @@ render_md_to_md <- function(contribution_row) {
         "--template", "../../_templates/methods_hub.md",
         "--output", "index.md-tmp",
         "--variable", paste0("github_https:", contribution_row["https"]),
+        "--variable", paste0("github_user_name:", contribution_row["user_name"]),
+        "--variable", paste0("github_repository_name:", contribution_row["repository_name"]),
         "--variable", paste0("git_hash:", git_hash),
         "--variable", paste0("git_date:", git_date)
     ))
