@@ -94,8 +94,8 @@ sidebar: false
 toc: false
 listing:
   - id: ${slang}-listing
-    template: ../../ejs/overview.ejs
     contents: listing-contents-${slang}.yml
+    type: grid
 css: 
  - ../../gallery.css
 ---
