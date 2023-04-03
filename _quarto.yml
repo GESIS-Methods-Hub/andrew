@@ -18,7 +18,7 @@ website:
   page-footer: "![](/img/logos/leibniz_logo_en_white.svg) [Imprint](https://www.gesis.org/en/institute/imprint/) | [Data protection](https://www.gesis.org/en/institute/data-protection/) | [Terms of Use](https://notebooks.gesis.org/terms_of_use/) © GESIS"
 format:
   html:
-    page-layout: full
+    page-layout: article
     include-in-header: gesis_header.html	
     template-partials:
       - title-block.html
@@ -26,9 +26,5 @@ format:
       - litera
       - methods_hub.scss
     toc: false
-    grid:
-      sidebar-width: 250px
-      body-width: 900px
-      margin-width: 300px
 
 
