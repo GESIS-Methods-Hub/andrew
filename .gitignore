@@ -2,3 +2,6 @@
 /_site
 /.RData
 /.Rhistory
+listing-contents.yml
+/gallery/**/index.md
+/gallery/**/listing-contents*.yml
