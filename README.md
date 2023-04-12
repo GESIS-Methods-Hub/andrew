@@ -6,7 +6,7 @@ Preview: http://methods-hub.git.gesis.org/portal
 
 - R
   - devtools
-- Quarto
+- Quarto >= 1.3
 - jupytext
 
 ## How to Build Portal
@@ -21,6 +21,12 @@ Update the listings:
 
 ```bash
 Rscript hans.R
+```
+
+Render the HTML files:
+
+```bash
+quarto preview
 ```
 
 ## Steps to Process Contributions
