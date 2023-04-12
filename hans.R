@@ -54,7 +54,7 @@ sidebar: false
 toc: false
 listing:
   - id: ${slang}-listing
-    template: ../ejs/overview.ejs
+    template: ../ejs/tiles.ejs
     contents: listing-contents-${slang}.yml
 css: 
  - ../gallery.css
@@ -95,8 +95,7 @@ toc: false
 listing:
   - id: ${slang}-listing
     type: grid
-    contents:
-      - ../../../GESIS-Methods-Hub/minimal-example-md/index.md
+    contents: listing-contents-${slang}.yml
 css: 
  - ../../gallery.css
 ---
@@ -135,16 +134,10 @@ zettelkasten |>
 
 # Create listing
 
-listing_template <- "- category: Gallery
-  description: |
-    Explore the Gallery of reusable code
-  tiles:
-${tiles}"
-
-listing_tiles_template <- "    - title: ${title}
-      subtitle: ${subtitle}
-      href: ${href}
-      thumbnail: ${thumbnail}"
+listing_tiles_template <- "- title: ${title}
+  subtitle: ${subtitle}
+  href: ${href}
+  thumbnail: ${thumbnail}"
 
 # Create listing for root level
 
@@ -165,16 +158,9 @@ create_listing_root_level <- function(subset_data) {
         pull(listing_tiles) |>
         str_flatten(collapse="\n")
 
-    listing <- str_interp(
-        listing_template,
-        list(
-            tiles = listing_tiles
-        )
-    )
-
     listing_path <- file.path("listing-contents.yml")
 
-    writeLines(listing, con = listing_path)
+    writeLines(listing_tiles, con = listing_path)
 }
 
 zettelkasten |>
@@ -201,23 +187,33 @@ create_listing_1st_level <- function(subset_data, key) {
         pull(listing_tiles) |>
         str_flatten(collapse="\n")
 
-    listing <- str_interp(
-        listing_template,
-        list(
-            tiles = listing_tiles
-        )
-    )
-
     listing_path <- file.path(
         key$level_path[1],
         paste0("listing-contents-", key$level_slang[1], ".yml")
     )
 
-    writeLines(listing, con = listing_path)
+    writeLines(listing_tiles, con = listing_path)
 }
 
 zettelkasten |>
     filter(!is.na(sublevel)) |>
     group_by(level_path, level_slang) |>
     group_walk(create_listing_1st_level) |>
+    invisible()
+
+# Create listing for 2nd level
+
+listing_2nd_level_template <- "- path: ../../../GESIS-Methods-Hub/minimal-example-md/index.md"
+
+create_listing_2nd_level <- function(zettelkasten_row) {
+    dir.create(zettelkasten_row["sublevel_path"], recursive = TRUE)
+
+    listing_path <- file.path(zettelkasten_row["sublevel_path"], str_interp("listing-contents-${slang}.yml", list(slang=zettelkasten_row["sublevel_slang"])))
+
+    writeLines(listing_2nd_level_template, con = listing_path)
+}
+
+zettelkasten |>
+    filter(!is.na(sublevel)) |>
+    apply(1, create_listing_2nd_level) |>
     invisible()

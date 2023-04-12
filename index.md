@@ -4,7 +4,7 @@ sidebar: false
 toc: false
 listing:
   - id: overview
-    template: gallery/ejs/overview.ejs
+    template: gallery/ejs/tiles.ejs
     contents: listing-contents.yml
 css: 
  - gallery/gallery.css
@@ -19,3 +19,4 @@ css:
 :::
 
 :::
+
