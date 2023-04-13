@@ -46,6 +46,74 @@ old_gallery |>
     lapply(clean_gallery) |>
     invisible()
 
+# Create mega menu
+
+mega_menu_template <- '<button id="gs_mm_toggle_button-104618" class="gs_mm_toggle_button" aria-haspopup="true"
+    aria-controls="gs_megamenu-104618" aria-label="Navigationsmenü"></button>
+<nav class="gs_megamenu_nav" aria-labelledby="gs_mm_toggle_button-104618">
+    <ul role="menu" id="gs_megamenu-104618" class="gs_megamenu">
+        <li> <a role="menuitem" href="/">Home</a> </li>
+
+${partial}
+            </ul>
+        </li>
+
+    </ul>
+</nav>'
+
+create_mega_menu <- function(zettelkasten_row) {
+    print(zettelkasten_row["row_number"])
+    if (is.na(zettelkasten_row["sublevel"])) {
+        if (zettelkasten_row["row_number"] == 1) {
+            level_template <- '<li class="gs_sub">
+            <a role="menuitem" aria-haspopup="true" aria-expanded="false" href="${href}">${text}</a>
+            <ul role="menu">'
+        }
+        else {
+            level_template <- '</ul>
+        </li>
+        <li class="gs_sub">
+            <a role="menuitem" aria-haspopup="true" aria-expanded="false" href="${href}">${text}</a>
+            <ul role="menu">'
+        }
+        
+        partial <- str_interp(
+            level_template,
+            list(
+                href = zettelkasten_row["level_path"],
+                text = zettelkasten_row["level"]
+            )
+        )
+    }
+    else {
+        sublevel_template <- '<li> <a role="menuitem" href="${href}">${text}</a> </li>'
+        partial <- str_interp(
+            sublevel_template,
+            list(
+                href = zettelkasten_row["sublevel_path"],
+                text = zettelkasten_row["sublevel"]
+            )
+        )
+    }
+
+    return(partial)
+}
+
+mega_menu_partial <- zettelkasten |>
+    mutate(row_number =  as.numeric(row_number())) |>
+    apply(1, create_mega_menu) |>
+    str_flatten()
+
+create_mega_menu_path <- "_partials/mega_menu.html"
+
+str_interp(
+    mega_menu_template,
+    list(
+        partial = mega_menu_partial
+    )
+) |>
+    writeLines(con = create_mega_menu_path)
+
 # Create pages for 1st level
 
 gallery_1st_level_index_page_template <- "---
