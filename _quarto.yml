@@ -12,6 +12,8 @@ website:
 format:
   html:
     template: _templates/gesis.html
+    template-partials:
+      - _partials/mega_menu.html
     theme:
       - _sass/gesis.scss
       - _sass/methods_hub.scss
