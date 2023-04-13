@@ -34,6 +34,28 @@ download_contribution <- function(contribution_row) {
     }
 }
 
+copy_single_asset <- function(asset_source_path) {
+    # We use _ at the name of the temporary folders
+    asset_target_path <- str_replace(asset_source_path, '^_', '')
+    asset_target_dir <- dirname(asset_target_path)
+    dir.create(asset_target_dir, recursive = TRUE)
+    log_debug('Copying {asset_source_path} to {asset_target_path}')
+    file.copy(asset_source_path, asset_target_path)
+}
+# _GESIS-Methods-Hub/minimal-example-md/img/quarto.png
+#copy_single_asset('_GESIS-Methods-Hub/minimal-example-md/img/quarto.png')
+
+copy_all_assets <- function(contribution_row) {
+    all_assets <- list.files(
+        path = contribution_row["tmp_path"],
+        pattern = "(png|jpg|jpeg)$",
+        recursive = TRUE
+    )
+    all_assets <- file.path(contribution_row["tmp_path"], all_assets)
+    log_debug('Found assets: {all_assets}')
+    lapply(all_assets, copy_single_asset)
+}
+
 test_line_and_install <- function(quarto_line) {
     regex_match <- str_match(quarto_line, 'library\\((.*)\\)')
 
@@ -202,6 +224,7 @@ quarto_to_portal <- function(contribution_row) {
     # }
 
     if (file.exists(md_filename)) {
+        copy_all_assets(contribution_row)
         render_md_to_md(contribution_row)
         render_md_to_quarto(contribution_row)
         render_md_to_jupyter(contribution_row)
