@@ -5,3 +5,4 @@
 listing-contents.yml
 /gallery/**/index.md
 /gallery/**/listing-contents*.yml
+_partials/mega_menu.html
