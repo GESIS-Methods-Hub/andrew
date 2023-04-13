@@ -3,4 +3,8 @@ title: "Minimal Example of Tutorial in Markdown"
 author: Raniere Silva
 ---
 
-This example demonstrates metadata for Methods Hub.
+This example demonstrates the **required** metadata by Methods Hub.
+
+## Binder
+
+The link to Binder will launch the default Jupyter Lab interface.
