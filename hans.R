@@ -129,11 +129,7 @@ css:
  - ../gallery.css
 ---
 
-:::{.column-screen}
-
 :::{#${slang}-listing}
-:::
-
 :::
 "
 
@@ -169,13 +165,9 @@ css:
  - ../../gallery.css
 ---
 
-:::{.column-screen}
-
 ${abstract}
 
 :::{#${slang}-listing}
-:::
-
 :::
 "
 

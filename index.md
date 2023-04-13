@@ -1,5 +1,5 @@
 ---
-page-title: "Material for DBD"
+page-title: "Methods Hub"
 sidebar: false
 toc: false
 listing:
@@ -10,13 +10,8 @@ css:
  - gallery/gallery.css
 ---
 
-:::{.column-screen}
-
 ![](img/header.jpeg)
 
 
 :::{#overview}
 :::
-
-:::
-
