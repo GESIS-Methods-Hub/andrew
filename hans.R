@@ -62,9 +62,9 @@ ${partial}
 </nav>'
 
 create_mega_menu <- function(zettelkasten_row) {
-    print(zettelkasten_row["row_number"])
     if (is.na(zettelkasten_row["sublevel"])) {
-        if (zettelkasten_row["row_number"] == 1) {
+        # apply() cast row to single type
+        if (as.numeric(zettelkasten_row["row_number"]) == 1) {
             level_template <- '<li class="gs_sub">
             <a role="menuitem" aria-haspopup="true" aria-expanded="false" href="${href}">${text}</a>
             <ul role="menu">'
@@ -100,10 +100,11 @@ create_mega_menu <- function(zettelkasten_row) {
 }
 
 mega_menu_partial <- zettelkasten |>
-    mutate(row_number =  as.numeric(row_number())) |>
+    mutate(row_number =  row_number()) |>
     apply(1, create_mega_menu) |>
     str_flatten()
 
+dir.create("_partials", recursive = TRUE)
 create_mega_menu_path <- "_partials/mega_menu.html"
 
 str_interp(
