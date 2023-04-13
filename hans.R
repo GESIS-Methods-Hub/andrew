@@ -66,14 +66,14 @@ create_mega_menu <- function(zettelkasten_row) {
         # apply() cast row to single type
         if (as.numeric(zettelkasten_row["row_number"]) == 1) {
             level_template <- '<li class="gs_sub">
-            <a role="menuitem" aria-haspopup="true" aria-expanded="false" href="${href}">${text}</a>
+            <a role="menuitem" aria-haspopup="true" aria-expanded="false" href="/${href}">${text}</a>
             <ul role="menu">'
         }
         else {
             level_template <- '</ul>
         </li>
         <li class="gs_sub">
-            <a role="menuitem" aria-haspopup="true" aria-expanded="false" href="${href}">${text}</a>
+            <a role="menuitem" aria-haspopup="true" aria-expanded="false" href="/${href}">${text}</a>
             <ul role="menu">'
         }
         
@@ -86,7 +86,7 @@ create_mega_menu <- function(zettelkasten_row) {
         )
     }
     else {
-        sublevel_template <- '<li> <a role="menuitem" href="${href}">${text}</a> </li>'
+        sublevel_template <- '<li> <a role="menuitem" href="/${href}">${text}</a> </li>'
         partial <- str_interp(
             sublevel_template,
             list(
