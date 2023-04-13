@@ -22,8 +22,10 @@ download_contribution <- function(contribution_row) {
         log_info('{contribution_row["tmp_path"]} already exists.')
         log_info('Skipping download of {contribution_row["link"]}.')
         log_info('Updating copy of {contribution_row["link"]}.')
+        setwd(contribution_row["tmp_path"])
         system(paste("git", "clean", "--force", "-x"))
         system(paste("git", "pull"))
+        setwd("../..")
     } else {
         log_info('{contribution_row["tmp_path"]} not found.')
         log_info('Downloading {contribution_row["link"]} ...')
