@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   sodipodi:docname="gs_icon_contact_pink_hover.svg"
+   xml:space="preserve"
+   enable-background="new 0 0 32 32"
+   viewBox="0 0 16.477001 12.359"
+   height="12.359"
+   width="16.477001"
+   y="0px"
+   x="0px"
+   id="Ebene_1"
+   version="1.1"><metadata
+   id="metadata9"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+   id="defs7" /><sodipodi:namedview
+   inkscape:current-layer="Ebene_1"
+   inkscape:window-maximized="1"
+   inkscape:window-y="49"
+   inkscape:window-x="54"
+   inkscape:cy="6.18"
+   inkscape:cx="8.239001"
+   inkscape:zoom="22.96875"
+   fit-margin-bottom="0"
+   fit-margin-right="0"
+   fit-margin-left="0"
+   fit-margin-top="0"
+   showgrid="false"
+   id="namedview5"
+   inkscape:window-height="1057"
+   inkscape:window-width="1858"
+   inkscape:pageshadow="2"
+   inkscape:pageopacity="0"
+   guidetolerance="10"
+   gridtolerance="10"
+   objecttolerance="10"
+   borderopacity="1"
+   bordercolor="#666666"
+   pagecolor="#ffffff" />
+<path
+   id="path2"
+   d="m 1.442001,0 h 13.594 c 0.721,0 1.441,0.721 1.441,1.441 v 9.476 c 0,0.721 -0.721,1.442 -1.441,1.442 h -13.594 C 0.72100104,12.359 1.037584e-6,11.637 1.037584e-6,10.917 V 1.441 C -9.9896242e-4,0.721 0.72100104,0 1.442001,0 Z m 0.206,9.887 c 0,0.541 0.283,0.824 0.823,0.824 h 11.536 c 0.539,0 0.824,-0.283 0.824,-0.824 V 2.472 l -5.498,5.626 c -0.51,0.51 -1.335,0.51 -1.844,0 l -5.841,-5.626 z m 1.235,-8.239 4.836,4.836 c 0.382,0.382 1.001,0.382 1.383,0 l 4.904,-4.836 z"
+   fill="#971d6a" />
+</svg>
