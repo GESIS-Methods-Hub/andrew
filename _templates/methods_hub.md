@@ -11,6 +11,7 @@ image: $image$
 $else$
 image: ../../../img/logos/methods_hub.png
 $endif$
+citation: true
 method:
 $if(github_https)$
   github_https: $github_https$
