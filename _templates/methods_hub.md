@@ -1,7 +1,10 @@
 ---
 title: $title$
 $if(author)$
-author: $author$
+author:
+$for(author)$
+  - name: $author$
+$endfor$
 $endif$
 $if(image)$
 image: $image$
