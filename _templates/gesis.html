@@ -48,71 +48,77 @@
         $mega_menu.html()$
     </header>
 
-    <main id="gs_main">
-        $if(method)$
-        <div class="grid">
-            <div class="g-col-12">
-                $if(method.github_https)$
-                <a class="btn btn-primary" href="https://notebooks.gesis.org/binder/v2/gh/$method.github_user_name$/$method.github_repository_name$/$method.git_hash$" role="button">
-                    <i class="bi bi-controller"></i>
-                    Open on BinderHub
-                </a>
-                <a class="btn btn-primary" href="$method.github_https$/tree/$method.git_hash$" role="button">
-                    <i class="bi bi-github"></i>
-                    GitHub
-                </a>
-                $endif$
-                <a class="btn btn-primary" href="index.qmd" role="button" download>
-                    <i class="bi bi-file-earmark-arrow-down"></i>
-                    Quarto
-                </a>
-                <a class="btn btn-primary" href="index.ipynb" role="button" download>
-                    <i class="bi bi-file-earmark-arrow-down"></i>
-                    Jupyter Notebook
-                </a>
-                <a class="btn btn-primary" href="#cite-as" role="button">
-                    Cite
-                </a>
-            </div>
+    $for(include-before)$
+    $include-before$
+    $endfor$
+
+    $if(method)$
+    <div class="grid">
+        <div class="g-col-12">
+            $if(method.github_https)$
+            <a class="btn btn-primary" href="https://notebooks.gesis.org/binder/v2/gh/$method.github_user_name$/$method.github_repository_name$/$method.git_hash$" role="button">
+                <i class="bi bi-controller"></i>
+                Open on BinderHub
+            </a>
+            <a class="btn btn-primary" href="$method.github_https$/tree/$method.git_hash$" role="button">
+                <i class="bi bi-github"></i>
+                GitHub
+            </a>
+            $endif$
+            <a class="btn btn-primary" href="index.qmd" role="button" download>
+                <i class="bi bi-file-earmark-arrow-down"></i>
+                Quarto
+            </a>
+            <a class="btn btn-primary" href="index.ipynb" role="button" download>
+                <i class="bi bi-file-earmark-arrow-down"></i>
+                Jupyter Notebook
+            </a>
+            <a class="btn btn-primary" href="#cite-as" role="button">
+                Cite
+            </a>
         </div>
-        $endif$
+    </div>
+    $endif$
 
-        $if(title)$
-        <h1>$title$</h1>
-        $endif$
+    $if(title)$
+    <h1>$title$</h1>
+    $endif$
 
-        $if(subtitle)$
-        <p class="subtitle lead">$subtitle$</p>
-        $endif$
+    $if(subtitle)$
+    <p class="subtitle lead">$subtitle$</p>
+    $endif$
 
-        $for(author)$
-        <p class="author">$author$</p>
-        $endfor$      
+    $for(author)$
+    <p class="author">$author$</p>
+    $endfor$      
 
-        $if(method.git_date)$
-        <p>Last update on $method.git_date$</p>
-        $endif$      
+    $if(method.git_date)$
+    <p>Last update on $method.git_date$</p>
+    $endif$      
 
-        $if(abstract)$
-        <div>
-            <div class="abstract">
-            <div class="abstract-title">$labels.abstract$</div>
-                $abstract$
-            </div>
+    $if(abstract)$
+    <div>
+        <div class="abstract">
+        <div class="abstract-title">$labels.abstract$</div>
+            $abstract$
         </div>
-        $endif$
+    </div>
+    $endif$
 
-        $body$
+    $body$
 
-        $if(method)$
-        <div id="cite-as" class="grid">
-            <div class="g-col-12">
-                <h2>Cite</h2>
-                $author$. $title$. $method.github_https$.
-            </div>
+    $if(method)$
+    <div id="cite-as" class="grid">
+        <div class="g-col-12">
+            <h2>Cite</h2>
+            $author$. $title$. $method.github_https$.
         </div>
-        $endif$
-    </main>
+    </div>
+    $endif$
+
+    $for(include-after)$
+    $include-after$
+    $endfor$
 
     <footer id="gs_footer" class="container-xl">
         <div class="row gy-3">

@@ -11,6 +11,7 @@ website:
 
 format:
   html:
+    page-layout: custom
     template: _templates/gesis.html
     template-partials:
       - _partials/mega_menu.html
