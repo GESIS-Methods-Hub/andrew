@@ -8,6 +8,7 @@ listing:
     contents: listing-contents.yml
 css: 
  - gallery/gallery.css
+anchor-sections: false
 ---
 
 :::{.frame-methods-hub}

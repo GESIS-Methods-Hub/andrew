@@ -121,12 +121,11 @@ gallery_1st_level_index_page_template <- "---
 title: '${title}'
 sidebar: false
 toc: false
+anchor-sections: false
 listing:
   - id: ${slang}-listing
     template: ../ejs/tiles.ejs
     contents: listing-contents-${slang}.yml
-css: 
- - ../gallery.css
 ---
 
 :::{#${slang}-listing}
@@ -157,12 +156,11 @@ gallery_2nd_level_index_page_template <- "---
 title: '${title}'
 sidebar: false
 toc: false
+anchor-sections: false
 listing:
   - id: ${slang}-listing
     type: grid
     contents: listing-contents-${slang}.yml
-css: 
- - ../../gallery.css
 ---
 
 ${abstract}
