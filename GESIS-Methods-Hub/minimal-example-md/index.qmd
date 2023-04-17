@@ -1,6 +1,7 @@
 ---
 title: "Minimal Example of Tutorial in Markdown"
-author: Raniere Silva
+author:
+  - name: Raniere Silva
 ---
 
 This example demonstrates the **required** metadata by Methods Hub.
