@@ -10,8 +10,12 @@ css:
  - gallery/gallery.css
 ---
 
-![](img/header.jpeg)
+:::{.frame-methods-hub}
 
+:::{.banner-methods-hub}
+:::
+
+:::
 
 :::{#overview}
 :::

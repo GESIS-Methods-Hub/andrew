@@ -1,5 +1,32 @@
 /*-- scss:rules --*/
 
+.quarto-container {
+    background-color: var(--bs-white);
+}
+
+.frame-methods-hub {
+    // From .frame
+    padding-top: 0px !important;
+    margin-top: -2rem;
+    margin-bottom: 2rem;
+    
+}
+
+.banner-methods-hub {
+    // From .gs_banner
+    display: flex !important;
+    background-image: url(/img/header.jpeg);
+    min-height: 24rem;
+    margin: 0 -2rem;
+    background-size: cover;
+    background-position-x: center;
+    background-position-y: center;
+    position: relative;
+    background-repeat: no-repeat;
+    background-color: #e6e6e6;
+    z-index: 0;
+}
+
 .card-header {
     color: #fff;
     background-color: #58748f;
