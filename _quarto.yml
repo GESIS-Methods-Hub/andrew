@@ -4,6 +4,7 @@ project:
     - "*.md"
   resources:
     - gesis-web-frontend-framework
+    - img
 
 website:
   title: "GESIS - Methods Hub"
