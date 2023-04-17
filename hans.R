@@ -159,7 +159,7 @@ toc: false
 anchor-sections: false
 listing:
   - id: ${slang}-listing
-    type: grid
+    template: ../../ejs/methods.ejs
     contents: listing-contents-${slang}.yml
 ---
 
