@@ -169,7 +169,8 @@ render_md_to_md <- function(contribution_row) {
         "--variable", paste0("github_user_name:", contribution_row["user_name"]),
         "--variable", paste0("github_repository_name:", contribution_row["repository_name"]),
         "--variable", paste0("git_hash:", git_hash),
-        "--variable", paste0("git_date:", git_date)
+        "--variable", paste0("git_date:", git_date),
+        "--variable", "source_filename:index.md"
     ))
     setwd('../..')
     file.copy(tmp_md_file_path, md_file_path, overwrite=TRUE)

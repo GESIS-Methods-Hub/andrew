@@ -58,7 +58,10 @@
     <div class="grid">
         <div class="g-col-12">
             $if(method.github_https)$
-            <a class="btn btn-primary" href="https://notebooks.gesis.org/binder/v2/gh/$method.github_user_name$/$method.github_repository_name$/$method.git_hash$" role="button">
+            <a class="btn btn-primary"
+                href="https://notebooks.gesis.org/binder/v2/gh/$method.github_user_name$/$method.github_repository_name$/$method.git_hash$?urlpath=lab/tree/$method.source_filename$"
+                role="button"
+            >
                 <i class="bi bi-controller"></i>
                 Open on BinderHub
             </a>

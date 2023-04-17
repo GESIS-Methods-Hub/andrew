@@ -28,6 +28,9 @@ $endif$
 $if(git_date)$
   git_date: $git_date$
 $endif$
+$if(source_filename)$
+  source_filename: $source_filename$
+$endif$
 ---
 
 $body$
