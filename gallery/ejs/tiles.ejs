@@ -1,18 +1,27 @@
 ```{=html}
 <div class="grid">
   <% items.forEach(function(tile){ %>
-    <div class="g-col-3">
-      <div class="card mb-3">
-        <div class="card-header">
-          <a href="<%- tile.href %>" class="listing-title"><%= tile.title %></a> 
-        </div>
-        <div class="card-body">
-          <a href="<%- tile.href %>">
-            <img src="<%- tile.thumbnail %>" alt="<%- tile.description %>" class="card-img-top"/>
-          </a>
+    <div class="g-col-4">
+      <div class="frame frame-default frame-type-html frame-layout-0 frame-space-after-extra-small">
+        <a href="<%- tile.href %>">
+          <div class="gs_teaser methods_hub_nav_teaser">
+            <h2>
+              <%= tile.title %>
+            </h2>
+            <img src="<%- tile.thumbnail %>" alt="<%- tile.description %>" />
+          </div>
+        </a>
+      </div>
+      <div class="frame frame-default frame-type-textmedia frame-layout-0">
+        <div class="ce-textpic ce-right ce-intext">
+          <div class="ce-bodytext">
+            <p>
+              <%= tile.subtitle %>
+            </p>
+          </div>
         </div>
       </div>
     </div>
-  <% }); %>
+    <% }); %>
 </div>
 ```
