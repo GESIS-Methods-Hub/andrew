@@ -42,8 +42,6 @@ copy_single_asset <- function(asset_source_path) {
     log_debug('Copying {asset_source_path} to {asset_target_path}')
     file.copy(asset_source_path, asset_target_path)
 }
-# _GESIS-Methods-Hub/minimal-example-md/img/quarto.png
-#copy_single_asset('_GESIS-Methods-Hub/minimal-example-md/img/quarto.png')
 
 copy_all_assets <- function(contribution_row) {
     all_assets <- list.files(
