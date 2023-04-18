@@ -54,6 +54,40 @@ copy_all_assets <- function(contribution_row) {
     lapply(all_assets, copy_single_asset)
 }
 
+create_docker_container <- function(contribution_row) {
+    repo <- git2r::repository(here::here(contribution_row["tmp_path"]))
+    last_commit <- git2r::revparse_single(repo, 'HEAD')
+    last_commit_sha <- git2r::sha(last_commit)
+
+    image_name <- str_interp(
+        "methodshub/${git_repo}:${git_commit_sha}",
+        list(
+            git_repo = contribution_row["slang"],
+            git_commit_sha = last_commit_sha
+        )
+    ) |>
+        str_to_lower()
+
+    repo2docker_call_template <- "repo2docker \\
+    --no-run \\
+    --user-name methodshub \\
+    --image-name ${image_name} \\
+    --appendix 'RUN curl -s -L $(curl -s https://quarto.org/docs/download/_prerelease.json | grep -oP \"(?<=\\\"download_url\\\":\\s\\\")https.*amd64\\.tar.gz\" | head -n 1) -o /tmp/quarto.tar.gz && tar -C ~/.local -xvzf /tmp/quarto.tar.gz --strip-components=1 && rm /tmp/quarto.tar.gz && R --quiet -e \"install.packages(\\\"rmarkdown\\\")\"' \\
+    ${git_repo_url}"
+
+    repo2docker_call <- str_interp(
+        repo2docker_call_template,
+        list(
+            image_name = image_name,
+            git_repo_url = contribution_row["link"]
+        )
+    )
+
+    system(repo2docker_call)
+}
+
+apply(all_contributions, 1, create_docker_container)
+
 test_line_and_install <- function(quarto_line) {
     regex_match <- str_match(quarto_line, 'library\\((.*)\\)')
 
