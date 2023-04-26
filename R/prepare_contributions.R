@@ -2,6 +2,14 @@ library(logger)
 
 library(tidyverse)
 
+#' Enrich single contribution source
+#'
+#' @param contribution_row
+#'
+#' @return
+#' @noRd
+#'
+#' @examples
 pre_process_contributions_list <- function(contribution_row) {
     regex_match <- str_match(contribution_row, 'https://github.com/(.*).git')
     user_and_project <- regex_match[2]
@@ -9,6 +17,15 @@ pre_process_contributions_list <- function(contribution_row) {
     return(user_and_project)
 }
 
+
+#' Prepare contributions database
+#'
+#' @param all_contributions database
+#'
+#' @return database
+#' @export
+#'
+#' @examples
 prepare_contributions <- function(all_contributions) {
     all_contributions$slang <- apply(all_contributions, 1, pre_process_contributions_list)
     all_contributions <- all_contributions |>
