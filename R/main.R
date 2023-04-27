@@ -16,16 +16,19 @@ main <-
       setwd()
 
     result = tryCatch({
-      content_contributions_filename |>
+      contribution_report <- content_contributions_filename |>
         fs::path_real() |>
         readr::read_csv() |>
         prepare_contributions() |>
         download_contributions() |>
         git_info_to_contributions() |>
-        create_containers()
+        create_containers() |>
+        render_contributions()
     }, error = function(e) {
       logger::log_info('{e}')
     })
 
     setwd(original_wd)
+
+    return(contribution_report)
   }

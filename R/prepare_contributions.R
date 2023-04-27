@@ -8,7 +8,7 @@
 #' @examples
 pre_process_contributions_list <- function(contribution_row) {
   regex_match <-
-    stringr::str_match(contribution_row, 'https://github.com/(.*).git')
+    stringr::str_match(contribution_row["link"], 'https://github.com/(.*).git')
   user_and_project <- regex_match[2]
 
   return(user_and_project)
@@ -24,8 +24,8 @@ pre_process_contributions_list <- function(contribution_row) {
 #'
 #' @examples
 prepare_contributions <- function(all_contributions) {
-  all_contributions$slang <-
-    apply(all_contributions, 1, pre_process_contributions_list)
+  all_contributions$slang <- all_contributions |>
+    apply(1, pre_process_contributions_list)
   all_contributions <- all_contributions |>
     tidyr::separate_wider_delim(
       slang,
