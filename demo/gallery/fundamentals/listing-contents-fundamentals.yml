@@ -1,0 +1,24 @@
+- title: Basic Setup
+  subtitle: Lorem ipsum
+  href: basic-setup
+  thumbnail: ../../img/icons/folder.svg
+- title: Advanced Setup
+  subtitle: Lorem ipsum
+  href: advanced-setup
+  thumbnail: ../../img/icons/folder.svg
+- title: Regular Expressions
+  subtitle: Lorem ipsum
+  href: regular-expressions
+  thumbnail: ../../img/icons/folder.svg
+- title: Data Management
+  subtitle: Lorem ipsum
+  href: data-management
+  thumbnail: ../../img/icons/folder.svg
+- title: Project Management
+  subtitle: Lorem ipsum
+  href: project-management
+  thumbnail: ../../img/icons/folder.svg
+- title: Reproducibility
+  subtitle: Lorem ipsum
+  href: reproducibility
+  thumbnail: ../../img/icons/folder.svg
