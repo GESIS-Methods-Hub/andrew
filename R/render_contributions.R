@@ -7,8 +7,27 @@
 #'
 #' @examples
 render_single_contribution <- function(contribution_row) {
+  RENDER_MATRIX <- list(
+    'md'=c(
+      'md2md.sh'
+      # 'md2qmd.sh',
+      # 'md2ipynb.sh'
+    ),
+    'qmd'=c(
+      # 'qmd2md.sh',
+      # 'qmd2qmd.sh',
+      # 'qmd2ipynb.sh'
+    ),
+    'ipynb'=c(
+      # 'ipynb2md.sh',
+      # 'ipynb2qmd.sh',
+      # 'ipynb2ipynb.sh'
+    )
+  )
+
   git_slang <- contribution_row['slang']
   file2render <- contribution_row['filename']
+  file2render_extension <- contribution_row['filename_extension']
   github_https <- contribution_row['link']
   github_user_name <- contribution_row['user_name']
   github_repository_name <- contribution_row['repository_name']
@@ -27,30 +46,37 @@ render_single_contribution <- function(contribution_row) {
   logger::log_info('Location of docker_scripts directory: {docker_scripts_location}')
   logger::log_info('Location of output directory: {output_location}')
 
-  docker_call_template <- 'docker run \\
+  sum_docker_return_value <- 0
+  for (script in get(file2render_extension, RENDER_MATRIX)) {
+    docker_call_template <- 'docker run \\
     --mount type=bind,source=${template_location},target=/home/methodshub/_templates \\
     --mount type=bind,source=${docker_scripts_location},target=/home/methodshub/_docker-scripts \\
     --mount type=bind,source=${output_location},target=/home/methodshub/_output \\
     ${docker_image} \\
-    /bin/bash -c "./_docker-scripts/md2md.sh ${github_https} ${github_user_name} ${github_repository_name} ${file2render}"'
+    /bin/bash -c "./_docker-scripts/${script} ${github_https} ${github_user_name} ${github_repository_name} ${file2render}"'
 
-  docker_call <- stringr::str_interp(
-    docker_call_template,
-    list(
-      template_location = template_location,
-      docker_scripts_location = docker_scripts_location,
-      output_location = output_location,
-      file2render = file2render,
-      github_https = github_https,
-      github_user_name = github_user_name,
-      github_repository_name = github_repository_name,
-      docker_image = docker_image
+    docker_call <- stringr::str_interp(
+      docker_call_template,
+      list(
+        template_location = template_location,
+        docker_scripts_location = docker_scripts_location,
+        output_location = output_location,
+        file2render = file2render,
+        github_https = github_https,
+        github_user_name = github_user_name,
+        github_repository_name = github_repository_name,
+        docker_image = docker_image,
+        script = script
+      )
     )
-  )
 
-  docker_return_value <- system(docker_call)
+    docker_return_value <- system(docker_call)
 
-  if(docker_return_value == 0){
+    sum_docker_return_value <- sum_docker_return_value + docker_return_value
+  }
+
+
+  if(sum_docker_return_value == 0){
     build_status <- 'Built'
   }
   else{

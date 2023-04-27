@@ -37,6 +37,8 @@ prepare_contributions <- function(all_contributions) {
     stringr::str_c("_", all_contributions$slang)
   all_contributions$https <-
     stringr::str_replace(all_contributions$link, '.git$', '')
+  all_contributions$filename_extension <-
+    stringr::str_extract(all_contributions$filename, '(md|qmd|ipynb)$')
 
   return(all_contributions)
 }
