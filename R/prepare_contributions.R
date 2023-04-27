@@ -7,10 +7,11 @@
 #'
 #' @examples
 pre_process_contributions_list <- function(contribution_row) {
-    regex_match <- stringr::str_match(contribution_row, 'https://github.com/(.*).git')
-    user_and_project <- regex_match[2]
+  regex_match <-
+    stringr::str_match(contribution_row, 'https://github.com/(.*).git')
+  user_and_project <- regex_match[2]
 
-    return(user_and_project)
+  return(user_and_project)
 }
 
 
@@ -23,11 +24,19 @@ pre_process_contributions_list <- function(contribution_row) {
 #'
 #' @examples
 prepare_contributions <- function(all_contributions) {
-    all_contributions$slang <- apply(all_contributions, 1, pre_process_contributions_list)
-    all_contributions <- all_contributions |>
-      tidyr::separate_wider_delim(slang, delim='/', names=c("user_name", "repository_name"), cols_remove=FALSE)
-    all_contributions$tmp_path <- stringr::str_c("_", all_contributions$slang)
-    all_contributions$https <- stringr::str_replace(all_contributions$link, '.git$', '')
+  all_contributions$slang <-
+    apply(all_contributions, 1, pre_process_contributions_list)
+  all_contributions <- all_contributions |>
+    tidyr::separate_wider_delim(
+      slang,
+      delim = '/',
+      names = c("user_name", "repository_name"),
+      cols_remove = FALSE
+    )
+  all_contributions$tmp_path <-
+    stringr::str_c("_", all_contributions$slang)
+  all_contributions$https <-
+    stringr::str_replace(all_contributions$link, '.git$', '')
 
-    return(all_contributions)
+  return(all_contributions)
 }
