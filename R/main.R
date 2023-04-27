@@ -13,5 +13,6 @@ main <-
       readr::read_csv() |>
       prepare_contributions() |>
       download_contributions() |>
-      git_info_to_contributions()
+      git_info_to_contributions() |>
+      create_containers()
   }
