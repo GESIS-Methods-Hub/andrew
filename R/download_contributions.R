@@ -23,7 +23,7 @@ donwload_single_contribution <- function(contribution_row) {
   }
 }
 
-#' Donwload all contributions from database
+#' Download all contributions from database
 #'
 #' @param all_contributions database
 #'

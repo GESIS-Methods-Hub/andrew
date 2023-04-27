@@ -7,9 +7,16 @@
 #'
 #' @examples
 main <-
-  function(content_contributions_filename = 'content-contributions.csv') {
+  function(content_contributions_filename = 'content-contributions.csv',
+           source_dir = '.') {
+    original_wd <- fs::path_real('.')
+
+    source_dir |>
+      fs::path_real() |>
+      setwd()
+
     content_contributions_filename |>
-      here::here() |>
+      fs::path_real() |>
       readr::read_csv() |>
       prepare_contributions() |>
       download_contributions() |>
