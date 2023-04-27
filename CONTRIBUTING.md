@@ -29,7 +29,7 @@ devtools::load_all()
 ```
 
 ```r
-methodshub::main()
+methodshub::main(source_dir="demo")
 ```
 
 ### Add new third package dependecy
