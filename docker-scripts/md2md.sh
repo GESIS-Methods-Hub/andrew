@@ -4,11 +4,12 @@
 #
 # Syntax:
 #
-# md2md.sh github_https github_user_name github_repository_name
+# md2md.sh github_https github_user_name github_repository_name file2render
 
 github_https=$1
 github_user_name=$2
 github_repository_name=$3
+file2render=$4
 
 git --version
 
@@ -20,7 +21,7 @@ git_hash=$(git rev-parse HEAD)
 git_date=$(git log -1 --format=format:%ad --date=format:%Y-%m-%d)
 
 quarto \
-    render index.md \
+    render ${file2render} \
     --to md \
     --metadata "prefer-html:true" \
     --template "_templates/methods_hub.md" \
@@ -30,5 +31,5 @@ quarto \
     --variable "github_repository_name:${github_repository_name}" \
     --variable "git_hash:${git_hash}" \
     --variable "git_date:${git_date}" \
-    --variable "source_filename:index.md" && \
+    --variable "source_filename:${file2render}" && \
     cp index.md-tmp _output/index.md
