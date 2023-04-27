@@ -15,7 +15,7 @@ main <-
       fs::path_real() |>
       setwd()
 
-    result = tryCatch({
+    tryCatch({
       contribution_report <- content_contributions_filename |>
         fs::path_real() |>
         readr::read_csv() |>
