@@ -49,3 +49,9 @@ usethis::use_r("new-script")
 ```r
 usethis::use_test("new-test")
 ```
+
+### Skip inclusion of file in built R package
+
+```r
+usethis::use_build_ignore("file-to-ignore")
+```
