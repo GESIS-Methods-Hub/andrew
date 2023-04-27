@@ -15,11 +15,17 @@ main <-
       fs::path_real() |>
       setwd()
 
-    content_contributions_filename |>
-      fs::path_real() |>
-      readr::read_csv() |>
-      prepare_contributions() |>
-      download_contributions() |>
-      git_info_to_contributions() |>
-      create_containers()
+    result = tryCatch({
+      content_contributions_filename |>
+        fs::path_real() |>
+        readr::read_csv() |>
+        prepare_contributions() |>
+        download_contributions() |>
+        git_info_to_contributions() |>
+        create_containers()
+    }, error = function(e) {
+      logger::log_info('{e}')
+    })
+
+    setwd(original_wd)
   }
