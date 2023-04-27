@@ -9,9 +9,9 @@
 render_single_contribution <- function(contribution_row) {
   RENDER_MATRIX <- list(
     'md'=c(
-      'md2md.sh'
-      # 'md2qmd.sh',
-      # 'md2ipynb.sh'
+      'md2md.sh',
+      'md2qmd.sh',
+      'md2ipynb.sh'
     ),
     'qmd'=c(
       # 'qmd2md.sh',
