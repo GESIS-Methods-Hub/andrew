@@ -22,6 +22,16 @@ devtools::load_all()
 devtools::test()
 ```
 
+### Run package entrypoint
+
+```r
+devtools::load_all()
+```
+
+```r
+methodshub::main()
+```
+
 ### Add new third package dependecy
 
 ```r
