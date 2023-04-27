@@ -11,14 +11,20 @@ donwload_single_contribution <- function(contribution_row) {
     logger::log_info('{contribution_row["tmp_path"]} already exists.')
     logger::log_info('Skipping download of {contribution_row["link"]}.')
     logger::log_info('Updating copy of {contribution_row["link"]}.')
-    setwd(contribution_row["tmp_path"])
-    system(paste("git", "clean", "--force", "-x"))
-    system(paste("git", "pull"))
-    setwd("../..")
+    repo <- contribution_row["tmp_path"] |>
+      fs::path_real() |>
+      git2r::repository()
+
+    repo |>
+      git2r::reset(reset_type = 'hard')
+
+    repo |>
+      git2r::pull()
   } else {
     logger::log_info('{contribution_row["tmp_path"]} not found.')
     logger::log_info('Downloading {contribution_row["link"]} ...')
-    system(paste("git clone", contribution_row["link"], contribution_row["tmp_path"]))
+    git2r::clone(contribution_row["link"],
+                 fs::path_real(contribution_row["tmp_path"]))
     logger::log_info('Download of {contribution_row["link"]} completed.')
   }
 }
