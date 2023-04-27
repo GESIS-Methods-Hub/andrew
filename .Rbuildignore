@@ -1,3 +1,9 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^demo$
+^\.gitignore$
+^\.gitlab-ci\.yml$
+^CONTRIBUTING\.md$
+^docker-compose\.yml$
+^Dockerfile$
+^env\.yaml$
