@@ -22,4 +22,5 @@ git_date=$(git log -1 --format=format:%ad --date=format:%Y-%m-%d)
 
 quarto \
     convert ${file2render} && \
+    --output index.ipynb && \
     cp index.ipynb _output/

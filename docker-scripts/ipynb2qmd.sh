@@ -1,10 +1,10 @@
 #!/bin/bash
 #
-# Convert Markdown to Markdown
+# Convert Jupyter Notebook to Markdown
 #
 # Syntax:
 #
-# md2ipynb.sh github_https github_user_name github_repository_name file2render
+# ipynb2md.sh github_https github_user_name github_repository_name file2render
 
 github_https=$1
 github_user_name=$2
@@ -20,4 +20,7 @@ git_hash=$(git rev-parse HEAD)
 # else
 git_date=$(git log -1 --format=format:%ad --date=format:%Y-%m-%d)
 
-cp $file2render _output/index.qmd
+quarto \
+    convert ${file2render} \
+    --output index.qmd && \
+    cp index.qmd _output/
