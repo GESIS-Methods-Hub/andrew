@@ -7,8 +7,14 @@
 #'
 #' @examples
 pre_process_contributions_list <- function(contribution_row) {
+  git_repository_url <- contribution_row["link"]
+
+  if (str_ends(git_repository_url, '.git') == FALSE) {
+    git_repository_url <- str_c(git_repository_url, '.git')
+  }
+
   regex_match <-
-    stringr::str_match(contribution_row["link"], 'https://github.com/(.*).git')
+    stringr::str_match(git_repository_url, 'https://github.com/(.*).git')
   user_and_project <- regex_match[2]
 
   return(user_and_project)
