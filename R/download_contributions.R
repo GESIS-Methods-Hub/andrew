@@ -26,6 +26,7 @@ donwload_single_contribution <- function(contribution_row) {
   } else {
     logger::log_info('{git_repo_path} not found.')
     logger::log_info('Downloading {git_url} ...')
+    fs::dir_create(git_repo_path)
     git2r::clone(git_url,
                  fs::path_real(git_repo_path))
     logger::log_info('Download of {git_url} completed.')
