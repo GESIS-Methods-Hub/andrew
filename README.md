@@ -11,6 +11,10 @@ Preview: http://methods-hub.git.gesis.org/portal
   - [repo2docker](https://repo2docker.readthedocs.io/)
   - [jupytext](https://jupytext.readthedocs.io/)
 
+### Dependencies installation with `micromamba`
+
+[Check the Contribution Guide](CONTRIBUTING.md#how-to).
+
 ## How to Build Demo Portal
 
 ```bash

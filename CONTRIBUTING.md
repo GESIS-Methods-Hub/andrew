@@ -12,6 +12,14 @@ The project is structured as a [R package](https://r-pkgs.org/). Check the `R` d
 
 ## How to
 
+### Install dependencies with `micromamba`
+
+Install `micromamba` following the [Mamba Documentation](https://mamba.readthedocs.io/en/latest/installation.html#automatic-installation).
+
+```bash
+micromamba create -y -n methodshub -f env.yaml
+```
+
 ### Run tests
 
 ```r
