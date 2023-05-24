@@ -9,8 +9,8 @@
 pre_process_contributions_list <- function(contribution_row) {
   git_repository_url <- contribution_row["link"]
 
-  if (str_ends(git_repository_url, '.git') == FALSE) {
-    git_repository_url <- str_c(git_repository_url, '.git')
+  if (stringr::str_ends(git_repository_url, '.git') == FALSE) {
+    git_repository_url <- stringr::str_c(git_repository_url, '.git')
   }
 
   regex_match <-
