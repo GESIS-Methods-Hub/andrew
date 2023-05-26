@@ -8,6 +8,7 @@
 #' @examples
 main <-
   function(content_contributions_filename = 'content-contributions.csv',
+           all_cards_filename = 'zettelkasten.csv',
            source_dir = '.') {
     original_wd <- fs::path_real('.')
 
@@ -27,6 +28,8 @@ main <-
     }, error = function(e) {
       logger::log_info('{e}')
     })
+
+    generate_card_files(all_cards_filename)
 
     setwd(original_wd)
 
