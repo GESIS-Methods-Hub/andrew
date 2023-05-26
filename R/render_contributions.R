@@ -48,6 +48,8 @@ render_single_contribution <- function(contribution_row) {
 
   sum_docker_return_value <- 0
   for (script in get(file2render_extension, RENDER_MATRIX)) {
+    logger::log_info('Rendering using {script} ...')
+
     docker_call_template <- 'docker run \\
     --mount type=bind,source=${template_location},target=/home/methodshub/_templates \\
     --mount type=bind,source=${docker_scripts_location},target=/home/methodshub/_docker-scripts \\
@@ -71,6 +73,8 @@ render_single_contribution <- function(contribution_row) {
     )
 
     docker_return_value <- system(docker_call)
+
+    logger::log_info('Rendering complete.')
 
     sum_docker_return_value <- sum_docker_return_value + docker_return_value
   }
