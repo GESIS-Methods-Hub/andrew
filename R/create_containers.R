@@ -44,7 +44,15 @@ create_container_from_repo <- function(contribution_row) {
            git_repo_url = git_repo_url)
     )
 
-    system(repo2docker_call)
+    logger::log_info('Building {image_name} ...')
+    logger::log_info('{repo2docker_call}')
+    repo2docker_call_return_value <- system(repo2docker_call, intern = FALSE)
+    if (repo2docker_call_return_value == 0) {
+      logger::log_info('{image_name} built.')
+    } else {
+      logger::log_info('{image_name} NOT built.')
+      stop()
+    }
   }
   else {
     logger::log_info('{image_name} already exists. Skipping build.')
