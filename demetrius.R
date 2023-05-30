@@ -42,8 +42,6 @@ copy_single_asset <- function(asset_source_path) {
     log_debug('Copying {asset_source_path} to {asset_target_path}')
     file.copy(asset_source_path, asset_target_path)
 }
-# _GESIS-Methods-Hub/minimal-example-md/img/quarto.png
-#copy_single_asset('_GESIS-Methods-Hub/minimal-example-md/img/quarto.png')
 
 copy_all_assets <- function(contribution_row) {
     all_assets <- list.files(
@@ -55,6 +53,40 @@ copy_all_assets <- function(contribution_row) {
     log_debug('Found assets: {all_assets}')
     lapply(all_assets, copy_single_asset)
 }
+
+create_docker_container <- function(contribution_row) {
+    repo <- git2r::repository(here::here(contribution_row["tmp_path"]))
+    last_commit <- git2r::revparse_single(repo, 'HEAD')
+    last_commit_sha <- git2r::sha(last_commit)
+
+    image_name <- str_interp(
+        "methodshub/${git_repo}:${git_commit_sha}",
+        list(
+            git_repo = contribution_row["slang"],
+            git_commit_sha = last_commit_sha
+        )
+    ) |>
+        str_to_lower()
+
+    repo2docker_call_template <- "repo2docker \\
+    --no-run \\
+    --user-name methodshub \\
+    --image-name ${image_name} \\
+    --appendix 'RUN curl -s -L $(curl -s https://quarto.org/docs/download/_prerelease.json | grep -oP \"(?<=\\\"download_url\\\":\\s\\\")https.*amd64\\.tar.gz\" | head -n 1) -o /tmp/quarto.tar.gz && tar -C ~/.local -xvzf /tmp/quarto.tar.gz --strip-components=1 && rm /tmp/quarto.tar.gz && R --quiet -e \"install.packages(\\\"rmarkdown\\\")\"' \\
+    ${git_repo_url}"
+
+    repo2docker_call <- str_interp(
+        repo2docker_call_template,
+        list(
+            image_name = image_name,
+            git_repo_url = contribution_row["link"]
+        )
+    )
+
+    system(repo2docker_call)
+}
+
+apply(all_contributions, 1, create_docker_container)
 
 test_line_and_install <- function(quarto_line) {
     regex_match <- str_match(quarto_line, 'library\\((.*)\\)')
@@ -169,7 +201,8 @@ render_md_to_md <- function(contribution_row) {
         "--variable", paste0("github_user_name:", contribution_row["user_name"]),
         "--variable", paste0("github_repository_name:", contribution_row["repository_name"]),
         "--variable", paste0("git_hash:", git_hash),
-        "--variable", paste0("git_date:", git_date)
+        "--variable", paste0("git_date:", git_date),
+        "--variable", "source_filename:index.md"
     ))
     setwd('../..')
     file.copy(tmp_md_file_path, md_file_path, overwrite=TRUE)
