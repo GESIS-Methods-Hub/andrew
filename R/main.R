@@ -16,6 +16,8 @@ main <-
       fs::path_real() |>
       setwd()
 
+    contribution_report <- NA
+
     tryCatch({
       contribution_report <- content_contributions_filename |>
         fs::path_real() |>
