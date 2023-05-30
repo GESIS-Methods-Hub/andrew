@@ -20,6 +20,8 @@ git_hash=$(git rev-parse HEAD)
 # else
 git_date=$(git log -1 --format=format:%ad --date=format:%Y-%m-%d)
 
+quarto_version=$(quarto --version)
+
 quarto \
     render ${file2render} \
     --to md \
@@ -31,6 +33,7 @@ quarto \
     --variable "github_repository_name:${github_repository_name}" \
     --variable "git_hash:${git_hash}" \
     --variable "git_date:${git_date}" \
+    --variable "quarto_version:${quarto_version}" \
     --variable "source_filename:${file2render}" && \
     cp index.md _output/index.md
 
