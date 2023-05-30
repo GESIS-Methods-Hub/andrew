@@ -1,7 +1,5 @@
 # Exploration of ideas for Web Portal for the GESIS Methods Hub
 
-Preview: http://methods-hub.git.gesis.org/portal
-
 ## Dependencies
 
 - Quarto >= 1.3
@@ -18,5 +16,5 @@ Preview: http://methods-hub.git.gesis.org/portal
 ## How to Build Demo Portal
 
 ```bash
-Rscript -e "methodshub::main(source_dir='demo')"
+Rscript -e "devtools::load_all(); methodshub::main(source_dir='demo')"
 ```
