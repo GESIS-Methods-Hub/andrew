@@ -231,7 +231,10 @@ create_listing_1st_level <- function(subset_data, key) {
   writeLines(listing_tiles, con = listing_path)
 }
 
-listing_2nd_level_template <- "- path: ../../../GESIS-Methods-Hub/minimal-example-md/index.md"
+listing_2nd_level_template <- "- path: ../../../GESIS-Methods-Hub/minimal-example-md/index.md
+- path: ../../../GESIS-Methods-Hub/minimal-example-ipynb/index.md
+- path: ../../../GESIS-Methods-Hub/minimal-example-ipynb-python/index.md
+- path: ../../../GESIS-Methods-Hub/minimal-example-qmd-rstats/index.md"
 
 #' Title
 #'
