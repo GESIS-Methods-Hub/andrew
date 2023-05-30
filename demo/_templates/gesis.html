@@ -121,6 +121,14 @@
     </div>
     $endif$
 
+    $if(method)$
+    <div>
+        <div class="g-col-12">
+            Rendered using Quarto $quarto_version$.
+        </div>
+    </div>
+    $endif$
+
     $for(include-after)$
     $include-after$
     $endfor$
