@@ -25,11 +25,11 @@ main <-
         git_info_to_contributions() |>
         create_containers() |>
         render_contributions()
+
+      generate_card_files(all_cards_filename)
     }, error = function(e) {
       logger::log_info('{e}')
     })
-
-    generate_card_files(all_cards_filename)
 
     setwd(original_wd)
 
