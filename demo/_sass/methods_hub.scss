@@ -15,7 +15,7 @@
 .banner-methods-hub {
     // From .gs_banner
     display: flex !important;
-    background-image: url(/img/header.jpeg);
+    background-image: url(./img/header.jpeg);  // relative to the URL of the stylesheet (not to the URL of the web page).
     min-height: 24rem;
     margin: 0 -2rem;
     background-size: cover;
