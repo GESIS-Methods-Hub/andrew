@@ -31,6 +31,9 @@ $endif$
 $if(source_filename)$
   source_filename: $source_filename$
 $endif$
+$if(quarto_version)$
+  quarto_version: $quarto_version$
+$endif$
 ---
 
 $body$
