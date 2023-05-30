@@ -4,6 +4,7 @@ demo/_partials/mega_menu.html
 demo/listing-contents.yml
 
 .quarto
+demo/_site
 
 # History files
 .Rhistory
