@@ -36,5 +36,3 @@ quarto \
     --variable "quarto_version:${quarto_version}" \
     --variable "source_filename:${file2render}" && \
     cp index.md _output/index.md
-
-cp $file2render _output/index.md
