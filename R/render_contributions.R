@@ -39,7 +39,7 @@ render_single_contribution <- function(contribution_row) {
     system.file('templates', package = 'methodshub', mustWork = TRUE)
   docker_scripts_location <-
     system.file('docker-scripts', package = 'methodshub', mustWork = TRUE)
-  output_location <- contribution_row['slang'] |>
+  output_location <- git_slang |>
     fs::path_real()
 
   logger::log_info('Location of template directory: {template_location}')
