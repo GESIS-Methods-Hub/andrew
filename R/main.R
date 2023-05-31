@@ -26,7 +26,8 @@ main <-
         download_contributions() |>
         git_info_to_contributions() |>
         create_containers() |>
-        render_contributions()
+        render_contributions() |>
+        render_report()
 
       generate_card_files(all_cards_filename)
     }, error = function(e) {
