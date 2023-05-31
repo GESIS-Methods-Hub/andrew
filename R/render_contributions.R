@@ -74,7 +74,7 @@ render_single_contribution <- function(contribution_row) {
 
     docker_return_value <- system(docker_call)
 
-    logger::log_info('Rendering complete.')
+    logger::log_info('Rendering complete. Docker returned {docker_return_value}.')
 
     sum_docker_return_value <- sum_docker_return_value + docker_return_value
   }
