@@ -35,4 +35,12 @@ quarto \
     --variable "git_date:${git_date}" \
     --variable "quarto_version:${quarto_version}" \
     --variable "source_filename:${file2render}" && \
-    cp index.md _output/index.md
+    cp index.md _output/index.md && \
+    find . -iname '*.jpg' -exec cp --parents {} _output \; && \
+    find . -iname '*.jpeg' -exec cp --parents {} _output \; && \
+    find . -iname '*.png' -exec cp --parents {} _output \; && \
+    find . -iname '*.gif' -exec cp --parents {} _output \; && \
+    find . -iname '*.tif' -exec cp --parents {} _output \; && \
+    find . -iname '*.tiff' -exec cp --parents {} _output \; && \
+    find . -iname '*.pdf' -exec cp --parents {} _output \; && \
+    find . -iname '*.eps' -exec cp --parents {} _output \;
