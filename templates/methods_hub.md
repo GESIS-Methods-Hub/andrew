@@ -1,5 +1,6 @@
 ---
-title: $title$
+title: |
+  $title$
 $if(author)$
 author:
 $for(author)$
