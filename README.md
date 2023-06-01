@@ -1,6 +1,6 @@
-# `methodshub` R package
+# methodshub
 
-Create portal from collection of Quarto and Jupyter documents.
+`methodshub` is designed to make it quick to build a website that show case a collection of tutorials or vignette of computational methods.
 
 ## Dependencies
 
@@ -11,11 +11,11 @@ Create portal from collection of Quarto and Jupyter documents.
   - [repo2docker](https://repo2docker.readthedocs.io/)
   - [jupytext](https://jupytext.readthedocs.io/)
 
-### Dependencies installation with `micromamba`
+### Dependencies installation
 
-[Check the Contribution Guide](CONTRIBUTING.md#how-to).
+We recommend use [`mamba`](https://mamba.readthedocs.io/) to install the dependencies. A step by step is available at [the Contribution Guide](CONTRIBUTING.md#how-to).
 
-## How to Build Demo Portal
+## How to Build the Website
 
 ```bash
 Rscript -e "devtools::load_all(); methodshub::main(source_dir='demo')"
