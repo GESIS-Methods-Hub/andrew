@@ -13,7 +13,7 @@
 
 ### Dependencies installation
 
-We recommend use [`mamba`](https://mamba.readthedocs.io/) to install the dependencies. A step by step is available at [the Contribution Guide](CONTRIBUTING.md#how-to).
+We recommend use [`mamba`](https://mamba.readthedocs.io/) to install the dependencies. A step by step is available at [the Contribution Guide](./CONTRIBUTING.md).
 
 ## How to Build the Website
 
