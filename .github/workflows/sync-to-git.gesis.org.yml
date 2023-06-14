@@ -1,0 +1,20 @@
+name: GitLab Sync
+
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  sync:
+    name: GitLab Sync
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - uses: action-pack/gitlab-sync@v3
+      with:
+        username: ${{ github.actor }}
+        url: https://git.gesis.org/methods-hub/methodshub.git
+        token: ${{ secrets.GITLAB_TOKEN }}
