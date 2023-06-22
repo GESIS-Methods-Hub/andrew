@@ -1,5 +1,5 @@
 ---
-page-title: "Methods Hub"
+page-title: "MethodsHub"
 sidebar: false
 toc: false
 listing:
