@@ -1,4 +1,6 @@
-# Exploration of ideas for Web Portal for the GESIS Methods Hub
+# `methodshub` R package
+
+Create portal from collection of Quarto and Jupyter documents.
 
 ## Dependencies
 
