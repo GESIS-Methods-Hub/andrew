@@ -216,7 +216,7 @@ create_listing_1st_level <- function(subset_data, key) {
           title = sublevel,
           subtitle = subtitle,
           href = sublevel_slang,
-          thumbnail = thumbnail
+          thumbnail = paste0("../../", thumbnail)
         )
       )
     ) |>
