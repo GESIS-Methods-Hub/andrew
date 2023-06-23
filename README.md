@@ -1,6 +1,6 @@
 # methodshub
 
-`methodshub` is designed to make it quick to build a website that show case a collection of tutorials or vignette of computational methods.
+`methodshub` is designed to make it quick to build a website that shows a collection of tutorials or vignette of **transparent analytics** computational methods. Tutorials and vignette **must** be reproducible and, to enforce it, `methodshub` executes the calculations in an [container](https://en.wikipedia.org/wiki/OS-level_virtualization).
 
 The collection is organised in two levels.
 
