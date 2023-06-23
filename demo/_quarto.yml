@@ -9,7 +9,7 @@ website:
   title: "MethodsHub"
   navbar:
     left:
-      - href: index.qmd
+      - href: index.md
         text: Home
 
 format:
