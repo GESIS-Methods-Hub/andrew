@@ -231,11 +231,6 @@ create_listing_1st_level <- function(subset_data, key) {
   writeLines(listing_tiles, con = listing_path)
 }
 
-listing_2nd_level_template <- "- path: ../../../GESIS-Methods-Hub/minimal-example-md/index.md
-- path: ../../../GESIS-Methods-Hub/minimal-example-ipynb/index.md
-- path: ../../../GESIS-Methods-Hub/minimal-example-ipynb-python/index.md
-- path: ../../../GESIS-Methods-Hub/minimal-example-qmd-rstats/index.md"
-
 #' Title
 #'
 #' @param all_card_row
@@ -249,7 +244,12 @@ create_listing_2nd_level <- function(all_card_row) {
 
   listing_path <- file.path(all_card_row["sublevel_path"], stringr::str_interp("listing-contents-${slang}.yml", list(slang=all_card_row["sublevel_slang"])))
 
-  writeLines(listing_2nd_level_template, con = listing_path)
+  all_card_row["content"] |>
+    stringr::str_split("\n") |>
+    unlist() |>
+    stringr::str_replace("^", "- path: ../../../") |>
+    stringr::str_flatten("\n") |>
+    writeLines(con = listing_path)
 }
 
 #' Title
