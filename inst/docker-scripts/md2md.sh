@@ -34,6 +34,7 @@ quarto \
     --metadata="github_repository_name:${github_repository_name}" \
     --metadata="git_hash:${git_hash}" \
     --metadata="git_date:${git_date}" \
+    --metadata "date:${git_date}" \
     --metadata="quarto_version:${quarto_version}" \
     --metadata="source_filename:${file2render}" && \
     cp index.md-tmp _output/index.md && \
