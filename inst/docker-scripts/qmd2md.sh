@@ -24,16 +24,17 @@ quarto_version=$(quarto --version)
 
 quarto \
     render ${file2render} \
-    --to md \
-    --metadata "prefer-html:true" \
+    --to markdown \
     --output index.md \
-    --variable "github_https:${github_https}" \
-    --variable "github_user_name:${github_user_name}" \
-    --variable "github_repository_name:${github_repository_name}" \
-    --variable "git_hash:${git_hash}" \
-    --variable "git_date:${git_date}" \
-    --variable "quarto_version:${quarto_version}" \
-    --variable "source_filename:${file2render}" && \
+    --metadata="prefer-html:true" \
+    --metadata="method:true" \
+    --metadata="github_https:${github_https}" \
+    --metadata="github_user_name:${github_user_name}" \
+    --metadata="github_repository_name:${github_repository_name}" \
+    --metadata="git_hash:${git_hash}" \
+    --metadata="git_date:${git_date}" \
+    --metadata="quarto_version:${quarto_version}" \
+    --metadata="source_filename:${file2render}" && \
     cp index.md _output/index.md && \
     find . -iname '*.jpg' -exec cp --parents {} _output \; && \
     find . -iname '*.jpeg' -exec cp --parents {} _output \; && \
