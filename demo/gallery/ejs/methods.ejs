@@ -1,14 +1,18 @@
 ```{=html}
 <div class="grid">
-  <% items.forEach(function(tile){ %>
-    <div class="g-col-4">
+  <% items.forEach(function(method){ %>
+    <div class="g-col-4 method">
       <div class="frame frame-default frame-type-html frame-layout-0 frame-space-after-extra-small">
-        <a href="<%- tile.path %>">
+        <a href="<%- method.path %>">
           <div class="gs_teaser methods_hub_nav_teaser">
             <h2>
-              <%= tile.title %>
+              <%= method.title %>
             </h2>
-            <img src="<%- tile.image %>" alt="<%- tile.description %>" />
+            <% if(method.image) { %>
+            <img src="<%- method.image %>" alt="<%- method.description %>" />
+            <% } else { %>
+            <img src="../../../img/svgrepo.com/pencil-draw.svg" alt="<%- method.description %>" />
+            <% } %>
           </div>
         </a>
       </div>
@@ -16,7 +20,7 @@
         <div class="ce-textpic ce-right ce-intext">
           <div class="ce-bodytext">
             <p>
-              By <%- tile.author %>.
+              By <%= method.author %>.
             </p>
           </div>
         </div>
