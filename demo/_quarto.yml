@@ -5,6 +5,10 @@ project:
 
 website:
   title: "MethodsHub"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
 
 format:
   html:
