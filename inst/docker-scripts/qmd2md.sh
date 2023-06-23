@@ -26,7 +26,6 @@ quarto \
     render ${file2render} \
     --to md \
     --metadata "prefer-html:true" \
-    --template "_templates/methods_hub.md" \
     --output index.md \
     --variable "github_https:${github_https}" \
     --variable "github_user_name:${github_user_name}" \
