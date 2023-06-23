@@ -2,21 +2,12 @@ project:
   type: website
   render:
     - "*.md"
-  resources:
-    - gesis-web-frontend-framework
-    - img
 
 website:
-  title: "GESIS - Methods Hub"
-  site-url: https://methods-hub.gesis.org
+  title: "MethodsHub"
 
 format:
   html:
-    page-layout: custom
-    template: _templates/gesis.html
     template-partials:
-      - _partials/mega_menu.html
-    theme:
-      - _sass/gesis.scss
-      - _sass/methods_hub.scss
-
+      - _partials/title-block.html
+    theme: cosmo
