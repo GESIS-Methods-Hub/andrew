@@ -7,3 +7,6 @@
 ^docker-compose\.yml$
 ^Dockerfile$
 ^env\.yaml$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
