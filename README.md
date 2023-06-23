@@ -2,6 +2,16 @@
 
 Create portal from collection of Quarto and Jupyter documents.
 
+The collection is organised in two levels.
+
+![Screenshot of demo showing the content of the "root".](img/methodshub-root.png)
+
+![Screenshot of demo showing the content of a 1st level collection.](img/methodshub-1st-level.png)
+
+![Screenshot of demo showing the content of of a 2nd level collection.](img/methodshub-2nd-level.png)
+
+![Screenshot of demo showing one document in the collection.](img/methodshub-content.png)
+
 ## Dependencies
 
 - Quarto >= 1.3
