@@ -35,14 +35,11 @@ render_single_contribution <- function(contribution_row) {
 
   fs::dir_create(git_slang)
 
-  template_location <-
-    system.file('templates', package = 'methodshub', mustWork = TRUE)
   docker_scripts_location <-
     system.file('docker-scripts', package = 'methodshub', mustWork = TRUE)
   output_location <- git_slang |>
     fs::path_real()
 
-  logger::log_info('Location of template directory: {template_location}')
   logger::log_info('Location of docker_scripts directory: {docker_scripts_location}')
   logger::log_info('Location of output directory: {output_location}')
 
@@ -51,7 +48,6 @@ render_single_contribution <- function(contribution_row) {
     logger::log_info('Rendering using {script} ...')
 
     docker_call_template <- 'docker run \\
-    --mount type=bind,source=${template_location},target=/home/methodshub/_templates \\
     --mount type=bind,source=${docker_scripts_location},target=/home/methodshub/_docker-scripts \\
     --mount type=bind,source=${output_location},target=/home/methodshub/_output \\
     ${docker_image} \\
@@ -60,7 +56,6 @@ render_single_contribution <- function(contribution_row) {
     docker_call <- stringr::str_interp(
       docker_call_template,
       list(
-        template_location = template_location,
         docker_scripts_location = docker_scripts_location,
         output_location = output_location,
         file2render = file2render,
