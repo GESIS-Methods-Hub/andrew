@@ -24,6 +24,7 @@ pandoc \
     --from docx \
     --to markdown \
     --standalone \
+    --extract-media=./ \
     --metadata="prefer-html:true" \
     --metadata="guide:true" \
     --metadata="appendix-cite-as:display" \
