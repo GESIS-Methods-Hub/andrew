@@ -22,6 +22,9 @@ render_single_contribution <- function(contribution_row) {
       'ipynb2md.sh',
       'ipynb2qmd.sh',
       'ipynb2ipynb.sh'
+    ),
+    'docx'=c(
+      'docx2md.sh'
     )
   )
 
