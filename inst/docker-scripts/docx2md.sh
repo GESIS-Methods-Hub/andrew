@@ -33,9 +33,9 @@ pandoc \
     --metadata="git_hash:${git_hash}" \
     --metadata="git_date:${git_date}" \
     --metadata "date:${git_date}" \
-    --metadata="source_filename:${file2render}" && \
+    --metadata="source_filename:${file2render}" \
     --output index.md \
-    ${file2render} \
+    ${file2render}  && \
     cp index.md _output/index.md && \
     find . -iname '*.jpg' -exec cp --parents {} _output \; && \
     find . -iname '*.jpeg' -exec cp --parents {} _output \; && \
