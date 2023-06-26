@@ -11,8 +11,6 @@ github_user_name=$2
 github_repository_name=$3
 file2render=$4
 
-PANDOC=/opt/quarto/bin/tools/pandoc
-
 git --version
 
 git_hash=$(git rev-parse HEAD)
@@ -22,7 +20,7 @@ git_hash=$(git rev-parse HEAD)
 # else
 git_date=$(git log -1 --format=format:%ad --date=format:%Y-%m-%d)
 
-$PANDOC \
+pandoc \
     --from docx \
     --to markdown \
     --standalone \
