@@ -1,10 +1,11 @@
 stages:
+  - config
   - prepare
   - build
   - test
 
 Assign Docker image tag:
-  stage: prepare
+  stage: config
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
       changes:
@@ -24,7 +25,7 @@ Assign Docker image tag:
       dotenv: docker.env
 
 Build container with pkgdown:
-  stage: build
+  stage: prepare
   rules:
     - if: $CI_PIPELINE_SOURCE == 'web'
       when: never
