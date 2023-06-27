@@ -1,7 +1,7 @@
 $if(method)$
 <div class="grid">
     <div class="g-col-12">
-        $if(method.github_https)$
+        $if(github_https)$
         <a class="btn btn-primary"
             href="https://notebooks.gesis.org/binder/v2/gh/$method.github_user_name$/$method.github_repository_name$/$method.git_hash$?urlpath=lab/tree/$method.source_filename$"
             role="button"
@@ -41,7 +41,7 @@ $for(author)$
 <p class="author">$author$</p>
 $endfor$      
 
-$if(method.git_date)$
+$if(git_date)$
 <p>Last update on $method.git_date$.</p>
 $endif$      
 
