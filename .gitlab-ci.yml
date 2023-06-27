@@ -4,6 +4,12 @@ stages:
   - build
   - test
 
+.manual-web:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'web'
+      when: manual
+      allow_failure: true
+
 Assign Docker image tag:
   stage: config
   rules:
@@ -27,8 +33,7 @@ Assign Docker image tag:
 Build container with pkgdown:
   stage: prepare
   rules:
-    - if: $CI_PIPELINE_SOURCE == 'web'
-      when: never
+    - !reference [.manual-web, rules]
     - if: ($CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == 'main') || $CI_PIPELINE_SOURCE == 'merge_request_event'
       changes:
         - Dockerfile
@@ -43,6 +48,7 @@ Build container with pkgdown:
 pages:
   stage: build
   rules:
+    - !reference [.manual-web, rules]
     - if: $CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == 'main'
       changes:
         - R/**/*
