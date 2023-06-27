@@ -52,7 +52,7 @@ pages:
     - if: $CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == 'main'
       changes:
         - R/**/*
-  image: docker-private-snapshots.gesis.intra/methods-hub/methodshub/pkgdown:${DOCKER_IMAGE_TAG}
+  image: docker-private-snapshots.gesis.intra/gesis/methods-hub/methodshub/pkgdown:${DOCKER_IMAGE_TAG}
   script:
     - Rscript --verbose --vanilla -e 'pkgdown::build_site()'
     - mv docs public
