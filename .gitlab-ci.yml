@@ -38,7 +38,7 @@ Build container with pkgdown:
       alias: docker
   script:
     - docker build --target pkgdown --no-cache --pull -t docker-private-snapshots.gesis.intra/gesis/methods-hub/methodshub/pkgdown:${DOCKER_IMAGE_TAG} .
-    - docker push docker-private-snapshots.gesis.intra/methods-hub/methodshub/pkgdown:${DOCKER_IMAGE_TAG}
+    - docker push docker-private-snapshots.gesis.intra/gesis/methods-hub/methodshub/pkgdown:${DOCKER_IMAGE_TAG}
 
 pages:
   stage: build
