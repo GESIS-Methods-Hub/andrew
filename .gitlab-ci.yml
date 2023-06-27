@@ -1,0 +1,57 @@
+stages:
+  - prepare
+  - build
+  - test
+
+Assign Docker image tag:
+  stage: prepare
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      changes:
+        - Dockerfile
+      variables:
+        DOCKER_IMAGE_TAG: $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      variables:
+        DOCKER_IMAGE_TAG: latest
+    - if:  ($CI_PIPELINE_SOURCE != "merge_request_event" && $CI_COMMIT_BRANCH == 'main')
+      variables:
+        DOCKER_IMAGE_TAG: latest
+  script:
+    - echo "DOCKER_IMAGE_TAG=${DOCKER_IMAGE_TAG}" >> docker.env
+  artifacts:
+    reports:
+      dotenv: docker.env
+
+Build container with pkgdown:
+  stage: build
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'web'
+      when: never
+    - if: ($CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == 'main') || $CI_PIPELINE_SOURCE == 'merge_request_event'
+      changes:
+        - Dockerfile
+  image: docker-private.gesis.intra/gesis/dc:5.7
+  services:
+    - name:  docker-private.gesis.intra/gesis/dind:5.5
+      alias: docker
+  script:
+    - docker build --target pkgdown --no-cache --pull -t docker-private-snapshots.gesis.intra/gesis/methods-hub/methodshub/pkgdown:${DOCKER_IMAGE_TAG} .
+    - docker push docker-private-snapshots.gesis.intra/methods-hub/methodshub/pkgdown:${DOCKER_IMAGE_TAG}
+
+pages:
+  stage: build
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == 'main'
+      changes:
+        - R/**/*
+  image: docker-private-snapshots.gesis.intra/methods-hub/methodshub/pkgdown:${DOCKER_IMAGE_TAG}
+  dependencies: []
+  script:
+    - Rscript --verbose --vanilla -e 'pkgdown::build_site()'
+    - mv docs public
+  artifacts:
+    paths:
+      - public
+
+
