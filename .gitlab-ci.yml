@@ -51,6 +51,7 @@ pages:
     - !reference [.manual-web, rules]
     - if: $CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == 'main'
       changes:
+        - *.md
         - R/**/*
   image: docker-private-snapshots.gesis.intra/gesis/methods-hub/methodshub/pkgdown:${DOCKER_IMAGE_TAG}
   script:
