@@ -3,8 +3,9 @@
 /*
 Example for Microsoft Office Word 2007 (DOCX)
 
-DOCX custom styles are annotated into data-custom-style
+DOCX custom styles are annotated into data-custom-style.
 */
-[data-custom-style="gesis_orange"] {
+[data-custom-style="gesis_orange"],
+[data-custom-style="gesis_orange Char"] {
     color: #FF6100;
 }
