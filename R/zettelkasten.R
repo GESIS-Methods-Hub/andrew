@@ -86,6 +86,7 @@ title: '${title}'
 sidebar: false
 toc: false
 anchor-sections: false
+comments: false
 listing:
   - id: ${slang}-listing
     template: ../ejs/tiles.ejs
@@ -125,6 +126,7 @@ title: '${title}'
 sidebar: false
 toc: false
 anchor-sections: false
+comments: false
 listing:
   - id: ${slang}-listing
     template: ../../ejs/methods.ejs
