@@ -74,7 +74,7 @@ demo:
     - if: $CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == 'main'
       changes:
         - R/**/*
-        - demo
+        - demo/**/*
   image: docker-private-snapshots.gesis.intra/gesis/methods-hub/methodshub/pkgdown:${DOCKER_IMAGE_TAG}
   script:
     - Rscript --verbose --vanilla -e 'devtools::install()'
