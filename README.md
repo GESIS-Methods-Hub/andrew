@@ -1,6 +1,6 @@
 # methodshub
 
-`methodshub` is designed to make it quick to build a website that shows a collection of tutorials or vignette of **transparent analytics** computational methods. Tutorials and vignette **must** be reproducible and, to enforce it, `methodshub` executes the calculations in an [container](https://en.wikipedia.org/wiki/OS-level_virtualization).
+`methodshub` is designed to make it quick to build a website that shows a collection of tutorials or vignette of **transparent analytic** computational methods. Tutorials and vignette **must** be reproducible and, to enforce it, `methodshub` executes the calculations presents in [Jupyter Notebooks](https://nbformat.readthedocs.io/) and [R Markdown](https://rmarkdown.rstudio.com/) files in an [container](https://en.wikipedia.org/wiki/OS-level_virtualization).
 
 ![Workflow diagram ilustrating how methodshub works.](img/workflow.drawio.png)
 
@@ -32,3 +32,9 @@ We recommend use [`mamba`](https://mamba.readthedocs.io/) to install the depende
 ```bash
 Rscript -e "devtools::load_all(); methodshub::main(source_dir='demo')"
 ```
+
+## Similar Projects
+
+- [R Universe](https://r-universe.dev)
+- [Gallery of Jupyter Books](https://executablebooks.org/en/latest/gallery/)
+- [`matplotlib` Examples](https://matplotlib.org/stable/gallery/index.html)
