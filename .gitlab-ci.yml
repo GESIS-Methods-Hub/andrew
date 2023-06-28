@@ -54,6 +54,7 @@ pages:
         - R/**/*
   image: docker-private-snapshots.gesis.intra/gesis/methods-hub/methodshub/pkgdown:${DOCKER_IMAGE_TAG}
   script:
+    - Rscript --verbose --vanilla -e 'devtools::install()'
     - Rscript --verbose --vanilla -e 'pkgdown::build_site()'
     - mv docs public
     - cp -r img public/img
