@@ -83,9 +83,6 @@ demo:
     - cd demo
     - quarto render --to html
     - rsync -r _site/ /var/www/demo
-  artifacts:
-    paths:
-      - public
 
 
 
