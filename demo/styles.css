@@ -1,0 +1,10 @@
+/* User defined style */
+
+/*
+Example for Microsoft Office Word 2007 (DOCX)
+
+DOCX custom styles are annotated into data-custom-style
+*/
+[data-custom-style="gesis_orange"] {
+    color: #FF6100;
+}
