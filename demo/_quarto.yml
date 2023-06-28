@@ -17,6 +17,7 @@ format:
     template-partials:
       - _partials/title-block.html
     theme: cosmo
+    css: styles.css
     comments:
       giscus: 
         repo: GESIS-Methods-Hub/methodshub
