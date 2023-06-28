@@ -42,9 +42,14 @@ $if(subtitle)$
 <p class="subtitle lead">$subtitle$</p>
 $endif$
 
-$for(author)$
-<p class="author">$author$</p>
-$endfor$      
+<div class="authors">
+<p>Authors(s)</p>
+<ol>
+    $for(author)$
+    <li>$author$</li>
+    $endfor$
+</ol>
+</div>
 
 $if(git_date)$
 <p>Last update on $method.git_date$.</p>
