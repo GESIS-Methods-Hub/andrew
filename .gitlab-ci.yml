@@ -64,4 +64,28 @@ pages:
     paths:
       - public
 
+demo:
+  stage: build
+  tags:
+    - docker
+    - methodshub
+  rules:
+    - !reference [.manual-web, rules]
+    - if: $CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == 'main'
+      changes:
+        - R/**/*
+        - demo
+  image: docker-private-snapshots.gesis.intra/gesis/methods-hub/methodshub/pkgdown:${DOCKER_IMAGE_TAG}
+  script:
+    - Rscript --verbose --vanilla -e 'devtools::install()'
+    - Rscript -e "methodshub::main(source_dir='demo')"
+    - quarto check
+    - cd demo
+    - quarto render --to html
+    - rsync -r _site/ /var/www/demo
+  artifacts:
+    paths:
+      - public
+
+
 
