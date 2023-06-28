@@ -21,7 +21,7 @@ git_hash=$(git rev-parse HEAD)
 git_date=$(git log -1 --format=format:%ad --date=format:%Y-%m-%d)
 
 pandoc \
-    --from docx \
+    --from docx+styles \
     --to markdown \
     --standalone \
     --extract-media=./ \
