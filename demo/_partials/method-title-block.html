@@ -41,17 +41,17 @@ $if(subtitle)$
 $endif$
 
 <div class="authors">
-<p>Authors(s)</p>
-<ol>
-    $for(authors)$
-    <li>
-        $authors.name.literal$
-        $if(authors.orcid)$
-        <a href="https://orcid.org/$authors.orcid$"><i class="bi bi-person-circle"></i></a>
-        $endif$
-    </li>
-    $endfor$
-</ol>
+    <p>Authors(s)</p>
+    <ol>
+        $for(authors)$
+        <li>
+            $authors.name.literal$
+            $if(authors.orcid)$
+            <a href="https://orcid.org/$authors.orcid$"><i class="bi bi-person-circle"></i></a>
+            $endif$
+        </li>
+        $endfor$
+    </ol>
 </div>
 
 <p>Last update on $date$.</p>
