@@ -1,0 +1,66 @@
+<div class="grid">
+    <div class="g-col-12">
+        $if(github_https)$
+        <div class="btn-group">
+            <a class="btn btn-primary" target="_blank" href="https://mybinder.org/v2/gh/$github_user_name$/$github_repository_name$/$git_hash$?urlpath=lab/tree/$source_filename$"
+            role="button"><i class="bi bi-controller"></i>
+            Open on BinderHub</a>
+            <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="visually-hidden">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" target="_blank" href="http://colab.research.google.com/github/$github_user_name$/$github_repository_name$/blob/main/$source_filename$">Open on Google Colaboratory</a></li>
+            </ul>
+        </div>  
+        
+        <a class="btn btn-primary" href="$method.github_https$/tree/$method.git_hash$" role="button">
+            <i class="bi bi-github"></i>
+            GitHub
+        </a>
+        $endif$
+        <a class="btn btn-primary" href="index.qmd" role="button" download>
+            <i class="bi bi-file-earmark-arrow-down"></i>
+            Quarto
+        </a>
+        <a class="btn btn-primary" href="index.ipynb" role="button" download>
+            <i class="bi bi-file-earmark-arrow-down"></i>
+            Jupyter Notebook
+        </a>
+        <a class="btn btn-primary" href="#citation" role="button">
+            Cite
+        </a>
+    </div>
+</div>
+
+$if(title)$
+<h1>$title$</h1>
+$endif$
+
+$if(subtitle)$
+<p class="subtitle lead">$subtitle$</p>
+$endif$
+
+<div class="authors">
+<p>Authors(s)</p>
+<ol>
+    $for(authors)$
+    <li>
+        $authors.name.literal$
+        $if(authors.orcid)$
+        <a href="https://orcid.org/$authors.orcid$"><i class="bi bi-person-circle"></i></a>
+        $endif$
+    </li>
+    $endfor$
+</ol>
+</div>
+
+<p>Last update on $date$.</p>
+
+$if(abstract)$
+<div>
+    <div class="abstract">
+        <div class="abstract-title">$labels.abstract$</div>
+        $abstract$
+    </div>
+</div>
+$endif$

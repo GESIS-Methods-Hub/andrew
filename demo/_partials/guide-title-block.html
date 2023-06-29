@@ -1,0 +1,37 @@
+<div class="grid">
+        <a class="btn btn-primary" href="#citation" role="button">
+            Cite
+        </a>
+    </div>
+</div>
+
+<h1>$title$</h1>
+
+$if(subtitle)$
+<p class="subtitle lead">$subtitle$</p>
+$endif$
+
+<div class="authors">
+<p>Authors(s)</p>
+<ol>
+    $for(authors)$
+    <li>
+        $authors.name.literal$
+        $if(authors.orcid)$
+        <a href="https://orcid.org/$authors.orcid$"><i class="bi bi-person-circle"></i></a>
+        $endif$
+    </li>
+    $endfor$
+</ol>
+</div>
+
+<p>Last update on $date$.</p>
+
+$if(abstract)$
+<div>
+    <div class="abstract">
+        <div class="abstract-title">$labels.abstract$</div>
+        $abstract$
+    </div>
+</div>
+$endif$
