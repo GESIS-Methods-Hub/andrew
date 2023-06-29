@@ -16,6 +16,8 @@ format:
   html:
     template-partials:
       - _partials/title-block.html
+      - _partials/method-title-block.html
+      - _partials/method-title-block.html
     theme: cosmo
     css: styles.css
     comments:
