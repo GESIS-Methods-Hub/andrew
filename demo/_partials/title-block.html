@@ -1,7 +1,13 @@
 $if(method)$
-$method-title-block()$
+$method-title-block.html()$
 $elif(guide)$
-$guide-title-block()$
+$guide-title-block().html()$
 $else$
-$generic-title-block$
+$if(title)$
+<h1>$title$</h1>
+$endif$
+
+$if(subtitle)$
+<p class="subtitle lead">$subtitle$</p>
+$endif$
 $endif$
