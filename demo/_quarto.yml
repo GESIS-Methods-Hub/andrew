@@ -16,6 +16,7 @@ format:
   html:
     template-partials:
       - _partials/title-block.html
+      - _partials/shiny-title-block.html
       - _partials/method-title-block.html
       - _partials/guide-title-block.html
     theme: cosmo
