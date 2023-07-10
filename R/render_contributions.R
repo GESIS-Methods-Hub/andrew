@@ -31,7 +31,7 @@ render_single_contribution <- function(contribution_row) {
   git_slang <- contribution_row['slang']
   file2render <- contribution_row['filename']
   file2render_extension <- contribution_row['filename_extension']
-  github_https <- contribution_row['link']
+  github_https <- contribution_row['https']
   github_user_name <- contribution_row['user_name']
   github_repository_name <- contribution_row['repository_name']
   docker_image <- contribution_row['docker_image']
