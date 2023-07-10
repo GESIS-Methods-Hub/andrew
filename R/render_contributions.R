@@ -40,10 +40,13 @@ render_single_contribution <- function(contribution_row) {
 
   docker_scripts_location <-
     system.file('docker-scripts', package = 'methodshub', mustWork = TRUE)
+  pandoc_filters_location <-
+    system.file('pandoc-filters', package = 'methodshub', mustWork = TRUE)
   output_location <- git_slang |>
     fs::path_real()
 
   logger::log_info('Location of docker_scripts directory: {docker_scripts_location}')
+  logger::log_info('Location of pandoc_filters directory: {pandoc_filters_location}')
   logger::log_info('Location of output directory: {output_location}')
 
   sum_docker_return_value <- 0
@@ -52,6 +55,7 @@ render_single_contribution <- function(contribution_row) {
 
     docker_call_template <- 'docker run \\
     --mount type=bind,source=${docker_scripts_location},target=/home/methodshub/_docker-scripts \\
+    --mount type=bind,source=${pandoc_filters_location},target=/home/methodshub/_pandoc-filters \\
     --mount type=bind,source=${output_location},target=/home/methodshub/_output \\
     ${docker_image} \\
     /bin/bash -c "./_docker-scripts/${script} ${github_https} ${github_user_name} ${github_repository_name} ${file2render}"'
@@ -60,6 +64,7 @@ render_single_contribution <- function(contribution_row) {
       docker_call_template,
       list(
         docker_scripts_location = docker_scripts_location,
+        pandoc_filters_location = pandoc_filters_location,
         output_location = output_location,
         file2render = file2render,
         github_https = github_https,
