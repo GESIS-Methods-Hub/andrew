@@ -8,50 +8,50 @@
 #' @examples
 render_single_contribution <- function(contribution_row) {
   RENDER_MATRIX <- list(
-    'md'=c(
-      'md2md.sh',
-      'md2qmd.sh',
-      'md2ipynb.sh'
+    "md" = c(
+      "md2md.sh",
+      "md2qmd.sh",
+      "md2ipynb.sh"
     ),
-    'qmd'=c(
-      'qmd2md.sh',
-      'qmd2qmd.sh',
-      'qmd2ipynb.sh'
+    "qmd" = c(
+      "qmd2md.sh",
+      "qmd2qmd.sh",
+      "qmd2ipynb.sh"
     ),
-    'ipynb'=c(
-      'ipynb2md.sh',
-      'ipynb2qmd.sh',
-      'ipynb2ipynb.sh'
+    "ipynb" = c(
+      "ipynb2md.sh",
+      "ipynb2qmd.sh",
+      "ipynb2ipynb.sh"
     ),
-    'docx'=c(
-      'docx2md.sh'
+    "docx" = c(
+      "docx2md.sh"
     )
   )
 
-  git_slang <- contribution_row['slang']
-  file2render <- contribution_row['filename']
-  file2render_extension <- contribution_row['filename_extension']
-  github_https <- contribution_row['https']
-  github_user_name <- contribution_row['user_name']
-  github_repository_name <- contribution_row['repository_name']
-  docker_image <- contribution_row['docker_image']
+  git_slang <- contribution_row["slang"]
+  file2render <- contribution_row["filename"]
+  file2render_extension <- contribution_row["filename_extension"]
+  github_https <- contribution_row["https"]
+  github_user_name <- contribution_row["user_name"]
+  github_repository_name <- contribution_row["repository_name"]
+  docker_image <- contribution_row["docker_image"]
 
   fs::dir_create(git_slang)
 
   docker_scripts_location <-
-    system.file('docker-scripts', package = 'methodshub', mustWork = TRUE)
+    system.file("docker-scripts", package = "methodshub", mustWork = TRUE)
   pandoc_filters_location <-
-    system.file('pandoc-filters', package = 'methodshub', mustWork = TRUE)
+    system.file("pandoc-filters", package = "methodshub", mustWork = TRUE)
   output_location <- git_slang |>
     fs::path_real()
 
-  logger::log_info('Location of docker_scripts directory: {docker_scripts_location}')
-  logger::log_info('Location of pandoc_filters directory: {pandoc_filters_location}')
-  logger::log_info('Location of output directory: {output_location}')
+  logger::log_info("Location of docker_scripts directory: {docker_scripts_location}")
+  logger::log_info("Location of pandoc_filters directory: {pandoc_filters_location}")
+  logger::log_info("Location of output directory: {output_location}")
 
   sum_docker_return_value <- 0
   for (script in get(file2render_extension, RENDER_MATRIX)) {
-    logger::log_info('Rendering using {script} ...')
+    logger::log_info("Rendering using {script} ...")
 
     docker_call_template <- 'docker run \\
     --mount type=bind,source=${docker_scripts_location},target=/home/methodshub/_docker-scripts \\
@@ -77,17 +77,16 @@ render_single_contribution <- function(contribution_row) {
 
     docker_return_value <- system(docker_call)
 
-    logger::log_info('Rendering complete. Docker returned {docker_return_value}.')
+    logger::log_info("Rendering complete. Docker returned {docker_return_value}.")
 
     sum_docker_return_value <- sum_docker_return_value + docker_return_value
   }
 
 
-  if(sum_docker_return_value == 0){
-    build_status <- 'Built'
-  }
-  else{
-    build_status <- 'Unavailable'
+  if (sum_docker_return_value == 0) {
+    build_status <- "Built"
+  } else {
+    build_status <- "Unavailable"
   }
 
   return(build_status)

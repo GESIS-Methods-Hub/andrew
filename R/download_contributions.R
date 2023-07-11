@@ -11,25 +11,27 @@ donwload_single_contribution <- function(contribution_row) {
   git_url <- contribution_row["link"]
 
   if (dir.exists(git_repo_path)) {
-    logger::log_info('{git_repo_path} already exists.')
-    logger::log_info('Skipping download of {git_url}.')
-    logger::log_info('Updating copy of {git_url}.')
+    logger::log_info("{git_repo_path} already exists.")
+    logger::log_info("Skipping download of {git_url}.")
+    logger::log_info("Updating copy of {git_url}.")
     repo <- git_repo_path |>
       fs::path_real() |>
       git2r::repository()
 
     repo |>
-      git2r::reset(reset_type = 'hard', path='.')
+      git2r::reset(reset_type = "hard", path = ".")
 
     repo |>
       git2r::pull()
   } else {
-    logger::log_info('{git_repo_path} not found.')
-    logger::log_info('Downloading {git_url} ...')
+    logger::log_info("{git_repo_path} not found.")
+    logger::log_info("Downloading {git_url} ...")
     fs::dir_create(git_repo_path)
-    git2r::clone(git_url,
-                 fs::path_real(git_repo_path))
-    logger::log_info('Download of {git_url} completed.')
+    git2r::clone(
+      git_url,
+      fs::path_real(git_repo_path)
+    )
+    logger::log_info("Download of {git_url} completed.")
   }
 }
 
