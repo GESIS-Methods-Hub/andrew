@@ -41,7 +41,7 @@ test_that("csv with single line without .git", {
     ),
     filename = c(
       "index.md"
-    )
+    ),
     user_name = c("GESIS-Methods-Hub"),
     repository_name = c("minimal-example-md"),
     slang = c("GESIS-Methods-Hub/minimal-example-md"),
@@ -74,7 +74,7 @@ test_that("csv with two line", {
     filename = c(
       "index.md",
       "index.md"
-    )
+    ),
     user_name = c("GESIS-Methods-Hub", "GESIS-Methods-Hub"),
     repository_name = c("minimal-example-md", "minimal-example-qmd-rstats"),
     slang = c(
