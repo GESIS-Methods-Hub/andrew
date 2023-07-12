@@ -71,6 +71,7 @@ demo:
     - methodshub
   rules:
     - !reference [.manual-web, rules]
+    - if: $CI_PIPELINE_SOURCE == 'trigger'
     - if: $CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == 'main'
       changes:
         - R/**/*

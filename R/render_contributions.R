@@ -18,6 +18,9 @@ render_single_contribution <- function(contribution_row) {
       "qmd2qmd.sh",
       "qmd2ipynb.sh"
     ),
+    "Rmd"=c(
+      "Rmd2md.sh"
+    ),
     "ipynb" = c(
       "ipynb2md.sh",
       "ipynb2qmd.sh",

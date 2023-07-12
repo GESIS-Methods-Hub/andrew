@@ -1,15 +1,16 @@
 #!/bin/bash
 #
-# Convert Jupyter Notebook to Markdown
+# Convert R Markdown to Markdown
 #
 # Syntax:
 #
-# ipynb2md.sh github_https github_user_name github_repository_name file2render
+# Rmd2md.sh github_https github_user_name github_repository_name file2render
 
 github_https=$1
 github_user_name=$2
 github_repository_name=$3
-file2render=$4
+Rmd_file=$4
+file2render=${Rmd_file/Rmd/qmd}
 
 git --version
 
@@ -21,6 +22,10 @@ git_hash=$(git rev-parse HEAD)
 git_date=$(git log -1 --format=format:%ad --date=format:%Y-%m-%d)
 
 quarto_version=$(quarto --version)
+
+cp $Rmd_file $file2render
+
+sed -i -e '/^output: rmarkdown/d' $file2render
 
 quarto \
     render ${file2render} \
@@ -36,7 +41,7 @@ quarto \
     --metadata="git_date:${git_date}" \
     --metadata "date:${git_date}" \
     --metadata="quarto_version:${quarto_version}" \
-    --metadata="source_filename:${file2render}" && \
+    --metadata="source_filename:${Rmd_file}" && \
     cp index.md _output/index.md && \
     find . -iname '*.bib' -exec cp --parents {} _output \; && \
     find . -iname '*.jpg' -exec cp --parents {} _output \; && \
