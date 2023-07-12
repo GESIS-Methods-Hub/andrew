@@ -43,6 +43,7 @@ quarto \
     --metadata="quarto_version:${quarto_version}" \
     --metadata="source_filename:${Rmd_file}" && \
     cp index.md _output/index.md && \
+    find . -iname '*.bib' -exec cp --parents {} _output \; && \
     find . -iname '*.jpg' -exec cp --parents {} _output \; && \
     find . -iname '*.jpeg' -exec cp --parents {} _output \; && \
     find . -iname '*.png' -exec cp --parents {} _output \; && \
