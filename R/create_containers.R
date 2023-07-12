@@ -42,7 +42,7 @@ create_container_from_repo <- function(contribution_row) {
     --no-run \\
     --user-name methodshub \\
     --image-name ${image_name} \\
-    --appendix 'RUN conda install -y -n notebook --channel conda-forge quarto r-rmarkdown' \\
+    --appendix 'RUN conda install -y -n notebook --channel conda-forge quarto' \\
     ${git_repo_url}"
 
     repo2docker_call <- stringr::str_interp(
