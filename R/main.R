@@ -7,10 +7,10 @@
 #'
 #' @examples
 main <-
-  function(content_contributions_filename = 'content-contributions.csv',
-           all_cards_filename = 'zettelkasten.csv',
-           source_dir = '.') {
-    original_wd <- fs::path_real('.')
+  function(content_contributions_filename = "content-contributions.csv",
+           all_cards_filename = "zettelkasten.csv",
+           source_dir = ".") {
+    original_wd <- fs::path_real(".")
 
     source_dir |>
       fs::path_real() |>
@@ -18,21 +18,24 @@ main <-
 
     contribution_report <- NA
 
-    tryCatch({
-      contribution_report <- content_contributions_filename |>
-        fs::path_real() |>
-        readr::read_csv() |>
-        prepare_contributions() |>
-        download_contributions() |>
-        git_info_to_contributions() |>
-        create_containers() |>
-        render_contributions() |>
-        render_report()
+    tryCatch(
+      {
+        contribution_report <- content_contributions_filename |>
+          fs::path_real() |>
+          readr::read_csv() |>
+          prepare_contributions() |>
+          download_contributions() |>
+          git_info_to_contributions() |>
+          create_containers() |>
+          render_contributions() |>
+          render_report()
 
-      generate_card_files(all_cards_filename)
-    }, error = function(e) {
-      logger::log_info('{e}')
-    })
+        generate_card_files(all_cards_filename)
+      },
+      error = function(e) {
+        logger::log_info("{e}")
+      }
+    )
 
     setwd(original_wd)
 

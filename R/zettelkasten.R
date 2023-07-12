@@ -7,18 +7,18 @@
 #'
 #' @examples
 clean_gallery <- function() {
-  logger::log_info('Removing old gallery ...')
+  logger::log_info("Removing old gallery ...")
 
   fs::dir_ls(
-    'gallery',
+    "gallery",
     recurse = FALSE,
-    type = 'dir',
+    type = "dir",
     invert = TRUE,
-    glob = '**/ejs'
+    glob = "**/ejs"
   ) |>
     fs::dir_delete()
 
-  logger::log_info('Removing old gallery complete.')
+  logger::log_info("Removing old gallery complete.")
 }
 
 #' Title
@@ -27,7 +27,7 @@ clean_gallery <- function() {
 #' @export
 #'
 #' @examples
-mega_menu_template <- function(){
+mega_menu_template <- function() {
   return('<button id="gs_mm_toggle_button-104618" class="gs_mm_toggle_button" aria-haspopup="true"
     aria-controls="gs_megamenu-104618" aria-label="Navigationsmenü"></button>
 <nav class="gs_megamenu_nav" aria-labelledby="gs_mm_toggle_button-104618">
@@ -57,8 +57,7 @@ create_mega_menu <- function(all_card_row) {
       level_template <- '<li class="gs_sub">
             <a role="menuitem" aria-haspopup="true" aria-expanded="false" href="/${href}">${text}</a>
             <ul role="menu">'
-    }
-    else {
+    } else {
       level_template <- '</ul>
         </li>
         <li class="gs_sub">
@@ -66,16 +65,23 @@ create_mega_menu <- function(all_card_row) {
             <ul role="menu">'
     }
 
-    partial <- stringr::str_interp(level_template,
-                          list(href = all_card_row["level_path"],
-                               text = all_card_row["level"]))
-  }
-  else {
+    partial <- stringr::str_interp(
+      level_template,
+      list(
+        href = all_card_row["level_path"],
+        text = all_card_row["level"]
+      )
+    )
+  } else {
     sublevel_template <-
       '<li> <a role="menuitem" href="/${href}">${text}</a> </li>'
-    partial <- stringr::str_interp(sublevel_template,
-                          list(href = all_card_row["sublevel_path"],
-                               text = all_card_row["sublevel"]))
+    partial <- stringr::str_interp(
+      sublevel_template,
+      list(
+        href = all_card_row["sublevel_path"],
+        text = all_card_row["sublevel"]
+      )
+    )
   }
 
   return(partial)
@@ -106,12 +112,12 @@ listing:
 #' @export
 #'
 #' @examples
-create_1st_level_page <-  function(subset_data, key) {
+create_1st_level_page <- function(subset_data, key) {
   dir.create(key$level_path, recursive = TRUE)
 
   gallery_index_page <- stringr::str_interp(
     gallery_1st_level_index_page_template,
-    list(title = key$level, slang= key$level_slang)
+    list(title = key$level, slang = key$level_slang)
   )
 
   gallery_index_path <- file.path(key$level_path, "index.md")
@@ -192,7 +198,7 @@ create_listing_root_level <- function(subset_data) {
       )
     ) |>
     dplyr::pull(listing_tiles) |>
-    stringr::str_flatten(collapse="\n")
+    stringr::str_flatten(collapse = "\n")
 
   listing_path <- file.path("listing-contents.yml")
 
@@ -223,7 +229,7 @@ create_listing_1st_level <- function(subset_data, key) {
       )
     ) |>
     dplyr::pull(listing_tiles) |>
-    stringr::str_flatten(collapse="\n")
+    stringr::str_flatten(collapse = "\n")
 
   listing_path <- file.path(
     key$level_path[1],
@@ -244,7 +250,7 @@ create_listing_1st_level <- function(subset_data, key) {
 create_listing_2nd_level <- function(all_card_row) {
   dir.create(all_card_row["sublevel_path"], recursive = TRUE)
 
-  listing_path <- file.path(all_card_row["sublevel_path"], stringr::str_interp("listing-contents-${slang}.yml", list(slang=all_card_row["sublevel_slang"])))
+  listing_path <- file.path(all_card_row["sublevel_path"], stringr::str_interp("listing-contents-${slang}.yml", list(slang = all_card_row["sublevel_slang"])))
 
   all_card_row["content"] |>
     stringr::str_split("\n") |>
@@ -262,7 +268,7 @@ create_listing_2nd_level <- function(all_card_row) {
 #' @export
 #'
 #' @examples
-generate_card_files <- function(all_cards_filename = 'zettelkasten.csv') {
+generate_card_files <- function(all_cards_filename = "zettelkasten.csv") {
   clean_gallery()
 
   all_cards <- all_cards_filename |>
@@ -281,19 +287,23 @@ generate_card_files <- function(all_cards_filename = 'zettelkasten.csv') {
     stringr::str_replace_all(" ", "-") |>
     stringr::str_replace_all("&", "-and-")
 
-  all_cards$level_path <- file.path("gallery",
-                                   all_cards$level_slang)
+  all_cards$level_path <- file.path(
+    "gallery",
+    all_cards$level_slang
+  )
 
-  all_cards$sublevel_path <- file.path(all_cards$level_path,
-                                      all_cards$sublevel_slang)
+  all_cards$sublevel_path <- file.path(
+    all_cards$level_path,
+    all_cards$sublevel_slang
+  )
 
 
   mega_menu_partial <- all_cards |>
-    dplyr::mutate(row_number =  dplyr::row_number()) |>
+    dplyr::mutate(row_number = dplyr::row_number()) |>
     apply(1, create_mega_menu) |>
     stringr::str_flatten()
 
-  logger::log_info('Prepare ...')
+  logger::log_info("Prepare ...")
 
   dir.create("_partials", recursive = TRUE)
   create_mega_menu_path <- "_partials/mega_menu.html"

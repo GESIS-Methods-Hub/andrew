@@ -35,6 +35,7 @@ pandoc \
     --metadata="git_date:${git_date}" \
     --metadata "date:${git_date}" \
     --metadata="source_filename:${file2render}" \
+    --lua-filter=_pandoc-filters/remove-toc.lua \
     --output index.md \
     ${file2render}  && \
     cp index.md _output/index.md && \

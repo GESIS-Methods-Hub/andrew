@@ -1,0 +1,17 @@
+on: push
+
+name: styler
+
+jobs:
+  styler:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install styler
+        run: |
+        Rscript -e 'install.packages("styler")'
+      - name: Style R files
+        run: |
+        find . -type f -name '*.R' -print |xargs -I{} Rscript -e 'styler::style_file("{}", dry="fail")'
+
+                

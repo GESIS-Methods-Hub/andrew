@@ -1,11 +1,18 @@
 test_that("csv with single line", {
-  raw_all_contributions <-
-    tibble::tibble(link = c(
+  raw_all_contributions <- tibble::tibble(
+    link = c(
       "https://github.com/GESIS-Methods-Hub/minimal-example-md.git"
-    ))
+    ),
+    filename = c(
+      "index.md"
+    )
+  )
   expected_all_contributions <- tibble::tibble(
     link = c(
       "https://github.com/GESIS-Methods-Hub/minimal-example-md.git"
+    ),
+    filename = c(
+        "index.md"
     ),
     user_name = c("GESIS-Methods-Hub"),
     repository_name = c("minimal-example-md"),
@@ -20,13 +27,20 @@ test_that("csv with single line", {
 })
 
 test_that("csv with single line without .git", {
-  raw_all_contributions <-
-    tibble::tibble(link = c(
+  raw_all_contributions <- tibble::tibble(
+    link = c(
       "https://github.com/GESIS-Methods-Hub/minimal-example-md"
-    ))
+    ),
+    filename = c(
+      "index.md"
+    )
+  )
   expected_all_contributions <- tibble::tibble(
     link = c(
       "https://github.com/GESIS-Methods-Hub/minimal-example-md"
+    ),
+    filename = c(
+      "index.md"
     ),
     user_name = c("GESIS-Methods-Hub"),
     repository_name = c("minimal-example-md"),
@@ -39,18 +53,27 @@ test_that("csv with single line without .git", {
   all_contributions <- prepare_contributions(raw_all_contributions)
   expect_equal(all_contributions, expected_all_contributions)
 })
+
 test_that("csv with two line", {
   raw_all_contributions <-
     tibble::tibble(
       link = c(
         "https://github.com/GESIS-Methods-Hub/minimal-example-md.git",
         "https://github.com/GESIS-Methods-Hub/minimal-example-qmd-rstats.git"
-      )
+      ),
+      filename = c(
+      "index.md",
+      "index.md"
+    )
     )
   expected_all_contributions <- tibble::tibble(
     link = c(
       "https://github.com/GESIS-Methods-Hub/minimal-example-md.git",
       "https://github.com/GESIS-Methods-Hub/minimal-example-qmd-rstats.git"
+    ),
+    filename = c(
+      "index.md",
+      "index.md"
     ),
     user_name = c("GESIS-Methods-Hub", "GESIS-Methods-Hub"),
     repository_name = c("minimal-example-md", "minimal-example-qmd-rstats"),

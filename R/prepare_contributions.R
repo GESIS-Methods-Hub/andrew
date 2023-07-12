@@ -9,12 +9,12 @@
 pre_process_contributions_list <- function(contribution_row) {
   git_repository_url <- contribution_row["link"]
 
-  if (stringr::str_ends(git_repository_url, '.git') == FALSE) {
-    git_repository_url <- stringr::str_c(git_repository_url, '.git')
+  if (stringr::str_ends(git_repository_url, ".git") == FALSE) {
+    git_repository_url <- stringr::str_c(git_repository_url, ".git")
   }
 
   regex_match <-
-    stringr::str_match(git_repository_url, 'https://github.com/(.*).git')
+    stringr::str_match(git_repository_url, "https://github.com/(.*).git")
   user_and_project <- regex_match[2]
 
   return(user_and_project)
@@ -35,16 +35,16 @@ prepare_contributions <- function(all_contributions) {
   all_contributions <- all_contributions |>
     tidyr::separate_wider_delim(
       slang,
-      delim = '/',
+      delim = "/",
       names = c("user_name", "repository_name"),
       cols_remove = FALSE
     )
   all_contributions$tmp_path <-
     stringr::str_c("_", all_contributions$slang)
   all_contributions$https <-
-    stringr::str_replace(all_contributions$link, '.git$', '')
+    stringr::str_replace(all_contributions$link, ".git$", "")
   all_contributions$filename_extension <-
-    stringr::str_extract(all_contributions$filename, '(md|qmd|ipynb|docx)$')
+    stringr::str_extract(all_contributions$filename, "(md|qmd|ipynb|docx)$")
 
   return(all_contributions)
 }
