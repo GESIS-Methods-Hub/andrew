@@ -15,7 +15,8 @@ file2render=${Rmd_file/Rmd/qmd}
 dirname2render=$(dirname ${file2render})
 basename2render=$(basename ${file2render})
 
-OUTPUT_FOLDER=~/_output
+output_dirname=~/_output
+output_basename=${basename2render%.*}.md
 
 git --version
 
@@ -49,13 +50,13 @@ quarto \
     --metadata "date:${git_date}" \
     --metadata="quarto_version:${quarto_version}" \
     --metadata="source_filename:${Rmd_file}" && \
-    cp index.md $OUTPUT_FOLDER/index.md && \
-    find . -iname '*.bib' -exec cp --parents {} $OUTPUT_FOLDER \; && \
-    find . -iname '*.jpg' -exec cp --parents {} $OUTPUT_FOLDER \; && \
-    find . -iname '*.jpeg' -exec cp --parents {} $OUTPUT_FOLDER \; && \
-    find . -iname '*.png' -exec cp --parents {} $OUTPUT_FOLDER \; && \
-    find . -iname '*.gif' -exec cp --parents {} $OUTPUT_FOLDER \; && \
-    find . -iname '*.tif' -exec cp --parents {} $OUTPUT_FOLDER \; && \
-    find . -iname '*.tiff' -exec cp --parents {} $OUTPUT_FOLDER \; && \
-    find . -iname '*.pdf' -exec cp --parents {} $OUTPUT_FOLDER \; && \
-    find . -iname '*.eps' -exec cp --parents {} $OUTPUT_FOLDER \;
+    cp index.md $output_dirname/$output_basename && \
+    find . -iname '*.bib' -exec cp --parents {} $output_dirname \; && \
+    find . -iname '*.jpg' -exec cp --parents {} $output_dirname \; && \
+    find . -iname '*.jpeg' -exec cp --parents {} $output_dirname \; && \
+    find . -iname '*.png' -exec cp --parents {} $output_dirname \; && \
+    find . -iname '*.gif' -exec cp --parents {} $output_dirname \; && \
+    find . -iname '*.tif' -exec cp --parents {} $output_dirname \; && \
+    find . -iname '*.tiff' -exec cp --parents {} $output_dirname \; && \
+    find . -iname '*.pdf' -exec cp --parents {} $output_dirname \; && \
+    find . -iname '*.eps' -exec cp --parents {} $output_dirname \;
