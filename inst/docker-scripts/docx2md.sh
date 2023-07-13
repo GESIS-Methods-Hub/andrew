@@ -11,6 +11,12 @@ github_user_name=$2
 github_repository_name=$3
 file2render=$4
 
+dirname2render=$(dirname ${file2render})
+basename2render=$(basename ${file2render})
+
+output_dirname=~/_output
+output_basename=${basename2render%.*}.md
+
 git --version
 
 git_hash=$(git rev-parse HEAD)
@@ -19,6 +25,8 @@ git_hash=$(git rev-parse HEAD)
 # git_date=$(git log -1 --format="%as")
 # else
 git_date=$(git log -1 --format=format:%ad --date=format:%Y-%m-%d)
+
+cd $dirname2render
 
 pandoc \
     --from docx+styles \
@@ -37,14 +45,6 @@ pandoc \
     --metadata="source_filename:${file2render}" \
     --lua-filter=_pandoc-filters/remove-toc.lua \
     --output index.md \
-    ${file2render}  && \
-    cp index.md _output/index.md && \
-    find . -iname '*.bib' -exec cp --parents {} _output \; && \
-    find . -iname '*.jpg' -exec cp --parents {} _output \; && \
-    find . -iname '*.jpeg' -exec cp --parents {} _output \; && \
-    find . -iname '*.png' -exec cp --parents {} _output \; && \
-    find . -iname '*.gif' -exec cp --parents {} _output \; && \
-    find . -iname '*.tif' -exec cp --parents {} _output \; && \
-    find . -iname '*.tiff' -exec cp --parents {} _output \; && \
-    find . -iname '*.pdf' -exec cp --parents {} _output \; && \
-    find . -iname '*.eps' -exec cp --parents {} _output \;
+    ${basename2render}  && \
+    cp index.md $output_dirname/$output_basename && && \
+    ~/_docker-scripts/copy-assets.sh $output_dirname

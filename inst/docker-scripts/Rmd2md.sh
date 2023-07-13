@@ -12,6 +12,12 @@ github_repository_name=$3
 Rmd_file=$4
 file2render=${Rmd_file/Rmd/qmd}
 
+dirname2render=$(dirname ${file2render})
+basename2render=$(basename ${file2render})
+
+output_dirname=~/_output
+output_basename=${basename2render%.*}.md
+
 git --version
 
 git_hash=$(git rev-parse HEAD)
@@ -27,8 +33,10 @@ cp $Rmd_file $file2render
 
 sed -i -e '/^output: rmarkdown/d' $file2render
 
+cd $dirname2render
+
 quarto \
-    render ${file2render} \
+    render ${basename2render} \
     --to markdown \
     --output index.md \
     --metadata="prefer-html:true" \
@@ -42,13 +50,5 @@ quarto \
     --metadata "date:${git_date}" \
     --metadata="quarto_version:${quarto_version}" \
     --metadata="source_filename:${Rmd_file}" && \
-    cp index.md _output/index.md && \
-    find . -iname '*.bib' -exec cp --parents {} _output \; && \
-    find . -iname '*.jpg' -exec cp --parents {} _output \; && \
-    find . -iname '*.jpeg' -exec cp --parents {} _output \; && \
-    find . -iname '*.png' -exec cp --parents {} _output \; && \
-    find . -iname '*.gif' -exec cp --parents {} _output \; && \
-    find . -iname '*.tif' -exec cp --parents {} _output \; && \
-    find . -iname '*.tiff' -exec cp --parents {} _output \; && \
-    find . -iname '*.pdf' -exec cp --parents {} _output \; && \
-    find . -iname '*.eps' -exec cp --parents {} _output \;
+    cp index.md $output_dirname/$output_basename && \
+    ~/_docker-scripts/copy-assets.sh $output_dirname
