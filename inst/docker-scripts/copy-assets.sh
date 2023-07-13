@@ -8,6 +8,7 @@
 output_dirname=$1
 
 find . -iname '*.bib' -exec cp --parents {} $output_dirname \; && \
+    find . -iname '*.csl' -exec cp --parents {} $output_dirname \; && \
     find . -iname '*.jpg' -exec cp --parents {} $output_dirname \; && \
     find . -iname '*.jpeg' -exec cp --parents {} $output_dirname \; && \
     find . -iname '*.png' -exec cp --parents {} $output_dirname \; && \
