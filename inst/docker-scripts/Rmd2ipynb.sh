@@ -18,7 +18,7 @@ basename2render=$(basename ${file2render})
 output_dirname=~/_output/$dirname2render/${basename2render%.*}
 output_basename=index.ipynb
 
-mkdir $output_dirname
+mkdir --parents $output_dirname
 
 cp $Rmd_file $file2render
 
