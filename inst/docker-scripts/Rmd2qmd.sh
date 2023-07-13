@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Convert R Markdown to Markdown
+# Convert R Markdown to Quarto
 #
 # Syntax:
 #
@@ -15,8 +15,10 @@ file2render=${Rmd_file/Rmd/qmd}
 dirname2render=$(dirname ${file2render})
 basename2render=$(basename ${file2render})
 
-output_dirname=~/_output
-output_basename=${basename2render%.*}.qmd
+output_dirname=~/_output/$dirname2render/${basename2render%.*}
+output_basename=index.qmd
+
+mkdir $output_dirname
 
 cp $Rmd_file $file2render
 

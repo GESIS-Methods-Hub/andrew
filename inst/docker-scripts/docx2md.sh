@@ -14,8 +14,10 @@ file2render=$4
 dirname2render=$(dirname ${file2render})
 basename2render=$(basename ${file2render})
 
-output_dirname=~/_output
-output_basename=${basename2render%.*}.md
+output_dirname=~/_output/$dirname2render/${basename2render%.*}
+output_basename=index.md
+
+mkdir $output_dirname
 
 git --version
 
@@ -45,6 +47,6 @@ pandoc \
     --metadata="source_filename:${file2render}" \
     --lua-filter=_pandoc-filters/remove-toc.lua \
     --output index.md \
-    ${basename2render}  && \
-    cp index.md $output_dirname/$output_basename && && \
+    ${basename2render} && \
+    cp index.md $output_dirname/$output_basename && \
     ~/_docker-scripts/copy-assets.sh $output_dirname

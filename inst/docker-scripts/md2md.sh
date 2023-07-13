@@ -14,8 +14,10 @@ file2render=$4
 dirname2render=$(dirname ${file2render})
 basename2render=$(basename ${file2render})
 
-output_dirname=~/_output
-output_basename=${basename2render%.*}.md
+output_dirname=~/_output/$dirname2render/${basename2render%.*}
+output_basename=index.md
+
+mkdir $output_dirname
 
 git --version
 
