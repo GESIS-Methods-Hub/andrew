@@ -51,12 +51,4 @@ quarto \
     --metadata="quarto_version:${quarto_version}" \
     --metadata="source_filename:${Rmd_file}" && \
     cp index.md $output_dirname/$output_basename && \
-    find . -iname '*.bib' -exec cp --parents {} $output_dirname \; && \
-    find . -iname '*.jpg' -exec cp --parents {} $output_dirname \; && \
-    find . -iname '*.jpeg' -exec cp --parents {} $output_dirname \; && \
-    find . -iname '*.png' -exec cp --parents {} $output_dirname \; && \
-    find . -iname '*.gif' -exec cp --parents {} $output_dirname \; && \
-    find . -iname '*.tif' -exec cp --parents {} $output_dirname \; && \
-    find . -iname '*.tiff' -exec cp --parents {} $output_dirname \; && \
-    find . -iname '*.pdf' -exec cp --parents {} $output_dirname \; && \
-    find . -iname '*.eps' -exec cp --parents {} $output_dirname \;
+    ~/_docker-scripts/copy-assets.sh $output_dirname
