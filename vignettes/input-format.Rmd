@@ -37,17 +37,19 @@ Example: https://github.com/GESIS-Methods-Hub/minimal-example-qmd-rstats-units
 
 - [ ] Complete author details, including affiliation
 
-## Jupyter Notebook
+## Jupyter Notebook (using Quarto extension)
 
 Example: https://github.com/GESIS-Methods-Hub/minimal-example-ipynb-python
 
 ### Required
 
 - [ ] Markdown file named `index.ipynb` or something else except `README.ipynb`
-- [ ] YAML header block at the begin of the Markdown file defining
+- [ ] YAML header block in the first cell of the Jupyter Notebook defining
 
       - `title`
       - `author`
+
+      The cell **must be** of type `raw`.
 - [ ] Configuration files for `repo2docker` to use when installing dependencies
 
 ### Desired
