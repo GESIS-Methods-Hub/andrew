@@ -3,6 +3,24 @@ title: Input Format
 ---
 
 `methodshub` tries to support a wide range of input formats for content.
+Each piece of content is represented by a Git repository **and** a file.
+In the abstence of a file, the `README.md` should be used.
+
+## `README.md`
+
+Example: https://github.com/GESIS-Methods-Hub/minimal-example-readme
+
+This should be used **only** as a fallback.
+
+### Required
+
+- [ ] Markdown file named `README.md`
+- [ ] Heading level 1 in the `README.md`
+- [ ] Author name in Git commit information
+
+### Desired
+
+*This section is left blank intentionally*.
 
 ## Markdown
 
