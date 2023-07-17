@@ -66,6 +66,7 @@ render_single_contribution <- function(contribution_row) {
     --env github_user_name=${github_user_name} \\
     --env github_repository_name=${github_repository_name} \\
     --env file2render=${file2render} \\
+    --env docker_image=${docker_image} \\
     ${docker_image} \\
     /bin/bash -c "./_docker-scripts/${script}"'
 
