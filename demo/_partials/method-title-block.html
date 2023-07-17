@@ -1,6 +1,30 @@
 <div class="grid">
+    <div class="modal fade" id="reproduceModal" tabindex="-1" aria-labelledby="reproduceModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Reproduce information</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Git information</p>
+                    <p>Git repository: $github_https$</p>
+                    <p>Commit: $git_hash$</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
     <div class="g-col-12">
         $if(github_https)$
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reproduceModal">
+            <i class="bi bi-fingerprint"></i> Reproduce
+        </button>
+        
         <div class="btn-group">
             <a class="btn btn-primary" target="_blank" href="https://mybinder.org/v2/gh/$github_user_name$/$github_repository_name$/$git_hash$?urlpath=lab/tree/$source_filename$"
             role="button"><i class="bi bi-controller"></i>
@@ -13,20 +37,18 @@
                 <li><a class="dropdown-item" target="_blank" href="https://hub.docker.com/repository/docker/$docker_image$/general">Download Docker Image</a></li>
             </ul>
         </div>  
-
-        <a class="btn btn-primary" href="$github_https$/blob/$git_hash$/$source_filename$" role="button">
-            <i class="bi bi-github"></i>
-            GitHub
-        </a>
         $endif$
-        <a class="btn btn-primary" href="index.qmd" role="button" download>
-            <i class="bi bi-file-earmark-arrow-down"></i>
-            Quarto
-        </a>
-        <a class="btn btn-primary" href="index.ipynb" role="button" download>
-            <i class="bi bi-file-earmark-arrow-down"></i>
-            Jupyter Notebook
-        </a>
+        
+        <div class="btn-group"  role="group">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+                <i class="bi bi-file-earmark-arrow-down"></i> Download as
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="index.ipynb">Jupyter Notebook</a></li>
+                <li><a class="dropdown-item" href="index.qmd">Quarto</a></li>
+            </ul>
+        </div>  
+        
         <a class="btn btn-primary" href="#citation" role="button">
             Cite
         </a>
