@@ -27,10 +27,21 @@ quarto_version=$(quarto --version)
 
 cd $dirname2render
 
+if [[ $(head -n 1 ${basename2render} | grep -e '---' | wc -l) = 0 ]]
+then
+echo ${basename2render} does NOT have a YAML header!
+shift-heading-level='--shift-heading-level-by=-1'
+else
+echo ${basename2render} has a YAML header!
+shift_heading_level='--shift-heading-level-by=0'
+fi
+
+
 quarto \
     render ${basename2render} \
     --to markdown \
     --output index.md-tmp \
+    ${shift_heading_level} \
     --metadata="prefer-html:true" \
     --metadata="method:true" \
     --metadata="citation: true" \
