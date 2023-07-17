@@ -62,8 +62,12 @@ render_single_contribution <- function(contribution_row) {
     --mount type=bind,source=${docker_scripts_location},target=/home/methodshub/_docker-scripts \\
     --mount type=bind,source=${pandoc_filters_location},target=/home/methodshub/_pandoc-filters \\
     --mount type=bind,source=${output_location},target=/home/methodshub/_output \\
+    --env github_https=${github_https} \\
+    --env github_user_name=${github_user_name} \\
+    --env github_repository_name=${github_repository_name} \\
+    --env file2render=${file2render} \\
     ${docker_image} \\
-    /bin/bash -c "./_docker-scripts/${script} ${github_https} ${github_user_name} ${github_repository_name} ${file2render}"'
+    /bin/bash -c "./_docker-scripts/${script}"'
 
     docker_call <- stringr::str_interp(
       docker_call_template,
