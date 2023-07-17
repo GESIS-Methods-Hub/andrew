@@ -37,6 +37,7 @@ quarto \
     --metadata="github_https:${github_https}" \
     --metadata="github_user_name:${github_user_name}" \
     --metadata="github_repository_name:${github_repository_name}" \
+    --metadata="docker_image:${docker_image}" \
     --metadata="git_hash:${git_hash}" \
     --metadata="git_date:${git_date}" \
     --metadata "date:${git_date}" \
