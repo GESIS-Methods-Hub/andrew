@@ -27,13 +27,20 @@ quarto_version=$(quarto --version)
 
 cd $dirname2render
 
+# README.md does NOT have YAML headers.
+# If processing a file without YAML headers,
+#
+# 1. shift the heading level
+# 2. provide name of the author
 if [[ $(head -n 1 ${basename2render} | grep -e '---' | wc -l) = 0 ]]
 then
 echo ${basename2render} does NOT have a YAML header!
 shift-heading-level='--shift-heading-level-by=-1'
+fallback_author="--metadata='author:$(git log -1 --format=format:%aN)'"
 else
 echo ${basename2render} has a YAML header!
 shift_heading_level='--shift-heading-level-by=0'
+fallback_author=''
 fi
 
 
@@ -42,6 +49,7 @@ quarto \
     --to markdown \
     --output index.md-tmp \
     ${shift_heading_level} \
+    ${fallback_author} \
     --metadata="prefer-html:true" \
     --metadata="method:true" \
     --metadata="citation: true" \
