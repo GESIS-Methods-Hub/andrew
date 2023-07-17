@@ -1,10 +1,18 @@
 <div class="grid">
     <div class="g-col-12">
         $if(github_https)$
-        <a class="btn btn-primary" target="_blank" href="https://mybinder.org/v2/gh/$github_user_name$/$github_repository_name$/$git_hash$?urlpath=shiny" role="button">
-            <i class="bi bi-controller"></i>
-            Launch Shiny app on BinderHub
-        </a>
+        <div class="btn-group">
+            <a class="btn btn-primary" target="_blank" href="https://mybinder.org/v2/gh/$github_user_name$/$github_repository_name$/$git_hash$?urlpath=lab/tree/$source_filename$"
+            role="button"><i class="bi bi-controller"></i>
+            Open on BinderHub</a>
+            <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="visually-hidden">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" target="_blank" href="http://colab.research.google.com/github/$github_user_name$/$github_repository_name$/blob/main/$source_filename$">Open on Google Colaboratory</a></li>
+                <li><a class="dropdown-item" target="_blank" href="https://hub.docker.com/repository/docker/$docker_image$/general">Download Docker Image</a></li>
+            </ul>
+        </div>
         
         <a class="btn btn-primary" href="$github_https$/tree/$git_hash$" role="button">
             <i class="bi bi-github"></i>
