@@ -12,7 +12,7 @@ test_that("csv with single line", {
       "https://github.com/GESIS-Methods-Hub/minimal-example-md.git"
     ),
     filename = c(
-        "index.md"
+      "index.md"
     ),
     user_name = c("GESIS-Methods-Hub"),
     repository_name = c("minimal-example-md"),
@@ -62,9 +62,9 @@ test_that("csv with two line", {
         "https://github.com/GESIS-Methods-Hub/minimal-example-qmd-rstats.git"
       ),
       filename = c(
-      "index.md",
-      "index.md"
-    )
+        "index.md",
+        "index.md"
+      )
     )
   expected_all_contributions <- tibble::tibble(
     link = c(
