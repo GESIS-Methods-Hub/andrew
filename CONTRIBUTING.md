@@ -10,7 +10,7 @@ git clone git@git.gesis.org:methods-hub/portal.git
 
 The project is structured as a [R package](https://r-pkgs.org/). Check the `R` directory for the R scripts.
 
-## How to
+## How-to
 
 ### Change `*.drawio.png` images
 
