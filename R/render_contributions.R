@@ -97,7 +97,10 @@ render_single_contribution <- function(contribution_row) {
 
     logger::log_info("Rendering PDF ...")
 
+    host_user_id <- system("id -u", intern=TRUE)
+
     docker_pdf_call_template <- 'docker run \\
+      --user=${host_user_id}:${host_user_id} \\
       --mount type=bind,source=${docker_scripts_location},target=/home/mambauser/_docker-scripts \\
       --mount type=bind,source=${output_location},target=/home/mambauser/methodshub \\
       --env file2render=${file2render} \\
@@ -107,6 +110,7 @@ render_single_contribution <- function(contribution_row) {
     docker_pdf_call <- stringr::str_interp(
       docker_pdf_call_template,
       list(
+        host_user_id = host_user_id,
         docker_scripts_location = docker_scripts_location,
         output_location = output_location,
         file2render = file2render
