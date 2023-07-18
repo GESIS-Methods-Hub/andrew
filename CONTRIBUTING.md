@@ -12,6 +12,10 @@ The project is structured as a [R package](https://r-pkgs.org/). Check the `R` d
 
 ## How to
 
+### Change `*.drawio.png` images
+
+[draw.io](https://www.drawio.com/) is a open source diagramming software. You can use it online at https://app.diagrams.net/ and download from https://get.diagrams.net/ the desktop version. **All** `*.drawio.png` images include a copy of the diagram that draw.io can use to facilitate changes.
+
 ### Install dependencies with `micromamba`
 
 Install `micromamba` following the [Mamba Documentation](https://mamba.readthedocs.io/en/latest/installation.html#automatic-installation).
