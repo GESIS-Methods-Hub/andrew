@@ -15,8 +15,7 @@ input_basename=index.md
 quarto_version=$(quarto --version)
 
 cd $input_dirname
-pwd
-find .
+
 quarto \
     render ${input_basename} \
     --to pdf \
