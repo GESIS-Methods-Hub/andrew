@@ -92,11 +92,33 @@ render_single_contribution <- function(contribution_row) {
     sum_docker_return_value <- sum_docker_return_value + docker_return_value
   }
 
-
   if (sum_docker_return_value == 0) {
     build_status <- "Built"
+
+    logger::log_info("Rendering PDF ...")
+
+    docker_pdf_call_template <- 'docker run \\
+      --mount type=bind,source=${docker_scripts_location},target=/home/mambauser/_docker-scripts \\
+      --mount type=bind,source=${output_location},target=/home/mambauser/methodshub \\
+      --env file2render=${file2render} \\
+      registry.gitlab.com/quarto-forge/docker/quarto_all \\
+      /bin/bash -c "/home/mambauser/_docker-scripts/md2pdf.sh"'
+
+    docker_pdf_call <- stringr::str_interp(
+      docker_pdf_call_template,
+      list(
+        docker_scripts_location = docker_scripts_location,
+        output_location = output_location,
+        file2render = file2render
+      )
+    )
+
+    docker_return_value <- system(docker_pdf_call)
+
+    logger::log_info("Rendering PDF completed.")
   } else {
     build_status <- "Unavailable"
+    logger::log_info("Skipping PDF rendering.")
   }
 
   return(build_status)
