@@ -48,7 +48,7 @@ quarto \
     --metadata="git_hash:${git_hash}" \
     --metadata="git_date:${git_date}" \
     --metadata "date:${git_date}" \
-    --metadata="quarto_version:${quarto_version}" \
+    --metadata="info_quarto_version:${quarto_version}" \
     --metadata="source_filename:${Rmd_file}" && \
     cp index.md $output_dirname/$output_basename && \
     ~/_docker-scripts/copy-assets.sh $output_dirname
