@@ -105,11 +105,11 @@ render_single_contribution <- function(contribution_row) {
       /bin/bash -c "/home/mambauser/_docker-scripts/md2pdf.sh"'
 
     docker_pdf_call <- stringr::str_interp(
-      docker_call_template,
+      docker_pdf_call_template,
       list(
         docker_scripts_location = docker_scripts_location,
         output_location = output_location,
-        file2render = file2render,
+        file2render = file2render
       )
     )
 
