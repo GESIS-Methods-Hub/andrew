@@ -32,17 +32,30 @@ cd $dirname2render
 #
 # 1. shift the heading level
 # 2. provide name of the author
+# 3. search for cover image
 if [[ $(head -n 1 ${basename2render} | grep -e '---' | wc -l) = 0 ]]
 then
 echo ${basename2render} does NOT have a YAML header!
-shift-heading-level='--shift-heading-level-by=-1'
+shift_heading_level='--shift-heading-level-by=-1'
 fallback_author="--metadata='author:$(git log -1 --format=format:%aN)'"
+
+cover_filename=$(find . -name 'cover*' | head -n 1)
+
+if [ -z "$cover_filename" ]
+then
+echo "Couldn't locate cover* file"
+cover_metadata=""
+else
+echo "Located $cover_filename"
+cover_metadata="--metadata='image:$cover_filename'"
+fi
+
 else
 echo ${basename2render} has a YAML header!
 shift_heading_level='--shift-heading-level-by=0'
 fallback_author=''
+cover_metadata=""
 fi
-
 
 quarto \
     render ${basename2render} \
@@ -50,6 +63,7 @@ quarto \
     --output index.md-tmp \
     ${shift_heading_level} \
     ${fallback_author} \
+    ${cover_metadata} \
     --metadata="prefer-html:true" \
     --metadata="method:true" \
     --metadata="citation: true" \

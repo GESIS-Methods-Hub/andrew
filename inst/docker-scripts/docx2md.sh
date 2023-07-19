@@ -27,11 +27,23 @@ quarto_version=$(quarto --version)
 
 cd $dirname2render
 
+cover_filename=$(find . -name 'cover*' | head -n 1)
+
+if [ -z "$cover_filename" ]
+then
+echo "Couldn't locate cover* file"
+cover_metadata=""
+else
+echo "Located $cover_filename"
+cover_metadata="--metadata='image:$cover_filename'"
+fi
+
 pandoc \
     --from docx+styles \
     --to markdown \
     --standalone \
     --extract-media=./ \
+    ${cover_metadata} \
     --metadata="prefer-html:true" \
     --metadata="guide:true" \
     --metadata="citation: true" \
