@@ -29,7 +29,7 @@ Example: https://github.com/GESIS-Methods-Hub/minimal-example-md
 
 ### Required
 
-- [ ] Markdown file named `index.md` or something else except `README.md`
+- [ ] Markdown file named `index.md` or another name except `README.md`
 - [ ] YAML header block at the begin of the Markdown file defining
 
       - `title`
@@ -40,13 +40,13 @@ Example: https://github.com/GESIS-Methods-Hub/minimal-example-md
 
 - [ ] Complete author details, including affiliation
 
-## Quarto
+## Quarto (document)
 
 Example: https://github.com/GESIS-Methods-Hub/minimal-example-qmd-rstats-units
 
 ### Required
 
-- [ ] Markdown file named `index.qmd` or something else except `README.qmd`
+- [ ] Markdown file named `index.qmd` or another name except `README.qmd`
 - [ ] YAML header block at the begin of the Markdown file defining
 
       - `title`
@@ -58,13 +58,23 @@ Example: https://github.com/GESIS-Methods-Hub/minimal-example-qmd-rstats-units
 
 - [ ] Complete author details, including affiliation
 
+## Quarto (book)
+
+**Not supported yet**. Visit https://github.com/GESIS-Methods-Hub/methodshub/issues/119 for updates.
+
+## Markedly Structured Text (MyST)
+
+**Not supported yet**. Visit https://github.com/GESIS-Methods-Hub/methodshub/issues/59 for updates.
+
+Example: https://github.com/GESIS-Methods-Hub/minimal-example-myst
+
 ## Jupyter Notebook (using Quarto extension)
 
 Example: https://github.com/GESIS-Methods-Hub/minimal-example-ipynb-python
 
 ### Required
 
-- [ ] Markdown file named `index.ipynb` or something else except `README.ipynb`
+- [ ] Markdown file named `index.ipynb` or another name except `README.ipynb`
 - [ ] YAML header block in the first cell of the Jupyter Notebook defining
 
       - `title`
@@ -78,14 +88,36 @@ Example: https://github.com/GESIS-Methods-Hub/minimal-example-ipynb-python
 
 - [ ] Complete author details, including affiliation
 
+## Jupyter Notebook (using MyST extension)
+
+**Not supported yet**. Visit https://github.com/GESIS-Methods-Hub/methodshub/issues/59 for updates.
+
+Example: https://github.com/GESIS-Methods-Hub/minimal-example-ipynb-myst-python
+
+## Jupyter book
+
+**Not supported yet**. Visit https://github.com/GESIS-Methods-Hub/methodshub/issues/120 for updates.
+
+## Python Package
+
+See [`README.md` section](#readm-me).
+
+## Python Package (with Sphinx website)
+
+**Not supported yet**. Visit https://github.com/GESIS-Methods-Hub/methodshub/issues/121 for updates.
+
 ## R Package
+
+See [`README.md` section](#readm-me).
+
+## R Package (with `pkgdown` website)
 
 Example: https://github.com/GESIS-Methods-Hub/minimal-example-rstats-package
 
 ### Required
 
 - [ ] `DESCRIPTION` file with metadata of the R package
-- [ ] R Markdown file named `vignettes/*.Rmd` or something else except `README.md`
+- [ ] R Markdown file named `vignettes/*.Rmd` or another name except `README.md`
 - [ ] YAML header block at the begin of the Markdown file defining
 
       - `title`
@@ -103,7 +135,7 @@ Example: https://github.com/GESIS-Methods-Hub/minimal-example-shiny-rstats
 ### Required
 
 - [ ] `app.R` file with the logic of the R Shiny app
-- [ ] Markdown file named `index.md` or something else except `README.md`
+- [ ] Markdown file named `index.md` or another name except `README.md`
 - [ ] YAML header block at the begin of the Markdown file defining
 
       - `title`
@@ -114,3 +146,23 @@ Example: https://github.com/GESIS-Methods-Hub/minimal-example-shiny-rstats
 ### Desired
 
 - [ ] Complete author details, including affiliation
+
+## Microsoft Office Word 2007 (DOCX) - Guide
+
+Example: https://github.com/GESIS-Methods-Hub/minimal-guide-example-docx
+
+### Required
+
+- [ ] Microsoft Office Word 2007 file named `index.md` or another name
+- [ ] Title using style `Title`
+- [ ] One author name per paragrah using the style `Author`.
+
+## Microsoft Office Word 2007 (DOCX) - Interview
+
+Example: https://github.com/GESIS-Methods-Hub/minimal-interview-example-docx
+
+### Required
+
+- [ ] Microsoft Office Word 2007 file named `index.md` or another name
+- [ ] Title using style `Title`
+- [ ] One author name per paragrah using the style `Author`.
