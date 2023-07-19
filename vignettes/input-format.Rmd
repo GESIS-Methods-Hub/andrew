@@ -17,6 +17,7 @@ This should be used **only** as a fallback.
 - [ ] Markdown file named `README.md`
 - [ ] Heading level 1 in the `README.md`
 - [ ] Author name in Git commit information
+- [ ] Image to use as cover
 
 ### Desired
 
@@ -33,6 +34,7 @@ Example: https://github.com/GESIS-Methods-Hub/minimal-example-md
 
       - `title`
       - `author`
+      - `image`
 
 ### Desired
 
@@ -49,6 +51,7 @@ Example: https://github.com/GESIS-Methods-Hub/minimal-example-qmd-rstats-units
 
       - `title`
       - `author`
+      - `image`
 - [ ] Configuration files for `repo2docker` to use when installing dependencies
 
 ### Desired
@@ -66,6 +69,7 @@ Example: https://github.com/GESIS-Methods-Hub/minimal-example-ipynb-python
 
       - `title`
       - `author`
+      - `image`
 
       The cell **must be** of type `raw`.
 - [ ] Configuration files for `repo2docker` to use when installing dependencies
@@ -86,6 +90,7 @@ Example: https://github.com/GESIS-Methods-Hub/minimal-example-rstats-package
 
       - `title`
       - `author`
+      - `image`
 
 ### Desired
 
@@ -103,6 +108,7 @@ Example: https://github.com/GESIS-Methods-Hub/minimal-example-shiny-rstats
 
       - `title`
       - `author`
+      - `image`
 - [ ] Configuration files for `repo2docker` to use when installing dependencies
 
 ### Desired
