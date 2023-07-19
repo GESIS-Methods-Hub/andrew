@@ -20,7 +20,7 @@ This should be used **only** as a fallback.
 
 ### Desired
 
-- [ ] Image (300×200 pixels) named `cover.jpg` or `cover.svg` to use as cover
+- [ ] Image (900×600 pixels) named `cover.jpg` or `cover.svg` to use as cover
 
 ## Markdown
 
@@ -37,7 +37,7 @@ Example: https://github.com/GESIS-Methods-Hub/minimal-example-md
 ### Desired
 
 - [ ] Complete author details, including affiliation
-- [ ] Image (300×200 pixels) to use as cover and associated metadata in the YAML header block at the begin of the Markdown file defining
+- [ ] Image (900×600 pixels) to use as cover and associated metadata in the YAML header block at the begin of the Markdown file defining
 
       - `image`
       - `image-alt`
@@ -58,7 +58,7 @@ Example: https://github.com/GESIS-Methods-Hub/minimal-example-qmd-rstats-units
 ### Desired
 
 - [ ] Complete author details, including affiliation
-- [ ] Image (300×200 pixels) to use as cover and associated metadata in the YAML header block at the begin of the Markdown file defining
+- [ ] Image (900×600 pixels) to use as cover and associated metadata in the YAML header block at the begin of the Markdown file defining
 
       - `image`
       - `image-alt`
@@ -93,7 +93,7 @@ Example: https://github.com/GESIS-Methods-Hub/minimal-example-ipynb-python
 ### Desired
 
 - [ ] Complete author details, including affiliation
-- [ ] Image (300×200 pixels) to use as cover and associated metadata in the YAML header block in the first cell of the Jupyter Notebook defining
+- [ ] Image (900×600 pixels) to use as cover and associated metadata in the YAML header block in the first cell of the Jupyter Notebook defining
 
       - `image`
       - `image-alt`
@@ -138,7 +138,7 @@ Example: https://github.com/GESIS-Methods-Hub/minimal-example-rstats-package
 ### Desired
 
 - [ ] Complete author details, including affiliation
-- [ ] Image (300×200 pixels) to use as cover and associated metadata in the YAML header block at the begin of the Markdown file defining
+- [ ] Image (900×600 pixels) to use as cover and associated metadata in the YAML header block at the begin of the Markdown file defining
 
       - `image`
       - `image-alt`
@@ -160,7 +160,7 @@ Example: https://github.com/GESIS-Methods-Hub/minimal-example-shiny-rstats
 ### Desired
 
 - [ ] Complete author details, including affiliation
-- [ ] Image (300×200 pixels) to use as cover and associated metadata in the YAML header block at the begin of the Markdown file defining
+- [ ] Image (900×600 pixels) to use as cover and associated metadata in the YAML header block at the begin of the Markdown file defining
 
       - `image`
       - `image-alt`
@@ -191,4 +191,4 @@ Example: https://github.com/GESIS-Methods-Hub/minimal-interview-example-docx
 
 ### Desired
 
-- [ ] Image (300×200 pixels) named `cover.jpg` or `cover.svg` to use as cover
+- [ ] Image (900×600 pixels) named `cover.jpg` or `cover.svg` to use as cover
