@@ -9,23 +9,24 @@
               <%= method.title %>
             </h2>
             <% if(method.image) { %>
-            <img src="<%- method.image %>" alt="<%- method.description %>" />
+            <img src="<%- method.image %>" <% if(method.image_alt) { %> alt="<%- method.image-alt %>" <% } else { %> alt="Cover image." <% } %> />
             <% } else { %>
-            <img src="../../../img/svgrepo.com/pencil-draw.svg" alt="<%- method.description %>" />
+            <img src="../../../img/svgrepo.com/pencil-draw.svg" <% if(method.image_alt) { %> alt="<%- method.image-alt %>" <% } else { %> alt="Cover image with pencil." <% } %> />
             <% } %>
-          </div>
-        </a>
-      </div>
-      <div class="frame frame-default frame-type-textmedia frame-layout-0">
-        <div class="ce-textpic ce-right ce-intext">
-          <div class="ce-bodytext">
-            <p>
-              By <%= method.author %>.
-            </p>
-          </div>
+        </div>
+      </a>
+    </div>
+    <div class="frame frame-default frame-type-textmedia frame-layout-0">
+      <div class="ce-textpic ce-right ce-intext">
+        <div class="ce-bodytext">
+          <p>
+            By <%= method.author %>.
+          </p>
         </div>
       </div>
     </div>
-    <% }); %>
+  </div>
+  <% }); %>
 </div>
 ```
+          
