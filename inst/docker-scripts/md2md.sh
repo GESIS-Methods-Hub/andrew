@@ -35,7 +35,7 @@ cd $dirname2render
 if [[ $(head -n 1 ${basename2render} | grep -e '---' | wc -l) = 0 ]]
 then
 echo ${basename2render} does NOT have a YAML header!
-shift-heading-level='--shift-heading-level-by=-1'
+shift_heading_level='--shift-heading-level-by=-1'
 fallback_author="--metadata='author:$(git log -1 --format=format:%aN)'"
 else
 echo ${basename2render} has a YAML header!
