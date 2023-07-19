@@ -17,11 +17,10 @@ This should be used **only** as a fallback.
 - [ ] Markdown file named `README.md`
 - [ ] Heading level 1 in the `README.md`
 - [ ] Author name in Git commit information
-- [ ] Image to use as cover
 
 ### Desired
 
-*This section is left blank intentionally*.
+- [ ] Image (300×200 pixels) named `cover.jpg` or `cover.svg` to use as cover
 
 ## Markdown
 
@@ -34,11 +33,14 @@ Example: https://github.com/GESIS-Methods-Hub/minimal-example-md
 
       - `title`
       - `author`
-      - `image`
 
 ### Desired
 
 - [ ] Complete author details, including affiliation
+- [ ] Image (300×200 pixels) to use as cover and associated metadata in the YAML header block at the begin of the Markdown file defining
+
+      - `image`
+      - `image-alt`
 
 ## Quarto (document)
 
@@ -51,12 +53,15 @@ Example: https://github.com/GESIS-Methods-Hub/minimal-example-qmd-rstats-units
 
       - `title`
       - `author`
-      - `image`
 - [ ] Configuration files for `repo2docker` to use when installing dependencies
 
 ### Desired
 
 - [ ] Complete author details, including affiliation
+- [ ] Image (300×200 pixels) to use as cover and associated metadata in the YAML header block at the begin of the Markdown file defining
+
+      - `image`
+      - `image-alt`
 
 ## Quarto (book)
 
@@ -80,6 +85,7 @@ Example: https://github.com/GESIS-Methods-Hub/minimal-example-ipynb-python
       - `title`
       - `author`
       - `image`
+      - `image-alt`
 
       The cell **must be** of type `raw`.
 - [ ] Configuration files for `repo2docker` to use when installing dependencies
@@ -87,6 +93,12 @@ Example: https://github.com/GESIS-Methods-Hub/minimal-example-ipynb-python
 ### Desired
 
 - [ ] Complete author details, including affiliation
+- [ ] Image (300×200 pixels) to use as cover and associated metadata in the YAML header block in the first cell of the Jupyter Notebook defining
+
+      - `image`
+      - `image-alt`
+
+      The cell **must be** of type `raw`.
 
 ## Jupyter Notebook (using MyST extension)
 
@@ -122,11 +134,14 @@ Example: https://github.com/GESIS-Methods-Hub/minimal-example-rstats-package
 
       - `title`
       - `author`
-      - `image`
 
 ### Desired
 
 - [ ] Complete author details, including affiliation
+- [ ] Image (300×200 pixels) to use as cover and associated metadata in the YAML header block at the begin of the Markdown file defining
+
+      - `image`
+      - `image-alt`
 
 ## R Shiny App
 
@@ -140,12 +155,15 @@ Example: https://github.com/GESIS-Methods-Hub/minimal-example-shiny-rstats
 
       - `title`
       - `author`
-      - `image`
 - [ ] Configuration files for `repo2docker` to use when installing dependencies
 
 ### Desired
 
 - [ ] Complete author details, including affiliation
+- [ ] Image (300×200 pixels) to use as cover and associated metadata in the YAML header block at the begin of the Markdown file defining
+
+      - `image`
+      - `image-alt`
 
 ## Microsoft Office Word 2007 (DOCX) - Guide
 
@@ -157,6 +175,10 @@ Example: https://github.com/GESIS-Methods-Hub/minimal-guide-example-docx
 - [ ] Title using style `Title`
 - [ ] One author name per paragrah using the style `Author`.
 
+### Desired
+
+- [ ] Image named `cover.jpg` or `cover.svg` to use as cover
+
 ## Microsoft Office Word 2007 (DOCX) - Interview
 
 Example: https://github.com/GESIS-Methods-Hub/minimal-interview-example-docx
@@ -166,3 +188,7 @@ Example: https://github.com/GESIS-Methods-Hub/minimal-interview-example-docx
 - [ ] Microsoft Office Word 2007 file named `index.md` or another name
 - [ ] Title using style `Title`
 - [ ] One author name per paragrah using the style `Author`.
+
+### Desired
+
+- [ ] Image (300×200 pixels) named `cover.jpg` or `cover.svg` to use as cover
