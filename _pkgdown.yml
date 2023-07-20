@@ -2,3 +2,9 @@ url: http://methods-hub.git.gesis.org/methodshub
 template:
   bootstrap: 5
 
+articles:
+- title: Main verbs
+  navbar: ~
+  contents:
+  - input-format
+  - advices-to-authors
