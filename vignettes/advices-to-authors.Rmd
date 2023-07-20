@@ -1,0 +1,35 @@
+---
+title: Advices to Authors
+---
+
+`methodshub`'s primary output format is HTML but Quarto document and Jupyter Notebook are provided to help readers trying to re-use the information and **automatically generated** PDF is provided to facilitate printing. Produce HTML and PDF has it's challenges and we share advices to authors based on our own experience.
+
+# Mathematical Formula
+
+Mathematical formulas in the HTML document are render using [MathJax](https://www.mathjax.org/) that uses `$$` as delimiter and TeX and LaTeX notation. For example,
+
+```
+$$a^2 + b^2 = c^2$$
+```
+
+is render as
+
+$$a^2 + b^2 = c^2$$
+
+Displayed equation environments defined by LaTeX [`amsmath` package](http://www.ams.org/arc/tex/amsmath/amsldoc.pdf) are also supported and **must** be input without the `$$` delimiter. For example,
+
+```
+\begin{align*}
+x&=y & X&=Y & a&=b+c\\
+x’&=y’ & X’&=Y’ & a’&=b
+\end{align*}
+```
+
+is render as
+
+\begin{align*}
+x&=y & X&=Y & a&=b+c\\
+x’&=y’ & X’&=Y’ & a’&=b
+\end{align*}
+
+Be aware that delimit a displayed equation environments with `$$` will raise a error when creating the PDF.
