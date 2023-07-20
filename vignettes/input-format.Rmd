@@ -6,6 +6,8 @@ title: Input Format
 Each piece of content is represented by a Git repository **and** a file.
 In the abstence of a file, the `README.md` should be used.
 
+# Supported formats
+
 ## `README.md`
 
 Example: https://github.com/GESIS-Methods-Hub/minimal-example-readme
@@ -63,16 +65,6 @@ Example: https://github.com/GESIS-Methods-Hub/minimal-example-qmd-rstats-units
       - `image`
       - `image-alt`
 
-## Quarto (book)
-
-**Not supported yet**. Visit https://github.com/GESIS-Methods-Hub/methodshub/issues/119 for updates.
-
-## Markedly Structured Text (MyST)
-
-**Not supported yet**. Visit https://github.com/GESIS-Methods-Hub/methodshub/issues/59 for updates.
-
-Example: https://github.com/GESIS-Methods-Hub/minimal-example-myst
-
 ## Jupyter Notebook (using Quarto extension)
 
 Example: https://github.com/GESIS-Methods-Hub/minimal-example-ipynb-python
@@ -100,23 +92,9 @@ Example: https://github.com/GESIS-Methods-Hub/minimal-example-ipynb-python
 
       The cell **must be** of type `raw`.
 
-## Jupyter Notebook (using MyST extension)
-
-**Not supported yet**. Visit https://github.com/GESIS-Methods-Hub/methodshub/issues/59 for updates.
-
-Example: https://github.com/GESIS-Methods-Hub/minimal-example-ipynb-myst-python
-
-## Jupyter book
-
-**Not supported yet**. Visit https://github.com/GESIS-Methods-Hub/methodshub/issues/120 for updates.
-
 ## Python Package
 
 See [`README.md` section](#readm-me).
-
-## Python Package (with Sphinx website)
-
-**Not supported yet**. Visit https://github.com/GESIS-Methods-Hub/methodshub/issues/121 for updates.
 
 ## R Package
 
@@ -192,3 +170,29 @@ Example: https://github.com/GESIS-Methods-Hub/minimal-interview-example-docx
 ### Desired
 
 - [ ] Image (900×600 pixels) named `cover.jpg` or `cover.svg` to use as cover
+
+# Unsupported formats (yet)
+
+## Quarto (book)
+
+**Not supported yet**. Visit https://github.com/GESIS-Methods-Hub/methodshub/issues/119 for updates.
+
+## Markedly Structured Text (MyST)
+
+**Not supported yet**. Visit https://github.com/GESIS-Methods-Hub/methodshub/issues/59 for updates.
+
+Example: https://github.com/GESIS-Methods-Hub/minimal-example-myst
+
+## Jupyter Notebook (using MyST extension)
+
+**Not supported yet**. Visit https://github.com/GESIS-Methods-Hub/methodshub/issues/59 for updates.
+
+Example: https://github.com/GESIS-Methods-Hub/minimal-example-ipynb-myst-python
+
+## Jupyter book
+
+**Not supported yet**. Visit https://github.com/GESIS-Methods-Hub/methodshub/issues/120 for updates.
+
+## Python Package (with Sphinx website)
+
+**Not supported yet**. Visit https://github.com/GESIS-Methods-Hub/methodshub/issues/121 for updates.
