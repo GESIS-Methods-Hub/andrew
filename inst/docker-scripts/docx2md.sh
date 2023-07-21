@@ -9,7 +9,7 @@
 dirname2render=$(dirname ${file2render})
 basename2render=$(basename ${file2render})
 
-output_dirname=~/_output/$dirname2render/${basename2render%.*}
+output_dirname=$output_location/$dirname2render/${basename2render%.*}
 output_basename=index.md
 
 mkdir --parents $output_dirname
@@ -27,7 +27,6 @@ pandoc_version=$(pandoc --version | head -n 1 | awk '{print $2}')
 quarto_version=$(quarto --version)
 
 cd $dirname2render
-
 cover_filename=$(find . -name 'cover*' | grep --invert-match $output_dirname | head -n 1)
 
 if [ -z "$cover_filename" ]
