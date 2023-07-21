@@ -21,5 +21,4 @@ find . \
     -o \( -type f -iname '*.pdf' \) \
     -o \( -type f -iname '*.eps' \) \
     \) | \
-    grep --invert-match $output_dirname | \
     xargs -I {} cp --parents {} $output_dirname
