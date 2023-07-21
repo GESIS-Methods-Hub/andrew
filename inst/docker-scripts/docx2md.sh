@@ -27,7 +27,7 @@ pandoc_version=$(pandoc --version | head -n 1 | awk '{print $2}')
 quarto_version=$(quarto --version)
 
 cd $dirname2render
-cover_filename=$(find . -name 'cover*' | grep --invert-match $output_dirname | head -n 1)
+cover_filename=$(find . -name 'cover*' | head -n 1)
 
 if [ -z "$cover_filename" ]
 then
