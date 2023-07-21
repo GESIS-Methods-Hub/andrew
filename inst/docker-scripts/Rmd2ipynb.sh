@@ -12,7 +12,7 @@ file2render=${Rmd_file/Rmd/qmd}
 dirname2render=$(dirname ${file2render})
 basename2render=$(basename ${file2render})
 
-output_dirname=~/_output/$dirname2render/${basename2render%.*}
+output_dirname=$output_location/$dirname2render/${basename2render%.*}
 output_basename=index.ipynb
 
 mkdir --parents $output_dirname

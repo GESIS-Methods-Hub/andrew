@@ -49,10 +49,12 @@ render_single_contribution <- function(contribution_row) {
     system.file("pandoc-filters", package = "methodshub", mustWork = TRUE)
   output_location <- git_slang |>
     fs::path_real()
+  output_location_in_container <- "/tmp/methodshub"
 
   logger::log_info("Location of docker_scripts directory: {docker_scripts_location}")
   logger::log_info("Location of pandoc_filters directory: {pandoc_filters_location}")
   logger::log_info("Location of output directory: {output_location}")
+  logger::log_info("Location of output directory inside the container: {output_location_in_container}")
 
   sum_docker_return_value <- 0
   for (script in get(file2render_extension, RENDER_MATRIX)) {
@@ -61,12 +63,13 @@ render_single_contribution <- function(contribution_row) {
     docker_call_template <- 'docker run \\
     --mount type=bind,source=${docker_scripts_location},target=/home/methodshub/_docker-scripts \\
     --mount type=bind,source=${pandoc_filters_location},target=/home/methodshub/_pandoc-filters \\
-    --mount type=bind,source=${output_location},target=/home/methodshub/_output \\
+    --mount type=bind,source=${output_location},target=${output_location_in_container} \\
     --env github_https=${github_https} \\
     --env github_user_name=${github_user_name} \\
     --env github_repository_name=${github_repository_name} \\
     --env file2render=${file2render} \\
     --env docker_image=${docker_image} \\
+    --env output_location=${output_location_in_container} \\
     ${docker_image} \\
     /bin/bash -c "./_docker-scripts/${script}"'
 
@@ -76,6 +79,7 @@ render_single_contribution <- function(contribution_row) {
         docker_scripts_location = docker_scripts_location,
         pandoc_filters_location = pandoc_filters_location,
         output_location = output_location,
+        output_location_in_container = output_location_in_container,
         file2render = file2render,
         github_https = github_https,
         github_user_name = github_user_name,
@@ -113,6 +117,7 @@ render_single_contribution <- function(contribution_row) {
         host_user_id = host_user_id,
         docker_scripts_location = docker_scripts_location,
         output_location = output_location,
+        output_location_in_container = output_location_in_container,
         file2render = file2render
       )
     )
