@@ -7,13 +7,18 @@
 
 output_dirname=$1
 
-find . -iname '*.bib' -exec cp --parents {} $output_dirname \; && \
-    find . -iname '*.csl' -exec cp --parents {} $output_dirname \; && \
-    find . -iname '*.jpg' -exec cp --parents {} $output_dirname \; && \
-    find . -iname '*.jpeg' -exec cp --parents {} $output_dirname \; && \
-    find . -iname '*.png' -exec cp --parents {} $output_dirname \; && \
-    find . -iname '*.gif' -exec cp --parents {} $output_dirname \; && \
-    find . -iname '*.tif' -exec cp --parents {} $output_dirname \; && \
-    find . -iname '*.tiff' -exec cp --parents {} $output_dirname \; && \
-    find . -iname '*.pdf' -exec cp --parents {} $output_dirname \; && \
-    find . -iname '*.eps' -exec cp --parents {} $output_dirname \;
+find . \
+    \( \
+    \( -type f -iname '*.bib' \) \
+    -o \( -type f -iname '*.csl' \) \
+    -o \( -type f -iname '*.jpg' \) \
+    -o \( -type f -iname '*.jpeg' \) \
+    -o \( -type f -iname '*.gif' \) \
+    -o \( -type f -iname '*.tif' \) \
+    -o \( -type f -iname '*.tiff' \) \
+    -o \( -type f -iname '*.svg' \) \
+    -o \( -type f -iname '*.pdf' \) \
+    -o \( -type f -iname '*.eps' \) \
+    \) | \
+    grep --invert-match $output_dirname | \
+    xargs -I {} cp --parents {} $output_dirname
