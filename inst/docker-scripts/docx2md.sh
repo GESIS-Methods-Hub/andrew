@@ -23,6 +23,7 @@ git_hash=$(git rev-parse HEAD)
 # else
 git_date=$(git log -1 --format=format:%ad --date=format:%Y-%m-%d)
 
+pandoc_version=$(pandoc --version | head -n 1 | awk '{print $2}')
 quarto_version=$(quarto --version)
 
 cd $dirname2render
@@ -53,7 +54,7 @@ pandoc \
     --metadata="git_hash:${git_hash}" \
     --metadata="git_date:${git_date}" \
     --metadata "date:${git_date}" \
-    --metadata="info_quarto_version:${quarto_version}" \
+    --metadata="info_pandoc_version:${pandoc_version}" \
     --metadata="source_filename:${file2render}" \
     --lua-filter=_pandoc-filters/remove-toc.lua \
     --output index.md \
