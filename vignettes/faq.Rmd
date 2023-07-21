@@ -1,0 +1,10 @@
+---
+title: Frequently Asked Questions (FAQ)
+author: Raniere Silva
+---
+
+What Docker base image do you use to create the rendering environment?
+:   We are using a [version of Ubuntu 18.04.6 LTS (Bionic Beaver)](https://hub.docker.com/_/buildpack-deps), this is the one used by [repo2docker](https://github.com/jupyterhub/repo2docker), where we install [Quarto](https://quarto.org/).
+
+The content that I wrote is not being render correctly because of it needs a newer version of [Quarto](https://quarto.org/). What should I do?
+:   Open an issue at https://github.com/GESIS-Methods-Hub/repo2docker_base_image_with_quarto requesting for a new release and we will follow up with you.
