@@ -13,6 +13,7 @@ find . \
     -o \( -type f -iname '*.csl' \) \
     -o \( -type f -iname '*.jpg' \) \
     -o \( -type f -iname '*.jpeg' \) \
+    -o \( -type f -iname '*.png' \) \
     -o \( -type f -iname '*.gif' \) \
     -o \( -type f -iname '*.tif' \) \
     -o \( -type f -iname '*.tiff' \) \
