@@ -19,5 +19,4 @@ cd $input_dirname
 quarto \
     render ${input_basename} \
     --to pdf \
-    --output index.pdf && \
-    rm -rf _output
+    --output index.pdf
