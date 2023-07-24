@@ -16,12 +16,11 @@ The collection is organised in two levels.
 
 ## Dependencies
 
+- [Docker](https://www.docker.com/)
 - Quarto >= 1.3
 - R
-  - devtools
 - Python
   - [repo2docker](https://repo2docker.readthedocs.io/)
-  - [jupytext](https://jupytext.readthedocs.io/)
 
 ### Dependencies installation
 
