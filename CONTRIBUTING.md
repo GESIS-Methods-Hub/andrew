@@ -18,7 +18,9 @@ The project is structured as a [R package](https://r-pkgs.org/). Check the `R` d
 
 ### Install dependencies with `micromamba`
 
-Install `micromamba` following the [Mamba Documentation](https://mamba.readthedocs.io/en/latest/installation.html#automatic-installation).
+Except for Docker and Quarto, all the depenencies cam be installed with `mamba`. For Docker, follow the steps in https://docs.docker.com/engine/install/ and, for Quarto, download the latest release from https://github.com/quarto-dev/quarto-cli/releases.
+
+Install `micromamba` following the [Mamba Documentation](https://mamba.readthedocs.io/en/latest/installation.html#automatic-installation) and run
 
 ```bash
 micromamba create -y -n andrew -f env.yaml
