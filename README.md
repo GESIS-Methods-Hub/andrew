@@ -1,4 +1,4 @@
-# andrew
+# andrew <img src="img/andrew-logo.png" align="right" \>
 
 `andrew` is designed to make it quick to build a website that shows a collection of tutorials or vignette of **transparent analytic** computational methods. Tutorials and vignette **must** be reproducible and, to enforce it, `andrew` executes the calculations presents in [Jupyter Notebooks](https://nbformat.readthedocs.io/) and [R Markdown](https://rmarkdown.rstudio.com/) files in an [container](https://en.wikipedia.org/wiki/OS-level_virtualization).
 
