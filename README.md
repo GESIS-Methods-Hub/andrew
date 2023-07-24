@@ -26,10 +26,16 @@ The collection is organised in two levels.
 
 We recommend use [`mamba`](https://mamba.readthedocs.io/) to install the dependencies. A step by step is available at [the Contribution Guide](./CONTRIBUTING.md).
 
-## How to Build the Website
+## Install `andrew`
 
 ```bash
-Rscript -e "devtools::load_all(); andrew::main(source_dir='demo')"
+Rscript -e "devtools::install('GESIS-Methods-Hub/andrew')"
+```
+
+## How to Build the Demo Website
+
+```bash
+Rscript -e "andrew::main(source_dir='demo')"
 ```
 
 ## Similar Projects
