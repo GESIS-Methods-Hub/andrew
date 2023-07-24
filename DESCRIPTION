@@ -1,6 +1,6 @@
 Package: andrew
 Type: Package
-Title: Create web portal showing collection of methods
+Title: Aggregator for Navigatable Discoverable Reproducible and Educational work
 Version: 0.1.0
 Author: Raniere Silva
 Maintainer: Raniere Silva <Raniere.CostadaSilva@gesis.org>

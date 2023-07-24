@@ -1,6 +1,6 @@
-# andrew <img src="img/andrew-logo.png" align="right" \>
+# andrew <img src="man/figures/logo.png" align="right" />
 
-`andrew` is designed to make it quick to build a website that shows a collection of tutorials or vignette of **transparent analytic** computational methods. Tutorials and vignette **must** be reproducible and, to enforce it, `andrew` executes the calculations presents in [Jupyter Notebooks](https://nbformat.readthedocs.io/) and [R Markdown](https://rmarkdown.rstudio.com/) files in an [container](https://en.wikipedia.org/wiki/OS-level_virtualization).
+`andrew` (Aggregator for Navigatable Discoverable Reproducible and Educational work) is designed to make it quick to build a website that shows a collection of tutorials or vignette of **transparent analytic** computational methods. Tutorials and vignette **must** be reproducible and, to enforce it, `andrew` executes the calculations presents in [Jupyter Notebooks](https://nbformat.readthedocs.io/) and [R Markdown](https://rmarkdown.rstudio.com/) files in an [container](https://en.wikipedia.org/wiki/OS-level_virtualization).
 
 ![Workflow diagram ilustrating how andrew works.](img/workflow.drawio.png)
 
@@ -16,21 +16,26 @@ The collection is organised in two levels.
 
 ## Dependencies
 
+- [Docker](https://www.docker.com/)
 - Quarto >= 1.3
 - R
-  - devtools
 - Python
   - [repo2docker](https://repo2docker.readthedocs.io/)
-  - [jupytext](https://jupytext.readthedocs.io/)
 
 ### Dependencies installation
 
 We recommend use [`mamba`](https://mamba.readthedocs.io/) to install the dependencies. A step by step is available at [the Contribution Guide](./CONTRIBUTING.md).
 
-## How to Build the Website
+## Install `andrew`
 
 ```bash
-Rscript -e "devtools::load_all(); andrew::main(source_dir='demo')"
+Rscript -e "devtools::install('GESIS-Methods-Hub/andrew')"
+```
+
+## How to Build the Demo Website
+
+```bash
+Rscript -e "andrew::main(source_dir='demo')"
 ```
 
 ## Similar Projects
