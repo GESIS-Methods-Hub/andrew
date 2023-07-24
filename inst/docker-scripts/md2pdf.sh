@@ -12,7 +12,7 @@ basename2render=$(basename ${file2render})
 input_dirname=${basename2render%.*}
 input_basename=index.md
 
-cd ~/methodshub/$input_dirname
+cd ~/andrew/$input_dirname
 
 quarto --version
 

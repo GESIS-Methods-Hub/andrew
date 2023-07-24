@@ -42,8 +42,8 @@ Build container with pkgdown:
     - name:  docker-private.gesis.intra/gesis/dind:5.5
       alias: docker
   script:
-    - docker build --target pkgdown --no-cache --pull -t docker-private-snapshots.gesis.intra/gesis/methods-hub/methodshub/pkgdown:${DOCKER_IMAGE_TAG} .
-    - docker push docker-private-snapshots.gesis.intra/gesis/methods-hub/methodshub/pkgdown:${DOCKER_IMAGE_TAG}
+    - docker build --target pkgdown --no-cache --pull -t docker-private-snapshots.gesis.intra/gesis/methods-hub/andrew/pkgdown:${DOCKER_IMAGE_TAG} .
+    - docker push docker-private-snapshots.gesis.intra/gesis/methods-hub/andrew/pkgdown:${DOCKER_IMAGE_TAG}
 
 pages:
   stage: build
@@ -54,7 +54,7 @@ pages:
         - DESCRIPTION
         - '*.md'
         - R/**/*
-  image: docker-private-snapshots.gesis.intra/gesis/methods-hub/methodshub/pkgdown:${DOCKER_IMAGE_TAG}
+  image: docker-private-snapshots.gesis.intra/gesis/methods-hub/andrew/pkgdown:${DOCKER_IMAGE_TAG}
   script:
     - Rscript --verbose --vanilla -e 'devtools::install()'
     - Rscript --verbose --vanilla -e 'pkgdown::build_site()'
@@ -68,7 +68,7 @@ demo:
   stage: build
   tags:
     - docker
-    - methodshub
+    - andrew
   rules:
     - !reference [.manual-web, rules]
     - if: $CI_PIPELINE_SOURCE == 'trigger'
@@ -77,10 +77,10 @@ demo:
         - R/**/*
         - inst/**/*
         - demo/**/*
-  image: docker-private-snapshots.gesis.intra/gesis/methods-hub/methodshub/pkgdown:${DOCKER_IMAGE_TAG}
+  image: docker-private-snapshots.gesis.intra/gesis/methods-hub/andrew/pkgdown:${DOCKER_IMAGE_TAG}
   script:
     - Rscript --verbose --vanilla -e 'devtools::install()'
-    - Rscript -e "methodshub::main(source_dir='demo')"
+    - Rscript -e "andrew::main(source_dir='demo')"
     - quarto check
     - cd demo
     - quarto render --to html

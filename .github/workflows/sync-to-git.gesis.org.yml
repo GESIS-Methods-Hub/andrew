@@ -8,7 +8,7 @@ on:
 jobs:
   sync:
     name: GitLab Sync
-    if: github.repository == 'GESIS-Methods-Hub/methodshub'
+    if: github.repository == 'GESIS-Methods-Hub/andrew'
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -17,5 +17,5 @@ jobs:
     - uses: action-pack/gitlab-sync@v3
       with:
         username: ${{ github.actor }}
-        url: https://git.gesis.org/methods-hub/methodshub.git
+        url: https://git.gesis.org/methods-hub/andrew.git
         token: ${{ secrets.GITLAB_TOKEN }}

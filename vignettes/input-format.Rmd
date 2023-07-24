@@ -2,7 +2,7 @@
 title: Input Format
 ---
 
-`methodshub` tries to support a wide range of input formats for content.
+`andrew` tries to support a wide range of input formats for content.
 Each piece of content is represented by a Git repository **and** a file.
 In the abstence of a file, the `README.md` should be used.
 
@@ -175,24 +175,24 @@ Example: https://github.com/GESIS-Methods-Hub/minimal-interview-example-docx
 
 ## Quarto (book)
 
-**Not supported yet**. Visit https://github.com/GESIS-Methods-Hub/methodshub/issues/119 for updates.
+**Not supported yet**. Visit https://github.com/GESIS-Methods-Hub/andrew/issues/119 for updates.
 
 ## Markedly Structured Text (MyST)
 
-**Not supported yet**. Visit https://github.com/GESIS-Methods-Hub/methodshub/issues/59 for updates.
+**Not supported yet**. Visit https://github.com/GESIS-Methods-Hub/andrew/issues/59 for updates.
 
 Example: https://github.com/GESIS-Methods-Hub/minimal-example-myst
 
 ## Jupyter Notebook (using MyST extension)
 
-**Not supported yet**. Visit https://github.com/GESIS-Methods-Hub/methodshub/issues/59 for updates.
+**Not supported yet**. Visit https://github.com/GESIS-Methods-Hub/andrew/issues/59 for updates.
 
 Example: https://github.com/GESIS-Methods-Hub/minimal-example-ipynb-myst-python
 
 ## Jupyter book
 
-**Not supported yet**. Visit https://github.com/GESIS-Methods-Hub/methodshub/issues/120 for updates.
+**Not supported yet**. Visit https://github.com/GESIS-Methods-Hub/andrew/issues/120 for updates.
 
 ## Python Package (with Sphinx website)
 
-**Not supported yet**. Visit https://github.com/GESIS-Methods-Hub/methodshub/issues/121 for updates.
+**Not supported yet**. Visit https://github.com/GESIS-Methods-Hub/andrew/issues/121 for updates.

@@ -44,12 +44,12 @@ render_single_contribution <- function(contribution_row) {
   fs::dir_create(git_slang)
 
   docker_scripts_location <-
-    system.file("docker-scripts", package = "methodshub", mustWork = TRUE)
+    system.file("docker-scripts", package = "andrew", mustWork = TRUE)
   pandoc_filters_location <-
-    system.file("pandoc-filters", package = "methodshub", mustWork = TRUE)
+    system.file("pandoc-filters", package = "andrew", mustWork = TRUE)
   output_location <- git_slang |>
     fs::path_real()
-  output_location_in_container <- "/tmp/methodshub"
+  output_location_in_container <- "/tmp/andrew"
 
   logger::log_info("Location of docker_scripts directory: {docker_scripts_location}")
   logger::log_info("Location of pandoc_filters directory: {pandoc_filters_location}")
@@ -61,8 +61,8 @@ render_single_contribution <- function(contribution_row) {
     logger::log_info("Rendering using {script} ...")
 
     docker_call_template <- 'docker run \\
-    --mount type=bind,source=${docker_scripts_location},target=/home/methodshub/_docker-scripts \\
-    --mount type=bind,source=${pandoc_filters_location},target=/home/methodshub/_pandoc-filters \\
+    --mount type=bind,source=${docker_scripts_location},target=/home/andrew/_docker-scripts \\
+    --mount type=bind,source=${pandoc_filters_location},target=/home/andrew/_pandoc-filters \\
     --mount type=bind,source=${output_location},target=${output_location_in_container} \\
     --env github_https=${github_https} \\
     --env github_user_name=${github_user_name} \\
@@ -106,7 +106,7 @@ render_single_contribution <- function(contribution_row) {
     docker_pdf_call_template <- 'docker run \\
       --user=${host_user_id}:${host_user_id} \\
       --mount type=bind,source=${docker_scripts_location},target=/home/mambauser/_docker-scripts \\
-      --mount type=bind,source=${output_location},target=/home/mambauser/methodshub \\
+      --mount type=bind,source=${output_location},target=/home/mambauser/andrew \\
       --env file2render=${file2render} \\
       registry.gitlab.com/quarto-forge/docker/quarto_all \\
       /bin/bash -c "/home/mambauser/_docker-scripts/md2pdf.sh"'

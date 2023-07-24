@@ -1,18 +1,18 @@
-# methodshub
+# andrew
 
-`methodshub` is designed to make it quick to build a website that shows a collection of tutorials or vignette of **transparent analytic** computational methods. Tutorials and vignette **must** be reproducible and, to enforce it, `methodshub` executes the calculations presents in [Jupyter Notebooks](https://nbformat.readthedocs.io/) and [R Markdown](https://rmarkdown.rstudio.com/) files in an [container](https://en.wikipedia.org/wiki/OS-level_virtualization).
+`andrew` is designed to make it quick to build a website that shows a collection of tutorials or vignette of **transparent analytic** computational methods. Tutorials and vignette **must** be reproducible and, to enforce it, `andrew` executes the calculations presents in [Jupyter Notebooks](https://nbformat.readthedocs.io/) and [R Markdown](https://rmarkdown.rstudio.com/) files in an [container](https://en.wikipedia.org/wiki/OS-level_virtualization).
 
-![Workflow diagram ilustrating how methodshub works.](img/workflow.drawio.png)
+![Workflow diagram ilustrating how andrew works.](img/workflow.drawio.png)
 
 The collection is organised in two levels.
 
-![Screenshot of demo showing the content of the "root".](img/methodshub-root.png)
+![Screenshot of demo showing the content of the "root".](img/andrew-root.png)
 
-![Screenshot of demo showing the content of a 1st level collection.](img/methodshub-1st-level.png)
+![Screenshot of demo showing the content of a 1st level collection.](img/andrew-1st-level.png)
 
-![Screenshot of demo showing the content of of a 2nd level collection.](img/methodshub-2nd-level.png)
+![Screenshot of demo showing the content of of a 2nd level collection.](img/andrew-2nd-level.png)
 
-![Screenshot of demo showing one document in the collection.](img/methodshub-content.png)
+![Screenshot of demo showing one document in the collection.](img/andrew-content.png)
 
 ## Dependencies
 
@@ -30,7 +30,7 @@ We recommend use [`mamba`](https://mamba.readthedocs.io/) to install the depende
 ## How to Build the Website
 
 ```bash
-Rscript -e "devtools::load_all(); methodshub::main(source_dir='demo')"
+Rscript -e "devtools::load_all(); andrew::main(source_dir='demo')"
 ```
 
 ## Similar Projects

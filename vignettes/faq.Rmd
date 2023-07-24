@@ -3,7 +3,7 @@ title: Frequently Asked Questions (FAQ)
 author: Raniere Silva
 ---
 
-Why is `methodshub` write in R? Why not Python?
+Why is `andrew` write in R? Why not Python?
 :   Because our team has more R developers when the project started.
 
 What Docker base image do you use to create the rendering environment?

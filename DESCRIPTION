@@ -1,4 +1,4 @@
-Package: methodshub
+Package: andrew
 Type: Package
 Title: Create web portal showing collection of methods
 Version: 0.1.0
@@ -7,7 +7,7 @@ Maintainer: Raniere Silva <Raniere.CostadaSilva@gesis.org>
 Description: From a list of Git repositories, it create containers
     and compiles documentation.
 License: MIT
-URL: https://github.com/GESIS-Methods-Hub/methodshub/, https://gesis-methods-hub.github.io/methodshub/
+URL: https://github.com/GESIS-Methods-Hub/andrew/, https://gesis-methods-hub.github.io/andrew/
 Encoding: UTF-8
 LazyData: true
 Suggests: 
