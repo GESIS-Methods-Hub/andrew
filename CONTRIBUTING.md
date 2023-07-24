@@ -3,7 +3,7 @@
 ## Getting Started
 
 ```bash
-git clone git@git.gesis.org:methods-hub/portal.git
+git clone git@github.com:GESIS-Methods-Hub/andrew.git
 ```
 
 ## Source Code
