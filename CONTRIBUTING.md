@@ -21,7 +21,7 @@ The project is structured as a [R package](https://r-pkgs.org/). Check the `R` d
 Install `micromamba` following the [Mamba Documentation](https://mamba.readthedocs.io/en/latest/installation.html#automatic-installation).
 
 ```bash
-micromamba create -y -n methodshub -f env.yaml
+micromamba create -y -n andrew -f env.yaml
 ```
 
 ### Run tests
@@ -41,7 +41,7 @@ devtools::load_all()
 ```
 
 ```r
-methodshub::main(source_dir="demo")
+andrew::main(source_dir="demo")
 ```
 
 ### Add new third package dependecy

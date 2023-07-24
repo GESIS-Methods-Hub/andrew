@@ -2,7 +2,7 @@
 title: Advices to Authors
 ---
 
-`methodshub`'s primary output format is HTML but Quarto document and Jupyter Notebook are provided to help readers trying to re-use the information and **automatically generated** PDF is provided to facilitate printing. Produce HTML and PDF has it's challenges and we share advices to authors based on our own experience.
+`andrew`'s primary output format is HTML but Quarto document and Jupyter Notebook are provided to help readers trying to re-use the information and **automatically generated** PDF is provided to facilitate printing. Produce HTML and PDF has it's challenges and we share advices to authors based on our own experience.
 
 # Mathematical Formula
 
