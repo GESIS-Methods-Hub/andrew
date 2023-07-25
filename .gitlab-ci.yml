@@ -68,7 +68,7 @@ demo:
   stage: build
   tags:
     - docker
-    - andrew
+    - methodshub
   rules:
     - !reference [.manual-web, rules]
     - if: $CI_PIPELINE_SOURCE == 'trigger'
