@@ -35,7 +35,7 @@ echo "Couldn't locate cover* file"
 cover_metadata=""
 else
 echo "Located $cover_filename"
-cover_metadata="--metadata=image:$cover_filename"
+cover_metadata="$cover_filename"
 fi
 
 pandoc \
@@ -43,18 +43,18 @@ pandoc \
     --to markdown \
     --standalone \
     --extract-media=./ \
-    ${cover_metadata} \
-    --metadata="prefer-html:true" \
-    --metadata="guide:true" \
-    --metadata="citation: true" \
-    --metadata="github_https:${github_https}" \
-    --metadata="github_user_name:${github_user_name}" \
-    --metadata="github_repository_name:${github_repository_name}" \
-    --metadata="git_hash:${git_hash}" \
-    --metadata="git_date:${git_date}" \
+    ${cover_metadata:+"--metadata" "$cover_metadata"} \
+    --metadata "prefer-html:true" \
+    --metadata "guide:true" \
+    --metadata "citation: true" \
+    --metadata "github_https:${github_https}" \
+    --metadata "github_user_name:${github_user_name}" \
+    --metadata "github_repository_name:${github_repository_name}" \
+    --metadata "git_hash:${git_hash}" \
+    --metadata "git_date:${git_date}" \
     --metadata "date:${git_date}" \
-    --metadata="info_pandoc_version:${pandoc_version}" \
-    --metadata="source_filename:${file2render}" \
+    --metadata "info_pandoc_version:${pandoc_version}" \
+    --metadata "source_filename:${file2render}" \
     --lua-filter=_pandoc-filters/remove-toc.lua \
     --output index.md \
     ${basename2render} && \

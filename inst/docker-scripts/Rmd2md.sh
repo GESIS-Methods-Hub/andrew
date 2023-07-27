@@ -38,17 +38,17 @@ quarto \
     render ${basename2render} \
     --to markdown \
     --output index.md \
-    --metadata="prefer-html:true" \
-    --metadata="method:true" \
-    --metadata="citation: true" \
-    --metadata="github_https:${github_https}" \
-    --metadata="github_user_name:${github_user_name}" \
-    --metadata="github_repository_name:${github_repository_name}" \
-    --metadata="docker_image:${docker_image}" \
-    --metadata="git_hash:${git_hash}" \
-    --metadata="git_date:${git_date}" \
+    --metadata "prefer-html:true" \
+    --metadata "method:true" \
+    --metadata "citation: true" \
+    --metadata "github_https:${github_https}" \
+    --metadata "github_user_name:${github_user_name}" \
+    --metadata "github_repository_name:${github_repository_name}" \
+    --metadata "docker_image:${docker_image}" \
+    --metadata "git_hash:${git_hash}" \
+    --metadata "git_date:${git_date}" \
     --metadata "date:${git_date}" \
-    --metadata="info_quarto_version:${quarto_version}" \
-    --metadata="source_filename:${Rmd_file}" && \
+    --metadata "info_quarto_version:${quarto_version}" \
+    --metadata "source_filename:${Rmd_file}" && \
     cp index.md $output_dirname/$output_basename && \
     ~/_docker-scripts/copy-assets.sh $output_dirname
