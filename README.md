@@ -2,6 +2,8 @@
 
 `andrew` (Aggregator for Navigatable Discoverable Reproducible and Educational work) is designed to speed up the creation of a **static** website with pages from a collection of tutorials or vignette of **transparent analytic** computational methods. This is inspired by the feed aggregator Planet. Tutorials and vignette **must** be reproducible and, to enforce it, `andrew` executes the calculations presents in [Jupyter Notebooks](https://nbformat.readthedocs.io/) and [R Markdown](https://rmarkdown.rstudio.com/) files in an [container](https://en.wikipedia.org/wiki/OS-level_virtualization).
 
+The curation of tutorials or vignette that is included in the **static** website can be done using a [sibling project](https://github.com/GESIS-Methods-Hub/andrew-django-admin) or manually editting the CSV files.
+
 ![Workflow diagram ilustrating how andrew works.](img/workflow.drawio.png)
 
 The collection is organised in two levels.
