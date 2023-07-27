@@ -35,7 +35,7 @@ echo "Couldn't locate cover* file"
 cover_metadata=""
 else
 echo "Located $cover_filename"
-cover_metadata="$cover_filename"
+cover_metadata="image:$cover_filename"
 fi
 
 pandoc \
