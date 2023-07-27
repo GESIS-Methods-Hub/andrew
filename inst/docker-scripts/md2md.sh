@@ -35,26 +35,26 @@ cd $dirname2render
 # 3. search for cover image
 if [[ $(head -n 1 ${basename2render} | grep -e '---' | wc -l) = 0 ]]
 then
-echo ${basename2render} does NOT have a YAML header!
-shift_heading_level='--shift-heading-level-by=-1'
-fallback_author="--metadata='author:$(git log -1 --format=format:%aN)'"
+    echo ${basename2render} does NOT have a YAML header!
+    shift_heading_level='--shift-heading-level-by=-1'
+    fallback_author="--metadata=author:'$(git log -1 --format=format:%aN)'"
 
-cover_filename=$(find . -name 'cover*' | head -n 1)
+    cover_filename=$(find . -name 'cover*' | head -n 1)
 
-if [ -z "$cover_filename" ]
-then
-echo "Couldn't locate cover* file"
-cover_metadata=""
+    if [ -z "$cover_filename" ]
+    then
+    echo "Couldn't locate cover* file"
+    cover_metadata=""
+    else
+    echo "Located $cover_filename"
+    cover_metadata="--metadata=image:$cover_filename"
+    fi
+
 else
-echo "Located $cover_filename"
-cover_metadata="--metadata='image:$cover_filename'"
-fi
-
-else
-echo ${basename2render} has a YAML header!
-shift_heading_level='--shift-heading-level-by=0'
-fallback_author=''
-cover_metadata=""
+    echo ${basename2render} has a YAML header!
+    shift_heading_level='--shift-heading-level-by=0'
+    fallback_author=''
+    cover_metadata=""
 fi
 
 quarto \
@@ -76,5 +76,5 @@ quarto \
     --metadata "date:${git_date}" \
     --metadata="info_quarto_version:${quarto_version}" \
     --metadata="source_filename:${file2render}" && \
-    cp index.md-tmp $output_dirname/$output_basename && \
-    ~/_docker-scripts/copy-assets.sh $output_dirname
+    cp index.md-tmp "$output_dirname/$output_basename" && \
+    ~/_docker-scripts/copy-assets.sh "$output_dirname"
