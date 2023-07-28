@@ -24,9 +24,11 @@ This should be used **only** as a fallback.
 
 - [ ] Image (900×600 pixels) named `cover.jpg` or `cover.svg` to use as cover
 
-## Markdown
+## (Pandoc) Markdown
 
 Example: https://github.com/GESIS-Methods-Hub/minimal-example-md
+
+This is an expansion of John Gruber's [Markdown](https://daringfireball.net/projects/markdown/) syntax that supports tables, citation, ...
 
 ### Required
 
@@ -47,6 +49,8 @@ Example: https://github.com/GESIS-Methods-Hub/minimal-example-md
 ## Quarto (document)
 
 Example: https://github.com/GESIS-Methods-Hub/minimal-example-qmd-rstats-units
+
+Quarto is based on Pandoc Markdown and adds support to executable code blocks.
 
 ### Required
 
@@ -69,6 +73,8 @@ Example: https://github.com/GESIS-Methods-Hub/minimal-example-qmd-rstats-units
 
 Example: https://github.com/GESIS-Methods-Hub/minimal-example-ipynb-python
 
+Markdown cells in the Jupyter Notebook **must** use Quarto Markdown instead of [Jupyter Notebook Markdown](https://jupyterbook.org/en/stable/file-types/markdown.html) (based on [CommonMark Markdown](https://commonmark.org/)) and [MyST Markdown](https://mystmd.org/).
+
 ### Required
 
 - [ ] Markdown file named `index.ipynb` or another name except `README.ipynb`
@@ -76,8 +82,6 @@ Example: https://github.com/GESIS-Methods-Hub/minimal-example-ipynb-python
 
       - `title`
       - `author`
-      - `image`
-      - `image-alt`
 
       The cell **must be** of type `raw`.
 - [ ] Configuration files for `repo2docker` to use when installing dependencies
@@ -112,6 +116,7 @@ Example: https://github.com/GESIS-Methods-Hub/minimal-example-rstats-package
 
       - `title`
       - `author`
+- [ ] Additional configuration files for `repo2docker` to use when installing dependencies
 
 ### Desired
 
@@ -150,8 +155,8 @@ Example: https://github.com/GESIS-Methods-Hub/minimal-guide-example-docx
 ### Required
 
 - [ ] Microsoft Office Word 2007 file named `index.md` or another name
-- [ ] Title using style `Title`
-- [ ] One author name per paragrah using the style `Author`.
+- [ ] Title using [style](https://support.microsoft.com/en-us/office/apply-styles-f8b96097-4d25-4fac-8200-6139c8093109) `Title`
+- [ ] One author name per paragrah using the [style](https://support.microsoft.com/en-us/office/apply-styles-f8b96097-4d25-4fac-8200-6139c8093109 `Author`.
 
 ### Desired
 
@@ -164,8 +169,8 @@ Example: https://github.com/GESIS-Methods-Hub/minimal-interview-example-docx
 ### Required
 
 - [ ] Microsoft Office Word 2007 file named `index.md` or another name
-- [ ] Title using style `Title`
-- [ ] One author name per paragrah using the style `Author`.
+- [ ] Title using [style](https://support.microsoft.com/en-us/office/apply-styles-f8b96097-4d25-4fac-8200-6139c8093109 `Title`
+- [ ] One author name per paragrah using the [style](https://support.microsoft.com/en-us/office/apply-styles-f8b96097-4d25-4fac-8200-6139c8093109 `Author`.
 
 ### Desired
 
