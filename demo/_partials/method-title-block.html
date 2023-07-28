@@ -3,13 +3,20 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Reproduce information</h1>
+                    <h1 class="modal-title fs-5" id="reproduceModalLabel">Reproduce information</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p>Git information</p>
-                    <p>Git repository: $github_https$</p>
-                    <p>Commit: $git_hash$</p>
+                    <h2 class="fs-5">Git information</h2>
+                    <p>Git repository: <a href="$github_https$">$github_https$</a></p>
+                    <p>Commit: <a href="$github_https$/tree/$git_hash$">$git_hash$</a></p>
+                    <h2 class="fs-5">Execution environment information</h2>
+                    $if(docker_image)$
+                    <p>Docker image: $docker_image$</p>
+                    $endif$
+                    $if(info_quarto_version)$
+                    <p>Quarto version: $info_quarto_version$</p>
+                    $endif$
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
@@ -34,7 +41,6 @@
             <ul class="dropdown-menu">
                 <li><a class="dropdown-item" target="_blank" href="http://colab.research.google.com/github/$github_user_name$/$github_repository_name$/blob/main/$source_filename$">Open on Google Colaboratory</a></li>
                 <li><a class="dropdown-item" target="_blank" href="https://github.com/codespaces/new?template_repository=$github_user_name$/$github_repository_name$">Open on GitHub Codespaces</a></li>
-                <li><a class="dropdown-item" target="_blank" href="https://hub.docker.com/repository/docker/$docker_image$/general">Download Docker Image</a></li>
             </ul>
         </div>  
         $endif$
