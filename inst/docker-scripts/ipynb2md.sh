@@ -29,6 +29,7 @@ cd $dirname2render
 
 quarto \
     render ${basename2render} \
+    --execute \
     --to markdown \
     --output index.md \
     --metadata "prefer-html:true" \
