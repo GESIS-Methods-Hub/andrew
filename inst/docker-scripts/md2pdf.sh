@@ -9,7 +9,7 @@
 dirname2render=$(dirname ${file2render})
 basename2render=$(basename ${file2render})
 
-input_dirname=${basename2render%.*}
+input_dirname=$dirname2render/${basename2render%.*}
 input_basename=index.md
 
 cd ~/andrew/$input_dirname
