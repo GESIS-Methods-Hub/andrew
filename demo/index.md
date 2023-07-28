@@ -1,5 +1,5 @@
 ---
-page-title: "Demo of MethodsHub"
+page-title: "Demo of `andrew`"
 sidebar: false
 toc: false
 listing:
