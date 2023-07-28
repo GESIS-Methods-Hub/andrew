@@ -1,12 +1,17 @@
 <div class="grid">
     <div class="g-col-12">
-    <a class="btn btn-primary" href="index.pdf" role="button">
-        <i class="bi bi-file-earmark-arrow-down"></i> Download PDF
-    </a>
+        <div class="btn-group"  role="group">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+                <i class="bi bi-file-earmark-arrow-down"></i> Download as
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="index.pdf"> <i class="bi bi-file-earmark-pdf"></i> PDF</a></li>
+            </ul>
+        </div>
 
-    <a class="btn btn-primary" href="#citation" role="button">
-        Cite
-    </a>
+        <a class="btn btn-primary" href="#citation" role="button">
+            Cite
+        </a>
     </div>
 </div>
 
