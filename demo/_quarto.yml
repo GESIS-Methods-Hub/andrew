@@ -6,7 +6,7 @@ project:
     - img
 
 website:
-  title: "Demo of MethodsHub"
+  title: "Demo of `andrew`"
   navbar:
     left:
       - href: index.md
