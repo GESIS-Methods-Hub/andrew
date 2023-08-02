@@ -83,3 +83,9 @@ usethis::use_test("new-test")
 ```r
 usethis::use_build_ignore("file-to-ignore")
 ```
+
+## Style R files
+
+```r
+styler::style_dir("R")
+```
