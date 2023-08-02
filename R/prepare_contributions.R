@@ -1,3 +1,25 @@
+pre_process_github_link <- function(contribution_url) {
+  regex_match <-
+    stringr::str_match(contribution_url, "https://github.com/")
+
+  if ((!is.na(regex_match[1])) && stringr::str_ends(contribution_url, ".git") == FALSE) {
+    return(stringr::str_c(contribution_url, ".git"))
+  }
+
+  return(contribution_url)
+}
+
+pre_process_gitlab_link <- function(contribution_url) {
+  regex_match <-
+    stringr::str_match(contribution_url, "https://gitlab.com/")
+
+  if ((!is.na(regex_match[1])) && stringr::str_ends(contribution_url, ".git") == FALSE) {
+    return(stringr::str_c(contribution_url, ".git"))
+  }
+
+  return(contribution_url)
+}
+
 #' Enrich single contribution source
 #'
 #' @param contribution_row
@@ -7,19 +29,20 @@
 #'
 #' @examples
 pre_process_contributions_list <- function(contribution_row) {
-  git_repository_url <- contribution_row["link"]
+  logger::log_debug("Pre-processing {contribution_row['link']} ...")
+  contribution_url <- contribution_row["link"] |>
+    pre_process_github_link() |>
+    pre_process_gitlab_link()
 
-  if (stringr::str_ends(git_repository_url, ".git") == FALSE) {
-    git_repository_url <- stringr::str_c(git_repository_url, ".git")
+  if (stringr::str_ends(contribution_url, ".git") == TRUE) {
+    regex_match <-
+      stringr::str_match(contribution_url, "https://(.*)/(.*)/(.*).git")
+
+    return(paste0(regex_match[3], "/", regex_match[4]))
   }
 
-  regex_match <-
-    stringr::str_match(git_repository_url, "https://github.com/(.*).git")
-  user_and_project <- regex_match[2]
-
-  return(user_and_project)
+  return("NA/NA")
 }
-
 
 #' Prepare contributions database
 #'
@@ -38,7 +61,13 @@ prepare_contributions <- function(all_contributions) {
       delim = "/",
       names = c("user_name", "repository_name"),
       cols_remove = FALSE
+    ) |>
+    dplyr::mutate(
+      slang = dplyr::na_if(slang, "NA/NA"),
+      user_name = dplyr::na_if(user_name, "NA"),
+      repository_name = dplyr::na_if(repository_name, "NA")
     )
+  print(all_contributions)
   all_contributions$tmp_path <-
     stringr::str_c("_", all_contributions$slang)
   all_contributions$https <-
