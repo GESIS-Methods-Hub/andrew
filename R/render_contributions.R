@@ -101,7 +101,7 @@ render_single_contribution <- function(contribution_row) {
 
     logger::log_info("Rendering PDF ...")
 
-    host_user_id <- system("id -u", intern=TRUE)
+    host_user_id <- system("id -u", intern = TRUE)
 
     docker_pdf_call_template <- 'docker run \\
       --user=${host_user_id}:${host_user_id} \\
