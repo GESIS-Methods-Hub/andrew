@@ -14,10 +14,11 @@ test_that("csv with single line of GitHub", {
     filename = c(
       "index.md"
     ),
+    domain = c("github.com"),
     user_name = c("GESIS-Methods-Hub"),
     repository_name = c("minimal-example-md"),
     slang = c("GESIS-Methods-Hub/minimal-example-md"),
-    tmp_path = c("_GESIS-Methods-Hub/minimal-example-md"),
+    tmp_path = c("_github.com/GESIS-Methods-Hub/minimal-example-md"),
     https = c(
       "https://github.com/GESIS-Methods-Hub/minimal-example-md"
     ),
@@ -38,15 +39,16 @@ test_that("csv with single line of GitHub without .git", {
   )
   expected_all_contributions <- tibble::tibble(
     link = c(
-      "https://github.com/GESIS-Methods-Hub/minimal-example-md"
+      "https://github.com/GESIS-Methods-Hub/minimal-example-md.git"
     ),
     filename = c(
       "index.md"
     ),
+    domain = c("github.com"),
     user_name = c("GESIS-Methods-Hub"),
     repository_name = c("minimal-example-md"),
     slang = c("GESIS-Methods-Hub/minimal-example-md"),
-    tmp_path = c("_GESIS-Methods-Hub/minimal-example-md"),
+    tmp_path = c("_github.com/GESIS-Methods-Hub/minimal-example-md"),
     https = c(
       "https://github.com/GESIS-Methods-Hub/minimal-example-md"
     ),
@@ -77,6 +79,7 @@ test_that("csv with two line of GitHub", {
       "index.md",
       "index.qmd"
     ),
+    domain = c("github.com", "github.com"),
     user_name = c("GESIS-Methods-Hub", "GESIS-Methods-Hub"),
     repository_name = c("minimal-example-md", "minimal-example-qmd-rstats"),
     slang = c(
@@ -84,8 +87,8 @@ test_that("csv with two line of GitHub", {
       "GESIS-Methods-Hub/minimal-example-qmd-rstats"
     ),
     tmp_path = c(
-      "_GESIS-Methods-Hub/minimal-example-md",
-      "_GESIS-Methods-Hub/minimal-example-qmd-rstats"
+      "_github.com/GESIS-Methods-Hub/minimal-example-md",
+      "_github.com/GESIS-Methods-Hub/minimal-example-qmd-rstats"
     ),
     https = c(
       "https://github.com/GESIS-Methods-Hub/minimal-example-md",
@@ -116,10 +119,11 @@ test_that("csv with single line of GitLab", {
     filename = c(
       "index.md"
     ),
+    domain = c("gitlab.com"),
     user_name = c("GESIS-Methods-Hub"),
     repository_name = c("minimal-example-md"),
     slang = c("GESIS-Methods-Hub/minimal-example-md"),
-    tmp_path = c("_GESIS-Methods-Hub/minimal-example-md"),
+    tmp_path = c("_gitlab.com/GESIS-Methods-Hub/minimal-example-md"),
     https = c(
       "https://gitlab.com/GESIS-Methods-Hub/minimal-example-md"
     ),
@@ -145,6 +149,7 @@ test_that("csv with single line of Nextcloud ", {
     filename = c(
       "index.docx"
     ),
+    domain = c("nextcloud.com"),
     user_name = c(NA),
     repository_name = c(NA),
     slang = c(NA),
@@ -155,8 +160,6 @@ test_that("csv with single line of Nextcloud ", {
     dplyr::mutate(
       user_name = as.character(user_name),
       repository_name = as.character(repository_name),
-      slang = as.character(slang),
-      https = as.character(https),
     )
   all_contributions <- prepare_contributions(raw_all_contributions)
   expect_equal(all_contributions, expected_all_contributions)
