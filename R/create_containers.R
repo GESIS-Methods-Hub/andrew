@@ -78,13 +78,8 @@ create_container_from_repo <- function(contribution_row) {
 #'
 #' @examples
 create_containers <- function(all_contributions) {
-  if (any(all_contributions$source_type == "Git")) {
-    all_contributions |>
-      dplyr::filter(source_type == "Git") |>
-      apply(1, create_container_from_repo)
-  } else {
-    logger::log_info("No Git repository to process.")
-  }
+  all_contributions$docker_image <- all_contributions |>
+    apply(1, create_container_from_repo)
 
   return(all_contributions)
 }
