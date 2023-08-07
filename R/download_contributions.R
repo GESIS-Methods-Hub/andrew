@@ -14,7 +14,14 @@ donwload_single_http_contribution <- function(contribution_row) {
   fs::dir_create(http_dir_path)
 
   logger::log_info("Downloading {http_url} ...")
-  download.file(http_url, http_file_path)
+  tryCatch(
+    {
+      download.file(http_url, http_file_path)
+    },
+    error = function(e) {
+      logger::log_warn("Failed to download {http_url}: {e}")
+    }
+  )
   logger::log_info("Download of {http_url} completed.")
 }
 
@@ -68,8 +75,7 @@ download_contributions <- function(all_contributions) {
     all_contributions |>
       dplyr::filter(source_type == "Git") |>
       apply(1, donwload_single_git_contribution)
-  }
-  else {
+  } else {
     logger::log_info("No Git repository to process.")
   }
 
@@ -77,8 +83,7 @@ download_contributions <- function(all_contributions) {
     all_contributions |>
       dplyr::filter(source_type == "HTTP") |>
       apply(1, donwload_single_http_contribution)
-  }
-  else {
+  } else {
     logger::log_info("No Http source to process.")
   }
 
