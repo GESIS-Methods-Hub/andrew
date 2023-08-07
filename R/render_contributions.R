@@ -7,6 +7,8 @@
 #'
 #' @examples
 render_single_contribution <- function(contribution_row) {
+  logger::log_info("Rendering {contribution_row['filename']} from {contribution_row['link']}")
+
   RENDER_MATRIX <- list(
     "md" = c(
       "md2md.sh",
