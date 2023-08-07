@@ -7,6 +7,10 @@
 #'
 #' @examples
 create_container_from_repo <- function(contribution_row) {
+  if (contribution_row["source_type"] != "Git") {
+    return(NA)
+  }
+  
   git_repo_url <- contribution_row["link"]
   git_repo <- contribution_row["slang"]
   git_commit_sha <- contribution_row["git_sha"]
