@@ -7,6 +7,10 @@
 #'
 #' @examples
 get_last_commit_sha <- function(contribution_row) {
+  if (contribution_row["source_type"] != "Git") {
+    return(NA)
+  }
+
   repo <- git2r::repository(fs::path_real(contribution_row["tmp_path"]))
   last_commit <- git2r::revparse_single(repo, "HEAD")
   last_commit_sha <- git2r::sha(last_commit)
