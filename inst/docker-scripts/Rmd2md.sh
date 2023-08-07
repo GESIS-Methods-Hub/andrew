@@ -51,4 +51,4 @@ quarto \
     --metadata "info_quarto_version:${quarto_version}" \
     --metadata "source_filename:${Rmd_file}" && \
     cp index.md $output_dirname/$output_basename && \
-    ~/_docker-scripts/copy-assets.sh $output_dirname
+    ${docker_script_root}/copy-assets.sh $output_dirname

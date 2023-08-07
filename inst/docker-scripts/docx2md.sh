@@ -6,8 +6,17 @@
 #
 # docx2md.sh
 
+if test -f "/opt/quarto/bin/tools/pandoc"
+then
+    export PANDOC=/opt/quarto/bin/tools/pandoc
+else
+    export PANDOC=pandoc
+fi
+
 dirname2render=$(dirname ${file2render})
 basename2render=$(basename ${file2render})
+echo $dirname2render
+echo $basename2render
 
 output_dirname=$output_location/$dirname2render/${basename2render%.*}
 output_basename=index.md
@@ -23,10 +32,11 @@ git_hash=$(git rev-parse HEAD)
 # else
 git_date=$(git log -1 --format=format:%ad --date=format:%Y-%m-%d)
 
-pandoc_version=$(pandoc --version | head -n 1 | awk '{print $2}')
+pandoc_version=$(${PANDOC} --version | head -n 1 | awk '{print $2}')
 quarto_version=$(quarto --version)
 
 cd $dirname2render
+pwd
 cover_filename=$(find . -name 'cover*' | head -n 1)
 
 if [ -z "$cover_filename" ]
@@ -38,7 +48,7 @@ echo "Located $cover_filename"
 cover_metadata="image:$cover_filename"
 fi
 
-pandoc \
+${PANDOC} \
     --from docx+styles \
     --to markdown \
     --standalone \
@@ -59,4 +69,4 @@ pandoc \
     --output index.md \
     ${basename2render} && \
     cp index.md $output_dirname/$output_basename && \
-    ~/_docker-scripts/copy-assets.sh $output_dirname
+    ${docker_script_root}/copy-assets.sh $output_dirname
