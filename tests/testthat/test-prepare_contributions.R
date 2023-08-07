@@ -22,7 +22,8 @@ test_that("csv with single line of GitHub", {
     https = c(
       "https://github.com/GESIS-Methods-Hub/minimal-example-md"
     ),
-    filename_extension = c('md')
+    filename_extension = c('md'),
+    source_type = c('Git')
   )
   all_contributions <- prepare_contributions(raw_all_contributions)
   expect_equal(all_contributions, expected_all_contributions)
@@ -52,7 +53,8 @@ test_that("csv with single line of GitHub without .git", {
     https = c(
       "https://github.com/GESIS-Methods-Hub/minimal-example-md"
     ),
-    filename_extension = c('md')
+    filename_extension = c('md'),
+    source_type = c('Git')
   )
   all_contributions <- prepare_contributions(raw_all_contributions)
   expect_equal(all_contributions, expected_all_contributions)
@@ -97,6 +99,10 @@ test_that("csv with two line of GitHub", {
     filename_extension = c(
       'md',
       'qmd'
+    ),
+    source_type = c(
+      'Git',
+      'Git'
     )
   )
   all_contributions <- prepare_contributions(raw_all_contributions)
@@ -127,7 +133,8 @@ test_that("csv with single line of GitLab", {
     https = c(
       "https://gitlab.com/GESIS-Methods-Hub/minimal-example-md"
     ),
-    filename_extension = c('md')
+    filename_extension = c('md'),
+    source_type = c('Git')
   )
   all_contributions <- prepare_contributions(raw_all_contributions)
   expect_equal(all_contributions, expected_all_contributions)
@@ -155,7 +162,8 @@ test_that("csv with single line of Nextcloud ", {
     slang = c(NA),
     tmp_path = c("_nextcloud.com"),
     https = c(NA),
-    filename_extension = c('docx')
+    filename_extension = c('docx'),
+    source_type = c('HTTP')
   ) |>
     dplyr::mutate(
       user_name = as.character(user_name),

@@ -11,13 +11,13 @@ prepare_contributions <- function(all_contributions) {
     (
       (
         stringr::str_detect(all_contributions$link, "github.com") |
-        stringr::str_detect(all_contributions$link, "gitlab.com")
+          stringr::str_detect(all_contributions$link, "gitlab.com")
       )
     ),
     ifelse(
-        stringr::str_ends(all_contributions$link, '.git'),
-        all_contributions$link,
-        stringr::str_c(all_contributions$link, '.git')
+      stringr::str_ends(all_contributions$link, ".git"),
+      all_contributions$link,
+      stringr::str_c(all_contributions$link, ".git")
     ),
     all_contributions$link
   )
@@ -37,7 +37,7 @@ prepare_contributions <- function(all_contributions) {
   all_contributions$slang <- ifelse(
     is.na(all_contributions$user_name),
     NA,
-    stringr::str_c(all_contributions$user_name, '/', all_contributions$repository_name)
+    stringr::str_c(all_contributions$user_name, "/", all_contributions$repository_name)
   )
 
   all_contributions$tmp_path <- ifelse(
@@ -47,13 +47,19 @@ prepare_contributions <- function(all_contributions) {
   )
 
   all_contributions$https <- ifelse(
-    stringr::str_ends(all_contributions$link, '.git'),
+    stringr::str_ends(all_contributions$link, ".git"),
     stringr::str_replace(all_contributions$link, ".git$", ""),
     NA
   )
 
   all_contributions$filename_extension <-
     stringr::str_extract(all_contributions$filename, "(md|qmd|Rmd|ipynb|docx)$")
+
+  all_contributions$source_type <- ifelse(
+    stringr::str_ends(all_contributions$link, ".git"),
+    "Git",
+    "HTTP"
+  )
 
   return(all_contributions)
 }
