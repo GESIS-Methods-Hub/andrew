@@ -46,6 +46,20 @@ devtools::load_all()
 andrew::main(source_dir="demo")
 ```
 
+### Run package entrypoint with debug message
+
+```r
+devtools::load_all()
+```
+
+```r
+ logger::log_threshold(logger::DEBUG)
+ ```
+
+```r
+andrew::main(source_dir="demo")
+```
+
 ### Add new third package dependecy
 
 ```r
@@ -68,4 +82,10 @@ usethis::use_test("new-test")
 
 ```r
 usethis::use_build_ignore("file-to-ignore")
+```
+
+## Style R files
+
+```r
+styler::style_dir("R")
 ```

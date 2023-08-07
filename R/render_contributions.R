@@ -33,21 +33,39 @@ render_single_contribution <- function(contribution_row) {
     )
   )
 
-  git_slang <- contribution_row["slang"]
+  if (is.na(contribution_row["docker_image"])) {
+    logger::log_warn("Docker image is NA! Using registry.gitlab.com/quarto-forge/docker/quarto.")
+    docker_image <- "registry.gitlab.com/quarto-forge/docker/quarto"
+    home_dir_at_docker <- "/tmp"
+    render_at_dir <- fs::path(contribution_row["domain"])
+    mount_input_file <- stringr::str_interp(
+      "--mount type=bind,source=${input_file_path},target=${home_dir_at_docker}/${filename}",
+      list(
+        input_file_path = fs::path_real(fs::path(contribution_row["tmp_path"], contribution_row["filename"])),
+        home_dir_at_docker = home_dir_at_docker,
+        filename = contribution_row["filename"]
+      )
+    )
+  } else {
+    docker_image <- contribution_row["docker_image"]
+    home_dir_at_docker <- "/home/andrew"
+    render_at_dir <- fs::path(contribution_row["domain"], contribution_row["slang"])
+    mount_input_file <- ""
+  }
+
   file2render <- contribution_row["filename"]
   file2render_extension <- contribution_row["filename_extension"]
   github_https <- contribution_row["https"]
   github_user_name <- contribution_row["user_name"]
   github_repository_name <- contribution_row["repository_name"]
-  docker_image <- contribution_row["docker_image"]
 
-  fs::dir_create(git_slang)
+  fs::dir_create(render_at_dir)
 
   docker_scripts_location <-
     system.file("docker-scripts", package = "andrew", mustWork = TRUE)
   pandoc_filters_location <-
     system.file("pandoc-filters", package = "andrew", mustWork = TRUE)
-  output_location <- git_slang |>
+  output_location <- render_at_dir |>
     fs::path_real()
   output_location_in_container <- "/tmp/andrew"
 
@@ -61,8 +79,10 @@ render_single_contribution <- function(contribution_row) {
     logger::log_info("Rendering using {script} ...")
 
     docker_call_template <- 'docker run \\
-    --mount type=bind,source=${docker_scripts_location},target=/home/andrew/_docker-scripts \\
-    --mount type=bind,source=${pandoc_filters_location},target=/home/andrew/_pandoc-filters \\
+    ${mount_input_file} \\
+    --mount type=bind,source=${docker_scripts_location},target=${home_dir_at_docker}/_docker-scripts \\
+    --env docker_script_root=${home_dir_at_docker}/_docker-scripts \\
+    --mount type=bind,source=${pandoc_filters_location},target=${home_dir_at_docker}/_pandoc-filters \\
     --mount type=bind,source=${output_location},target=${output_location_in_container} \\
     --env github_https=${github_https} \\
     --env github_user_name=${github_user_name} \\
@@ -71,11 +91,13 @@ render_single_contribution <- function(contribution_row) {
     --env docker_image=${docker_image} \\
     --env output_location=${output_location_in_container} \\
     ${docker_image} \\
-    /bin/bash -c "./_docker-scripts/${script}"'
+    /bin/bash -c "${home_dir_at_docker}/_docker-scripts/${script}"'
 
     docker_call <- stringr::str_interp(
       docker_call_template,
       list(
+        mount_input_file = mount_input_file,
+        home_dir_at_docker = home_dir_at_docker,
         docker_scripts_location = docker_scripts_location,
         pandoc_filters_location = pandoc_filters_location,
         output_location = output_location,
@@ -101,7 +123,7 @@ render_single_contribution <- function(contribution_row) {
 
     logger::log_info("Rendering PDF ...")
 
-    host_user_id <- system("id -u", intern=TRUE)
+    host_user_id <- system("id -u", intern = TRUE)
 
     docker_pdf_call_template <- 'docker run \\
       --user=${host_user_id}:${host_user_id} \\
@@ -132,6 +154,7 @@ render_single_contribution <- function(contribution_row) {
 
   return(build_status)
 }
+
 
 #' Render all contributions from database
 #'

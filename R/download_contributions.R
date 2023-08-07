@@ -1,4 +1,4 @@
-#' Download single contribution
+#' Download single non-Git contribution
 #'
 #' @param contribution_row database row
 #'
@@ -6,7 +6,34 @@
 #' @export
 #'
 #' @examples
-donwload_single_contribution <- function(contribution_row) {
+donwload_single_http_contribution <- function(contribution_row) {
+  http_dir_path <- contribution_row["tmp_path"]
+  http_file_path <- fs::path(http_dir_path, contribution_row["filename"])
+  http_url <- contribution_row["link"]
+
+  fs::dir_create(http_dir_path)
+
+  logger::log_info("Downloading {http_url} ...")
+  tryCatch(
+    {
+      download.file(http_url, http_file_path)
+    },
+    error = function(e) {
+      logger::log_warn("Failed to download {http_url}: {e}")
+    }
+  )
+  logger::log_info("Download of {http_url} completed.")
+}
+
+#' Download single Git contribution
+#'
+#' @param contribution_row database row
+#'
+#' @return
+#' @export
+#'
+#' @examples
+donwload_single_git_contribution <- function(contribution_row) {
   git_repo_path <- contribution_row["tmp_path"]
   git_url <- contribution_row["link"]
 
@@ -44,8 +71,21 @@ donwload_single_contribution <- function(contribution_row) {
 #'
 #' @examples
 download_contributions <- function(all_contributions) {
-  all_contributions |>
-    apply(1, donwload_single_contribution)
+  if (any(all_contributions$source_type == "Git")) {
+    all_contributions |>
+      dplyr::filter(source_type == "Git") |>
+      apply(1, donwload_single_git_contribution)
+  } else {
+    logger::log_info("No Git repository to process.")
+  }
+
+  if (any(all_contributions$source_type == "HTTP")) {
+    all_contributions |>
+      dplyr::filter(source_type == "HTTP") |>
+      apply(1, donwload_single_http_contribution)
+  } else {
+    logger::log_info("No Http source to process.")
+  }
 
   return(all_contributions)
 }

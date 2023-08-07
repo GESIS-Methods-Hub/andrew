@@ -1,26 +1,3 @@
-#' Enrich single contribution source
-#'
-#' @param contribution_row
-#'
-#' @return
-#' @noRd
-#'
-#' @examples
-pre_process_contributions_list <- function(contribution_row) {
-  git_repository_url <- contribution_row["link"]
-
-  if (stringr::str_ends(git_repository_url, ".git") == FALSE) {
-    git_repository_url <- stringr::str_c(git_repository_url, ".git")
-  }
-
-  regex_match <-
-    stringr::str_match(git_repository_url, "https://github.com/(.*).git")
-  user_and_project <- regex_match[2]
-
-  return(user_and_project)
-}
-
-
 #' Prepare contributions database
 #'
 #' @param all_contributions database
@@ -30,21 +7,59 @@ pre_process_contributions_list <- function(contribution_row) {
 #'
 #' @examples
 prepare_contributions <- function(all_contributions) {
-  all_contributions$slang <- all_contributions |>
-    apply(1, pre_process_contributions_list)
-  all_contributions <- all_contributions |>
-    tidyr::separate_wider_delim(
-      slang,
-      delim = "/",
-      names = c("user_name", "repository_name"),
-      cols_remove = FALSE
-    )
-  all_contributions$tmp_path <-
-    stringr::str_c("_", all_contributions$slang)
-  all_contributions$https <-
-    stringr::str_replace(all_contributions$link, ".git$", "")
+  all_contributions$link <- ifelse(
+    (
+      (
+        stringr::str_detect(all_contributions$link, "github.com") |
+          stringr::str_detect(all_contributions$link, "gitlab.com")
+      )
+    ),
+    ifelse(
+      stringr::str_ends(all_contributions$link, ".git"),
+      all_contributions$link,
+      stringr::str_c(all_contributions$link, ".git")
+    ),
+    all_contributions$link
+  )
+
+  link_match_git <- stringr::str_match(all_contributions$link, "https://(.*)/(.*)/(.*).git")
+  all_contributions$domain <- link_match_git[, 2]
+  all_contributions$user_name <- link_match_git[, 3]
+  all_contributions$repository_name <- link_match_git[, 4]
+
+  link_match <- stringr::str_match(all_contributions$link, "https://(.*?)/(.*)")
+  all_contributions$domain <- ifelse(
+    is.na(all_contributions$domain),
+    link_match[, 2],
+    all_contributions$domain
+  )
+
+  all_contributions$slang <- ifelse(
+    is.na(all_contributions$user_name),
+    NA,
+    stringr::str_c(all_contributions$user_name, "/", all_contributions$repository_name)
+  )
+
+  all_contributions$tmp_path <- ifelse(
+    is.na(all_contributions$slang),
+    stringr::str_c("_", all_contributions$domain),
+    stringr::str_c("_", all_contributions$domain, "/", all_contributions$slang)
+  )
+
+  all_contributions$https <- ifelse(
+    stringr::str_ends(all_contributions$link, ".git"),
+    stringr::str_replace(all_contributions$link, ".git$", ""),
+    NA
+  )
+
   all_contributions$filename_extension <-
     stringr::str_extract(all_contributions$filename, "(md|qmd|Rmd|ipynb|docx)$")
+
+  all_contributions$source_type <- ifelse(
+    stringr::str_ends(all_contributions$link, ".git"),
+    "Git",
+    "HTTP"
+  )
 
   return(all_contributions)
 }
