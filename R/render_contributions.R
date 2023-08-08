@@ -9,6 +9,10 @@
 render_single_contribution <- function(contribution_row) {
   logger::log_info("Rendering {contribution_row['filename']} from {contribution_row['link']}")
 
+  host_user_id <- system("id -u", intern = TRUE)
+  host_group_id <- system("id -g", intern = TRUE)
+  logger::log_info("Running with user ID {host_user_id} and group id {host_group_id}.")
+
   RENDER_MATRIX <- list(
     "md" = c(
       "md2md.sh",
@@ -81,6 +85,7 @@ render_single_contribution <- function(contribution_row) {
     logger::log_info("Rendering using {script} ...")
 
     docker_call_template <- 'docker run \\
+    --user=${host_user_id}:${host_group_id} \\
     ${mount_input_file} \\
     --mount type=bind,source=${docker_scripts_location},target=${home_dir_at_docker}/_docker-scripts \\
     --env docker_script_root=${home_dir_at_docker}/_docker-scripts \\
@@ -98,6 +103,8 @@ render_single_contribution <- function(contribution_row) {
     docker_call <- stringr::str_interp(
       docker_call_template,
       list(
+        host_user_id = host_user_id,
+        host_group_id = host_group_id,
         mount_input_file = mount_input_file,
         home_dir_at_docker = home_dir_at_docker,
         docker_scripts_location = docker_scripts_location,
@@ -124,8 +131,6 @@ render_single_contribution <- function(contribution_row) {
     build_status <- "Built"
 
     logger::log_info("Rendering PDF ...")
-
-    host_user_id <- system("id -u", intern = TRUE)
 
     docker_pdf_call_template <- 'docker run \\
       --user=${host_user_id}:${host_user_id} \\
