@@ -15,8 +15,6 @@ fi
 
 dirname2render=$(dirname ${file2render})
 basename2render=$(basename ${file2render})
-echo $dirname2render
-echo $basename2render
 
 output_dirname=$output_location/$dirname2render/${basename2render%.*}
 output_basename=index.md
