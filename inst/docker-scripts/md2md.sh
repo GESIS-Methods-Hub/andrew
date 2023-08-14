@@ -61,6 +61,7 @@ quarto \
     render ${basename2render} \
     --to markdown \
     --output index.md-tmp \
+    --wrap=none \
     ${shift_heading_level:+"--shift-heading-level-by" "$shift_heading_level"} \
     ${fallback_author:+"--metadata" "$fallback_author"} \
     ${cover_metadata:+"--metadata" "$cover_metadata"} \
