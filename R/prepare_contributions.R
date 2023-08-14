@@ -22,12 +22,12 @@ prepare_contributions <- function(all_contributions) {
     all_contributions$link
   )
 
-  link_match_git <- stringr::str_match(all_contributions$link, "https://(.*)/(.*)/(.*).git")
+  link_match_git <- stringr::str_match(all_contributions$link, "https?://(.*)/(.*)/(.*).git")
   all_contributions$domain <- link_match_git[, 2]
   all_contributions$user_name <- link_match_git[, 3]
   all_contributions$repository_name <- link_match_git[, 4]
 
-  link_match <- stringr::str_match(all_contributions$link, "https://(.*?)/(.*)")
+  link_match <- stringr::str_match(all_contributions$link, "https?://(.*?)/(.*)")
   all_contributions$domain <- ifelse(
     is.na(all_contributions$domain),
     link_match[, 2],
