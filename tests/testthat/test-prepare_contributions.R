@@ -29,6 +29,37 @@ test_that("csv with single line of GitHub", {
   expect_equal(all_contributions, expected_all_contributions)
 })
 
+test_that("csv with single line of GitHub (HTTP)", {
+  raw_all_contributions <- tibble::tibble(
+    link = c(
+      "http://github.com/GESIS-Methods-Hub/minimal-example-md.git"
+    ),
+    filename = c(
+      "index.md"
+    )
+  )
+  expected_all_contributions <- tibble::tibble(
+    link = c(
+      "http://github.com/GESIS-Methods-Hub/minimal-example-md.git"
+    ),
+    filename = c(
+      "index.md"
+    ),
+    domain = c("github.com"),
+    user_name = c("GESIS-Methods-Hub"),
+    repository_name = c("minimal-example-md"),
+    slang = c("GESIS-Methods-Hub/minimal-example-md"),
+    tmp_path = c("_github.com/GESIS-Methods-Hub/minimal-example-md"),
+    https = c(
+      "http://github.com/GESIS-Methods-Hub/minimal-example-md"
+    ),
+    filename_extension = c("md"),
+    source_type = c("Git")
+  )
+  all_contributions <- prepare_contributions(raw_all_contributions)
+  expect_equal(all_contributions, expected_all_contributions)
+})
+
 test_that("csv with single line of GitHub without .git", {
   raw_all_contributions <- tibble::tibble(
     link = c(
