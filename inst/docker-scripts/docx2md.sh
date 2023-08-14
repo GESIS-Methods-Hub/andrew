@@ -49,6 +49,7 @@ fi
 ${PANDOC} \
     --from docx+styles \
     --to markdown \
+    --wrap=none \
     --standalone \
     --extract-media=./ \
     ${cover_metadata:+"--metadata" "$cover_metadata"} \

@@ -32,6 +32,7 @@ quarto \
     --execute \
     --to markdown \
     --output index.md \
+    --wrap=none \
     --metadata "prefer-html:true" \
     --metadata "method:true" \
     --metadata "citation: true" \
