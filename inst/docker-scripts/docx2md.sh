@@ -46,10 +46,16 @@ echo "Located $cover_filename"
 cover_metadata="image:$cover_filename"
 fi
 
+# --columns=288
+#
+# Pandoc requires a fixed length of lines in characters to preserve calculation of column widths for plain text.
+# If the length of lines is too small, Pandoc will break long words into two.
+
 ${PANDOC} \
     --from docx+styles \
-    --to markdown \
-    --wrap=none \
+    --to markdown+multiline_tables \
+    --wrap=auto \
+    --columns=288 \
     --standalone \
     --extract-media=./ \
     ${cover_metadata:+"--metadata" "$cover_metadata"} \
