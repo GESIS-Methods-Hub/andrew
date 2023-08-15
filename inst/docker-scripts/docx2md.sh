@@ -50,12 +50,18 @@ fi
 #
 # Pandoc requires a fixed length of lines in characters to preserve calculation of column widths for plain text.
 # If the length of lines is too small, Pandoc will break long words into two.
+#
+# --reference-links
+#
+# Links can be very long and exceed the fixed length of lines. This creates many problems.
+# Placing all the links at the end of the document, we avoid some of the problems.
 
 ${PANDOC} \
     --from docx+styles \
     --to markdown+multiline_tables \
     --wrap=auto \
     --columns=288 \
+    --reference-links \
     --standalone \
     --extract-media=./ \
     ${cover_metadata:+"--metadata" "$cover_metadata"} \
