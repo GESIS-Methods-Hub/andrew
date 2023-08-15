@@ -30,6 +30,9 @@ format:
     classoption:
       - DIV=10
       - numbers=noendperiod
+    include-in-header:
+      - text: |
+          \usepackage{luatexja}
 EOF
 
 quarto \
