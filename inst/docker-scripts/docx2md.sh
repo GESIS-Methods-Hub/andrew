@@ -77,6 +77,7 @@ ${PANDOC} \
     --metadata "info_pandoc_version:${pandoc_version}" \
     --metadata "source_filename:${file2render}" \
     --lua-filter=_pandoc-filters/remove-toc.lua \
+    --lua-filter=_pandoc-filters/remove-hyperlink-custom-style.lua \
     --output index.md \
     ${basename2render} && \
     cp index.md $output_dirname/$output_basename && \
