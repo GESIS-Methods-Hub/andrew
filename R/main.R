@@ -20,10 +20,16 @@ main <-
 
     tryCatch(
       {
-        contribution_report <- content_contributions_filename |>
+        content_contributions_list <- content_contributions_filename |>
           fs::path_real() |>
-          jsonlite::read_json(simplifyVector = TRUE) |>
-          tibble::as_tibble() |>
+          jsonlite::read_json()
+
+        content_contributions_df <- tibble::tibble(
+          contributions = content_contributions_list
+        ) |>
+          tidyr::unnest_wider(contributions)
+
+        contribution_report <- content_contributions_df |>
           prepare_contributions() |>
           download_contributions() |>
           git_info_to_contributions() |>
