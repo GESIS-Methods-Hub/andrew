@@ -8,7 +8,7 @@
 #' @examples
 main <-
   function(content_contributions_filename = "content-contributions.json",
-           all_cards_filename = "zettelkasten.csv",
+           all_cards_filename = "zettelkasten.json",
            source_dir = ".") {
     original_wd <- fs::path_real(".")
 
