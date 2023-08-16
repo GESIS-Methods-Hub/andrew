@@ -7,7 +7,7 @@
 #'
 #' @examples
 render_single_contribution <- function(contribution_row) {
-  logger::log_info("Rendering {contribution_row['filename']} from {contribution_row['link']}")
+  logger::log_info("Rendering {contribution_row['filename']} from {contribution_row['web_address']}")
 
   host_user_id <- system("id -u", intern = TRUE)
   host_group_id <- system("id -g", intern = TRUE)

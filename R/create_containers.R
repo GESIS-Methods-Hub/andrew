@@ -11,7 +11,7 @@ create_container_from_repo <- function(contribution_row) {
     return(NA)
   }
 
-  git_repo_url <- contribution_row["link"]
+  git_repo_url <- contribution_row["web_address"]
   git_repo <- contribution_row["slang"]
   git_commit_sha <- contribution_row["git_sha"]
 

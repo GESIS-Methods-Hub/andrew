@@ -7,7 +7,7 @@
 #'
 #' @examples
 main <-
-  function(content_contributions_filename = "content-contributions.csv",
+  function(content_contributions_filename = "content-contributions.json",
            all_cards_filename = "zettelkasten.csv",
            source_dir = ".") {
     original_wd <- fs::path_real(".")
@@ -22,7 +22,8 @@ main <-
       {
         contribution_report <- content_contributions_filename |>
           fs::path_real() |>
-          readr::read_csv() |>
+          jsonlite::read_json(simplifyVector = TRUE) |>
+          tibble::as_tibble() |>
           prepare_contributions() |>
           download_contributions() |>
           git_info_to_contributions() |>

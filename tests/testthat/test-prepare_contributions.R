@@ -1,6 +1,6 @@
 test_that("csv with single line of GitHub", {
   raw_all_contributions <- tibble::tibble(
-    link = c(
+    web_address = c(
       "https://github.com/GESIS-Methods-Hub/minimal-example-md.git"
     ),
     filename = c(
@@ -8,7 +8,7 @@ test_that("csv with single line of GitHub", {
     )
   )
   expected_all_contributions <- tibble::tibble(
-    link = c(
+    web_address = c(
       "https://github.com/GESIS-Methods-Hub/minimal-example-md.git"
     ),
     filename = c(
@@ -31,7 +31,7 @@ test_that("csv with single line of GitHub", {
 
 test_that("csv with single line of GitHub (HTTP)", {
   raw_all_contributions <- tibble::tibble(
-    link = c(
+    web_address = c(
       "http://github.com/GESIS-Methods-Hub/minimal-example-md.git"
     ),
     filename = c(
@@ -39,7 +39,7 @@ test_that("csv with single line of GitHub (HTTP)", {
     )
   )
   expected_all_contributions <- tibble::tibble(
-    link = c(
+    web_address = c(
       "http://github.com/GESIS-Methods-Hub/minimal-example-md.git"
     ),
     filename = c(
@@ -62,7 +62,7 @@ test_that("csv with single line of GitHub (HTTP)", {
 
 test_that("csv with single line of GitHub without .git", {
   raw_all_contributions <- tibble::tibble(
-    link = c(
+    web_address = c(
       "https://github.com/GESIS-Methods-Hub/minimal-example-md"
     ),
     filename = c(
@@ -70,7 +70,7 @@ test_that("csv with single line of GitHub without .git", {
     )
   )
   expected_all_contributions <- tibble::tibble(
-    link = c(
+    web_address = c(
       "https://github.com/GESIS-Methods-Hub/minimal-example-md.git"
     ),
     filename = c(
@@ -94,7 +94,7 @@ test_that("csv with single line of GitHub without .git", {
 test_that("csv with two line of GitHub", {
   raw_all_contributions <-
     tibble::tibble(
-      link = c(
+      web_address = c(
         "https://github.com/GESIS-Methods-Hub/minimal-example-md.git",
         "https://github.com/GESIS-Methods-Hub/minimal-example-qmd-rstats.git"
       ),
@@ -104,7 +104,7 @@ test_that("csv with two line of GitHub", {
       )
     )
   expected_all_contributions <- tibble::tibble(
-    link = c(
+    web_address = c(
       "https://github.com/GESIS-Methods-Hub/minimal-example-md.git",
       "https://github.com/GESIS-Methods-Hub/minimal-example-qmd-rstats.git"
     ),
@@ -142,7 +142,7 @@ test_that("csv with two line of GitHub", {
 
 test_that("csv with single line of GitLab", {
   raw_all_contributions <- tibble::tibble(
-    link = c(
+    web_address = c(
       "https://gitlab.com/GESIS-Methods-Hub/minimal-example-md.git"
     ),
     filename = c(
@@ -150,7 +150,7 @@ test_that("csv with single line of GitLab", {
     )
   )
   expected_all_contributions <- tibble::tibble(
-    link = c(
+    web_address = c(
       "https://gitlab.com/GESIS-Methods-Hub/minimal-example-md.git"
     ),
     filename = c(
@@ -173,7 +173,7 @@ test_that("csv with single line of GitLab", {
 
 test_that("csv with single line of Nextcloud ", {
   raw_all_contributions <- tibble::tibble(
-    link = c(
+    web_address = c(
       "https://nextcloud.com/index.php/s/kTHok9Qdo3P3HXx/download"
     ),
     filename = c(
@@ -181,7 +181,7 @@ test_that("csv with single line of Nextcloud ", {
     )
   )
   expected_all_contributions <- tibble::tibble(
-    link = c(
+    web_address = c(
       "https://nextcloud.com/index.php/s/kTHok9Qdo3P3HXx/download"
     ),
     filename = c(
