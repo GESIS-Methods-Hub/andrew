@@ -268,12 +268,17 @@ create_listing_2nd_level <- function(all_card_row) {
 #' @export
 #'
 #' @examples
-generate_card_files <- function(all_cards_filename = "zettelkasten.csv") {
+generate_card_files <- function(all_cards_filename = "zettelkasten.json") {
   clean_gallery()
 
-  all_cards <- all_cards_filename |>
+  all_cards_list <- all_cards_filename |>
     fs::path_real() |>
-    readr::read_csv()
+    jsonlite::read_json()
+
+  all_cards_df <- tibble::tibble(
+    collections = all_cards_list
+  ) |>
+    tidyr::unnest_wider(collections)
 
   # Populate all_card with data to use downstream
 
