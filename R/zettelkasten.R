@@ -34,7 +34,7 @@ resolve_level <- function(all_card_row, all_level) {
       dplyr::pull(title) |>
       dplyr::first()
   }
-  
+
   return(level)
 }
 
@@ -50,7 +50,7 @@ resolve_sublevel <- function(all_card_row) {
   } else {
     sublevel <- all_card_row$title
   }
-  
+
   return(sublevel)
 }
 
@@ -283,11 +283,42 @@ create_listing_1st_level <- function(subset_data, key) {
 create_listing_2nd_level <- function(all_card_row) {
   fs::dir_create(all_card_row["sublevel_path"])
 
-  listing_path <- file.path(all_card_row["sublevel_path"], stringr::str_interp("listing-contents-${slang}.yml", list(slang = all_card_row["sublevel_slang"])))
+  listing_path <- file.path(
+    all_card_row["sublevel_path"],
+    stringr::str_interp(
+      "listing-contents-${slang}.yml",
+      list(
+        slang = all_card_row["sublevel_slang"]
+      )
+    )
+  )
 
-  all_card_row["content"] |>
-    stringr::str_split("\n") |>
-    unlist() |>
+  logger::log_debug("Retrieving content ...")
+  content_df <- tibble::tibble(
+    content = all_card_row$content_set
+  ) |>
+    tidyr::unnest_wider(content)
+  logger::log_debug("Content successfully retrieved.")
+
+  logger::log_debug("Generating path for content ...")
+
+  content_df <- content_df |>
+    prepare_contributions()
+
+  content_df$final_path <- stringr::str_c(
+    content_df$tmp_path,
+    content_df$filename,
+    sep = "/"
+  )
+
+  content_df$final_path <- content_df$final_path |>
+    stringr::str_match("_(.+)\\.(.+)") |>
+    (\(x) x[, 2])() |>
+    stringr::str_c("/index.md")
+
+  logger::log_debug("Path successfully generated.")
+
+  content_df$final_path |>
     stringr::str_replace("^", "- path: ../../../") |>
     stringr::str_flatten("\n") |>
     writeLines(con = listing_path)
@@ -366,8 +397,6 @@ generate_card_files <- function(all_cards_filename = "zettelkasten.json") {
     dplyr::mutate(row_number = dplyr::row_number()) |>
     apply(1, create_mega_menu) |>
     stringr::str_flatten()
-
-  logger::log_info("Prepare ...")
 
   fs::dir_create("_partials")
   create_mega_menu_path <- "_partials/mega_menu.html"
