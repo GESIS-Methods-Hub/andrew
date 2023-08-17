@@ -1,7 +1,5 @@
 #' Title
 #'
-#' @param gallery_room_name
-#'
 #' @return
 #' @export
 #'
@@ -19,6 +17,41 @@ clean_gallery <- function() {
     fs::dir_delete()
 
   logger::log_info("Removing old gallery complete.")
+}
+
+#' Title
+#'
+#' @return
+#' @export
+#'
+#' @examples
+resolve_level <- function(all_card_row, all_level) {
+  if (is.na(all_card_row$parent_collection)) {
+    level <- all_card_row$title
+  } else {
+    level <- all_level |>
+      dplyr::filter(id == all_card_row$parent_collection) |>
+      dplyr::pull(title) |>
+      dplyr::first()
+  }
+
+  return(level)
+}
+
+#' Title
+#'
+#' @return
+#' @export
+#'
+#' @examples
+resolve_sublevel <- function(all_card_row) {
+  if (is.na(all_card_row$parent_collection)) {
+    sublevel <- NA
+  } else {
+    sublevel <- all_card_row$title
+  }
+
+  return(sublevel)
 }
 
 #' Title
@@ -113,7 +146,7 @@ listing:
 #'
 #' @examples
 create_1st_level_page <- function(subset_data, key) {
-  dir.create(key$level_path, recursive = TRUE)
+  fs::dir_create(key$level_path)
 
   gallery_index_page <- stringr::str_interp(
     gallery_1st_level_index_page_template,
@@ -154,7 +187,7 @@ ${abstract}
 #'
 #' @examples
 create_2nd_level_page <- function(all_card_row) {
-  dir.create(all_card_row["sublevel_path"], recursive = TRUE)
+  fs::dir_create(all_card_row["sublevel_path"])
 
   gallery_index_page <- stringr::str_interp(
     gallery_2nd_level_index_page_template,
@@ -173,7 +206,7 @@ create_2nd_level_page <- function(all_card_row) {
 listing_tiles_template <- "- title: ${title}
   subtitle: ${subtitle}
   href: ${href}
-  thumbnail: ${thumbnail}"
+  cover_image: ${cover_image}"
 
 #' Title
 #'
@@ -193,7 +226,7 @@ create_listing_root_level <- function(subset_data) {
           title = level,
           subtitle = subtitle,
           href = level_path,
-          thumbnail = thumbnail
+          cover_image = cover_image_local
         )
       )
     ) |>
@@ -224,7 +257,7 @@ create_listing_1st_level <- function(subset_data, key) {
           title = sublevel,
           subtitle = subtitle,
           href = sublevel_slang,
-          thumbnail = paste0("../../", thumbnail)
+          cover_image = paste0("../../", cover_image_local)
         )
       )
     ) |>
@@ -248,13 +281,44 @@ create_listing_1st_level <- function(subset_data, key) {
 #'
 #' @examples
 create_listing_2nd_level <- function(all_card_row) {
-  dir.create(all_card_row["sublevel_path"], recursive = TRUE)
+  fs::dir_create(all_card_row["sublevel_path"])
 
-  listing_path <- file.path(all_card_row["sublevel_path"], stringr::str_interp("listing-contents-${slang}.yml", list(slang = all_card_row["sublevel_slang"])))
+  listing_path <- file.path(
+    all_card_row["sublevel_path"],
+    stringr::str_interp(
+      "listing-contents-${slang}.yml",
+      list(
+        slang = all_card_row["sublevel_slang"]
+      )
+    )
+  )
 
-  all_card_row["content"] |>
-    stringr::str_split("\n") |>
-    unlist() |>
+  logger::log_debug("Retrieving content ...")
+  content_df <- tibble::tibble(
+    content = all_card_row$content_set
+  ) |>
+    tidyr::unnest_wider(content)
+  logger::log_debug("Content successfully retrieved.")
+
+  logger::log_debug("Generating path for content ...")
+
+  content_df <- content_df |>
+    prepare_contributions()
+
+  content_df$final_path <- stringr::str_c(
+    content_df$tmp_path,
+    content_df$filename,
+    sep = "/"
+  )
+
+  content_df$final_path <- content_df$final_path |>
+    stringr::str_match("_(.+)\\.(.+)") |>
+    (\(x) x[, 2])() |>
+    stringr::str_c("/index.md")
+
+  logger::log_debug("Path successfully generated.")
+
+  content_df$final_path |>
     stringr::str_replace("^", "- path: ../../../") |>
     stringr::str_flatten("\n") |>
     writeLines(con = listing_path)
@@ -268,14 +332,35 @@ create_listing_2nd_level <- function(all_card_row) {
 #' @export
 #'
 #' @examples
-generate_card_files <- function(all_cards_filename = "zettelkasten.csv") {
+generate_card_files <- function(all_cards_filename = "zettelkasten.json") {
   clean_gallery()
 
-  all_cards <- all_cards_filename |>
+  logger::log_debug("Reading {all_cards_filename} into list ...")
+  all_cards_list <- all_cards_filename |>
     fs::path_real() |>
-    readr::read_csv()
+    jsonlite::read_json()
+  logger::log_debug("List successfully created.")
 
-  # Populate all_card with data to use downstream
+  logger::log_debug("Converting list into data frame ...")
+  all_cards <- tibble::tibble(
+    collections = all_cards_list
+  ) |>
+    tidyr::unnest_wider(collections)
+  logger::log_debug("Data frame successfully created.")
+
+  logger::log_debug("Expanding data frame ...")
+
+  all_cards$level <- ""
+  all_cards$sublevel <- ""
+
+  all_level <- all_cards |>
+    dplyr::filter(is.na(parent_collection)) |>
+    dplyr::select(id, title)
+
+  all_cards$level <- all_cards |>
+    apply(1, resolve_level, all_level)
+  all_cards$sublevel <- all_cards |>
+    apply(1, resolve_sublevel)
 
   all_cards$level_slang <- all_cards$level |>
     stringr::str_to_lower() |>
@@ -297,15 +382,23 @@ generate_card_files <- function(all_cards_filename = "zettelkasten.csv") {
     all_cards$sublevel_slang
   )
 
+  logger::log_debug("Data frame successfully expanded.")
+
+  logger::log_debug("Downloading all cover image ...")
+
+  all_cards$cover_image_local <- all_cards |>
+    dplyr::pull(cover_image) |>
+    lapply(download_cover_image)
+
+  logger::log_debug("Cover image all successfully downloaded.")
 
   mega_menu_partial <- all_cards |>
+    dplyr::select(parent_collection) |>
     dplyr::mutate(row_number = dplyr::row_number()) |>
     apply(1, create_mega_menu) |>
     stringr::str_flatten()
 
-  logger::log_info("Prepare ...")
-
-  dir.create("_partials", recursive = TRUE)
+  fs::dir_create("_partials")
   create_mega_menu_path <- "_partials/mega_menu.html"
 
   stringr::str_interp(
@@ -315,7 +408,6 @@ generate_card_files <- function(all_cards_filename = "zettelkasten.csv") {
     )
   ) |>
     writeLines(con = create_mega_menu_path)
-
 
   all_cards |>
     dplyr::group_by(level, level_slang, level_path) |>

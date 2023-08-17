@@ -9,7 +9,7 @@
 donwload_single_http_contribution <- function(contribution_row) {
   http_dir_path <- contribution_row["tmp_path"]
   http_file_path <- fs::path(http_dir_path, contribution_row["filename"])
-  http_url <- contribution_row["link"]
+  http_url <- contribution_row["web_address"]
 
   fs::dir_create(http_dir_path)
 
@@ -35,7 +35,7 @@ donwload_single_http_contribution <- function(contribution_row) {
 #' @examples
 donwload_single_git_contribution <- function(contribution_row) {
   git_repo_path <- contribution_row["tmp_path"]
-  git_url <- contribution_row["link"]
+  git_url <- contribution_row["web_address"]
 
   if (dir.exists(git_repo_path)) {
     logger::log_info("{git_repo_path} already exists.")

@@ -19,9 +19,10 @@ Imports:
     dplyr,
     fs,
     git2r,
+    jsonlite,
+    knitr,
     logger,
     readr,
     stringr,
     tibble,
-    tidyr,
-    knitr
+    tidyr

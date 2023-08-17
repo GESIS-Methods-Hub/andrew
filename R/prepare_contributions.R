@@ -7,30 +7,30 @@
 #'
 #' @examples
 prepare_contributions <- function(all_contributions) {
-  all_contributions$link <- ifelse(
+  all_contributions$web_address <- ifelse(
     (
       (
-        stringr::str_detect(all_contributions$link, "github.com") |
-          stringr::str_detect(all_contributions$link, "gitlab.com")
+        stringr::str_detect(all_contributions$web_address, "github.com") |
+          stringr::str_detect(all_contributions$web_address, "gitlab.com")
       )
     ),
     ifelse(
-      stringr::str_ends(all_contributions$link, ".git"),
-      all_contributions$link,
-      stringr::str_c(all_contributions$link, ".git")
+      stringr::str_ends(all_contributions$web_address, ".git"),
+      all_contributions$web_address,
+      stringr::str_c(all_contributions$web_address, ".git")
     ),
-    all_contributions$link
+    all_contributions$web_address
   )
 
-  link_match_git <- stringr::str_match(all_contributions$link, "https?://(.*)/(.*)/(.*).git")
-  all_contributions$domain <- link_match_git[, 2]
-  all_contributions$user_name <- link_match_git[, 3]
-  all_contributions$repository_name <- link_match_git[, 4]
+  web_address_match_git <- stringr::str_match(all_contributions$web_address, "https?://(.*)/(.*)/(.*).git")
+  all_contributions$domain <- web_address_match_git[, 2]
+  all_contributions$user_name <- web_address_match_git[, 3]
+  all_contributions$repository_name <- web_address_match_git[, 4]
 
-  link_match <- stringr::str_match(all_contributions$link, "https?://(.*?)/(.*)")
+  web_address_match <- stringr::str_match(all_contributions$web_address, "https?://(.*?)/(.*)")
   all_contributions$domain <- ifelse(
     is.na(all_contributions$domain),
-    link_match[, 2],
+    web_address_match[, 2],
     all_contributions$domain
   )
 
@@ -47,8 +47,8 @@ prepare_contributions <- function(all_contributions) {
   )
 
   all_contributions$https <- ifelse(
-    stringr::str_ends(all_contributions$link, ".git"),
-    stringr::str_replace(all_contributions$link, ".git$", ""),
+    stringr::str_ends(all_contributions$web_address, ".git"),
+    stringr::str_replace(all_contributions$web_address, ".git$", ""),
     NA
   )
 
@@ -56,7 +56,7 @@ prepare_contributions <- function(all_contributions) {
     stringr::str_extract(all_contributions$filename, "(md|qmd|Rmd|ipynb|docx)$")
 
   all_contributions$source_type <- ifelse(
-    stringr::str_ends(all_contributions$link, ".git"),
+    stringr::str_ends(all_contributions$web_address, ".git"),
     "Git",
     "HTTP"
   )

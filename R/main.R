@@ -7,8 +7,8 @@
 #'
 #' @examples
 main <-
-  function(content_contributions_filename = "content-contributions.csv",
-           all_cards_filename = "zettelkasten.csv",
+  function(content_contributions_filename = "content-contributions.json",
+           all_cards_filename = "zettelkasten.json",
            source_dir = ".") {
     original_wd <- fs::path_real(".")
 
@@ -20,9 +20,16 @@ main <-
 
     tryCatch(
       {
-        contribution_report <- content_contributions_filename |>
+        content_contributions_list <- content_contributions_filename |>
           fs::path_real() |>
-          readr::read_csv() |>
+          jsonlite::read_json()
+
+        content_contributions_df <- tibble::tibble(
+          contributions = content_contributions_list
+        ) |>
+          tidyr::unnest_wider(contributions)
+
+        contribution_report <- content_contributions_df |>
           prepare_contributions() |>
           download_contributions() |>
           git_info_to_contributions() |>
