@@ -399,6 +399,7 @@ generate_card_files <- function(all_cards_filename = "zettelkasten.json") {
   logger::log_debug("Preparing mega menu ...")
 
   mega_menu_partial <- all_cards |>
+    dplyr::arrange(level, !is.na(sublevel), sublevel) |>
     dplyr::mutate(row_number = dplyr::row_number()) |>
     apply(1, create_mega_menu) |>
     stringr::str_flatten()
