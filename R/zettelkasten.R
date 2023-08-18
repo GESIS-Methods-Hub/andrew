@@ -281,6 +281,10 @@ create_listing_1st_level <- function(subset_data, key) {
 #'
 #' @examples
 create_listing_2nd_level <- function(all_card_row) {
+  if (is.null(all_card_row$content_set)) {
+    return()
+  }
+
   fs::dir_create(all_card_row["sublevel_path"])
 
   listing_path <- file.path(
