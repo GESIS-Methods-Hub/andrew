@@ -392,11 +392,16 @@ generate_card_files <- function(all_cards_filename = "zettelkasten.json") {
 
   logger::log_debug("Cover image all successfully downloaded.")
 
+  logger::log_debug("Preparing mega menu ...")
+
   mega_menu_partial <- all_cards |>
-    dplyr::select(parent_collection) |>
     dplyr::mutate(row_number = dplyr::row_number()) |>
     apply(1, create_mega_menu) |>
     stringr::str_flatten()
+
+  logger::log_debug("Mega menu successfully prepared.")
+
+  logger::log_debug("Writting mega menu ...")
 
   fs::dir_create("_partials")
   create_mega_menu_path <- "_partials/mega_menu.html"
@@ -408,6 +413,10 @@ generate_card_files <- function(all_cards_filename = "zettelkasten.json") {
     )
   ) |>
     writeLines(con = create_mega_menu_path)
+
+  logger::log_debug("Mega menu successfully written.")
+
+  logger::log_debug("Creating navigation pages ...")
 
   all_cards |>
     dplyr::group_by(level, level_slang, level_path) |>
@@ -429,4 +438,6 @@ generate_card_files <- function(all_cards_filename = "zettelkasten.json") {
   all_cards |>
     dplyr::filter(!is.na(sublevel)) |>
     apply(1, create_listing_2nd_level)
+
+  logger::log_debug("Navigation pages created.")
 }
