@@ -5,6 +5,11 @@
 #'
 #' @examples
 download_cover_image <- function(url) {
+  if (stringr::str_starts(url, "https?:", negate = TRUE)) {
+    logger::log_debug("{url} is a local file. Skipping download.")
+    return(url)
+  }
+  
   dir_path <- fs::path("static", "cover_image")
   fs::dir_create(dir_path)
 
