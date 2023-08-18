@@ -281,6 +281,10 @@ create_listing_1st_level <- function(subset_data, key) {
 #'
 #' @examples
 create_listing_2nd_level <- function(all_card_row) {
+  if (is.null(all_card_row$content_set)) {
+    return()
+  }
+
   fs::dir_create(all_card_row["sublevel_path"])
 
   listing_path <- file.path(
@@ -395,6 +399,7 @@ generate_card_files <- function(all_cards_filename = "zettelkasten.json") {
   logger::log_debug("Preparing mega menu ...")
 
   mega_menu_partial <- all_cards |>
+    dplyr::arrange(level, !is.na(sublevel), sublevel) |>
     dplyr::mutate(row_number = dplyr::row_number()) |>
     apply(1, create_mega_menu) |>
     stringr::str_flatten()
