@@ -37,6 +37,7 @@ if [[ $(head -n 1 ${basename2render} | grep -e '---' | wc -l) = 0 ]]
 then
     echo ${basename2render} does NOT have a YAML header!
     shift_heading_level='-1'
+    strip_comments='true'
     fallback_author="author:$(git log -1 --format=format:%aN)"
 
     cover_filename=$(find . -name 'cover*' | head -n 1)
@@ -53,6 +54,7 @@ then
 else
     echo ${basename2render} has a YAML header!
     shift_heading_level='0'
+    strip_comments='false'
     fallback_author=''
     cover_metadata=""
 fi
@@ -63,6 +65,7 @@ quarto \
     --output index.md-tmp \
     --wrap=none \
     ${shift_heading_level:+"--shift-heading-level-by" "$shift_heading_level"} \
+    ${strip_comments:+"--strip-comments" "$strip_comments"} \
     ${fallback_author:+"--metadata" "$fallback_author"} \
     ${cover_metadata:+"--metadata" "$cover_metadata"} \
     --metadata "prefer-html:true" \
