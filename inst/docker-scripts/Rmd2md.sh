@@ -41,7 +41,7 @@ quarto \
     --wrap=none \
     --metadata "prefer-html:true" \
     --metadata "method:true" \
-    --metadata "citation: true" \
+    --metadata "citation:true" \
     --metadata "github_https:${github_https}" \
     --metadata "github_user_name:${github_user_name}" \
     --metadata "github_repository_name:${github_repository_name}" \

@@ -14,7 +14,7 @@ input_basename=index.md
 
 cd ~/andrew/$input_dirname
 
-quarto --version
+quarto check
 
 cat > _quarto.yml <<EOF
 format:
