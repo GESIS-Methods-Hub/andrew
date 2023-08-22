@@ -34,7 +34,7 @@ format:
       - text: |
           \usepackage{luatexja}
 EOF
-
+ls
 quarto \
     render $input_basename \
     --to pdf \

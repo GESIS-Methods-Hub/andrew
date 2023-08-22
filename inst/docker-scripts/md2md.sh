@@ -65,7 +65,6 @@ quarto \
     ${shift_heading_level:+"--shift-heading-level-by" "$shift_heading_level"} \
     ${fallback_author:+"--metadata" "$fallback_author"} \
     ${cover_metadata:+"--metadata" "$cover_metadata"} \
-    --metadata "prefer-html:true" \
     --metadata "method:true" \
     --metadata "citation:true" \
     --metadata "github_https:${github_https}" \

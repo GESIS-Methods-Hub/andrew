@@ -65,7 +65,6 @@ ${PANDOC} \
     --standalone \
     --extract-media=./ \
     ${cover_metadata:+"--metadata" "$cover_metadata"} \
-    --metadata "prefer-html:true" \
     --metadata "guide:true" \
     --metadata "citation:true" \
     --metadata "github_https:${github_https}" \
