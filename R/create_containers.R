@@ -44,7 +44,7 @@ create_container_from_repo <- function(contribution_row) {
   if (nrow(matching_images) == 0) {
     repo2docker_call_template <- "repo2docker \\
     --no-run \\
-    --Repo2Docker.base_image=gesiscss/repo2docker_base_image_with_quarto \\
+    --Repo2Docker.base_image=gesiscss/repo2docker_base_image_with_quarto:v1.4.330 \\
     --user-name andrew \\
     --image-name ${image_name} \\
     ${git_repo_url}"
