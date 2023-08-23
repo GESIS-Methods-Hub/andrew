@@ -68,7 +68,6 @@ quarto \
     ${strip_comments:+"--strip-comments" "$strip_comments"} \
     ${fallback_author:+"--metadata" "$fallback_author"} \
     ${cover_metadata:+"--metadata" "$cover_metadata"} \
-    --metadata "prefer-html:true" \
     --metadata "method:true" \
     --metadata "citation:true" \
     --metadata "github_https:${github_https}" \

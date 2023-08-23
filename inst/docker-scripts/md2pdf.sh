@@ -14,7 +14,10 @@ input_basename=index.md
 
 cd ~/andrew/$input_dirname
 
-quarto --version
+# Need to move the .qmd file
+# Workaround for https://github.com/quarto-dev/quarto-cli/issues/6583
+tmp_dir=$(mktemp -d)
+mv *.qmd $tmp_dir
 
 cat > _quarto.yml <<EOF
 format:
@@ -41,3 +44,6 @@ quarto \
     --output index.pdf
 
 rm _quarto.yml
+
+# Need to move the .qmd file back
+mv $tmp_dir/*.qmd .
