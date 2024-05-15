@@ -23,6 +23,12 @@ Except for Docker and Quarto, all the depenencies cam be installed with `mamba`.
 Install `micromamba` following the [Mamba Documentation](https://mamba.readthedocs.io/en/latest/installation.html#automatic-installation) and run
 
 ```bash
+micromamba create -y -n andrew -f conda-lock.yml
+```
+
+or
+
+```bash
 micromamba create -y -n andrew -f env.yaml
 ```
 
