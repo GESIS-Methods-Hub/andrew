@@ -56,3 +56,5 @@ po/*~
 # RStudio Connect folder
 rsconnect/
 docs
+# Julians IDE setup
+/start.R

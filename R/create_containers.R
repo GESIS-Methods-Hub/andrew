@@ -28,12 +28,20 @@ create_container_from_repo <- function(contribution_row) {
     )
   )
 
-  local_list_of_images <-
-    system("docker image list --format 'table {{.Repository}},{{.Tag}}'",
-      intern = TRUE
-    ) |>
+  # local_list_of_images <-
+  #   system("docker image list --format 'table {{.Repository}},{{.Tag}}'",
+  #     intern = TRUE
+  #   ) |>
+  #   I() |>
+  #   readr::read_csv()
+
+  local_list_of_images <- system("docker image list --format '{{.Repository}},{{.Tag}}'",
+                                 intern = TRUE
+  )
+  local_list_of_images <- gsub("'", "", local_list_of_images)
+  local_list_of_images <- local_list_of_images |>
     I() |>
-    readr::read_csv()
+    readr::read_csv(col_names = c("REPOSITORY", "TAG"))
 
   matching_images <- local_list_of_images |>
     dplyr::filter(
