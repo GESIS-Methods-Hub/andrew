@@ -20,7 +20,7 @@ The collection is organised in two levels.
 
 - [Docker](https://www.docker.com/)
 - Quarto >= 1.3
-- R
+- R == 4.2.3 (for remote Intellij development)
 - Python
   - [repo2docker](https://repo2docker.readthedocs.io/)
 

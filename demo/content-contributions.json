@@ -1,1 +1,38 @@
-[{"web_address":"https://github.com/GESIS-Methods-Hub/complete-example-md.git","filename":"index.md"},{"web_address":"https://github.com/GESIS-Methods-Hub/minimal-example-md.git","filename":"index.md"},{"web_address":"https://github.com/GESIS-Methods-Hub/minimal-example-ipynb.git","filename":"index.ipynb"},{"web_address":"https://github.com/GESIS-Methods-Hub/minimal-example-ipynb-python.git","filename":"index.ipynb"},{"web_address":"https://github.com/GESIS-Methods-Hub/minimal-example-qmd-rstats.git","filename":"index.qmd"},{"web_address":"https://github.com/GESIS-Methods-Hub/minimal-example-qmd-rstats-units.git","filename":"index.qmd"},{"web_address":"https://github.com/GESIS-Methods-Hub/minimal-guide-example-docx.git","filename":"index.docx"},{"web_address":"https://github.com/GESIS-Methods-Hub/minimal-interview-example-docx.git","filename":"index.docx"},{"web_address":"https://github.com/GESIS-Methods-Hub/minimal-example-shiny-rstats.git","filename":"index.qmd"},{"web_address":"https://github.com/GESIS-Methods-Hub/minimal-example-rstats-package.git","filename":"vignettes/mwe.Rmd"},{"web_address":"https://github.com/GESIS-Methods-Hub/minimal-example-readme.git","filename":"README.md"},{"web_address":"https://gesisbox.gesis.org/index.php/s/BFLT6fjGJ9iHnLP/download","filename":"demo-guide.docx"}]
+[
+  {
+    "web_address": "https://github.com/GESIS-Methods-Hub/complete-example-md.git",
+    "filename": "index.md"
+  },
+  {
+    "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-md.git",
+    "filename": "index.md"
+  },
+  {
+    "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-ipynb.git",
+    "filename": "index.ipynb"
+  },
+  {
+    "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-ipynb-python.git",
+    "filename": "index.ipynb"
+  },
+  {
+    "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-qmd-rstats.git",
+    "filename": "index.qmd"
+  },
+  {
+    "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-qmd-rstats-units.git",
+    "filename": "index.qmd"
+  },
+  {
+    "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-shiny-rstats.git",
+    "filename": "index.qmd"
+  },
+  {
+    "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-rstats-package.git",
+    "filename": "vignettes/mwe.Rmd"
+  },
+  {
+    "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-readme.git",
+    "filename": "README.md"
+  }
+]

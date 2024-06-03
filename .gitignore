@@ -56,3 +56,5 @@ po/*~
 # RStudio Connect folder
 rsconnect/
 docs
+# helper file for running the demo with debugger
+/start.R
