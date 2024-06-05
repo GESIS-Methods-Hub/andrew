@@ -56,13 +56,13 @@ create_container_from_repo <- function(contribution_row) {
       )
     )
 
-    logger::log_info("Building {image_name} ...")
-    logger::log_info("{repo2docker_call}")
+    logger::log_debug("Building {image_name} ...")
+    logger::log_debug("{repo2docker_call}")
     repo2docker_call_return_value <- system(repo2docker_call, intern = FALSE)
     if (repo2docker_call_return_value == 0) {
       logger::log_info("{image_name} built.")
     } else {
-      logger::log_info("{image_name} NOT built.")
+      logger::log_warn("{image_name} NOT built.")
       stop()
     }
   } else {
@@ -81,8 +81,10 @@ create_container_from_repo <- function(contribution_row) {
 #'
 #' @examples
 create_containers <- function(all_contributions) {
+  logger::log_info("START creating containers from contributions")
   all_contributions$docker_image <- all_contributions |>
     apply(1, create_container_from_repo)
 
+  logger::log_info("END creating containers from contributions")
   return(all_contributions)
 }

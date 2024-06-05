@@ -71,6 +71,7 @@ donwload_single_git_contribution <- function(contribution_row) {
 #'
 #' @examples
 download_contributions <- function(all_contributions) {
+  logger::log_info("START downloading contributions")
   if (any(all_contributions$source_type == "Git")) {
     all_contributions |>
       dplyr::filter(source_type == "Git") |>
@@ -86,6 +87,8 @@ download_contributions <- function(all_contributions) {
   } else {
     logger::log_info("No Http source to process.")
   }
+
+  logger::log_info("END downloading contributions")
 
   return(all_contributions)
 }
