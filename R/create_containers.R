@@ -8,13 +8,13 @@ add_image_names <- function(all_contributions){
   return(all_contributions)
 }
 
-#' Add Docker container names in a standardized way
+#' Add Docker container names in a standardized way helper function
 #'
 #' @param contribution_row
 #'
 #' @return
 #' @export
-construct_image_name <- function (contribution_row) {
+construct_image_and_repo_name <- function (contribution_row) {
   git_repo <- contribution_row["slang"]
   git_commit_sha <- contribution_row["git_sha"]
 
@@ -30,8 +30,18 @@ construct_image_name <- function (contribution_row) {
       git_commit_sha = git_commit_sha
     )
   )
-  return(image_name)
+  return(list(image_name = image_name, docker_repository = docker_repository, git_commit_sha = git_commit_sha))
+}
 
+#' Add Docker container names in a standardized way
+#'
+#' @param contribution_row
+#'
+#' @return
+#' @export
+construct_image_name <- function (contribution_row) {
+  result <- construct_image_and_repo_name(contribution_row = contribution_row)
+  return(result$image_name)
 }
 
 
@@ -52,7 +62,10 @@ create_container_from_repo <- function(contribution_row) {
   # git_repo <- contribution_row["slang"]
   # git_commit_sha <- contribution_row["git_sha"]
 
-  image_name <- construct_image_name(contribution_row)
+  image_and_repo_names <- construct_image_and_repo_name(contribution_row)
+  image_name <- image_and_repo_names$image_name
+  docker_repository <- image_and_repo_names$docker_repository
+  git_commit_sha <- image_and_repo_names$git_commit_sha
 
   local_list_of_images <-
     system("docker image list --format 'table {{.Repository}},{{.Tag}}'",
