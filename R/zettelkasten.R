@@ -336,9 +336,34 @@ create_listing_2nd_level <- function(all_card_row) {
 #' @export
 #'
 #' @examples
-generate_card_files <- function(all_cards_filename = "zettelkasten.json") {
-  clean_gallery()
+generate_card_files <- function(all_cards_filename = "zettelkasten.json", is_minimal_example = FALSE) {
+  if (is_minimal_example) {
+    create_minimal_example_view()
+  } else {
+    clean_gallery()
+    create_full_view(all_cards_filename)
+  }
 
+}
+
+create_minimal_example_view <- function(all_cards_filename = "content-contributions.json") {
+  logger::log_info("Creating Minimal_Example View...")
+  logger::log_debug("Reading {all_cards_filename} into list ...")
+  # todo implement this
+  # Parse the JSON data
+  data_list <- fromJSON(all_cards_filename)
+
+  # Extract the first element
+  first_element <- data_list[1, ]
+
+  # Create a dataframe
+  df <- as.data.frame(first_element)
+  logger::log_debug("Creating view for {df$web_address} ")
+
+}
+
+
+create_full_view <- function(all_cards_filename) {
   logger::log_debug("Reading {all_cards_filename} into list ...")
   all_cards_list <- all_cards_filename |>
     fs::path_real() |>

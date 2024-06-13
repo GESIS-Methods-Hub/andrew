@@ -17,10 +17,6 @@
     "cover_image": "static/cover_image/browser-coding_kKjTXOo.svg",
     "content_set": [
       {
-        "web_address": "https://github.com/GESIS-Methods-Hub/complete-example-md.git",
-        "filename": "index.md"
-      },
-      {
         "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-md.git",
         "filename": "index.md"
       },
@@ -62,10 +58,6 @@
     "abstract": "Lorem ipsum dolor sit amet consectetur adipiscing elit, lectus venenatis porta tortor dui lacus pellentesque neque, nibh tristique ultricies conubia semper aliquam viverra, per facilisis curabitur tempus at etiam.",
     "cover_image": "static/cover_image/browser-coding_SEiqxmp.svg",
     "content_set": [
-      {
-        "web_address": "https://github.com/GESIS-Methods-Hub/complete-example-md.git",
-        "filename": "index.md"
-      },
       {
         "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-md.git",
         "filename": "index.md"
@@ -118,10 +110,6 @@
     "cover_image": "static/cover_image/click_njc3WjZ.svg",
     "content_set": [
       {
-        "web_address": "https://github.com/GESIS-Methods-Hub/complete-example-md.git",
-        "filename": "index.md"
-      },
-      {
         "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-md.git",
         "filename": "index.md"
       },
@@ -163,10 +151,6 @@
     "abstract": "Lorem ipsum dolor sit amet consectetur adipiscing elit, lectus venenatis porta tortor dui lacus pellentesque neque, nibh tristique ultricies conubia semper aliquam viverra, per facilisis curabitur tempus at etiam.",
     "cover_image": "static/cover_image/click_M3aOs2V.svg",
     "content_set": [
-      {
-        "web_address": "https://github.com/GESIS-Methods-Hub/complete-example-md.git",
-        "filename": "index.md"
-      },
       {
         "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-md.git",
         "filename": "index.md"
@@ -219,10 +203,6 @@
     "cover_image": "static/cover_image/pencil-draw_lXyNFR9.svg",
     "content_set": [
       {
-        "web_address": "https://github.com/GESIS-Methods-Hub/complete-example-md.git",
-        "filename": "index.md"
-      },
-      {
         "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-md.git",
         "filename": "index.md"
       },
@@ -264,10 +244,6 @@
     "abstract": "Lorem ipsum dolor sit amet consectetur adipiscing elit, lectus venenatis porta tortor dui lacus pellentesque neque, nibh tristique ultricies conubia semper aliquam viverra, per facilisis curabitur tempus at etiam.",
     "cover_image": "static/cover_image/pencil-draw_vGfHuh9.svg",
     "content_set": [
-      {
-        "web_address": "https://github.com/GESIS-Methods-Hub/complete-example-md.git",
-        "filename": "index.md"
-      },
       {
         "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-md.git",
         "filename": "index.md"

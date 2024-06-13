@@ -10,8 +10,21 @@ main <- function(config_filename = "config.yaml",
                  content_contributions_filename = "content-contributions.json",
                  all_cards_filename = "zettelkasten.json",
                  source_dir = ".") {
+
+
   # Read the YAML configuration file
   config <- yaml::read_yaml(config_filename)
+  # debugging settings
+  # Access the values under the 'testing' key
+  testing_config <- config$testing
+  is_minimal_example <- testing_config$minimal_example
+  debug <- testing_config$debug
+  # Set logging level based on the 'debug' value
+  if (debug) {
+    logger::log_threshold(logger::DEBUG)
+  } else {
+    logger::log_threshold(logger::INFO)
+  }
 
   # Extract the stages to be executed from the config
   stages <- config$stages
@@ -79,7 +92,7 @@ main <- function(config_filename = "config.yaml",
     # creates the yaml files for the inclusion tree
     if (any(stages == "generate_card_files")) {
       logger::log_info("Generating card files")
-      generate_card_files(all_cards_filename)
+      generate_card_files(all_cards_filename, is_minimal_example)
     }
   },
     error = function(e) {
@@ -89,7 +102,11 @@ main <- function(config_filename = "config.yaml",
 
   setwd(original_wd)
 
-  return(contribution_report)
+  if (!is_minimal_example) {
+    return(contribution_report)
+  } else{
+    return("SUCCESSFULLY ran minimal example pipeline")
+  }
 }
 
 
