@@ -8,6 +8,5 @@ setwd("/home/dehnejn/gitlab/andrew")
 devtools::load_all()
 
 # run project
-andrew::main(source_dir="minimal_example", config_filename = "config.yaml")
-# andrew::main(source_dir="minimal_example", config_filename = "config_minimal.yaml")
+andrew::main(source_dir="minimal_example", config_filename = "config_minimal.yaml")
 

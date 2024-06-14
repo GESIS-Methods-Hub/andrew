@@ -339,6 +339,7 @@ create_listing_2nd_level <- function(all_card_row) {
 generate_card_files <- function(all_cards_filename = "zettelkasten.json", is_minimal_example = FALSE) {
   if (is_minimal_example) {
     create_minimal_example_view()
+    #create_full_view(all_cards_filename)
   } else {
     clean_gallery()
     create_full_view(all_cards_filename)
@@ -359,6 +360,39 @@ create_minimal_example_view <- function(all_cards_filename = "content-contributi
   # Create a dataframe
   df <- as.data.frame(first_element)
   logger::log_debug("Creating view for {df$web_address} ")
+
+   # Extract the web address
+  web_address <- df$web_address
+
+  # Replace "https://" with "../../"
+  local_address <- gsub("^https://", "../../", web_address)
+
+  # Remove ".git" at the end of the address
+  local_address <- gsub("\\.git$", "", local_address)
+
+  # Construct the content of the index.md file
+  index_md_content <- paste0(
+    "---\n",
+    "title: 'Minimal Example'\n",
+    "sidebar: false\n",
+    "toc: false\n",
+    "anchor-sections: false\n",
+    "comments: false\n",
+    "---\n\n",
+    "{{< include ", local_address, "/index/index.md >}}\n"
+  )
+
+  # Define the output file path
+  output_file_path <- "gallery/minimal_example/index.md"
+
+  # Ensure the output directory exists
+  dir.create(dirname(output_file_path), recursive = TRUE, showWarnings = FALSE)
+
+  # Write the content to the file
+  writeLines(index_md_content, output_file_path)
+
+  # Print confirmation message
+  logger::log_debug("index.md file has been written to ", output_file_path, "\n")
 
 }
 

@@ -1,10 +1,26 @@
+# ignore generated content
 demo/gallery
 demo/GESIS-Methods-Hub
 demo/_partials/mega_menu.html
 demo/listing-contents.yml
+/demo/_gesisbox.gesis.org/
+/demo/_github.com/
+
+minimal_example/gallery
+minimal_example/GESIS-Methods-Hub
+minimal_example/_partials/mega_menu.html
+minimal_example/listing-contents.yml
+/minimal_example/_site/
+minimal_example/_site
+/minimal_example/_report-table.md
 
 .quarto
 demo/_site
+
+
+/man/
+/minimal_example/_github.com/
+/minimal_example/github.com/
 
 # History files
 .Rhistory
@@ -59,3 +75,5 @@ docs
 # helper file for running the demo with debugger
 /start.R
 /deploy.sh
+
+

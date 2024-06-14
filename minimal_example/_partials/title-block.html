@@ -1,0 +1,15 @@
+$if(shiny)$
+$shiny-title-block.html()$
+$elseif(method)$
+$method-title-block.html()$
+$elseif(guide)$
+$guide-title-block.html()$
+$else$
+$if(title)$
+<h1>$title$</h1>
+$endif$
+
+$if(subtitle)$
+<p class="subtitle lead">$subtitle$</p>
+$endif$
+$endif$

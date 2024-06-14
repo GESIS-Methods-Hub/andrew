@@ -1,0 +1,27 @@
+project:
+  type: website
+  render:
+    - "*.md"
+  resources:
+    - img
+
+website:
+  title: "Demo of `andrew`"
+  navbar:
+    left:
+      - href: index.md
+        text: Home
+  page-footer: "Aggregated by [`andrew`](https://github.com/GESIS-Methods-Hub/andrew) and render by [Quarto](https://quarto.org/)."
+
+format:
+  html:
+    template-partials:
+      - _partials/title-block.html
+      - _partials/shiny-title-block.html
+      - _partials/method-title-block.html
+      - _partials/guide-title-block.html
+    theme: cosmo
+    css: styles.css
+    comments:
+      giscus: 
+        repo: GESIS-Methods-Hub/andrew

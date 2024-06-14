@@ -1,0 +1,237 @@
+[
+  {
+    "id": 1,
+    "parent_collection": null,
+    "title": "Fundamentals",
+    "subtitle": "Introductions to R and Python",
+    "abstract": "",
+    "cover_image": "static/cover_image/browser-coding.svg",
+    "content_set": []
+  },
+  {
+    "id": 2,
+    "parent_collection": 1,
+    "title": "Basic Setup",
+    "subtitle": "Lorem ipsum",
+    "abstract": "Lorem ipsum dolor sit amet consectetur adipiscing elit, lectus venenatis porta tortor dui lacus pellentesque neque, nibh tristique ultricies conubia semper aliquam viverra, per facilisis curabitur tempus at etiam.",
+    "cover_image": "static/cover_image/browser-coding_kKjTXOo.svg",
+    "content_set": [
+      {
+        "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-md.git",
+        "filename": "index.md"
+      },
+      {
+        "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-ipynb.git",
+        "filename": "index.ipynb"
+      },
+      {
+        "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-ipynb-python.git",
+        "filename": "index.ipynb"
+      },
+      {
+        "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-qmd-rstats.git",
+        "filename": "index.qmd"
+      },
+      {
+        "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-qmd-rstats-units.git",
+        "filename": "index.qmd"
+      },
+      {
+        "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-shiny-rstats.git",
+        "filename": "index.qmd"
+      },
+      {
+        "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-rstats-package.git",
+        "filename": "vignettes/mwe.Rmd"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "parent_collection": 1,
+    "title": "Advanced Setup",
+    "subtitle": "Lorem ipsum",
+    "abstract": "Lorem ipsum dolor sit amet consectetur adipiscing elit, lectus venenatis porta tortor dui lacus pellentesque neque, nibh tristique ultricies conubia semper aliquam viverra, per facilisis curabitur tempus at etiam.",
+    "cover_image": "static/cover_image/browser-coding_SEiqxmp.svg",
+    "content_set": [
+      {
+        "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-ipynb.git",
+        "filename": "index.ipynb"
+      },
+      {
+        "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-ipynb-python.git",
+        "filename": "index.ipynb"
+      },
+      {
+        "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-qmd-rstats.git",
+        "filename": "index.qmd"
+      },
+      {
+        "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-qmd-rstats-units.git",
+        "filename": "index.qmd"
+      },
+      {
+        "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-shiny-rstats.git",
+        "filename": "index.qmd"
+      },
+      {
+        "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-rstats-package.git",
+        "filename": "vignettes/mwe.Rmd"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "parent_collection": null,
+    "title": "Data Gathering",
+    "subtitle": "Non essential workflows",
+    "abstract": "",
+    "cover_image": "static/cover_image/click.svg",
+    "content_set": []
+  },
+  {
+    "id": 5,
+    "parent_collection": 4,
+    "title": "Web Scraping",
+    "subtitle": "Lorem ipsum",
+    "abstract": "Lorem ipsum dolor sit amet consectetur adipiscing elit, lectus venenatis porta tortor dui lacus pellentesque neque, nibh tristique ultricies conubia semper aliquam viverra, per facilisis curabitur tempus at etiam.",
+    "cover_image": "static/cover_image/click_njc3WjZ.svg",
+    "content_set": [
+      {
+        "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-ipynb.git",
+        "filename": "index.ipynb"
+      },
+      {
+        "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-ipynb-python.git",
+        "filename": "index.ipynb"
+      },
+      {
+        "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-qmd-rstats.git",
+        "filename": "index.qmd"
+      },
+      {
+        "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-qmd-rstats-units.git",
+        "filename": "index.qmd"
+      },
+      {
+        "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-shiny-rstats.git",
+        "filename": "index.qmd"
+      },
+      {
+        "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-rstats-package.git",
+        "filename": "vignettes/mwe.Rmd"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "parent_collection": 4,
+    "title": "APIs",
+    "subtitle": "Lorem ipsum",
+    "abstract": "Lorem ipsum dolor sit amet consectetur adipiscing elit, lectus venenatis porta tortor dui lacus pellentesque neque, nibh tristique ultricies conubia semper aliquam viverra, per facilisis curabitur tempus at etiam.",
+    "cover_image": "static/cover_image/click_M3aOs2V.svg",
+    "content_set": [
+      {
+        "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-ipynb.git",
+        "filename": "index.ipynb"
+      },
+      {
+        "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-ipynb-python.git",
+        "filename": "index.ipynb"
+      },
+      {
+        "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-qmd-rstats.git",
+        "filename": "index.qmd"
+      },
+      {
+        "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-qmd-rstats-units.git",
+        "filename": "index.qmd"
+      },
+      {
+        "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-shiny-rstats.git",
+        "filename": "index.qmd"
+      },
+      {
+        "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-rstats-package.git",
+        "filename": "vignettes/mwe.Rmd"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "parent_collection": null,
+    "title": "Data Visualization",
+    "subtitle": "Visual representations of a large amount of complex data",
+    "abstract": "",
+    "cover_image": "static/cover_image/pencil-draw.svg",
+    "content_set": []
+  },
+  {
+    "id": 8,
+    "parent_collection": 7,
+    "title": "Basic Data Visualization",
+    "subtitle": "Lorem ipsum",
+    "abstract": "Lorem ipsum dolor sit amet consectetur adipiscing elit, lectus venenatis porta tortor dui lacus pellentesque neque, nibh tristique ultricies conubia semper aliquam viverra, per facilisis curabitur tempus at etiam.",
+    "cover_image": "static/cover_image/pencil-draw_lXyNFR9.svg",
+    "content_set": [
+      {
+        "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-ipynb.git",
+        "filename": "index.ipynb"
+      },
+      {
+        "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-ipynb-python.git",
+        "filename": "index.ipynb"
+      },
+      {
+        "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-qmd-rstats.git",
+        "filename": "index.qmd"
+      },
+      {
+        "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-qmd-rstats-units.git",
+        "filename": "index.qmd"
+      },
+      {
+        "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-shiny-rstats.git",
+        "filename": "index.qmd"
+      },
+      {
+        "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-rstats-package.git",
+        "filename": "vignettes/mwe.Rmd"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "parent_collection": 7,
+    "title": "Network Visualization",
+    "subtitle": "Lorem ipsum",
+    "abstract": "Lorem ipsum dolor sit amet consectetur adipiscing elit, lectus venenatis porta tortor dui lacus pellentesque neque, nibh tristique ultricies conubia semper aliquam viverra, per facilisis curabitur tempus at etiam.",
+    "cover_image": "static/cover_image/pencil-draw_vGfHuh9.svg",
+    "content_set": [
+      {
+        "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-ipynb.git",
+        "filename": "index.ipynb"
+      },
+      {
+        "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-ipynb-python.git",
+        "filename": "index.ipynb"
+      },
+      {
+        "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-qmd-rstats.git",
+        "filename": "index.qmd"
+      },
+      {
+        "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-qmd-rstats-units.git",
+        "filename": "index.qmd"
+      },
+      {
+        "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-shiny-rstats.git",
+        "filename": "index.qmd"
+      },
+      {
+        "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-rstats-package.git",
+        "filename": "vignettes/mwe.Rmd"
+      }
+    ]
+  }
+]
