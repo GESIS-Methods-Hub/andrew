@@ -1,6 +1,6 @@
 [
   {
-    "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-rstats-package.git",
-    "filename": "vignettes/mwe.Rmd"
+    "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-md.git",
+    "filename": "index.md"
   }
 ]

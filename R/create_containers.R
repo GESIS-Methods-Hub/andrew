@@ -2,7 +2,7 @@
 #' @param all_contributions
 #' @return
 #' @export
-add_image_names <- function(all_contributions){
+add_image_names <- function(all_contributions) {
   all_contributions$docker_image <- all_contributions |>
     apply(1, construct_image_name)
   return(all_contributions)
@@ -14,7 +14,7 @@ add_image_names <- function(all_contributions){
 #'
 #' @return
 #' @export
-construct_image_and_repo_name <- function (contribution_row) {
+construct_image_and_repo_name <- function(contribution_row) {
   git_repo <- contribution_row["slang"]
   git_commit_sha <- contribution_row["git_sha"]
 
@@ -39,7 +39,7 @@ construct_image_and_repo_name <- function (contribution_row) {
 #'
 #' @return
 #' @export
-construct_image_name <- function (contribution_row) {
+construct_image_name <- function(contribution_row) {
   result <- construct_image_and_repo_name(contribution_row = contribution_row)
   return(result$image_name)
 }
@@ -67,12 +67,14 @@ create_container_from_repo <- function(contribution_row) {
   docker_repository <- image_and_repo_names$docker_repository
   git_commit_sha <- image_and_repo_names$git_commit_sha
 
+  current_log_level <- logger::log_threshold()
+  is_debug <- (current_log_level == "DEBUG")
   local_list_of_images <-
     system("docker image list --format 'table {{.Repository}},{{.Tag}}'",
-      intern = TRUE
+           intern = TRUE
     ) |>
-    I() |>
-    readr::read_csv()
+      I() |>
+      readr::read_csv(show_col_types = FALSE)
 
   matching_images <- local_list_of_images |>
     dplyr::filter(
@@ -98,15 +100,15 @@ create_container_from_repo <- function(contribution_row) {
 
     logger::log_debug("Building {image_name} ...")
     logger::log_debug("{repo2docker_call}")
-    repo2docker_call_return_value <- system(repo2docker_call, intern = FALSE)
+    repo2docker_call_return_value <- system(repo2docker_call, ignore.stdout = !is_debug)
     if (repo2docker_call_return_value == 0) {
-      logger::log_info("{image_name} built.")
+      logger::log_debug("{image_name} built.")
     } else {
       logger::log_warn("{image_name} NOT built.")
       stop()
     }
   } else {
-    logger::log_info("{image_name} already exists. Skipping build.")
+    logger::log_debug("{image_name} already exists. Skipping build.")
   }
 
   return(image_name)
@@ -121,11 +123,9 @@ create_container_from_repo <- function(contribution_row) {
 #'
 #' @examples
 create_containers <- function(all_contributions) {
-  logger::log_info("START creating containers from contributions")
   all_contributions$docker_image <- all_contributions |>
     apply(1, create_container_from_repo)
 
-  logger::log_info("END creating containers from contributions")
   return(all_contributions)
 }
 

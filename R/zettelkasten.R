@@ -5,7 +5,7 @@
 #'
 #' @examples
 clean_gallery <- function() {
-  logger::log_info("Removing old gallery ...")
+  logger::log_debug("Removing old gallery ...")
 
   fs::dir_ls(
     "gallery",
@@ -16,7 +16,7 @@ clean_gallery <- function() {
   ) |>
     fs::dir_delete()
 
-  logger::log_info("Removing old gallery complete.")
+  logger::log_debug("Removing old gallery complete.")
 }
 
 #' Title
@@ -348,7 +348,7 @@ generate_card_files <- function(all_cards_filename = "zettelkasten.json", is_min
 }
 
 create_minimal_example_view <- function(all_cards_filename = "content-contributions.json") {
-  logger::log_info("Creating Minimal_Example View...")
+  logger::log_debug("Creating Minimal_Example View...")
   logger::log_debug("Reading {all_cards_filename} into list ...")
   # todo implement this
   # Parse the JSON data
