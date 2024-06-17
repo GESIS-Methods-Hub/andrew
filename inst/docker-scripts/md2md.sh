@@ -27,6 +27,8 @@ quarto_version=$(quarto --version)
 
 cd $dirname2render
 
+pwd
+
 # README.md does NOT have YAML headers.
 # If processing a file without YAML headers,
 #
@@ -65,7 +67,6 @@ quarto \
     --output index.md-tmp \
     --wrap=none \
     ${shift_heading_level:+"--shift-heading-level-by" "$shift_heading_level"} \
-    ${strip_comments:+"--strip-comments" "$strip_comments"} \
     ${fallback_author:+"--metadata" "$fallback_author"} \
     ${cover_metadata:+"--metadata" "$cover_metadata"} \
     --metadata "method:true" \
@@ -78,7 +79,7 @@ quarto \
     --metadata "git_date:${git_date}" \
     --metadata "date:${git_date}" \
     --metadata "info_quarto_version:${quarto_version}" \
-    --metadata "source_filename:${file2render}"
-    --lua-filter=_pandoc-filters/remove-badge.lua \ && \
+    --metadata "source_filename:${file2render}" \
+    --lua-filter=_pandoc-filters/remove-badge.lua && \
     cp index.md-tmp "$output_dirname/$output_basename" && \
     ${docker_script_root}/copy-assets.sh "$output_dirname"

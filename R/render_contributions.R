@@ -119,6 +119,7 @@ render_single_contribution <- function(contribution_row) {
         script = script
       )
     )
+    # logger::log_error(docker_call)
 
     docker_return_value <- system(docker_call)
 
