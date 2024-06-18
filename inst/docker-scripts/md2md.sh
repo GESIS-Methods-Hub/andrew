@@ -27,8 +27,6 @@ quarto_version=$(quarto --version)
 
 cd $dirname2render
 
-pwd
-
 # README.md does NOT have YAML headers.
 # If processing a file without YAML headers,
 #

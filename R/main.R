@@ -35,7 +35,7 @@ main <- function(config_filename = "config.yaml",
     fs::path_real() |>
     setwd()
 
-  contribution_report <- NA
+  tools_data <- NA
 
   tryCatch(
   {
@@ -49,44 +49,61 @@ main <- function(config_filename = "config.yaml",
     ) |>
       tidyr::unnest_wider(contributions)
 
-    contribution_report <- content_contributions_df
+    tools_data <- content_contributions_df
 
     # breaks down the json file and prepares paths for organizing the later stages
     logger::log_info("STAGE: Preparing contributions")
-    contribution_report <- prepare_contributions(contribution_report)
+    tools_data <- prepare_contributions(tools_data)
 
     # downloads the contributions from the github/gitlab repoitories
     if (any(stages == "download_contributions")) {
       logger::log_info("STAGE: Downloading contributions")
-      contribution_report <- download_contributions(contribution_report)
+      tools_data <- download_contributions(tools_data)
+    }
+    if (is_minimal_example) {
+      tmp_paths <- tools_data$tmp_path
+      logger::log_info("downloaded contributions to {tmp_paths}")
+      file_lists <- list.files(tools_data$tmp_path)
+      logger::log_info("contribution files are {file_lists}")
     }
 
     # procures the commit id as a meta data for later rendering
     logger::log_info("STAGE: Adding git info to contributions")
-    contribution_report <- git_info_to_contributions(contribution_report)
+    tools_data <- git_info_to_contributions(tools_data)
 
     # build the docker container (with executable code within the docker container)
     if (any(stages == "create_containers")) {
       logger::log_info("STAGE: Creating containers")
-      contribution_report <- create_containers(contribution_report)
+      tools_data <- create_containers(tools_data)
     } else {
-      contribution_report <- add_image_names(contribution_report)
+      tools_data <- add_image_names(tools_data)
     }
+    if (is_minimal_example) {
+      image_name <- tools_data$docker_image
+      logger::log_info("Build container {image_name}")
+      files_in_container <- list_files_in_container(image_name, "/home/andrew")
+      logger::log_info("contribution files are {files_in_container}")
+    }
+
 
     # converts the file from quarto to markdown (WITHOUT executable code)
     # the produced quarto markdown files are in the directories without underscore
     if (any(stages == "render_contributions")) {
       logger::log_info("STAGE: Rendering contributions")
-      contribution_report <- render_contributions(contribution_report)
+      tools_data <- render_contributions(tools_data)
     } else {
       # add fake build flag if render_contribution is to be skipped
-      contribution_report$status <- "Built"
+      tools_data$status <- "Built"
+    }
+    if (is_minimal_example){
+      render_at_dir <- fs::path(tools_data$domain)
+      logger::log_info("Written markdown files (no exec code) {render_at_dir}")
     }
 
     # validation list for what was running
     if (any(stages == "STAGE: render_report")) {
       logger::log_info("Rendering report")
-      contribution_report <- render_report(contribution_report)
+      tools_data <- render_report(tools_data)
     }
 
     # creates the yaml files for the inclusion tree
@@ -103,10 +120,25 @@ main <- function(config_filename = "config.yaml",
   setwd(original_wd)
 
   if (!is_minimal_example) {
-    return(contribution_report)
-  } else{
+    return(tools_data)
+  } else {
     return("SUCCESSFULLY ran minimal example pipeline")
   }
 }
 
+list_files_in_container <- function(image, path) {
 
+  # Run a container from the image in detached mode and get its ID
+  container_id <- system(sprintf("docker run -d %s tail -f /dev/null", image), intern = TRUE)
+
+  # Execute the ls command inside the running container
+  command <- sprintf("docker exec %s ls -R %s", container_id, path)
+  files <- system(command, intern = TRUE)
+
+  # Stop and remove the container after use
+  system(sprintf("docker stop %s", container_id), intern = TRUE)
+  system(sprintf("docker rm %s", container_id), intern = TRUE)
+
+  # Return the list of files
+  return(files)
+}

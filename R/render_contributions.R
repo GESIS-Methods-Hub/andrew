@@ -75,10 +75,10 @@ render_single_contribution <- function(contribution_row) {
     fs::path_real()
   output_location_in_container <- "/tmp/andrew"
 
-  logger::log_info("Location of docker_scripts directory: {docker_scripts_location}")
-  logger::log_info("Location of pandoc_filters directory: {pandoc_filters_location}")
+  logger::log_debug("Location of docker_scripts directory: {docker_scripts_location}")
+  logger::log_debug("Location of pandoc_filters directory: {pandoc_filters_location}")
   logger::log_info("Location of output directory: {output_location}")
-  logger::log_info("Location of output directory inside the container: {output_location_in_container}")
+  logger::log_debug("Location of output directory inside the container: {output_location_in_container}")
 
   sum_docker_return_value <- 0
   for (script in get(file2render_extension, RENDER_MATRIX)) {
@@ -119,11 +119,13 @@ render_single_contribution <- function(contribution_row) {
         script = script
       )
     )
-    # logger::log_error(docker_call)
+    logger::log_info(docker_call)
 
     docker_return_value <- system(docker_call)
 
-    logger::log_info("Rendering complete. Docker returned {docker_return_value}.")
+    logger::log_info("Rendering markdown complete. Docker returned {docker_return_value}.")
+    markdown_files <- list.files(output_location, recursive = TRUE)
+    logger::log_info("Output dir {output_location} contains the files {markdown_files}" )
 
     sum_docker_return_value <- sum_docker_return_value + docker_return_value
   }
