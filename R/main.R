@@ -101,14 +101,14 @@ main <- function(config_filename = "config.yaml",
     }
 
     # validation list for what was running
-    if (any(stages == "STAGE: render_report")) {
-      logger::log_info("Rendering report")
+    if (any(stages == "render_report")) {
+      logger::log_info("STAGE: Rendering report")
       tools_data <- render_report(tools_data)
     }
 
     # creates the yaml files for the inclusion tree
-    if (any(stages == "STAGE: generate_card_files")) {
-      logger::log_info("Generating card files")
+    if (any(stages == "generate_card_files")) {
+      logger::log_info("STAGE: Generating card files")
       generate_card_files(all_cards_filename, is_minimal_example)
     }
   },

@@ -1,10 +1,11 @@
 stages:
-  - download_contributions
-  - create_containers
-  - render_contributions
-  - render_report
+  #- download_contributions
+  #- create_containers
+  #- render_contributions
+  #- render_report
   - generate_card_files
 
 testing:
   minimal_example: true
   debug: false
+  trace_files: false # todo add this as switch to only trace files if debugging an issue

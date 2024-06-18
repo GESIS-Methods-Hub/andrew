@@ -394,6 +394,28 @@ create_minimal_example_view <- function(all_cards_filename = "content-contributi
   # Print confirmation message
   logger::log_debug("index.md file has been written to ", output_file_path, "\n")
 
+  # (re-)write method-title-block to change the download tool as links to the correct path
+
+  # Read the HTML file
+  html_file_path <- "_partials/_method-title-block.html"
+  html_content <- readLines(html_file_path, warn = FALSE)
+
+  # Define the placeholder and replacement content
+  placeholder <- "<span id=\"replaced_by_zettelkastenR\"></span>"
+  replacement <- paste0('<ul class="dropdown-menu">',
+                        '<li><a class="dropdown-item" href="', local_address, '/index/index.ipynb"> <i class="bi bi-file-earmark-richtext"></i> Jupyter Notebook</a></li>',
+                        '<li><a class="dropdown-item" href="', local_address, '/index/index.qmd"> <i class="bi bi-file-earmark-text"></i> Quarto</a></li>',
+                        '<li><a class="dropdown-item" href="', local_address, '/index/index.pdf"> <i class="bi bi-file-earmark-pdf"></i> PDF</a></li>',
+                        '</ul>')
+
+  # Replace the placeholder in the HTML content
+  modified_html_content <- str_replace_all(html_content, fixed(placeholder), replacement)
+
+  # Write the modified HTML back to a file
+  output_file_path <- "_partials/method-title-block.html"
+  writeLines(modified_html_content, output_file_path)
+
+  logger::log_info("The _method_title_block.html modified and saved to:", output_file_path)
 }
 
 
