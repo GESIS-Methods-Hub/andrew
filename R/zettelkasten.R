@@ -350,7 +350,9 @@ generate_card_files <- function(all_cards_filename = "zettelkasten.json", is_min
 create_minimal_example_view <- function(all_cards_filename = "content-contributions.json") {
   logger::log_debug("Creating Minimal_Example View...")
   logger::log_debug("Reading {all_cards_filename} into list ...")
-  # todo implement this
+
+  ######## Part 1: rewriting the index.md to only include one tool
+
   # Parse the JSON data
   data_list <- fromJSON(all_cards_filename)
 
@@ -392,9 +394,11 @@ create_minimal_example_view <- function(all_cards_filename = "content-contributi
   writeLines(index_md_content, output_file_path)
 
   # Print confirmation message
-  logger::log_debug("index.md file has been written to ", output_file_path, "\n")
+  logger::log_info("[zettelkasten.R] index.md file has been written to ", output_file_path, "\n")
 
-  # (re-)write method-title-block to change the download tool as links to the correct path
+  ######## Part 2: rewriting the method-title-block with the correct path to the new tools
+  # 2a) (re-)write method-title-block to change the download tool as links to the correct path
+  # 2b) TODO the other partials probably need to be changed, too
 
   # Read the HTML file
   html_file_path <- "_partials/_method-title-block.html"
