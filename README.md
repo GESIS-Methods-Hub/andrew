@@ -45,3 +45,14 @@ Rscript -e "andrew::main(source_dir='demo')"
 - [R Universe](https://r-universe.dev)
 - [Gallery of Jupyter Books](https://executablebooks.org/en/latest/gallery/)
 - [`matplotlib` Examples](https://matplotlib.org/stable/gallery/index.html)
+
+## Developer Notes
+
+The file main.R is the entrypoint for the pipeline. It consist of the following steps:
+
+- downloading (cloning the repositories) in download_contributions.R. They will be stored in the repository names without underscore.
+- compiling the contributions to markdown and removing all dynamic elements (should be static md afterwards). This is done in render_contributions. 
+  1. create a docker container depending on the needs (python R etc.)
+  2. run compilation scripts in the container (inst/dockerscripts) to map the different repository types and entry points
+  3. copy/using valumes to move the resulting static markdown to the repositories with underscore.  
+- automatically create a quarto structure for composing the different repositories into one website

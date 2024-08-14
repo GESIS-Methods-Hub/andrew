@@ -1,3 +1,21 @@
+# Install jsonlite package if not already installed
+if (!require(jsonlite)) {
+  install.packages("jsonlite")
+}
+
+# Install stringr package if not already installed
+if (!require(stringr)) {
+  install.packages("stringr")
+}
+
+# Load the stringr package
+library(stringr)
+
+
+# Load the jsonlite package
+library(jsonlite)
+
+
 #' Title
 #'
 #' @return
