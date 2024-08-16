@@ -277,5 +277,28 @@
         "filename": "README.md"
       }
     ]
+  },
+  {
+    "id": 10,
+    "parent_collection": null,
+    "title": "Data Quality Analysis",
+    "subtitle": "Kodaqs First Tools",
+    "abstract": "",
+    "cover_image": "static/cover_image/pencil-draw.svg",
+    "content_set": []
+  },
+  {
+    "id": 11,
+    "parent_collection": 10,
+    "title": "Analysis",
+    "subtitle": "Lorem ipsum",
+    "abstract": "Lorem ipsum dolor sit amet consectetur adipiscing elit, lectus venenatis porta tortor dui lacus pellentesque neque, nibh tristique ultricies conubia semper aliquam viverra, per facilisis curabitur tempus at etiam.",
+    "cover_image": "static/cover_image/pencil-draw_lXyNFR9.svg",
+    "content_set": [
+      {
+        "web_address": "https://github.com/GESIS-Methods-Hub/ZIS_R_tutor.git",
+        "filename": "index.qmd"
+      }
+    ]
   }
 ]

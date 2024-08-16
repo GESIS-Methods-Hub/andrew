@@ -30,5 +30,9 @@
   {
     "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-readme.git",
     "filename": "README.md"
+  },
+  {
+    "web_address": "https://github.com/GESIS-Methods-Hub/ZIS_R_tutor.git",
+    "filename": "index.qmd"
   }
 ]

@@ -86,7 +86,7 @@ main <- function(config_filename = "config.yaml",
     }
 
 
-    # converts the file from quarto to markdown (WITHOUT executable code)
+    # converts the file from quarto(or else) to markdown (WITHOUT executable code)
     # the produced quarto markdown files are in the directories without underscore
     if (any(stages == "render_contributions")) {
       logger::log_info("STAGE: Rendering contributions")
