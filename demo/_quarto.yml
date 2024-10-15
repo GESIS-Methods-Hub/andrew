@@ -6,7 +6,7 @@ project:
     - img
 
 website:
-  title: "Demo of `andrew`"
+  title: "KODAQS Toolbox"
   navbar:
     left:
       - href: index.md
