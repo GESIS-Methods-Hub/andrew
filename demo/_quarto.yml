@@ -8,6 +8,8 @@ project:
 website:
   title: "KODAQS Toolbox"
   navbar:
+    # logo: "img/logo_gesis.svg"
+    logo: "img/toolbox_logo.jpg"
     left:
       - href: index.md
         text: Home
