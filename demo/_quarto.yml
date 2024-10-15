@@ -13,7 +13,8 @@ website:
     left:
       - href: index.md
         text: Home
-  page-footer: "Aggregated by [`andrew`](https://github.com/GESIS-Methods-Hub/andrew) and render by [Quarto](https://quarto.org/)."
+  page-footer: img/gesis_footer.jpeg
+  #page-footer: "Aggregated by [`andrew`](https://github.com/GESIS-Methods-Hub/andrew) and render by [Quarto](https://quarto.org/).
 
 format:
   html:
