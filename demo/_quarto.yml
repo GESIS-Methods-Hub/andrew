@@ -20,8 +20,8 @@ format:
       - _partials/shiny-title-block.html
       - _partials/method-title-block.html
       - _partials/guide-title-block.html
-    theme: cosmo
+    theme: cerulean
     css: styles.css
     comments:
-      giscus: 
+      giscus:
         repo: GESIS-Methods-Hub/andrew
