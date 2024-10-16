@@ -1,9 +1,5 @@
 [
   {
-    "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-md.git",
-    "filename": "index.md"
-  },
-  {
     "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-ipynb.git",
     "filename": "index.ipynb"
   },
@@ -33,6 +29,10 @@
   },
   {
     "web_address": "https://github.com/GESIS-Methods-Hub/ZIS_R_tutor.git",
+    "filename": "index.qmd"
+  },
+  {
+    "web_address": "https://github.com/YannikPeters/DQ_Tool_TextPreprocessing",
     "filename": "index.qmd"
   }
 ]

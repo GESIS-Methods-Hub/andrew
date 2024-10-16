@@ -1,6 +1,6 @@
 stages:
-  # - download_contributions
-  # - create_containers
+  - download_contributions
+  - create_containers
   - render_contributions
   - render_report
   - generate_card_files

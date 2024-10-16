@@ -79,7 +79,6 @@ create_container_from_repo <- function(contribution_row) {
       REPOSITORY == docker_repository,
       TAG == git_commit_sha
     )
-
   # checks if image exists locally in the docker environment
   if (nrow(matching_images) == 0) {
     repo2docker_call_template <- "repo2docker \\
