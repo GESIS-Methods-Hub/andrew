@@ -76,8 +76,55 @@ po/*~
 rsconnect/
 docs
 # helper file for running the demo with debugger
-/start.R
-/deploy.sh
 
 
-/deploy_minimal.sh
+# Ignore R-related files
+.Rbuildignore
+andrew.Rproj
+vignettes/*.Rmd
+vignettes/*.R
+
+# Git configuration and workflow files
+.editorconfig
+.github/workflows/*.yaml
+.gitlab-ci.yml
+
+# Docker and environment files
+Dockerfile
+env.yaml
+conda-lock.yml
+config.yaml
+config_minimal.yaml
+
+# Package-related files
+DESCRIPTION
+LICENSE
+NAMESPACE
+_pkgdown.yml
+
+# Man files and documentation
+man/*
+man/*.Rd
+demo/*
+demo/_partials/*
+demo/gallery/ejs/*
+demo/status.md
+
+# Minimal examples
+minimal_example/.gitignore
+minimal_example/_partials/*
+minimal_example/img/svgrepo.com/*
+minimal_example/static/cover_image/*
+minimal_example/status.md
+minimal_example/styles.css
+
+# Test and package files
+tests/testthat/*
+packages.R
+packages_env1.csv
+packages_env2.csv
+
+# Search and index
+search/man_search.json
+
+
