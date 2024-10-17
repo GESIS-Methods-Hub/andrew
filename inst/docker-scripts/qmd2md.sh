@@ -33,6 +33,7 @@ quarto \
     --to markdown \
     --output index.md \
     --wrap=none \
+    --lua-filter="/home/andrew/_pandoc-filters/licensefield.lua" \
     --metadata "method:true" \
     --metadata "citation:true" \
     --metadata "github_https:${github_https}" \
@@ -44,6 +45,5 @@ quarto \
     --metadata "date:${git_date}" \
     --metadata "info_quarto_version:${quarto_version}" \
     --metadata "source_filename:${file2render}" && \
-    --lua-filter=_pandoc-filters/leave-license-field.lua && \
     cp index.md $output_dirname/$output_basename && \
     ${docker_script_root}/copy-assets.sh $output_dirname
