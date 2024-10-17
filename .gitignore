@@ -128,3 +128,21 @@ packages_env2.csv
 search/man_search.json
 
 
+# Ignore GitHub directory
+.github/
+
+# Ignore IDE config
+.idea/
+
+# Ignore specific files
+InRelease
+InRelease.1
+how 6876cd
+
+# Ignore docker debug scripts
+inst/docker-scripts/debug
+
+# Ignore test file
+tests/testthat.R
+
+
