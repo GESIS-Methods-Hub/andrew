@@ -6,6 +6,9 @@ demo/listing-contents.yml
 /demo/_gesisbox.gesis.org/
 /demo/_github.com/
 
+demo/github/
+
+
 minimal_example/gallery
 minimal_example/GESIS-Methods-Hub
 minimal_example/_partials/mega_menu.html
