@@ -366,6 +366,7 @@ generate_card_files <- function(all_cards_filename = "zettelkasten.json", is_min
 }
 
 create_minimal_example_view <- function(all_cards_filename = "content-contributions.json") {
+  # Note: this is a terrible hack and should be condemned by a group of peers
   logger::log_debug("Creating Minimal_Example View...")
   logger::log_debug("Reading {all_cards_filename} into list ...")
 
@@ -384,11 +385,36 @@ create_minimal_example_view <- function(all_cards_filename = "content-contributi
    # Extract the web address
   web_address <- df$web_address
 
+  ############ START copy the bib files
+  tool_address <- gsub("^https://", "", web_address)
+
+  # Define the source directory (appending "/index" to local_address)
+  source_directory <- file.path(tool_address, "index")
+
+  # Define the target directory
+  target_directory <- "gallery/minimal_example/"
+
+  # Ensure the target directory exists (create it if not)
+  if (!dir.exists(target_directory)) {
+    dir.create(target_directory, recursive = TRUE)
+  }
+
+  # Get a list of all .bib files in the source directory
+  bib_files <- list.files(source_directory, pattern = "\\.bib$", full.names = TRUE)
+
+  # Copy each .bib file to the target directory
+  file.copy(bib_files, target_directory, overwrite = TRUE)
+  
   # Replace "https://" with "../../"
   local_address <- gsub("^https://", "../../", web_address)
 
   # Remove ".git" at the end of the address
   local_address <- gsub("\\.git$", "", local_address)
+
+  # Get the file names (without the full path) to store in YAML
+  bib_file_names <- basename(bib_files)
+
+  ############ END copy the bib files
 
   # Construct the content of the index.md file
   index_md_content <- paste0(
@@ -396,11 +422,15 @@ create_minimal_example_view <- function(all_cards_filename = "content-contributi
     "title: 'Minimal Example'\n",
     "sidebar: false\n",
     "toc: false\n",
-    "anchor-sections: false\n",
+    "bibliography:\n",
+    paste0("  - ", bib_file_names, collapse = "\n"),
+    "\nanchor-sections: false\n",
     "comments: false\n",
     "---\n\n",
     "{{< include ", local_address, "/index/index.md >}}\n"
   )
+
+
 
   # Define the output file path
   output_file_path <- "gallery/minimal_example/index.md"
@@ -413,6 +443,7 @@ create_minimal_example_view <- function(all_cards_filename = "content-contributi
 
   # Print confirmation message
   logger::log_info("[zettelkasten.R] index.md file has been written to ", output_file_path, "\n")
+
 
   ######## Part 2: rewriting the method-title-block with the correct path to the new tools
   # 2a) (re-)write method-title-block to change the download tool as links to the correct path
@@ -437,7 +468,11 @@ create_minimal_example_view <- function(all_cards_filename = "content-contributi
   output_file_path <- "_partials/method-title-block.html"
   writeLines(modified_html_content, output_file_path)
 
-  logger::log_info("The _method_title_block.html modified and saved to:", output_file_path)
+  logger::log_info("[Zettelkasten.R] The _method_title_block.html modified and saved to:", output_file_path)
+
+
+
+
 }
 
 
