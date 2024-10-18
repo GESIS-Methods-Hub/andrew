@@ -26,6 +26,16 @@ main <- function(config_filename = "config.yaml",
     logger::log_threshold(logger::INFO)
   }
 
+  # environment_config
+  environment_config <- config$environment
+  if (environment_config$rootless) {
+    # working_dir <- environment_config$working_dir
+    docker_host <- environment_config$docker_host
+    # hacked the docker rootless with this:
+    print("setting DOCKER_HOST to rootless (export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock)")
+    Sys.setenv(DOCKER_HOST = docker_host)
+  }
+
   # Extract the stages to be executed from the config
   stages <- config$stages
 

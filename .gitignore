@@ -93,8 +93,6 @@ vignettes/*.R
 Dockerfile
 env.yaml
 conda-lock.yml
-config.yaml
-config_minimal.yaml
 
 # Package-related files
 DESCRIPTION
