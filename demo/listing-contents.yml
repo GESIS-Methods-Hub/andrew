@@ -1,0 +1,12 @@
+- title: Error Source
+  subtitle: Introductions to Methods of Detecting Error Sources
+  href: gallery/error-source
+  cover_image: static/cover_image/browser-coding.svg
+- title: Data Type
+  subtitle: Non essential workflows
+  href: gallery/data-type
+  cover_image: static/cover_image/click.svg
+- title: Additional Tools
+  subtitle: 
+  href: gallery/additional-tools
+  cover_image: static/cover_image/pencil-draw.svg

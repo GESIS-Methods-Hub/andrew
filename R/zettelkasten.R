@@ -404,7 +404,7 @@ create_minimal_example_view <- function(all_cards_filename = "content-contributi
 
   # Copy each .bib file to the target directory
   file.copy(bib_files, target_directory, overwrite = TRUE)
-  
+
   # Replace "https://" with "../../"
   local_address <- gsub("^https://", "../../", web_address)
 
