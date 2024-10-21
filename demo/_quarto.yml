@@ -15,6 +15,8 @@ website:
         text: Home
       - href: contributions.md
         text: Contribution
+      - href: topics.md
+        text: Topics
   body-footer: "Aggregated by [`andrew`](https://github.com/GESIS-Methods-Hub/andrew) and render by [Quarto](https://quarto.org/)"
   page-footer:
     left: "<div style=\"flex: 1; text-align: left; color: white; font-size: 16px; padding-left: 20%; padding-right: 20%;\"><strong>Standort Mannheim</strong><br>GESIS - Leibniz-Institut für Sozialwissenschaften<br>B6, 4-5<br>68159 Mannheim<br>Telefon: +49-(0)621-1246-0<br>Fax: +49-(0)621-1246-100</div>"

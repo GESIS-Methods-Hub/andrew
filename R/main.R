@@ -121,6 +121,14 @@ main <- function(config_filename = "config.yaml",
       logger::log_info("STAGE: Generating card files")
       generate_card_files(all_cards_filename, is_minimal_example)
     }
+
+    if (any(stages == "create_linklist")) {
+      logger::log_info("STAGE: Creating Linklist")
+      create_linklist(all_cards_filename)
+
+    }
+
+
   },
     error = function(e) {
       logger::log_error("{e}")

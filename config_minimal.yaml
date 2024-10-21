@@ -4,6 +4,7 @@ stages:
   #- render_contributions
   #- render_report
   - generate_card_files
+  - create_linklist
 
 testing:
   minimal_example: true
