@@ -1,38 +1,74 @@
 [
   {
     "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-ipynb.git",
-    "filename": "index.ipynb"
+    "filename": "index.ipynb",
+    "tags": [
+      "python",
+      "GESIS"
+    ]
   },
   {
     "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-ipynb-python.git",
-    "filename": "index.ipynb"
+    "filename": "index.ipynb",
+    "tags": [
+      "python",
+      "GESIS"
+    ]
   },
   {
     "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-qmd-rstats.git",
-    "filename": "index.qmd"
+    "filename": "index.qmd",
+    "tags": [
+      "quarto",
+      "GESIS"
+    ]
   },
   {
     "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-qmd-rstats-units.git",
-    "filename": "index.qmd"
+    "filename": "index.qmd",
+    "tags": [
+      "quarto",
+      "GESIS"
+    ]
   },
   {
     "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-shiny-rstats.git",
-    "filename": "index.qmd"
+    "filename": "index.qmd",
+    "tags": [
+      "quarto",
+      "GESIS"
+    ]
   },
   {
     "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-rstats-package.git",
-    "filename": "vignettes/mwe.Rmd"
+    "filename": "vignettes/mwe.Rmd",
+    "tags": [
+      "R",
+      "GESIS"
+    ]
   },
   {
     "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-readme.git",
-    "filename": "README.md"
+    "filename": "README.md",
+    "tags": [
+      "markdown",
+      "GESIS"
+    ]
   },
   {
     "web_address": "https://github.com/GESIS-Methods-Hub/ZIS_R_tutor.git",
-    "filename": "index.qmd"
+    "filename": "index.qmd",
+    "tags": [
+      "quarto",
+      "GESIS"
+    ]
   },
   {
     "web_address": "https://github.com/YannikPeters/DQ_Tool_TextPreprocessing",
-    "filename": "index.qmd"
+    "filename": "index.qmd",
+    "tags": [
+      "quarto",
+      "Data Quality"
+    ]
   }
 ]
