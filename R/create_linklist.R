@@ -54,7 +54,7 @@ create_linklist <- function(content_contributions_filename) {
   top_tag_link_groups <- tag_link_groups[sorted_tags]
 
   # Generate the markdown content for the Quarto file
-  markdown_content <- "## Top Five Computed Topics\n"
+  markdown_content <- "## Top Five Computed Topics\n\n This contains a selection of most relevant topics in the toolbox. For a keyword search, use the search icon on the top right.\n\n"
 
   for (tag in sorted_tags) {
     # Start a new list group for each tag

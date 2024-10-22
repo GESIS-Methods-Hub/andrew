@@ -1,7 +1,5 @@
 ---
 page-title: "Kodaqs Toolbox`"
-sidebar: false
-toc: false
 listing:
   - id: overview
     template: gallery/ejs/tiles.ejs

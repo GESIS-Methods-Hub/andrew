@@ -12,11 +12,9 @@ DOCX custom styles are annotated into data-custom-style.
 
 /* make the navbar black because of logo
 .navbar {
-    background: #0a0c0d;
-}
-*/
-.navbar {
     background: #ADD8E6;
 }
+*/
+
 
 
