@@ -18,8 +18,10 @@ DOCX custom styles are annotated into data-custom-style.
 
 .methods_hub_nav_teaser img {
     width: 100%;
-    height: auto;
     display: block;
+    aspect-ratio: 2 / 3;
 }
+
+
 
 

@@ -28,7 +28,7 @@ website:
       - href: topics.md
         text: Topics
   sidebar:
-    contents: "*index/index.md"
+    contents: "*/index.md"
 
   body-footer: "Aggregated by [`andrew`](https://github.com/GESIS-Methods-Hub/andrew) and render by [Quarto](https://quarto.org/)"
   page-footer:

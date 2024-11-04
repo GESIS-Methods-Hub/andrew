@@ -11,9 +11,9 @@
   {
     "id": 2,
     "parent_collection": 1,
-    "title": "Representation",
-    "subtitle": "Lorem ipsum",
-    "abstract": "Lorem ipsum dolor sit amet consectetur adipiscing elit, lectus venenatis porta tortor dui lacus pellentesque neque, nibh tristique ultricies conubia semper aliquam viverra, per facilisis curabitur tempus at etiam.",
+    "title": "Representation Bias",
+    "subtitle": "",
+    "abstract": "Representation bias occurs when the data collected does not accurately reflect the target population which impacts the generalizability of findings. This issue arises in survey data, digital behavioral data as well as linked data though different mechanisms. In survey data, sampling errors, low response rates, or the exclusion of certain demographic groups can lead to biased survey samples. In the case of digital behavioral data, researchers often select specific subsets of traces or users from a potentially complete sampling frame, but representation errors occur due to the coverage of selected platforms and the need to filter and (pre)process large volumes of data. In linked data, the biases of the original data sources – survey data – are carried over and may be amplified by the linking process, e.g. by non-consent to the sharing of linkage information, incomplete data in the non-survey data source and technical errors in the linkage process.",
     "cover_image": "static/AdobeStock_784817816.jpeg",
     "content_set": [
       {
@@ -53,9 +53,9 @@
   {
     "id": 3,
     "parent_collection": 1,
-    "title": "Measurement",
-    "subtitle": "Lorem ipsum",
-    "abstract": "Lorem ipsum dolor sit amet consectetur adipiscing elit, lectus venenatis porta tortor dui lacus pellentesque neque, nibh tristique ultricies conubia semper aliquam viverra, per facilisis curabitur tempus at etiam.",
+    "title": "Measurement Bias",
+    "subtitle": "",
+    "abstract": "Measurement bias refers to errors or inaccuracies in how variables are measured or reported which can undermine the validity of research findings. In survey data, poorly designed questions or a lacking engagement of the respondents with the questionnaire can lead to distorted responses. Response bias can manifest itself in various ways, such as the overreporting of positive behaviors and underreporting of stigmatized behaviors or the usage of mental shortcuts to reduce cognitive burden. Digital behavioral data challenges researchers to accurately link observable behaviors on a platform to the theoretical constructs they intend to study. Algorithms and platform structures also shape recorded interactions, introducing measurement inconsistencies across platforms. In linked data, inconsistent construct specifications or varying measurement standards between linked datasets can create discrepancies. For example, a self-reported measure in a survey may not align with administrative records, introducing bias in the combined analysis.",
     "cover_image": "static/AdobeStock_963635084.jpeg",
     "content_set": [
       {
@@ -105,7 +105,7 @@
     "id": 4,
     "parent_collection": null,
     "title": "Data Type",
-    "subtitle": "Non essential workflows",
+    "subtitle": "",
     "abstract": "",
     "cover_image": "static/cover_image/click.svg",
     "content_set": []
@@ -114,10 +114,14 @@
     "id": 5,
     "parent_collection": 4,
     "title": "Survey Data",
-    "subtitle": "Lorem ipsum",
-    "abstract": "Lorem ipsum dolor sit amet consectetur adipiscing elit, lectus venenatis porta tortor dui lacus pellentesque neque, nibh tristique ultricies conubia semper aliquam viverra, per facilisis curabitur tempus at etiam.",
+    "subtitle": "Self-reports from opinion polls, cross-sectional, or longitudinal studies",
+    "abstract": "Survey data refers to data collected directly from individuals through standardized questionnaires or interviews. Surveys can be conducted using a variety of methods, such as face-to-face interviews, telephone interviews, online surveys, or mailed paper surveys. Survey data can stem from probability-based samples designed to be representative of a population or non-probability surveys focusing on specific groups or using convenience samples. Surveys aim to capture people’s opinions, behaviors, or knowledge on certain topics as well as demographic characteristics and can range from simple opinion polls to complex longitudinal studies tracking changes in individuals’ responses over time.",
     "cover_image": "static/AdobeStock_164503342.jpeg",
     "content_set": [
+      {
+        "web_address": "https://github.com/kraemefe/resquin-tool-application",
+        "filename": "Resquin_Tutorial.Rmd"
+      },
       {
         "web_address": "https://github.com/GESIS-Methods-Hub/ZIS_R_tutor.git",
         "filename": "index.qmd"
@@ -156,8 +160,8 @@
     "id": 6,
     "parent_collection": 4,
     "title": "Linked Data",
-    "subtitle": "Lorem ipsum",
-    "abstract": "Lorem ipsum dolor sit amet consectetur adipiscing elit, lectus venenatis porta tortor dui lacus pellentesque neque, nibh tristique ultricies conubia semper aliquam viverra, per facilisis curabitur tempus at etiam.",
+    "subtitle": "Survey data linked with other data sources",
+    "abstract": "We refer to linked data as a distinct type of social science data that combines survey data with other data sources via a matching process. The additional data can stem from an array of other sources, such as administrative records, geospatial data, sensor-based measurements, or digital traces. By linking different data types, researchers can cross-validate information, explore complex relationships, and address questions that would not be possible with survey data alone. This approach is increasingly popular as it enhances the validity and scope of findings across various research fields.",
     "cover_image": "static/AdobeStock_941281453.jpeg",
     "content_set": [
       {
@@ -197,9 +201,9 @@
   {
     "id": 12,
     "parent_collection": 4,
-    "title": "Digital Behavioural Data",
-    "subtitle": "Lorem ipsum",
-    "abstract": "Lorem ipsum dolor sit amet consectetur adipiscing elit, lectus venenatis porta tortor dui lacus pellentesque neque, nibh tristique ultricies conubia semper aliquam viverra, per facilisis curabitur tempus at etiam.",
+    "title": "Digital Behavior",
+    "subtitle": "Behavioral records collected in digital systems",
+    "abstract": " Digital behavioral data consists of the behavioral records people leave behind when interacting with digital systems and online platforms. These traces are automatically generated whenever individuals engage in activities such as using social media, browsing websites, using smartphones, or interacting with IoT devices. Digital traces include social media posts, location data, clickstreams, search histories, and app usage patterns. This type of data provides insights into real-world behavior and preferences without relying on individuals’ self-reports, making it a powerful resource for studying social interactions, communication patterns, and consumer behavior.",
     "cover_image": "static/AdobeStock_790258449.jpeg",
     "content_set": [
       {

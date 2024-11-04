@@ -1,5 +1,9 @@
 [
   {
+    "web_address": "https://github.com/kraemefe/resquin-tool-application",
+    "filename": "Resquin_Tutorial.Rmd"
+  },
+  {
     "web_address": "https://github.com/StefanJuenger/zipmatching",
     "filename": "index.qmd"
   },
