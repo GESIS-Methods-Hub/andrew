@@ -1,0 +1,109 @@
+[
+  {
+    "web_address": "https://github.com/StefanJuenger/zipmatching",
+    "filename": "index.qmd",
+    "tags": [
+      "geodata",
+      "data linking"
+    ]
+  },
+  {
+    "web_address": "https://github.com/juliandehne/delab-trees",
+    "filename": "index.ipynb",
+    "tags": [
+      "social media",
+      "reply trees",
+      "network analysis",
+      "python"
+    ]
+  },
+  {
+    "web_address": "https://github.com/lukasbirki/tool_valitext.git",
+    "filename": "index.qmd",
+    "tags": [
+      "Measurement",
+      "Validity",
+      "Text Mining",
+      "Computational Methods",
+      "Self-Assessment"
+    ]
+  },
+  {
+    "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-ipynb.git",
+    "filename": "index.ipynb",
+    "tags": [
+      "python",
+      "GESIS"
+    ]
+  },
+  {
+    "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-ipynb-python.git",
+    "filename": "index.ipynb",
+    "tags": [
+      "python",
+      "GESIS"
+    ]
+  },
+  {
+    "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-qmd-rstats.git",
+    "filename": "index.qmd",
+    "tags": [
+      "quarto",
+      "GESIS"
+    ]
+  },
+  {
+    "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-qmd-rstats-units.git",
+    "filename": "index.qmd",
+    "tags": [
+      "quarto",
+      "GESIS"
+    ]
+  },
+  {
+    "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-shiny-rstats.git",
+    "filename": "index.qmd",
+    "tags": [
+      "quarto",
+      "GESIS"
+    ]
+  },
+  {
+    "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-rstats-package.git",
+    "filename": "vignettes/mwe.Rmd",
+    "tags": [
+      "R",
+      "GESIS"
+    ]
+  },
+  {
+    "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-readme.git",
+    "filename": "README.md",
+    "tags": [
+      "markdown",
+      "GESIS"
+    ]
+  },
+  {
+    "web_address": "https://github.com/GESIS-Methods-Hub/ZIS_R_tutor.git",
+    "filename": "index.qmd",
+    "tags": [
+      "quarto",
+      "GESIS"
+    ]
+  },
+  {
+    "web_address": "https://github.com/YannikPeters/DQ_Tool_TextPreprocessing.git",
+    "filename": "index.qmd",
+    "tags": [
+      "Data Quality",
+      "computational text analysis",
+      "Measurement",
+      "Preprocessing",
+      "Text Mining",
+      "Multilingual",
+      "text data",
+      "Social Media"
+    ]
+  }
+]

@@ -1,10 +1,10 @@
 library(quanteda)
 library(dplyr)
 
-create_linklist <- function(content_contributions_filename) {
+create_linklist <- function(tag_filename = "tags.json") {
 
   # Load the JSON data with tags from the file
-  data_with_tags <- fromJSON(content_contributions_filename)
+  data_with_tags <- fromJSON(tag_filename)
 
   # Initialize a list to store counts of links for each tag
   tag_count <- list()

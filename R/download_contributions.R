@@ -35,7 +35,11 @@ donwload_single_http_contribution <- function(contribution_row) {
 #' @examples
 donwload_single_git_contribution <- function(contribution_row) {
   git_repo_path <- contribution_row["tmp_path"]
+  # git_repo_path <- as.character(git_repo_path[[1]])
+
   git_url <- contribution_row["web_address"]
+
+  logger::log_debug("{git_repo_path}")
 
   if (dir.exists(git_repo_path)) {
     logger::log_debug("{git_repo_path} already exists.")

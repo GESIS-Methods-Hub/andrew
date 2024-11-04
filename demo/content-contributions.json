@@ -1,74 +1,50 @@
 [
   {
+    "web_address": "https://github.com/StefanJuenger/zipmatching",
+    "filename": "index.qmd"
+  },
+  {
+    "web_address": "https://github.com/juliandehne/delab-trees",
+    "filename": "index.ipynb"
+  },
+  {
+    "web_address": "https://github.com/lukasbirki/tool_valitext",
+    "filename": "index.qmd"
+  },
+  {
     "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-ipynb.git",
-    "filename": "index.ipynb",
-    "tags": [
-      "python",
-      "GESIS"
-    ]
+    "filename": "index.ipynb"
   },
   {
     "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-ipynb-python.git",
-    "filename": "index.ipynb",
-    "tags": [
-      "python",
-      "GESIS"
-    ]
+    "filename": "index.ipynb"
   },
   {
     "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-qmd-rstats.git",
-    "filename": "index.qmd",
-    "tags": [
-      "quarto",
-      "GESIS"
-    ]
+    "filename": "index.qmd"
   },
   {
     "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-qmd-rstats-units.git",
-    "filename": "index.qmd",
-    "tags": [
-      "quarto",
-      "GESIS"
-    ]
+    "filename": "index.qmd"
   },
   {
     "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-shiny-rstats.git",
-    "filename": "index.qmd",
-    "tags": [
-      "quarto",
-      "GESIS"
-    ]
+    "filename": "index.qmd"
   },
   {
     "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-rstats-package.git",
-    "filename": "vignettes/mwe.Rmd",
-    "tags": [
-      "R",
-      "GESIS"
-    ]
+    "filename": "vignettes/mwe.Rmd"
   },
   {
     "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-readme.git",
-    "filename": "README.md",
-    "tags": [
-      "markdown",
-      "GESIS"
-    ]
+    "filename": "README.md"
   },
   {
     "web_address": "https://github.com/GESIS-Methods-Hub/ZIS_R_tutor.git",
-    "filename": "index.qmd",
-    "tags": [
-      "quarto",
-      "GESIS"
-    ]
+    "filename": "index.qmd"
   },
   {
     "web_address": "https://github.com/YannikPeters/DQ_Tool_TextPreprocessing",
-    "filename": "index.qmd",
-    "tags": [
-      "quarto",
-      "Data Quality"
-    ]
+    "filename": "index.qmd"
   }
 ]

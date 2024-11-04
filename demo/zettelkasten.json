@@ -14,8 +14,12 @@
     "title": "Representation",
     "subtitle": "Lorem ipsum",
     "abstract": "Lorem ipsum dolor sit amet consectetur adipiscing elit, lectus venenatis porta tortor dui lacus pellentesque neque, nibh tristique ultricies conubia semper aliquam viverra, per facilisis curabitur tempus at etiam.",
-    "cover_image": "static/cover_image/browser-coding_kKjTXOo.svg",
+    "cover_image": "static/AdobeStock_784817816.jpeg",
     "content_set": [
+      {
+        "web_address": "https://github.com/juliandehne/delab-trees",
+        "filename": "index.ipynb"
+      },
       {
         "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-ipynb.git",
         "filename": "index.ipynb"
@@ -52,8 +56,21 @@
     "title": "Measurement",
     "subtitle": "Lorem ipsum",
     "abstract": "Lorem ipsum dolor sit amet consectetur adipiscing elit, lectus venenatis porta tortor dui lacus pellentesque neque, nibh tristique ultricies conubia semper aliquam viverra, per facilisis curabitur tempus at etiam.",
-    "cover_image": "static/cover_image/browser-coding_SEiqxmp.svg",
+    "cover_image": "static/AdobeStock_963635084.jpeg",
     "content_set": [
+      {
+        "web_address": "https://github.com/lukasbirki/tool_valitext.git",
+        "filename": "index.qmd",
+        "tags": [
+          "computational text analysis",
+          "measurement",
+          "validity"
+        ]
+      },
+      {
+        "web_address": "https://github.com/GESIS-Methods-Hub/ZIS_R_tutor.git",
+        "filename": "index.qmd"
+      },
       {
         "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-ipynb.git",
         "filename": "index.ipynb"
@@ -96,11 +113,15 @@
   {
     "id": 5,
     "parent_collection": 4,
-    "title": "Survey",
+    "title": "Survey Data",
     "subtitle": "Lorem ipsum",
     "abstract": "Lorem ipsum dolor sit amet consectetur adipiscing elit, lectus venenatis porta tortor dui lacus pellentesque neque, nibh tristique ultricies conubia semper aliquam viverra, per facilisis curabitur tempus at etiam.",
-    "cover_image": "static/cover_image/click_njc3WjZ.svg",
+    "cover_image": "static/AdobeStock_164503342.jpeg",
     "content_set": [
+      {
+        "web_address": "https://github.com/GESIS-Methods-Hub/ZIS_R_tutor.git",
+        "filename": "index.qmd"
+      },
       {
         "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-ipynb.git",
         "filename": "index.ipynb"
@@ -137,8 +158,12 @@
     "title": "Linked Data",
     "subtitle": "Lorem ipsum",
     "abstract": "Lorem ipsum dolor sit amet consectetur adipiscing elit, lectus venenatis porta tortor dui lacus pellentesque neque, nibh tristique ultricies conubia semper aliquam viverra, per facilisis curabitur tempus at etiam.",
-    "cover_image": "static/cover_image/click_M3aOs2V.svg",
+    "cover_image": "static/AdobeStock_941281453.jpeg",
     "content_set": [
+      {
+        "web_address": "https://github.com/StefanJuenger/zipmatching",
+        "filename": "index.qmd"
+      },
       {
         "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-ipynb.git",
         "filename": "index.ipynb"
@@ -175,8 +200,21 @@
     "title": "Digital Behavioural Data",
     "subtitle": "Lorem ipsum",
     "abstract": "Lorem ipsum dolor sit amet consectetur adipiscing elit, lectus venenatis porta tortor dui lacus pellentesque neque, nibh tristique ultricies conubia semper aliquam viverra, per facilisis curabitur tempus at etiam.",
-    "cover_image": "static/cover_image/click_M3aOs2V.svg",
+    "cover_image": "static/AdobeStock_790258449.jpeg",
     "content_set": [
+      {
+        "web_address": "https://github.com/lukasbirki/tool_valitext.git",
+        "filename": "index.qmd",
+        "tags": [
+          "computational text analysis",
+          "measurement",
+          "validity"
+        ]
+      },
+      {
+        "web_address": "https://github.com/juliandehne/delab-trees",
+        "filename": "index.ipynb"
+      },
       {
         "web_address": "https://github.com/YannikPeters/DQ_Tool_TextPreprocessing",
         "filename": "index.qmd"
@@ -208,29 +246,6 @@
       {
         "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-readme.git",
         "filename": "README.md"
-      }
-    ]
-  },
-  {
-    "id": 10,
-    "parent_collection": null,
-    "title": "Additional Tools",
-    "subtitle": "",
-    "abstract": "",
-    "cover_image": "static/cover_image/pencil-draw.svg",
-    "content_set": []
-  },
-  {
-    "id": 11,
-    "parent_collection": 10,
-    "title": "Open Access Repository for Measurement Instruments",
-    "subtitle": "Scale Archiving",
-    "abstract": "The following tutorials are part of an instrument to be archived in the Open Access Repository for Measurement Instruments (ZIS).",
-    "cover_image": "static/cover_image/pencil-draw_lXyNFR9.svg",
-    "content_set": [
-      {
-        "web_address": "https://github.com/GESIS-Methods-Hub/ZIS_R_tutor.git",
-        "filename": "index.qmd"
       }
     ]
   }
