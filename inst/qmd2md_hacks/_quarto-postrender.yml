@@ -1,0 +1,4 @@
+project:
+  post-render:
+    - copy_metadata.R
+    - test.R

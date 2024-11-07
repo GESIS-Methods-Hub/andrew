@@ -74,7 +74,7 @@ main <- function(config_filename = "config.yaml",
       tmp_paths <- tools_data$tmp_path
       logger::log_info("downloaded contributions to {tmp_paths}")
       file_lists <- list.files(tools_data$tmp_path)
-      logger::log_info("contribution files are {file_lists}")
+      logger::log_debug("contribution files are {file_lists}")
     }
 
     # procures the commit id as a meta data for later rendering
@@ -92,7 +92,7 @@ main <- function(config_filename = "config.yaml",
       image_name <- tools_data$docker_image
       logger::log_info("Build container {image_name}")
       files_in_container <- list_files_in_container(image_name, "/home/andrew")
-      logger::log_info("contribution files are {files_in_container}")
+      logger::log_debug("contribution files are {files_in_container}")
     }
 
 

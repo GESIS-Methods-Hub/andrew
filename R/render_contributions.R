@@ -71,12 +71,16 @@ render_single_contribution <- function(contribution_row) {
     system.file("docker-scripts", package = "andrew", mustWork = TRUE)
   pandoc_filters_location <-
     system.file("pandoc-filters", package = "andrew", mustWork = TRUE)
+  qmd2md_hacks_location <-
+    system.file("qmd2md_hacks", package = "andrew", mustWork = TRUE)
+
   output_location <- render_at_dir |>
     fs::path_real()
   output_location_in_container <- "/tmp/andrew"
 
   logger::log_debug("Location of docker_scripts directory: {docker_scripts_location}")
   logger::log_debug("Location of pandoc_filters directory: {pandoc_filters_location}")
+  logger::log_debug("Location of pandoc_filters directory: {qmd2md_hacks_location}")
   logger::log_debug("Location of output directory: {output_location}")
   logger::log_debug("Location of output directory inside the container: {output_location_in_container}")
 
@@ -88,6 +92,7 @@ render_single_contribution <- function(contribution_row) {
     --user=${host_user_id}:${host_group_id} \\
     ${mount_input_file} \\
     --mount type=bind,source=${docker_scripts_location},target=${home_dir_at_docker}/_docker-scripts \\
+    --mount type=bind,source=${qmd2md_hacks_location},target=${home_dir_at_docker}/_qmd2md_hacks \\
     --env docker_script_root=${home_dir_at_docker}/_docker-scripts \\
     --mount type=bind,source=${pandoc_filters_location},target=${home_dir_at_docker}/_pandoc-filters \\
     --mount type=bind,source=${output_location},target=${output_location_in_container} \\
@@ -107,6 +112,7 @@ render_single_contribution <- function(contribution_row) {
         host_group_id = host_group_id,
         mount_input_file = mount_input_file,
         home_dir_at_docker = home_dir_at_docker,
+        qmd2md_hacks_location = qmd2md_hacks_location,
         docker_scripts_location = docker_scripts_location,
         pandoc_filters_location = pandoc_filters_location,
         output_location = output_location,
@@ -119,7 +125,7 @@ render_single_contribution <- function(contribution_row) {
         script = script
       )
     )
-    logger::log_debug(docker_call)
+    logger::log_info(docker_call)
 
     docker_return_value <- system(docker_call)
 
