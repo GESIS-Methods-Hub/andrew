@@ -1,0 +1,54 @@
+---
+title: "Main title"
+author:
+  - "Author 1"
+  - "Author 2"
+date: "`r format(Sys.Date(), '%B %d, %Y')`"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+# Introduction
+
+
+# Data OR Data and Measurement Instruments
+
+
+# Assessing Data Quality with Package xy
+<!-- probably the header here will vary depending on the tool and its application context-->
+
+## Tool functions
+
+
+# Getting started
+<!--paragraph dedicated for installation from tool (R package) and importing data or creating a synthetic data set-->
+
+#  Inspecting data
+<!--probably not necessary for each tool application-->
+
+# Preparing data
+<!--probably not necessary for each tool application or could be merged with "Inspecting data" -->
+
+
+# Tool application title
+<!--probably here the sub-headers will vary heavily with the specific tool application. I am adding some examples from our resquin tool tutorial-->
+
+## Indicators of xy
+
+<!--Info box -->
+**Be careful**
+
+## Handling respondents with xy
+
+## Effects of xy on indicators of xy
+<!-- I think you get the gist -->
+
+<!--Info box -->
+**Good to know**
+<!-- we included something like this to describe on which alternative question types our tool can be applied to. Maybe this other fits for other tools or we find a more suitable catchy title for such information -->
+
+# Conclusion and recommendations for further analyses
+
+# References
+
