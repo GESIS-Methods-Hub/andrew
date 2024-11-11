@@ -10,19 +10,6 @@ DOCX custom styles are annotated into data-custom-style.
     color: #FF6100;
 }
 
-/* make the navbar black because of logo
-.navbar {
-    background: #ADD8E6;
-}
-*/
-
-/*
-.methods_hub_nav_teaser img {
-    width: 100%;
-    display: block;
-    max-height: calc(100% * 2 / 3);
-}
-*/
 
 .methods_hub_nav_teaser img {
     width: 100%;
