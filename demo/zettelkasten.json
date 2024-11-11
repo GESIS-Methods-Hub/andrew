@@ -2,7 +2,7 @@
   {
     "id": 1,
     "parent_collection": null,
-    "title": "Error Source",
+    "title": "Error Sources",
     "subtitle": "Introductions to Methods of Detecting Error Sources",
     "abstract": "",
     "cover_image": "static/cover_image/browser-coding.svg",
@@ -11,7 +11,7 @@
   {
     "id": 2,
     "parent_collection": 1,
-    "title": "Representation Bias",
+    "title": "Representation",
     "subtitle": "",
     "abstract": "Representation bias occurs when the data collected does not accurately reflect the target population which impacts the generalizability of findings. This issue arises in survey data, digital behavioral data as well as linked data though different mechanisms. In survey data, sampling errors, low response rates, or the exclusion of certain demographic groups can lead to biased survey samples. In the case of digital behavioral data, researchers often select specific subsets of traces or users from a potentially complete sampling frame, but representation errors occur due to the coverage of selected platforms and the need to filter and (pre)process large volumes of data. In linked data, the biases of the original data sources – survey data – are carried over and may be amplified by the linking process, e.g. by non-consent to the sharing of linkage information, incomplete data in the non-survey data source and technical errors in the linkage process.",
     "cover_image": "static/AdobeStock_784817816.jpeg",
@@ -25,7 +25,7 @@
   {
     "id": 3,
     "parent_collection": 1,
-    "title": "Measurement Bias",
+    "title": "Measurement",
     "subtitle": "",
     "abstract": "Measurement bias refers to errors or inaccuracies in how variables are measured or reported which can undermine the validity of research findings. In survey data, poorly designed questions or a lacking engagement of the respondents with the questionnaire can lead to distorted responses. Response bias can manifest itself in various ways, such as the overreporting of positive behaviors and underreporting of stigmatized behaviors or the usage of mental shortcuts to reduce cognitive burden. Digital behavioral data challenges researchers to accurately link observable behaviors on a platform to the theoretical constructs they intend to study. Algorithms and platform structures also shape recorded interactions, introducing measurement inconsistencies across platforms. In linked data, inconsistent construct specifications or varying measurement standards between linked datasets can create discrepancies. For example, a self-reported measure in a survey may not align with administrative records, introducing bias in the combined analysis.",
     "cover_image": "static/AdobeStock_963635084.jpeg",
