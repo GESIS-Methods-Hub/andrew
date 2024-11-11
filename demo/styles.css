@@ -16,10 +16,20 @@ DOCX custom styles are annotated into data-custom-style.
 }
 */
 
+/*
 .methods_hub_nav_teaser img {
     width: 100%;
     display: block;
     max-height: calc(100% * 2 / 3);
+}
+*/
+
+.methods_hub_nav_teaser img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    display: block;
+    object-fit: cover;
 }
 
 
