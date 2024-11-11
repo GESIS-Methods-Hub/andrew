@@ -19,10 +19,14 @@ The collection is organised in two levels.
 ## Dependencies
 
 - [Docker](https://www.docker.com/)
+  - a) add andrew as a docker user so it does not need superuser privilege
+  - b) alternatively: install rootless docker. In this case you need to set docker_host in the config.yaml or config_minimal.yaml
 - Quarto >= 1.3
-- R
+- R == 4.2.3 (for remote Intellij development)
 - Python
   - [repo2docker](https://repo2docker.readthedocs.io/)
+
+
 
 ### Dependencies installation
 
@@ -45,3 +49,33 @@ Rscript -e "andrew::main(source_dir='demo')"
 - [R Universe](https://r-universe.dev)
 - [Gallery of Jupyter Books](https://executablebooks.org/en/latest/gallery/)
 - [`matplotlib` Examples](https://matplotlib.org/stable/gallery/index.html)
+
+## Developer Notes
+
+The file main.R is the entrypoint for the pipeline. It consist of the following steps:
+
+- downloading (cloning the repositories) in download_contributions.R. They will be stored in the repository names without underscore.
+- compiling the contributions to markdown and removing all dynamic elements (should be static md afterwards). This is done in render_contributions. 
+  1. create a docker container depending on the needs (python R etc.)
+  2. run compilation scripts in the container (inst/dockerscripts) to map the different repository types and entry points
+  3. copy/using valumes to move the resulting static markdown to the repositories with underscore.  
+- automatically create a quarto structure for composing the different repositories into one website
+
+### Using start.R for Debugging
+
+The start.R script assumes that your conda env is called *base* and it needs you to set the working dir in line 5
+
+```R 
+setwd("/home/dehnejn/gitlab/andrew")
+```
+
+### Using start_minimal.R for Running the minimal example
+
+In the directory minimal_example there is a pipeline to build only one tool to test the process. It does not fulfill all the requirements
+of the main pipeline but it is a faster way of testing new tool integration. 
+
+## Deployment
+
+- deploy.sh deploys andrew to the local webserver
+- deploy_minimal.sh deploys the minimal example to the webserver
+

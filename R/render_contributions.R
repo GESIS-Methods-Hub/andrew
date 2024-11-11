@@ -7,11 +7,11 @@
 #'
 #' @examples
 render_single_contribution <- function(contribution_row) {
-  logger::log_info("Rendering {contribution_row['filename']} from {contribution_row['web_address']}")
+  logger::log_debug("Rendering {contribution_row['filename']} from {contribution_row['web_address']}")
 
   host_user_id <- system("id -u", intern = TRUE)
   host_group_id <- system("id -g", intern = TRUE)
-  logger::log_info("Running with user ID {host_user_id} and group id {host_group_id}.")
+  logger::log_debug("Running with user ID {host_user_id} and group id {host_group_id}.")
 
   RENDER_MATRIX <- list(
     "md" = c(
@@ -75,14 +75,14 @@ render_single_contribution <- function(contribution_row) {
     fs::path_real()
   output_location_in_container <- "/tmp/andrew"
 
-  logger::log_info("Location of docker_scripts directory: {docker_scripts_location}")
-  logger::log_info("Location of pandoc_filters directory: {pandoc_filters_location}")
-  logger::log_info("Location of output directory: {output_location}")
-  logger::log_info("Location of output directory inside the container: {output_location_in_container}")
+  logger::log_debug("Location of docker_scripts directory: {docker_scripts_location}")
+  logger::log_debug("Location of pandoc_filters directory: {pandoc_filters_location}")
+  logger::log_debug("Location of output directory: {output_location}")
+  logger::log_debug("Location of output directory inside the container: {output_location_in_container}")
 
   sum_docker_return_value <- 0
   for (script in get(file2render_extension, RENDER_MATRIX)) {
-    logger::log_info("Rendering using {script} ...")
+    logger::log_debug("Rendering using {script} ...")
 
     docker_call_template <- 'docker run \\
     --user=${host_user_id}:${host_group_id} \\
@@ -119,10 +119,13 @@ render_single_contribution <- function(contribution_row) {
         script = script
       )
     )
+    logger::log_debug(docker_call)
 
     docker_return_value <- system(docker_call)
 
-    logger::log_info("Rendering complete. Docker returned {docker_return_value}.")
+    logger::log_debug("Rendering markdown complete. Docker returned {docker_return_value}.")
+    markdown_files <- list.files(output_location, recursive = TRUE)
+    logger::log_debug("Output dir {output_location} contains the files {markdown_files}" )
 
     sum_docker_return_value <- sum_docker_return_value + docker_return_value
   }
@@ -130,7 +133,7 @@ render_single_contribution <- function(contribution_row) {
   if (sum_docker_return_value == 0) {
     build_status <- "Built"
 
-    logger::log_info("Rendering PDF ...")
+    logger::log_debug("Rendering PDF ...")
 
     docker_pdf_call_template <- 'docker run \\
       --user=${host_user_id}:${host_user_id} \\
@@ -153,10 +156,10 @@ render_single_contribution <- function(contribution_row) {
 
     docker_return_value <- system(docker_pdf_call)
 
-    logger::log_info("Rendering PDF completed.")
+    logger::log_debug("Rendering PDF completed.")
   } else {
     build_status <- "Unavailable"
-    logger::log_info("Skipping PDF rendering.")
+    logger::log_debug("Skipping PDF rendering.")
   }
 
   return(build_status)

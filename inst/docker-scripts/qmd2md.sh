@@ -33,6 +33,7 @@ quarto \
     --to markdown \
     --output index.md \
     --wrap=none \
+    --lua-filter="/home/andrew/_pandoc-filters/licensefield.lua" \
     --metadata "method:true" \
     --metadata "citation:true" \
     --metadata "github_https:${github_https}" \

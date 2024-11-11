@@ -1,0 +1,8 @@
+- title: Error Source
+  subtitle: Introductions to Methods of Detecting Error Sources
+  href: gallery/error-source
+  cover_image: static/cover_image/browser-coding.svg
+- title: Data Type
+  subtitle: Data Quality Metrics for Different Data Types
+  href: gallery/data-type
+  cover_image: static/cover_image/click.svg

@@ -1,3 +1,21 @@
+# Install jsonlite package if not already installed
+if (!require(jsonlite)) {
+  install.packages("jsonlite")
+}
+
+# Install stringr package if not already installed
+if (!require(stringr)) {
+  install.packages("stringr")
+}
+
+# Load the stringr package
+library(stringr)
+
+
+# Load the jsonlite package
+library(jsonlite)
+
+
 #' Title
 #'
 #' @return
@@ -5,7 +23,7 @@
 #'
 #' @examples
 clean_gallery <- function() {
-  logger::log_info("Removing old gallery ...")
+  logger::log_debug("Removing old gallery ...")
 
   fs::dir_ls(
     "gallery",
@@ -16,7 +34,7 @@ clean_gallery <- function() {
   ) |>
     fs::dir_delete()
 
-  logger::log_info("Removing old gallery complete.")
+  logger::log_debug("Removing old gallery complete.")
 }
 
 #' Title
@@ -336,9 +354,129 @@ create_listing_2nd_level <- function(all_card_row) {
 #' @export
 #'
 #' @examples
-generate_card_files <- function(all_cards_filename = "zettelkasten.json") {
-  clean_gallery()
+generate_card_files <- function(all_cards_filename = "zettelkasten.json", is_minimal_example = FALSE) {
+  if (is_minimal_example) {
+    create_minimal_example_view()
+    #create_full_view(all_cards_filename)
+  } else {
+    clean_gallery()
+    create_full_view(all_cards_filename)
+  }
 
+}
+
+create_minimal_example_view <- function(all_cards_filename = "content-contributions.json") {
+  # Note: this is a terrible hack and should be condemned by a group of peers
+  logger::log_debug("Creating Minimal_Example View...")
+  logger::log_debug("Reading {all_cards_filename} into list ...")
+
+  ######## Part 1: rewriting the index.md to only include one tool
+
+  # Parse the JSON data
+  data_list <- fromJSON(all_cards_filename)
+
+  # Extract the first element
+  first_element <- data_list[1, ]
+
+  # Create a dataframe
+  df <- as.data.frame(first_element)
+  logger::log_debug("Creating view for {df$web_address} ")
+
+   # Extract the web address
+  web_address <- df$web_address
+
+  ############ START copy the bib files
+  tool_address <- gsub("^https://", "", web_address)
+
+  # Define the source directory (appending "/index" to local_address)
+  source_directory <- file.path(tool_address, "index")
+
+  # Define the target directory
+  target_directory <- "gallery/minimal_example/"
+
+  # Ensure the target directory exists (create it if not)
+  if (!dir.exists(target_directory)) {
+    dir.create(target_directory, recursive = TRUE)
+  }
+
+  # Get a list of all .bib files in the source directory
+  bib_files <- list.files(source_directory, pattern = "\\.bib$", full.names = TRUE)
+
+  # Copy each .bib file to the target directory
+  file.copy(bib_files, target_directory, overwrite = TRUE)
+
+  # Replace "https://" with "../../"
+  local_address <- gsub("^https://", "../../", web_address)
+
+  # Remove ".git" at the end of the address
+  local_address <- gsub("\\.git$", "", local_address)
+
+  # Get the file names (without the full path) to store in YAML
+  bib_file_names <- basename(bib_files)
+
+  ############ END copy the bib files
+
+  # Construct the content of the index.md file
+  index_md_content <- paste0(
+    "---\n",
+    "title: 'Minimal Example'\n",
+    "sidebar: false\n",
+    "toc: false\n",
+    "bibliography:\n",
+    paste0("  - ", bib_file_names, collapse = "\n"),
+    "\nanchor-sections: false\n",
+    "comments: false\n",
+    "---\n\n",
+    "{{< include ", local_address, "/index/index.md >}}\n"
+  )
+
+
+
+  # Define the output file path
+  output_file_path <- "gallery/minimal_example/index.md"
+
+  # Ensure the output directory exists
+  dir.create(dirname(output_file_path), recursive = TRUE, showWarnings = FALSE)
+
+  # Write the content to the file
+  writeLines(index_md_content, output_file_path)
+
+  # Print confirmation message
+  logger::log_info("[zettelkasten.R] index.md file has been written to ", output_file_path, "\n")
+
+
+  ######## Part 2: rewriting the method-title-block with the correct path to the new tools
+  # 2a) (re-)write method-title-block to change the download tool as links to the correct path
+  # 2b) TODO the other partials probably need to be changed, too
+
+  # Read the HTML file
+  html_file_path <- "_partials/_method-title-block.html"
+  html_content <- readLines(html_file_path, warn = FALSE)
+
+  # Define the placeholder and replacement content
+  placeholder <- "<span id=\"replaced_by_zettelkastenR\"></span>"
+  replacement <- paste0('<ul class="dropdown-menu">',
+                        '<li><a class="dropdown-item" href="', local_address, '/index/index.ipynb"> <i class="bi bi-file-earmark-richtext"></i> Jupyter Notebook</a></li>',
+                        '<li><a class="dropdown-item" href="', local_address, '/index/index.qmd"> <i class="bi bi-file-earmark-text"></i> Quarto</a></li>',
+                        '<li><a class="dropdown-item" href="', local_address, '/index/index.pdf"> <i class="bi bi-file-earmark-pdf"></i> PDF</a></li>',
+                        '</ul>')
+
+  # Replace the placeholder in the HTML content
+  modified_html_content <- str_replace_all(html_content, fixed(placeholder), replacement)
+
+  # Write the modified HTML back to a file
+  output_file_path <- "_partials/method-title-block.html"
+  writeLines(modified_html_content, output_file_path)
+
+  logger::log_info("[Zettelkasten.R] The _method_title_block.html modified and saved to:", output_file_path)
+
+
+
+
+}
+
+
+create_full_view <- function(all_cards_filename) {
   logger::log_debug("Reading {all_cards_filename} into list ...")
   all_cards_list <- all_cards_filename |>
     fs::path_real() |>

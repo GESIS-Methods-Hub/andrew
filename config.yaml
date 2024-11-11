@@ -1,0 +1,16 @@
+stages:
+  - download_contributions
+  - create_containers
+  - render_contributions
+  - render_report
+  - generate_card_files
+  - create_linklist
+
+testing:
+  minimal_example: false
+  debug: true
+
+environment:
+  rootless: true
+  # in case of rootless
+  docker_host: "unix:///run/user/1003/docker.sock"

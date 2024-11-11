@@ -9,3 +9,16 @@ DOCX custom styles are annotated into data-custom-style.
 [data-custom-style="gesis_orange Char"] {
     color: #FF6100;
 }
+
+
+.methods_hub_nav_teaser img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    display: block;
+    object-fit: cover;
+}
+
+
+
+
