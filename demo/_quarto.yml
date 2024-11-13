@@ -16,8 +16,8 @@ website:
     left:
       - href: index.md
         text: Home
-      - href: contributions.md
-        text: Contribution
+      # - href: contributions.md
+      #   text: Contribution
       # - href: handson.md
       #   text: HandsOn
       - href: https://www.gesis.org/forschung/drittmittelprojekte/projektseite-kodaqs
