@@ -26,3 +26,8 @@ DOCX custom styles are annotated into data-custom-style.
     width: 100%;
     text-align: center;
 } */
+
+.inline-image {
+        float: left;
+        width: 40%;
+}
