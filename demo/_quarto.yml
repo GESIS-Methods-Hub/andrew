@@ -23,10 +23,10 @@ website:
       #   text: Contribution
       # - href: handson.md
       #   text: HandsOn
-      - href: https://www.gesis.org/forschung/drittmittelprojekte/projektseite-kodaqs
+      - href: about.md
         text: About
-      - href: license.md
-        text: License
+      - href: impressum.md
+        text: Impressum
     right:
       - href: topics.md
         text: Topics
@@ -47,8 +47,9 @@ website:
       Fax: +49-(0)221-47694-199
 
     right: |
+      <br>
       ![GESIS ist ein Institut der Leibniz-Gemeinschaft](https://www.gesis.org/typo3conf/ext/gesis_web_ext/Resources/Public/webpack/dist/img/leibniz_logo_de_white.svg)  
-      [Impressum](https://www.gesis.org/institut/impressum) [Datenschutz](https://www.gesis.org/institut/datenschutz)
+      [Impressum](/impressum.html) 
 
 format:
   html:
