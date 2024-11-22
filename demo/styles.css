@@ -19,12 +19,10 @@ DOCX custom styles are annotated into data-custom-style.
     object-fit: cover;
 }
 
-.footer {
+/* .footer {
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
     text-align: center;
-}
-
-
+} */

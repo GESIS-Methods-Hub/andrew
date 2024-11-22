@@ -142,4 +142,5 @@ inst/docker-scripts/debug
 # Ignore test file
 tests/testthat.R
 
-
+#Dont ignore GESIS theme
+!gesis-theme.scss

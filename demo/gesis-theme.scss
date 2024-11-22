@@ -1,0 +1,398 @@
+/*-- scss:defaults --*/
+
+/*-------------------*/
+/*--     fonts     --*/
+/*-------------------*/
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap');
+
+/*-------------------*/
+/*--     colors    --*/
+/*-------------------*/
+$gs--color--gs-darkblue: #003c78;
+$gs--color--gs-darkblue-transparent: rgba(0, 60, 120, 0.8);
+$gs--color--gs-lightblue: #1e8cc8;
+$gs--color--gs-pink: #d20064;
+$gs--color--gs-lightblue--14: #dfeff7;
+$gs--color--gs-darkblue--14: #dbe3ec;
+$gs--color--gs-berry: #642878;
+$gs--color--gs-turquoise: #64afaf;
+$gs--color--gs-orange: #f08741;
+$gs--color--gs-yellow: #fad205;
+$gs--color--gs-petrol: #006a82;
+$gs--color--gs-lightpink: #c873a0;
+$gs--color--gs-olive: #699e6e;
+$gs--color--gs-rust: #aa4137;
+$gs--color--gs-light: #ccc;
+$gs--color--gs-dark: black;
+$gs--color--gs-berry--14: #e9e0ec;
+$gs--color--gs-turquoise--14: #e9f4f4;
+$gs--color--gs-orange--14: #fdeee4;
+$gs--color--gs-yellow--14: #fff9db;
+$gs--color--gs-petrol--14: #dbeaed;
+$gs--color--gs-lightpink--14: #f7ebf2;
+$gs--color--gs-olive--14: #eaf1ea;
+$gs--color--gs-rust--14: #f3e4e2;
+$gs--color--gs-dark--14: #cdcdcd;
+$gs--color--gs-light--14: #f4f4f4;
+$gs--color--gs-berry--25: #D8C9DD;
+$gs--color--gs-turquoise--25: #D8EBEB;
+$gs--color--gs-orange--25: #FBE1CF;
+$gs--color--gs-yellow--25: #FEF4C0;
+$gs--color--gs-petrol--25: #BFDAE0;
+$gs--color--gs-lightpink--25: #F1DCE7;
+$gs--color--gs-olive--25: #D9E7DB;
+$gs--color--gs-rust--25: #EACFCD;
+$gs--color--gs-blue--8: #EBEFF4;
+$gs--color--gs-default-grey: #f4f4f4;
+$gs--color--gs-accent-grey: #cccccc;
+$gs--color--gs-dark-grey: #808080;
+$gs--color--gs-white: #ffffff;
+$gs--color--gs-black: #000000;
+$gs--color--gs-facet-1: #006A82;
+$gs--color--gs-facet-2: #F08741;
+$gs--color--gs-facet-3: #64AFAF;
+$gs--color--gs-facet-4: #FAD205;
+$gs--color--gs-facet-5: #C873A0;
+$gs--color--gs-facet-6: #AA4137;
+$gs--color--gs-facet-1-opacity-40: rgba(0, 106, 130, 0.2509803922);
+$gs--color--gs-facet-2-opacity-40: rgba(240, 135, 65, 0.2509803922);
+$gs--color--gs-facet-3-opacity-40: rgba(100, 175, 175, 0.2509803922);
+$gs--color--gs-facet-4-opacity-40: rgba(250, 210, 5, 0.2509803922);
+$gs--color--gs-facet-5-opacity-40: rgba(200, 115, 160, 0.2509803922);
+$gs--color--gs-facet-6-opacity-40: rgba(170, 65, 55, 0.2509803922);
+$gs--gradient--berry-to-darkblue: linear-gradient(50deg, #642878 0%, #003c78 100%);
+$gs--gradient--berry-darkblue-to-lightblue: linear-gradient(50deg, rgb(102, 47, 116) 0%, rgb(0, 67, 136) 36%, rgb(0, 149, 219) 75%, rgb(0, 149, 219) 100%);
+$gs--gradient--darkblue-to-berry: linear-gradient(90deg, rgb(69, 46, 120) 0%, 33.4783%, rgb(100, 40, 120) 66.9565%, 83.4783%, rgb(98, 40, 120) 100%);
+$gs--gradient--berry-to-pink: linear-gradient(90deg, rgb(107, 37, 118) 0%, 36.5217%, rgb(160, 18, 109) 73.0435%, 86.5217%, rgb(171, 13, 106) 100%);
+$gs--gradient--darkblue: linear-gradient(90deg, rgb(29, 54, 120) 0%, 14.0164%, rgb(50, 50, 120) 28.0329%, 64.0164%, rgb(41, 89, 155) 100%);
+$gs--gradient--darkblue-to-lightblue: linear-gradient(90deg, rgb(0, 71, 140) 0%, 1.78204%, rgb(0, 75, 144) 3.56409%, 51.782%, rgb(0, 149, 219) 100%);
+$gs--gradient--testimonial: linear-gradient(17.23deg, #0095DB 0%, #004388 52%, #662F74 100%);
+
+/*-------------------*/
+/*--     navbar    --*/
+/*-------------------*/
+$navbar-color: $gs--color--gs-white !default; 
+$navbar-bg: $gs--color--gs-white !default; 
+$navbar-fg: $gs--color--gs-pink;
+$navbar-border-color: $gs--color--gs-light; 
+
+/*-------------------*/
+/*--     body      --*/
+/*-------------------*/
+$body-color: $gs--color--gs-dark; 
+
+/*-------------------*/
+/*--     fonts     --*/
+/*-------------------*/
+$font-default: 'Source Sans', sans-serif;
+$font-heading: 'Cabin', sans-serif;
+
+/*-------------------*/
+/*--     links     --*/
+/*-------------------*/
+$link-color: $body-color; 
+$link-decoration: none; 
+$link-hover-decoration: none; 
+
+/*-------------------*/
+/*--   headings    --*/
+/*-------------------*/
+$gs--headline--color: $gs--color--gs-lightblue;
+$h1-font-size: 3.1rem; 
+$h2-font-size: 2.1rem; 
+$h3-font-size: 1.5rem; 
+$h4-font-size: 1rem;
+$h5-font-size: 1rem; 
+
+/*-------------------*/
+/*--     others    --*/
+/*-------------------*/
+$gs-default-border-radius: 1.5rem;
+
+/*--------------------------------------------------------------------------*/
+/*-- scss:rules --*/
+body {
+    font-family: $font-default;
+}
+
+// navbar 
+.navbar-logo {
+    max-height: 4rem;
+}
+
+.navbar-brand {
+    box-shadow: none;
+    &:hover {
+        box-shadow: none;
+    }
+}
+
+.navbar {
+    border-bottom: 1px solid $gs--color--gs-light;
+}
+
+.navbar-nav .nav-link {
+    width: 100%;
+    background-color: $gs--color--gs-white;
+    color: $gs--color--gs-pink;
+    border-radius: 1rem;
+    text-align: left;
+    padding: 0.75rem 1rem;
+    border: none;
+    font-family: $font-heading;
+    font-weight: 700;
+    box-shadow: none;
+
+    &.active,
+    &.show {
+        color: $gs--color--gs-darkblue;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+        background-color: $gs--color--gs-lightblue--14;
+        color: $gs--color--gs-darkblue;
+    }
+}
+
+// headers
+@mixin heading-style($color: $gs--headline--color, $weight: 700, $family: $font-heading, $line-height: 1.2, $border-height: 0px) {
+    font-family: $family;
+    font-weight: $weight;
+    color: $color;
+    line-height: $line-height;
+    border-bottom: $border-height;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    @include heading-style();
+}
+
+/* links in text */
+a {
+    position: relative;
+    box-shadow: inset 0 -2px 0 $gs--color--gs-pink;
+
+}
+
+a:hover {
+    /*hard coded pink 50%*/
+    box-shadow: inset 0 -8px 0 rgba(210, 0, 100, .5);
+
+}
+
+/* TOC */
+nav#TOC {
+    ul {
+        li {
+            a {
+                display: block;
+                border-top: 1px solid $gs--color--gs-darkblue; 
+                padding: 0.3em 0.2em;
+                display: flex;
+                align-items: baseline;
+                box-shadow: none !important;
+                border-left: none;
+
+                &:before {
+                    content: "→";
+                    margin-right: 8px;
+                    font-size: 1.2em;
+                    font-weight: 700;
+                    color: $gs--color--gs-pink;
+                }
+
+                &:hover {
+                    background-color: $gs--color--gs-light; 
+                }
+            }
+        }
+    }
+}
+
+/* Tabset Styling */
+.panel-tabset {
+    .nav-tabs {
+        justify-content: center;
+        background-color: $gs--color--gs-berry--14;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem 1.5rem;
+        padding: 1.3rem;
+        border-top-right-radius: $gs-default-border-radius;
+        border-top-left-radius: $gs-default-border-radius;
+        margin-bottom: calc(1rem / 3);
+
+        .nav-link {
+            background-color: $gs--color--gs-white;
+            color: $gs--color--gs-berry;
+            border-radius: 9999999px;
+            font-weight: 700;
+            border: 3px solid $gs--color--gs-berry;
+            margin: 0 5px;
+            padding: 0.7rem 1.7rem 0.6rem;
+            box-shadow: none !important;
+
+            &.active {
+                background-color: $gs--color--gs-berry;
+                color: $gs--color--gs-white;
+                box-shadow: none !important;
+            }
+
+            &:hover {
+                background-color: $gs--color--gs-berry;
+                color: $gs--color--gs-white;
+            }
+        }
+    }
+}
+
+/* Tab Content Styling */
+.tab-content {
+    background-color: $gs--color--gs-default-grey;
+    border-bottom-right-radius: $gs-default-border-radius;
+    border-bottom-left-radius: $gs-default-border-radius;
+}
+
+/* List Styling */
+ul>li,
+ol>li {
+    margin: 0.5em 0;
+    padding-left: 0.375em;
+}
+
+li::marker {
+    color: $gs--color--gs-pink;
+}
+
+/* callouts */
+/* Custom callouts */
+div.callout {
+    &-warning {
+        border-left-color: $gs--color--gs-orange;
+
+        &.callout-style-default>.callout-header {
+            background-color: $gs--color--gs-orange--14;
+        }
+    }
+
+    &-note {
+        border-left-color: $gs--color--gs-darkblue;
+
+        &.callout-style-default>.callout-header {
+            background-color: $gs--color--gs-darkblue--14;
+        }
+    }
+
+    &-tip {
+        border-left-color: $gs--color--gs-turquoise;
+
+        &.callout-style-default>.callout-header {
+            background-color: $gs--color--gs-turquoise--14;
+        }
+    }
+
+    &-caution {
+        border-left-color: $gs--color--gs-rust;
+
+        &.callout-style-default>.callout-header {
+            background-color: $gs--color--gs-rust--14;
+        }
+    }
+
+    &-important {
+        border-left-color: $gs--color--gs-rust;
+
+        &.callout-style-default>.callout-header {
+            background-color: $gs--color--gs-rust--14;
+        }
+    }
+}
+
+/* Cards */
+.gesis-card {
+    &-orange {
+        background-color: $gs--color--gs-orange;
+        color: #fff;
+        border-radius: 1rem;
+    }
+
+    &-rust {
+        background-color: $gs--color--gs-rust;
+        color: #fff;
+        border-radius: 1rem;
+    }
+
+    &-turquoise {
+        background-color: $gs--color--gs-turquoise;
+        color: #fff;
+        border-radius: 1rem;
+    }
+
+    &-berry {
+        background-color: $gs--color--gs-berry;
+        color: #fff;
+        border-radius: 1rem;
+    }
+
+    &-orange p,
+    &-rust p,
+    &-berry p,
+    &-turquoise p {
+        padding: 1.5rem 2rem;
+    }
+}
+
+.card-header {
+    border-bottom: 3px solid #fff;
+    // padding: 1.5rem 2rem;
+    color: #fff;
+    font-weight: 700;
+}
+
+/* footer */
+footer{
+    background-color: $gs--color--gs-darkblue;
+    border-top: 10px solid $gs--color--gs-pink;
+}
+.nav-footer {
+    background-color: $gs--color--gs-darkblue; 
+    color: $gs--color--gs-white; 
+    margin-left: 6rem;
+    margin-right: 4rem;
+    a {
+        color: inherit; 
+        text-decoration: underline;
+        box-shadow: none;
+
+        &:hover {
+            color: $gs--color--gs-white; 
+            box-shadow: inset 0 -8px 0 rgba(255,255,255, .5);
+        }
+    }
+
+    p,
+    span {
+        margin: 0;
+        color: inherit; 
+    }
+
+    &-center{
+      text-align: left;  
+    }
+
+    &-right {
+        text-align: left;
+    }
+}
+
+a.btn{
+    box-shadow: none;
+}
