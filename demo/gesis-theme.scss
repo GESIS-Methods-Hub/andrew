@@ -3,8 +3,65 @@
 /*-------------------*/
 /*--     fonts     --*/
 /*-------------------*/
-@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap');
+/* source-sans-3-regular - latin */
+@font-face {
+    font-display: swap;
+    font-family: 'Source Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: url('static/fonts/source-sans-3-v15-latin-regular.woff2') format('woff2');
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* source-sans-3-italic - latin */
+@font-face {
+    font-display: swap;
+    font-family: 'Source Sans';
+    font-style: italic;
+    font-weight: 400;
+    src: url('static/fonts/source-sans-3-v15-latin-italic.woff2') format('woff2');
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* source-sans-3-600 - latin */
+@font-face {
+    font-display: swap;
+    font-family: 'Source Sans';
+    font-style: normal;
+    font-weight: 600;
+    src: url('static/fonts/source-sans-3-v15-latin-600.woff2') format('woff2');
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* source-sans-3-700 - latin */
+@font-face {
+    font-display: swap;
+    font-family: 'Source Sans';
+    font-style: normal;
+    font-weight: 700;
+    src: url('static/fonts/source-sans-3-v15-latin-700.woff2') format('woff2');
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* cabin-regular - latin */
+@font-face {
+    font-display: swap;
+    font-family: 'Cabin';
+    font-style: normal;
+    font-weight: 400;
+    src: url('static/fonts/cabin-v27-latin-regular.woff2') format('woff2');
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* cabin-700 - latin */
+@font-face {
+    font-display: swap;
+    font-family: 'Cabin';
+    font-style: normal;
+    font-weight: 700;
+    src: url('static/fonts/cabin-v27-latin-700.woff2') format('woff2');
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
 
 /*-------------------*/
 /*--     colors    --*/
@@ -114,6 +171,7 @@ $gs-default-border-radius: 1.5rem;
 /*-- scss:rules --*/
 body {
     font-family: $font-default;
+    font-size: 1.1rem;
 }
 
 // navbar 
