@@ -6,41 +6,49 @@ project:
     - img
 
 website:
-  # title: "KODAQS Toolbox"
+  title: "GESIS - KODAQS Toolbox"
   navbar:
     # logo: "img/logo_gesis.svg"
     # background: "#ADD8E6"
+    pinned: true
+    title: false
+    favicon: img/favicon.ico
     background: light
     foreground: dark
-    logo: img/toolbox_logo.png
+    logo: img/logo_gesis_en.png #img/toolbox_logo.png
     left:
       - href: index.md
         text: Home
-      - href: gallery/error-sources/index.md
-        text: Error Sources
-      - href: gallery/data-types/index.md
-        text: Data Types
-      - href: about.md
-        text: About
       # - href: contributions.md
       #   text: Contribution
       # - href: handson.md
       #   text: HandsOn
-      # - href: https://www.gesis.org/forschung/drittmittelprojekte/projektseite-kodaqs
-      #   text: About
-      #   target: _blank
-
+      - href: https://www.gesis.org/forschung/drittmittelprojekte/projektseite-kodaqs
+        text: About
+      - href: license.md
+        text: License
     right:
-      - href: impressum.md
-        text: Impressum
       - href: topics.md
         text: Topics
   page-footer:
-    left: "<div style=\"flex: 1; text-align: left; color: white; font-size: 16px; padding-left: 20%; padding-right: 20%;\"><strong>Standort Mannheim</strong><br>GESIS - Leibniz-Institut für Sozialwissenschaften<br>B6, 4-5<br>68159 Mannheim<br>Telefon: +49-(0)621-1246-0<br>Fax: +49-(0)621-1246-100</div>"
-    center: "<div style=\"flex: 1; text-align: left; color: white; font-size: 16px;\"><strong>Standort Köln</strong><br>GESIS - Leibniz-Institut für Sozialwissenschaften<br>Unter Sachsenhausen 6-8<br>50667 Köln<br>Telefon: +49-(0)221-47694-0<br>Fax: +49-(0)221-47694-199</div>"
-    right: "<div style=\"flex: 1; text-align: center; color: white; font-size: 16px;\"><a href=\"https://www.facebook.com\" style=\"margin-right: 10px;\"><img src=\"/img/facebook.jpeg\" alt=\"Facebook\" style=\"width: 20px;\"></a><a href=\"https://www.x.com\" style=\"margin-right: 10px;\"><img src=\"/img/twitter_logo.jpeg\" alt=\"Twitter\" style=\"width: 20px;\"></a><a href=\"https://www.linkedin.com\"><img src=\"/img/linked_in.jpeg\" alt=\"LinkedIn\" style=\"width: 20px;\"></a><br><br><img src=\"/img/leibnitz_logo_de_white.svg\" alt=\"Leibniz Gemeinschaft\" style=\"width: 100px;\"><br><a href=\"https://www.gesis.org/institut/datenschutz\" style=\"color: white;\">Datenschutz</a></div>"
-    background: "#003c78"
+    left: |
+      **Standort Mannheim**  
+      GESIS - Leibniz-Institut für Sozialwissenschaften  
+      B6, 4-5  
+      68159 Mannheim  
+      Telefon: +49-(0)621-1246-0  
+      Fax: +49-(0)621-1246-100
+    center: |
+      **Standort Köln**  
+      GESIS - Leibniz-Institut für Sozialwissenschaften  
+      Unter Sachsenhausen 6-8  
+      50667 Köln  
+      Telefon: +49-(0)221-47694-0  
+      Fax: +49-(0)221-47694-199
 
+    right: |
+      ![GESIS ist ein Institut der Leibniz-Gemeinschaft](https://www.gesis.org/typo3conf/ext/gesis_web_ext/Resources/Public/webpack/dist/img/leibniz_logo_de_white.svg)  
+      [Impressum](https://www.gesis.org/institut/impressum) [Datenschutz](https://www.gesis.org/institut/datenschutz)
 
 format:
   html:
@@ -49,8 +57,16 @@ format:
       - _partials/shiny-title-block.html
       - _partials/method-title-block.html
       - _partials/guide-title-block.html
-    theme: cerulean
+    theme: [gesis-theme.scss,cerulean]
     css: styles.css
+    fontsize: 1rem
+    linestretch: 1.6
+    # title-block-banner: img/logos/microsite.png
+    # title-block-banner-color: '#fff'
+    anchor-sections: false
+    smooth-scrolling: false
+    toc: true
+    toc-title: " "
     comments:
       giscus:
         repo: GESIS-Methods-Hub/andrew
