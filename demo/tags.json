@@ -1,7 +1,7 @@
 [
   {
     "web_address": "https://github.com/kraemefe/resquin-tool-application",
-    "filename": "Resquin_Tutorial.Rmd",
+    "filename": "Resquin_Tutorial.qmd",
     "tags": [
       "Measurement error",
       "Response Bias",

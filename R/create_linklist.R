@@ -54,7 +54,7 @@ create_linklist <- function(tag_filename = "tags.json") {
   top_tag_link_groups <- tag_link_groups[sorted_tags]
 
   # Generate the markdown content for the Quarto file
-  markdown_content <- "## Top Five Computed Topics\n\n This contains a selection of most relevant topics in the toolbox. For a keyword search, use the search icon on the top right.\n\n"
+  markdown_content <- "## Tool Topics\n\n This contains a selection of most relevant topics in the toolbox. For a keyword search, use the search icon on the top right.\n\n"
 
   for (tag in sorted_tags) {
     # Start a new list group for each tag
@@ -65,6 +65,8 @@ create_linklist <- function(tag_filename = "tags.json") {
     for (link_info in top_tag_link_groups[[tag]]) {
       title <- link_info[[1]]  # Use the last part of the web_address as the visible part of the link
       link <- link_info[[2]]   # Use the constructed link
+      # Remove 'https://' and append '/index'
+      link <- paste0(sub("^https:/", "", link), "/index")
       markdown_content <- paste0(markdown_content, "- [", title, "](", link, ")\n")
     }
 

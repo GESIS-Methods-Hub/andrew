@@ -3,7 +3,7 @@
     "id": 1,
     "parent_collection": null,
     "title": "Error Sources",
-    "subtitle": "Introductions to Methods of Detecting Error Sources",
+    "subtitle": "Sources of bias affecting the validity of social science data",
     "abstract": "In social science data, error sources can impact the reliability and validity of research findings. Biases and inaccuracies—whether in data collection, measurement, sampling—can distort insights and reduce generalizability. Addressing these errors is essential to maintain the integrity of data analysis and ensure meaningful interpretations of social behaviors and trends",
     "cover_image": "static/AdobeStock_679112101.jpeg",
     "content_set": []
@@ -12,7 +12,7 @@
     "id": 2,
     "parent_collection": 1,
     "title": "Representation",
-    "subtitle": "",
+    "subtitle": "Bias affecting the generalizability of findings",
     "abstract": "**Representation Bias** arises when data does not accurately reflect the target population, affecting the generalizability of findings. Causes vary across data types, with <ul><li>sampling errors, low response rates, or the under-coverage of certain demographic groups affecting representation in survey data,</li><li>platform selection biases and the need to filter and (pre)process large volumes of data affecting digital behavioral data, and</li><li>non-consent to the sharing of linkage information, and errors in the linking process affecting representation in linked datasets.</li></ul>",
     "cover_image": "static/AdobeStock_784817816.jpeg",
     "content_set": [
@@ -26,21 +26,28 @@
     "id": 3,
     "parent_collection": 1,
     "title": "Measurement",
-    "subtitle": "",
+    "subtitle": "Inaccuracies in the measurement of variables and concepts",
     "abstract": "**Measurement Bias** refers to errors or inaccuracies in the measurement of variables, which can undermine the validity of research outcomes. Causes vary across data types, with <ul><li>poorly designed questions or respondents’ lacking engagement with the questionnaire leading to response biases and distorted responses in survey data,</li><li>challenges of matching observable digital behaviors with theoretical concepts and measurement inconsistencies across platforms affecting digital behavioral data, and</li><li>inconsistencies in construct specification or varying measurement standards between different datasets impacting the overall validity of linked data.</li></ul>",
     "cover_image": "static/AdobeStock_963635084.jpeg",
     "content_set": [
       {
         "web_address": "https://github.com/lukasbirki/tool_valitext.git",
-        "filename": "index.qmd",
-        "tags": [
-          "computational text analysis",
-          "measurement",
-          "validity"
-        ]
+        "filename": "index.qmd"
       },
       {
         "web_address": "https://github.com/GESIS-Methods-Hub/ZIS_R_tutor.git",
+        "filename": "index.qmd"
+      },
+      {
+        "web_address": "https://github.com/kraemefe/resquin-tool-application",
+        "filename": "Resquin_Tutorial.qmd"
+      },
+      {
+        "web_address": "https://github.com/YannikPeters/DQ_Tool_TextPreprocessing",
+        "filename": "index.qmd"
+      },
+      {
+        "web_address": "https://github.com/StefanJuenger/zipmatching",
         "filename": "index.qmd"
       }
     ]
@@ -49,7 +56,7 @@
     "id": 4,
     "parent_collection": null,
     "title": "Data Types",
-    "subtitle": "Data Quality Metrics for Different Data Types",
+    "subtitle": "Distinct types of social science data",
     "abstract": "In social science research, data capture essential information about behaviors, attitudes, and demographics, providing the basis for analyzing social patterns and relationships. The different data types — whether self-reported, observed, or combined from multiple sources —enable a comprehensive understanding of complex social dynamics and support a wide range of research questions. ",
     "cover_image": "static/AdobeStock_317474769_Editorial_Use_Only.jpeg",
     "content_set": []
@@ -58,13 +65,13 @@
     "id": 5,
     "parent_collection": 4,
     "title": "Survey Data",
-    "subtitle": "Self-reports from opinion polls, cross-sectional, or longitudinal studies",
+    "subtitle": "Self-reports from opinion polls, cross-sectional, or longitudinal studies ",
     "abstract": "Survey data refers to data collected directly from individuals through standardized questionnaires or interviews. Surveys can be conducted using a variety of methods, such as face-to-face interviews, telephone interviews, online surveys, or mailed paper surveys. Survey data can stem from probability-based samples designed to be representative of a population or non-probability surveys focusing on specific groups or using convenience samples. Surveys aim to capture people’s opinions, behaviors, or knowledge on certain topics as well as demographic characteristics and can range from simple opinion polls to complex longitudinal studies tracking changes in individuals’ responses over time.",
     "cover_image": "static/AdobeStock_164503342.jpeg",
     "content_set": [
       {
         "web_address": "https://github.com/kraemefe/resquin-tool-application",
-        "filename": "Resquin_Tutorial.Rmd"
+        "filename": "Resquin_Tutorial.qmd"
       },
       {
         "web_address": "https://github.com/GESIS-Methods-Hub/ZIS_R_tutor.git",
@@ -90,7 +97,7 @@
     "id": 12,
     "parent_collection": 4,
     "title": "Digital Behavior",
-    "subtitle": "Behavioral records collected in digital systems",
+    "subtitle": "Behavioral records collected in digital systems ",
     "abstract": "Digital behavioral data consists of behavioral records from online and digital activities, such as social media, sensors, browsing websites or app usage. The automatically generated data provides insights into real-world behavior and preferences without relying on individuals’ self-reports, making it a powerful resource for studying social interactions, communication patterns, and user behavior.",
     "cover_image": "static/AdobeStock_790258449.jpeg",
     "content_set": [
