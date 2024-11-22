@@ -19,6 +19,10 @@ website:
     left:
       - href: index.md
         text: Home
+      - href: /gallery/error-sources/
+        text: Error Sources
+      - href: /gallery/data-types/
+        text: Data Types
       # - href: contributions.md
       #   text: Contribution
       # - href: handson.md

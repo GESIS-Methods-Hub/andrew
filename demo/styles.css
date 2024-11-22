@@ -27,4 +27,8 @@ DOCX custom styles are annotated into data-custom-style.
     text-align: center;
 } */
 
+#carouselExampleCaptions{
+    margin-bottom: 20px;
+}
+
 
