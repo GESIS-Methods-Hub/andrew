@@ -2,18 +2,18 @@
   {
     "id": 1,
     "parent_collection": null,
-    "title": "Error Source",
+    "title": "Error Sources",
     "subtitle": "Introductions to Methods of Detecting Error Sources",
-    "abstract": "",
-    "cover_image": "static/cover_image/browser-coding.svg",
+    "abstract": "In social science data, error sources can impact the reliability and validity of research findings. Biases and inaccuracies—whether in data collection, measurement, sampling—can distort insights and reduce generalizability. Addressing these errors is essential to maintain the integrity of data analysis and ensure meaningful interpretations of social behaviors and trends",
+    "cover_image": "static/AdobeStock_679112101.jpeg",
     "content_set": []
   },
   {
     "id": 2,
     "parent_collection": 1,
-    "title": "Representation Bias",
+    "title": "Representation",
     "subtitle": "",
-    "abstract": "Representation bias occurs when the data collected does not accurately reflect the target population which impacts the generalizability of findings. This issue arises in survey data, digital behavioral data as well as linked data though different mechanisms. In survey data, sampling errors, low response rates, or the exclusion of certain demographic groups can lead to biased survey samples. In the case of digital behavioral data, researchers often select specific subsets of traces or users from a potentially complete sampling frame, but representation errors occur due to the coverage of selected platforms and the need to filter and (pre)process large volumes of data. In linked data, the biases of the original data sources – survey data – are carried over and may be amplified by the linking process, e.g. by non-consent to the sharing of linkage information, incomplete data in the non-survey data source and technical errors in the linkage process.",
+    "abstract": "**Representation Bias** arises when data does not accurately reflect the target population, affecting the generalizability of findings. Causes vary across data types, with <ul><li>sampling errors, low response rates, or the under-coverage of certain demographic groups affecting representation in survey data,</li><li>platform selection biases and the need to filter and (pre)process large volumes of data affecting digital behavioral data, and</li><li>non-consent to the sharing of linkage information, and errors in the linking process affecting representation in linked datasets.</li></ul>",
     "cover_image": "static/AdobeStock_784817816.jpeg",
     "content_set": [
       {
@@ -25,9 +25,9 @@
   {
     "id": 3,
     "parent_collection": 1,
-    "title": "Measurement Bias",
+    "title": "Measurement",
     "subtitle": "",
-    "abstract": "Measurement bias refers to errors or inaccuracies in how variables are measured or reported which can undermine the validity of research findings. In survey data, poorly designed questions or a lacking engagement of the respondents with the questionnaire can lead to distorted responses. Response bias can manifest itself in various ways, such as the overreporting of positive behaviors and underreporting of stigmatized behaviors or the usage of mental shortcuts to reduce cognitive burden. Digital behavioral data challenges researchers to accurately link observable behaviors on a platform to the theoretical constructs they intend to study. Algorithms and platform structures also shape recorded interactions, introducing measurement inconsistencies across platforms. In linked data, inconsistent construct specifications or varying measurement standards between linked datasets can create discrepancies. For example, a self-reported measure in a survey may not align with administrative records, introducing bias in the combined analysis.",
+    "abstract": "**Measurement Bias** refers to errors or inaccuracies in the measurement of variables, which can undermine the validity of research outcomes. Causes vary across data types, with <ul><li>poorly designed questions or respondents’ lacking engagement with the questionnaire leading to response biases and distorted responses in survey data,</li><li>challenges of matching observable digital behaviors with theoretical concepts and measurement inconsistencies across platforms affecting digital behavioral data, and</li><li>inconsistencies in construct specification or varying measurement standards between different datasets impacting the overall validity of linked data.</li></ul>",
     "cover_image": "static/AdobeStock_963635084.jpeg",
     "content_set": [
       {
@@ -48,10 +48,10 @@
   {
     "id": 4,
     "parent_collection": null,
-    "title": "Data Type",
+    "title": "Data Types",
     "subtitle": "Data Quality Metrics for Different Data Types",
-    "abstract": "",
-    "cover_image": "static/cover_image/click.svg",
+    "abstract": "In social science research, data capture essential information about behaviors, attitudes, and demographics, providing the basis for analyzing social patterns and relationships. The different data types — whether self-reported, observed, or combined from multiple sources —enable a comprehensive understanding of complex social dynamics and support a wide range of research questions. ",
+    "cover_image": "static/AdobeStock_317474769_Editorial_Use_Only.jpeg",
     "content_set": []
   },
   {
@@ -91,7 +91,7 @@
     "parent_collection": 4,
     "title": "Digital Behavior",
     "subtitle": "Behavioral records collected in digital systems",
-    "abstract": " Digital behavioral data consists of the behavioral records people leave behind when interacting with digital systems and online platforms. These traces are automatically generated whenever individuals engage in activities such as using social media, browsing websites, using smartphones, or interacting with IoT devices. Digital traces include social media posts, location data, clickstreams, search histories, and app usage patterns. This type of data provides insights into real-world behavior and preferences without relying on individuals’ self-reports, making it a powerful resource for studying social interactions, communication patterns, and consumer behavior.",
+    "abstract": "Digital behavioral data consists of behavioral records from online and digital activities, such as social media, sensors, browsing websites or app usage. The automatically generated data provides insights into real-world behavior and preferences without relying on individuals’ self-reports, making it a powerful resource for studying social interactions, communication patterns, and user behavior.",
     "cover_image": "static/AdobeStock_790258449.jpeg",
     "content_set": [
       {

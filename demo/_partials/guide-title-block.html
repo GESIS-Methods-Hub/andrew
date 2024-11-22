@@ -1,0 +1,49 @@
+<div class="grid">
+    <div class="g-col-12">
+        <div class="btn-group"  role="group">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+                <i class="bi bi-file-earmark-arrow-down"></i> Download as
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="index.pdf"> <i class="bi bi-file-earmark-pdf"></i> PDF</a></li>
+            </ul>
+        </div>
+
+        <a class="btn btn-primary" href="#citation" role="button">
+            Cite
+        </a>
+    </div>
+</div>
+
+$if(title)$
+<h1>$title$</h1>
+$endif$
+
+$if(subtitle)$
+<p class="subtitle lead">$subtitle$</p>
+$endif$
+
+<div class="authors">
+    <p>Authors(s)</p>
+    <ol>
+        $for(authors)$
+        <li>
+            $authors.name.literal$
+            $if(authors.orcid)$
+            <a href="https://orcid.org/$authors.orcid$"><i class="bi bi-person-circle"></i></a>
+            $endif$
+        </li>
+        $endfor$
+    </ol>
+</div>
+
+<p>Last update on $date$.</p>
+
+$if(abstract)$
+<div>
+    <div class="abstract">
+        <div class="abstract-title">$labels.abstract$</div>
+        $abstract$
+    </div>
+</div>
+$endif$

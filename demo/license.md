@@ -6,3 +6,6 @@
 - ©GESIS/#790258449/stock.adobe.com
 - ©GESIS/#941281453/stock.adobe.com
 - ©GESIS/#963635084/stock.adobe.com
+- sharafmaksumov - stock.adobe.com
+- Parradee - stock.adobe.com
+

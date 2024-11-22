@@ -1,5 +1,6 @@
 # ignore generated content
 demo/gallery
+!demo/gallery/ejs
 demo/GESIS-Methods-Hub
 demo/_partials/mega_menu.html
 demo/listing-contents.yml
@@ -104,8 +105,6 @@ _pkgdown.yml
 man/*
 man/*.Rd
 demo/*
-demo/_partials/*
-demo/gallery/ejs/*
 demo/status.md
 
 # Minimal examples
