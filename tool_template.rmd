@@ -1,54 +1,62 @@
 ---
-title: "Main title"
+title: "Abbreviation or short title for Tool (e.g., ScaleArch for Basic Analysis for Scale Archiving"
+subtitle: "Full title"
 author:
-  - "Author 1"
-  - "Author 2"
+  - name: "author 1"
+  - name: "author 2"
+  - name: "author 3"
+image: images/tool_icon.png #takes from a folder "images" in your github repository the tool icon file  
 date: "`r format(Sys.Date(), '%B %d, %Y')`"
-output:
-  html_document: default
-  pdf_document: default
+format:
+  html: default
+  pdf: default
+bibliography: references.bib
+biblio-style: apa
 ---
+
+
+# At a glance
+<!-- Summary with main points of the tool in 2-3 bullet points -->
+
+### Table of Content
+
+
+[Introduction](#introduction)
+
+[Setup](#setup)
+
+[Tool application](#tool-application)
+
+[Conclusion and recommendations](#conclusion-and-recommendations)
+
 
 # Introduction
 
+# Set-up
 
-# Data OR Data and Measurement Instruments
+## Data/Data and Measures/... 
+<!--this heading is not mandatory and can be adjusted to your specific tool structure-->
 
+## Getting started 
+<!-- for package installation and loading data sets; heading is not mandatory -->
 
-# Assessing Data Quality with Package xy
-<!-- probably the header here will vary depending on the tool and its application context-->
+# Tool application
 
-## Tool functions
-
-
-# Getting started
-<!--paragraph dedicated for installation from tool (R package) and importing data or creating a synthetic data set-->
-
-#  Inspecting data
-<!--probably not necessary for each tool application-->
-
-# Preparing data
-<!--probably not necessary for each tool application or could be merged with "Inspecting data" -->
+<!--subheadings for tool application can be specified "freely" and depending on structure of your tool -->
 
 
-# Tool application title
-<!--probably here the sub-headers will vary heavily with the specific tool application. I am adding some examples from our resquin tool tutorial-->
+::: {.callout-note title="Custom Note Title"}
+This can be additional information you want to provide and visually
+separate from your main text.
+:::
 
-## Indicators of xy
+<!-- Additional information can be included as callout blocks with titles, such as
+"Be careful", "Good to know", or "Package-specific feature"-->
 
-<!--Info box -->
-**Be careful**
 
-## Handling respondents with xy
+# Conclusion and recommendations 
 
-## Effects of xy on indicators of xy
-<!-- I think you get the gist -->
-
-<!--Info box -->
-**Good to know**
-<!-- we included something like this to describe on which alternative question types our tool can be applied to. Maybe this other fits for other tools or we find a more suitable catchy title for such information -->
-
-# Conclusion and recommendations for further analyses
 
 # References
+
 
