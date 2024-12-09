@@ -1,16 +1,5 @@
 [
   {
-    "web_address": "https://github.com/kraemefe/resquin-tool-application",
-    "filename": "Resquin_Tutorial.qmd",
-    "tags": [
-      "Measurement error",
-      "Response Bias",
-      "Multi-item scales",
-      "Response quality",
-      "Satisficing"
-    ]
-  },
-  {
     "web_address": "https://github.com/StefanJuenger/zipmatching",
     "filename": "index.qmd",
     "tags": [
@@ -31,7 +20,7 @@
     ]
   },
   {
-    "web_address": "https://github.com/lukasbirki/tool_valitext.git",
+    "web_address": "https://github.com/lukasbirki/tool_valitext",
     "filename": "index.qmd",
     "tags": [
       "Measurement error",
@@ -42,7 +31,7 @@
     ]
   },
   {
-    "web_address": "https://github.com/YannikPeters/DQ_Tool_TextPreprocessing.git",
+    "web_address": "https://github.com/YannikPeters/DQ_Tool_TextPreprocessing",
     "filename": "index.qmd",
     "tags": [
       "Measurement error",
