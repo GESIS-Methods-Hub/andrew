@@ -144,3 +144,5 @@ tests/testthat.R
 
 #Dont ignore GESIS theme
 !gesis-theme.scss
+
+demo/static/fonts/*

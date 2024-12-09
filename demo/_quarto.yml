@@ -29,8 +29,6 @@ website:
       #   text: HandsOn
       - href: about.md
         text: About
-      - href: impressum.md
-        text: Impressum
     right:
       - href: topics.md
         text: Topics
@@ -53,7 +51,7 @@ website:
     right: |
       <br>
       ![GESIS ist ein Institut der Leibniz-Gemeinschaft](https://www.gesis.org/typo3conf/ext/gesis_web_ext/Resources/Public/webpack/dist/img/leibniz_logo_de_white.svg)  
-      [Impressum](/impressum.html) 
+      [Impressum](https://www.gesis.org/institut/impressum)  [Datenschutz](https://www.gesis.org/institut/datenschutz)
 
 format:
   html:

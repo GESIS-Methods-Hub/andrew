@@ -74,3 +74,6 @@ Meet the team behind the KODAQS Toolbox, which develops, reviews, and refines th
 ![Jessica Daikeler](https://gris.gesis.org/files/photos/916.png){width=30%}  
 
 ---
+
+
+{{< include impressum.md >}}
