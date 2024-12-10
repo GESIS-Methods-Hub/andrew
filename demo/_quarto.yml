@@ -7,6 +7,7 @@ project:
 
 website:
   title: "GESIS - KODAQS Toolbox"
+  favicon: "img/toolbox_logo.png"
   navbar:
     # logo: "img/logo_gesis.svg"
     # background: "#ADD8E6"
