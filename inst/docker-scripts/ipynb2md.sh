@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Convert Jupyter Notebook to Markdown
+# Convert Jupyter Notebook to Markdown without postrender profile
 #
 # Syntax:
 #
@@ -29,14 +29,13 @@ cd $dirname2render
 
 cp /home/andrew/_qmd2md_hacks/* .
 
-quarto \
-    render ${basename2render} \
+# Perform Quarto rendering
+output=$(quarto render "${basename2render}" \
     --execute \
     --to markdown \
     --output index.md \
     --wrap=none \
     --lua-filter="/home/andrew/_pandoc-filters/licensefield.lua" \
-    --profile "postrender" \
     --metadata "method:true" \
     --metadata "citation:true" \
     --metadata "github_https:${github_https}" \
@@ -47,6 +46,40 @@ quarto \
     --metadata "git_date:${git_date}" \
     --metadata "date:${git_date}" \
     --metadata "info_quarto_version:${quarto_version}" \
-    --metadata "source_filename:${file2render}" && \
-    cp index.md $output_dirname/$output_basename && \
-    ${docker_script_root}/copy-assets.sh $output_dirname
+    --metadata "source_filename:${file2render}" 2>&1)
+
+echo "Quarto render output:"
+echo "$output"
+
+# Check if Quarto render succeeded
+if [ $? -ne 0 ]; then
+    echo "Error: Quarto render failed!"
+    exit 1
+fi
+
+# make R available, if not existent
+chmod +x install_R.sh
+./install_R.sh
+
+# Run the R scripts manually
+for script in copy_metadata.R include_citationcff.R; do
+    if [ -f "$script" ]; then
+        echo "Running R script: $script"
+        Rscript "$script"
+        if [ $? -ne 0 ]; then
+            echo "Error: $script failed!"
+            exit 1
+        fi
+    else
+        echo "Warning: R script $script not found!"
+    fi
+
+done
+
+# Copy the rendered file to the output directory
+cp index.md "$output_dirname/$output_basename"
+echo "Copied index.md to $output_dirname/$output_basename"
+
+# Run the asset copy script
+"${docker_script_root}/copy-assets.sh" "$output_dirname"
+echo "Assets copied successfully."

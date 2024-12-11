@@ -34,13 +34,19 @@ citation_metadata <- list(
     type = "document",
     title = citation_yaml$title,
     author = lapply(citation_yaml$authors, function(author) {
-      list(name = paste(author$`given-names`, author$`family-names`))
+      if (!is.null(author$name)) {
+        # Handle the case where the author has a single "name" field
+        list(name = author$name)
+      } else if (!is.null(author$`given-names`) && !is.null(author$`family-names`)) {
+        # Handle the case where the author has separate "given-names" and "family-names"
+        list(name = paste(author$`given-names`, author$`family-names`))
+      }
     }),
-    issued = format(as.Date(citation_yaml$`date-released`), "%Y"),
-    accessed = "urldate",  # Placeholder for the access date
+    issued = if (!is.null(citation_yaml$`date-released`)) citation_yaml$`date-released` else format(Sys.Date(), "%Y-%m-%d"),
+    accessed = format(Sys.Date(), "%Y-%m-%d"),  # Use the current date for the access date
     `container-title` = "KODAQS_Toolbox",  # Updated container title
     publisher = "GESIS – Leibniz Institute for the Social Sciences",
-    URL = url  # Use parsed URL or fallback
+    URL = if (!is.null(citation_yaml$url)) citation_yaml$url else url  # Use URL from citation.cff or fallback to the url variable
   )
 )
 
@@ -68,5 +74,5 @@ full_content <- c("---", yaml_cleaned, "---", "", body_content)
 writeLines(full_content, output_file)
 
 # For debugging or viewing
-test_file <- "/home/andrew/_qmd2md_hacks/hack_output.txt"
-file.copy(output_file, test_file, overwrite = TRUE)
+# test_file <- "/home/andrew/_qmd2md_hacks/hack_output_2.txt"
+# file.copy(output_file, test_file, overwrite = TRUE)

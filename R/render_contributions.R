@@ -133,6 +133,9 @@ render_single_contribution <- function(contribution_row) {
     markdown_files <- list.files(output_location, recursive = TRUE)
     logger::log_debug("Output dir {output_location} contains the files {markdown_files}" )
 
+
+
+
     sum_docker_return_value <- sum_docker_return_value + docker_return_value
   }
 

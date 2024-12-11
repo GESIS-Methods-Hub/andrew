@@ -1,5 +1,0 @@
-This folder has the purpose of containing the scripts needed to map qmd_specific stuff that should not be
-downcompilied to the output file.
-
-1. run the compilation with quarto profile postrender, this will trigger a post_render_script
-2. the postrender_script will manipulate the index.md and add specific stuff from the original .qmd file

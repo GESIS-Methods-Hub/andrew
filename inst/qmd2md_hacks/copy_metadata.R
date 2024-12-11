@@ -34,7 +34,6 @@ full_content <- c(yaml_cleaned, "", body_content)
 writeLines(full_content, output_file)
 
 
-
-# for viewing
-# test_file <- "/home/andrew/_qmd2md_hacks/hack_output.txt"
-# file.copy(output_file, test_file, overwrite = TRUE)
+# For debugging or viewing
+test_file <- "/home/andrew/_qmd2md_hacks/hack_output_1.txt"
+file.copy(output_file, test_file, overwrite = TRUE)
