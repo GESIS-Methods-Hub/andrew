@@ -21,5 +21,6 @@ find . \
     -o \( -type f -iname '*.svg' \) \
     -o \( -type f -iname '*.pdf' \) \
     -o \( -type f -iname '*.eps' \) \
+    -o \( -type f -iname '*.cff' \) \
     \) | \
     xargs -I {} cp --parents {} $output_dirname

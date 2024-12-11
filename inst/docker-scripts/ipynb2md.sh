@@ -27,8 +27,6 @@ quarto_version=$(quarto --version)
 
 cd $dirname2render
 
-cp /home/andrew/_qmd2md_hacks/* .
-
 # Perform Quarto rendering
 output=$(quarto render "${basename2render}" \
     --execute \
@@ -50,31 +48,6 @@ output=$(quarto render "${basename2render}" \
 
 echo "Quarto render output:"
 echo "$output"
-
-# Check if Quarto render succeeded
-if [ $? -ne 0 ]; then
-    echo "Error: Quarto render failed!"
-    exit 1
-fi
-
-# make R available, if not existent
-chmod +x install_R.sh
-./install_R.sh
-
-# Run the R scripts manually
-for script in copy_metadata.R include_citationcff.R; do
-    if [ -f "$script" ]; then
-        echo "Running R script: $script"
-        Rscript "$script"
-        if [ $? -ne 0 ]; then
-            echo "Error: $script failed!"
-            exit 1
-        fi
-    else
-        echo "Warning: R script $script not found!"
-    fi
-
-done
 
 # Copy the rendered file to the output directory
 cp index.md "$output_dirname/$output_basename"

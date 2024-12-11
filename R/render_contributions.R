@@ -1,3 +1,8 @@
+library(ymlthis)
+library(yaml)
+library(rmarkdown)
+
+
 #' Render single contribution
 #'
 #' @param contribution_row
@@ -71,8 +76,6 @@ render_single_contribution <- function(contribution_row) {
     system.file("docker-scripts", package = "andrew", mustWork = TRUE)
   pandoc_filters_location <-
     system.file("pandoc-filters", package = "andrew", mustWork = TRUE)
-  qmd2md_hacks_location <-
-    system.file("qmd2md_hacks", package = "andrew", mustWork = TRUE)
 
   output_location <- render_at_dir |>
     fs::path_real()
@@ -80,7 +83,6 @@ render_single_contribution <- function(contribution_row) {
 
   logger::log_debug("Location of docker_scripts directory: {docker_scripts_location}")
   logger::log_debug("Location of pandoc_filters directory: {pandoc_filters_location}")
-  logger::log_debug("Location of pandoc_filters directory: {qmd2md_hacks_location}")
   logger::log_debug("Location of output directory: {output_location}")
   logger::log_debug("Location of output directory inside the container: {output_location_in_container}")
 
@@ -92,7 +94,6 @@ render_single_contribution <- function(contribution_row) {
     --user=${host_user_id}:${host_group_id} \\
     ${mount_input_file} \\
     --mount type=bind,source=${docker_scripts_location},target=${home_dir_at_docker}/_docker-scripts \\
-    --mount type=bind,source=${qmd2md_hacks_location},target=${home_dir_at_docker}/_qmd2md_hacks \\
     --env docker_script_root=${home_dir_at_docker}/_docker-scripts \\
     --mount type=bind,source=${pandoc_filters_location},target=${home_dir_at_docker}/_pandoc-filters \\
     --mount type=bind,source=${output_location},target=${output_location_in_container} \\
@@ -112,7 +113,6 @@ render_single_contribution <- function(contribution_row) {
         host_group_id = host_group_id,
         mount_input_file = mount_input_file,
         home_dir_at_docker = home_dir_at_docker,
-        qmd2md_hacks_location = qmd2md_hacks_location,
         docker_scripts_location = docker_scripts_location,
         pandoc_filters_location = pandoc_filters_location,
         output_location = output_location,
@@ -133,11 +133,13 @@ render_single_contribution <- function(contribution_row) {
     markdown_files <- list.files(output_location, recursive = TRUE)
     logger::log_debug("Output dir {output_location} contains the files {markdown_files}" )
 
-
-
-
     sum_docker_return_value <- sum_docker_return_value + docker_return_value
   }
+
+  # add the citation.cff data if available
+  index_md <- paste0(output_location, "/index/index.md")
+  citation_cff <- paste0(output_location, "/index/CITATION.cff")
+  update_citation_metadata(citation_file = citation_cff, output_file = index_md)
 
   if (sum_docker_return_value == 0) {
     build_status <- "Built"
@@ -189,3 +191,74 @@ render_contributions <- function(all_contributions) {
 
   return(all_contributions)
 }
+
+#' use CITATION.cff to fill the metadata for the tools
+#'
+update_citation_metadata <- function(citation_file, output_file) {
+  # Check if the CITATION.cff file exists
+  if (!file.exists(citation_file)) {
+    message("CITATION.cff file not found. No changes made to the output file.")
+  } else {
+    # Parse the CITATION.cff file
+    citation_yaml <- read_yaml(citation_file)
+
+    # Extract the URL from CITATION.cff or use a default value
+    url_field <- NULL
+    if (!is.null(citation_yaml$identifiers)) {
+      url_field <- citation_yaml$identifiers[[1]]$value
+    }
+    url <- ifelse(!is.null(url_field), url_field, "https://kodaqs-toolbox.gesis.org/")
+
+    # Generate the desired citation metadata
+    citation_metadata <- list(
+      citation = list(
+        type = "document",
+        title = citation_yaml$title,
+        author = lapply(citation_yaml$authors, function(author) {
+          if (!is.null(author$name)) {
+            # Handle the case where the author has a single "name" field
+            list(name = author$name)
+          } else if (!is.null(author$`given-names`) && !is.null(author$`family-names`)) {
+            # Handle the case where the author has separate "given-names" and "family-names"
+            list(name = paste(author$`given-names`, author$`family-names`))
+          }
+        }),
+        issued = if (!is.null(citation_yaml$`date-released`)) citation_yaml$`date-released` else format(Sys.Date(), "%Y-%m-%d"),
+        accessed = format(Sys.Date(), "%Y-%m-%d"),  # Use the current date for the access date
+        `container-title` = "KODAQS_Toolbox",  # Updated container title
+        publisher = "GESIS – Leibniz Institute for the Social Sciences",
+        URL = if (!is.null(citation_yaml$url)) citation_yaml$url else url  # Use URL from citation.cff or fallback to the url variable
+      )
+    )
+
+    # Parse YAML metadata from the output file
+    output_yaml <- rmarkdown::yaml_front_matter(output_file)
+
+    # Merge output metadata with the new citation metadata
+    merged_yaml <- modifyList(output_yaml, citation_metadata)
+
+    # Convert the merged YAML back to a string format
+    yaml_str <- as.character(asis_yaml_output(as_yml(merged_yaml)))
+    yaml_cleaned <- gsub("```yaml\n|\n```|^---\n|---$", "", yaml_str) # Remove extra --- markers
+
+    # Read the entire content of the output file
+    output_content <- readLines(output_file)
+
+    # Find the end of the original YAML front matter and skip it
+    yaml_end <- which(output_content == "---")[2]
+    body_content <- output_content[(yaml_end + 1):length(output_content)]
+
+    # Combine the cleaned YAML metadata and the body content
+    full_content <- c("---", yaml_cleaned, "---", "", body_content)
+
+    # Write the final content to a temporary file
+    temp_file <- tempfile()
+    writeLines(full_content, temp_file)
+
+    # Replace the original file with the temporary file
+    file.rename(temp_file, output_file)
+
+    message("Citation metadata updated and saved to ", output_file)
+  }
+}
+
