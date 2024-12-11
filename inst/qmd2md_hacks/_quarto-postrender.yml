@@ -1,4 +1,5 @@
 project:
   post-render:
     - copy_metadata.R
+    - include_citationcff.R
     - test.R

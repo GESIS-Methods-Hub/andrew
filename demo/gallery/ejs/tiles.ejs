@@ -1,0 +1,35 @@
+```{=html}
+<div class="grid">
+  <% items.forEach(function(tile){ %>
+    <div class="g-col-4 tile">
+      <div class="frame frame-default frame-type-html frame-layout-0 frame-space-after-extra-small">
+        <a href="<%- tile.href %>">
+          <div class="gs_teaser methods_hub_nav_teaser">
+            <h2>
+              <% if (tile.title && tile.title != "NA") { %>
+                  <%= tile.title %>
+              <% } else { %>
+                Missing title
+              <% } %>
+            </h2>
+            <% if (tile.cover_image && tile.cover_image != "NA") { %>
+            <img src="<%- tile.cover_image %>" alt="<%- tile.description %>" />
+            <% } %>
+          </div>
+        </a>
+      </div>
+      <div class="frame frame-default frame-type-textmedia frame-layout-0">
+        <div class="ce-textpic ce-right ce-intext">
+          <div class="ce-bodytext">
+            <% if (tile.subtitle && tile.subtitle != "NA") { %>
+            <p>
+              <%= tile.subtitle %>
+            </p>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% }); %>
+</div>
+```

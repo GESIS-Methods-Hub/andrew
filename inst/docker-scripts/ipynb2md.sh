@@ -27,12 +27,16 @@ quarto_version=$(quarto --version)
 
 cd $dirname2render
 
+cp /home/andrew/_qmd2md_hacks/* .
+
 quarto \
     render ${basename2render} \
     --execute \
     --to markdown \
     --output index.md \
     --wrap=none \
+    --lua-filter="/home/andrew/_pandoc-filters/licensefield.lua" \
+    --profile "postrender" \
     --metadata "method:true" \
     --metadata "citation:true" \
     --metadata "github_https:${github_https}" \

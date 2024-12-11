@@ -149,6 +149,7 @@ listing:
     template: ../ejs/tiles.ejs
     contents: listing-contents-${slang}.yml
 ---
+${abstract}
 
 :::{#${slang}-listing}
 :::
@@ -166,9 +167,14 @@ listing:
 create_1st_level_page <- function(subset_data, key) {
   fs::dir_create(key$level_path)
 
+  level <- key$level
+  abstract <- subset_data[subset_data$title == level, "abstract"][[1]]
+
   gallery_index_page <- stringr::str_interp(
     gallery_1st_level_index_page_template,
-    list(title = key$level, slang = key$level_slang)
+    list(title = level,
+         abstract = abstract,
+         slang = key$level_slang)
   )
 
   gallery_index_path <- file.path(key$level_path, "index.md")

@@ -1,0 +1,30 @@
+Package: andrew
+Type: Package
+Title: Aggregator for Navigatable Discoverable Reproducible and Educational work
+Version: 2.0.0
+Author: Raniere Silva
+Maintainer: Raniere Silva <Raniere.CostadaSilva@gesis.org>
+Description: From a list of Git repositories, it creates containers
+    and compiles documentation.
+License: MIT
+URL: https://github.com/GESIS-Methods-Hub/andrew
+BugReports: https://gesis-methods-hub.github.io/andrew/
+Encoding: UTF-8
+LazyData: true
+Suggests:
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+RoxygenNote: 7.2.3
+SystemRequirements: repo2docker
+Imports:
+    dplyr,
+    fs,
+    git2r,
+    jsonlite,
+    knitr,
+    logger,
+    readr,
+    stringr,
+    tibble,
+    tidyr
+

@@ -1,7 +1,7 @@
 [
   {
     "web_address": "https://github.com/kraemefe/resquin-tool-application",
-    "filename": "Resquin_Tutorial.Rmd"
+    "filename": "Resquin_Tutorial.qmd"
   },
   {
     "web_address": "https://github.com/StefanJuenger/zipmatching",
@@ -14,34 +14,6 @@
   {
     "web_address": "https://github.com/lukasbirki/tool_valitext",
     "filename": "index.qmd"
-  },
-  {
-    "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-ipynb.git",
-    "filename": "index.ipynb"
-  },
-  {
-    "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-ipynb-python.git",
-    "filename": "index.ipynb"
-  },
-  {
-    "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-qmd-rstats.git",
-    "filename": "index.qmd"
-  },
-  {
-    "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-qmd-rstats-units.git",
-    "filename": "index.qmd"
-  },
-  {
-    "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-shiny-rstats.git",
-    "filename": "index.qmd"
-  },
-  {
-    "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-rstats-package.git",
-    "filename": "vignettes/mwe.Rmd"
-  },
-  {
-    "web_address": "https://github.com/GESIS-Methods-Hub/minimal-example-readme.git",
-    "filename": "README.md"
   },
   {
     "web_address": "https://github.com/GESIS-Methods-Hub/ZIS_R_tutor.git",

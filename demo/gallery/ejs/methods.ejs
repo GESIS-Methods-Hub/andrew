@@ -1,0 +1,28 @@
+```{=html}
+<div class="grid">
+  <% items.forEach(function(method){ %>
+    <div class="g-col-4 method">
+      <div class="frame frame-default frame-type-html frame-layout-0 frame-space-after-extra-small">
+        <a href="<%- method.path %>">
+          <div class="gs_teaser methods_hub_nav_teaser">
+            <h3>
+              <%= method.title %>
+            </h3>
+            <img style="max-width: 100%; object-fit: cover;" height="200" width="300" <% if(method.image) { %> src="<%- method.image %>" <% } else { %> src="../../../img/svgrepo.com/pencil-draw.svg" <% } %> <% if(method.image_alt) { %> alt="<%- method.image-alt %>" <% } else { %> alt="Cover image." <% } %> />
+        </div>
+      </a>
+    </div>
+    <div class="frame frame-default frame-type-textmedia frame-layout-0">
+      <div class="ce-textpic ce-right ce-intext">
+        <div class="ce-bodytext">
+          <p>
+            By <%= method.author %>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% }); %>
+</div>
+```
+          

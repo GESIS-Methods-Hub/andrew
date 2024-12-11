@@ -29,6 +29,7 @@ quarto_version=$(quarto --version)
 cd $dirname2render
 
 cp /home/andrew/_qmd2md_hacks/* .
+# this will trigger postrender scripts from qmd2md_hacks to run based on the postrender profile defined in _quarto-postrender.yml
 
 quarto \
     render ${basename2render} \
