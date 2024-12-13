@@ -257,7 +257,7 @@ update_citation_metadata <- function(citation_file, output_file) {
       }),
       issued = if (!is.null(citation_yaml$`date-released`)) citation_yaml$`date-released` else format(Sys.Date(), "%Y-%m-%d"),
       accessed = format(Sys.Date(), "%Y-%m-%d"),  # Use the current date for the access date
-      `container-title` = "KODAQS_Toolbox",  # Updated container title
+      `container-title` = "KODAQS Toolbox",  # Updated container title
       publisher = "GESIS – Leibniz Institute for the Social Sciences",
       URL = if (!is.null(citation_yaml$url)) citation_yaml$url else url  # Use URL from citation.cff or fallback to the url variable
     )
