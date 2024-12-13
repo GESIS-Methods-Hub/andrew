@@ -11,6 +11,27 @@ library(rmarkdown)
 #' @export
 #'
 #' @examples
+create_output_directory <- function(output_location) {
+  investigate_file_or_directory(output_location)
+  if (!dir.create(output_location, recursive = TRUE, showWarnings = FALSE)) {
+    # Check if the directory creation failed
+    if (!file.exists(output_location)) {
+      stop(paste("Failed to create the directory:", output_location))
+    }
+  } else {
+    # Directory was created successfully
+    logger::log_debug(paste("Directory created successfully at:", output_location))
+
+    # Set permissions to 777
+    tryCatch({
+      Sys.chmod(output_location, mode = "0777", use_umask = FALSE)
+      logger::log_debug(paste("Permissions set to 777 for directory:", output_location))
+    }, error = function(e) {
+      logger::log_error(paste("Failed to set permissions for directory:", output_location, "Error:", e$message))
+    })
+  }
+}
+
 render_single_contribution <- function(contribution_row) {
   logger::log_debug("Rendering {contribution_row['filename']} from {contribution_row['web_address']}")
 
@@ -86,6 +107,9 @@ render_single_contribution <- function(contribution_row) {
   logger::log_debug("Location of output directory: {output_location}")
   logger::log_debug("Location of output directory inside the container: {output_location_in_container}")
 
+  create_output_directory(output_location)
+
+
   sum_docker_return_value <- 0
   for (script in get(file2render_extension, RENDER_MATRIX)) {
     logger::log_debug("Rendering using {script} ...")
@@ -136,9 +160,11 @@ render_single_contribution <- function(contribution_row) {
     sum_docker_return_value <- sum_docker_return_value + docker_return_value
   }
 
+  # Extract filename without extension
+  file2render_basename <- tools::file_path_sans_ext(file2render)
   # add the citation.cff data if available
-  index_md <- paste0(output_location, "/index/index.md")
-  citation_cff <- paste0(output_location, "/index/CITATION.cff")
+  index_md <- file.path(output_location, file2render_basename, "index.md")
+  citation_cff <- file.path(output_location, file2render_basename, "CITATION.cff")
   update_citation_metadata(citation_file = citation_cff, output_file = index_md)
 
   if (sum_docker_return_value == 0) {
@@ -192,73 +218,95 @@ render_contributions <- function(all_contributions) {
   return(all_contributions)
 }
 
-#' use CITATION.cff to fill the metadata for the tools
+#' Use CITATION.cff to fill the metadata for the tools
+#' This uses the created index.md file
 #'
 update_citation_metadata <- function(citation_file, output_file) {
+
+  investigate_file_or_directory(output_file)
+
   # Check if the CITATION.cff file exists
   if (!file.exists(citation_file)) {
     message("CITATION.cff file not found. No changes made to the output file.")
-  } else {
-    # Parse the CITATION.cff file
-    citation_yaml <- read_yaml(citation_file)
-
-    # Extract the URL from CITATION.cff or use a default value
-    url_field <- NULL
-    if (!is.null(citation_yaml$identifiers)) {
-      url_field <- citation_yaml$identifiers[[1]]$value
-    }
-    url <- ifelse(!is.null(url_field), url_field, "https://kodaqs-toolbox.gesis.org/")
-
-    # Generate the desired citation metadata
-    citation_metadata <- list(
-      citation = list(
-        type = "document",
-        title = citation_yaml$title,
-        author = lapply(citation_yaml$authors, function(author) {
-          if (!is.null(author$name)) {
-            # Handle the case where the author has a single "name" field
-            list(name = author$name)
-          } else if (!is.null(author$`given-names`) && !is.null(author$`family-names`)) {
-            # Handle the case where the author has separate "given-names" and "family-names"
-            list(name = paste(author$`given-names`, author$`family-names`))
-          }
-        }),
-        issued = if (!is.null(citation_yaml$`date-released`)) citation_yaml$`date-released` else format(Sys.Date(), "%Y-%m-%d"),
-        accessed = format(Sys.Date(), "%Y-%m-%d"),  # Use the current date for the access date
-        `container-title` = "KODAQS_Toolbox",  # Updated container title
-        publisher = "GESIS – Leibniz Institute for the Social Sciences",
-        URL = if (!is.null(citation_yaml$url)) citation_yaml$url else url  # Use URL from citation.cff or fallback to the url variable
-      )
-    )
-
-    # Parse YAML metadata from the output file
-    output_yaml <- rmarkdown::yaml_front_matter(output_file)
-
-    # Merge output metadata with the new citation metadata
-    merged_yaml <- modifyList(output_yaml, citation_metadata)
-
-    # Convert the merged YAML back to a string format
-    yaml_str <- as.character(asis_yaml_output(as_yml(merged_yaml)))
-    yaml_cleaned <- gsub("```yaml\n|\n```|^---\n|---$", "", yaml_str) # Remove extra --- markers
-
-    # Read the entire content of the output file
-    output_content <- readLines(output_file)
-
-    # Find the end of the original YAML front matter and skip it
-    yaml_end <- which(output_content == "---")[2]
-    body_content <- output_content[(yaml_end + 1):length(output_content)]
-
-    # Combine the cleaned YAML metadata and the body content
-    full_content <- c("---", yaml_cleaned, "---", "", body_content)
-
-    # Write the final content to a temporary file
-    temp_file <- tempfile()
-    writeLines(full_content, temp_file)
-
-    # Replace the original file with the temporary file
-    file.rename(temp_file, output_file)
-
-    message("Citation metadata updated and saved to ", output_file)
+    return()
   }
+
+  # Parse the CITATION.cff file
+  citation_yaml <- yaml::read_yaml(citation_file)
+
+  # Extract the URL from CITATION.cff or use a default value
+  url_field <- NULL
+  if (!is.null(citation_yaml$identifiers)) {
+    url_field <- citation_yaml$identifiers[[1]]$value
+  }
+  url <- ifelse(!is.null(url_field), url_field, "https://kodaqs-toolbox.gesis.org/")
+
+  # Generate the desired citation metadata
+  citation_metadata <- list(
+    citation = list(
+      type = "document",
+      title = citation_yaml$title,
+      author = lapply(citation_yaml$authors, function(author) {
+        if (!is.null(author$name)) {
+          # Handle the case where the author has a single "name" field
+          list(name = author$name)
+        } else if (!is.null(author$`given-names`) && !is.null(author$`family-names`)) {
+          # Handle the case where the author has separate "given-names" and "family-names"
+          list(name = paste(author$`given-names`, author$`family-names`))
+        }
+      }),
+      issued = if (!is.null(citation_yaml$`date-released`)) citation_yaml$`date-released` else format(Sys.Date(), "%Y-%m-%d"),
+      accessed = format(Sys.Date(), "%Y-%m-%d"),  # Use the current date for the access date
+      `container-title` = "KODAQS_Toolbox",  # Updated container title
+      publisher = "GESIS – Leibniz Institute for the Social Sciences",
+      URL = if (!is.null(citation_yaml$url)) citation_yaml$url else url  # Use URL from citation.cff or fallback to the url variable
+    )
+  )
+
+  # Parse YAML metadata from the output file
+  output_yaml <- rmarkdown::yaml_front_matter(output_file)
+
+  # Merge output metadata with the new citation metadata
+  merged_yaml <- modifyList(output_yaml, citation_metadata)
+
+  # Convert the merged YAML back to string format
+  yaml_str <- yaml::as.yaml(merged_yaml)
+
+  # Read the entire content of the output file
+  output_content <- readLines(output_file)
+
+  # Locate the YAML front matter delimiters
+  yaml_start <- which(output_content == "---")[1]
+  yaml_end <- which(output_content == "---")[2]
+
+  # Extract the body content
+  body_content <- if (!is.na(yaml_end)) output_content[(yaml_end + 1):length(output_content)] else output_content
+
+  # Combine the cleaned YAML metadata and the body content
+  full_content <- c("---", yaml_str, "---", body_content)
+
+  # Write the final content back to the output file
+  writeLines(full_content, output_file)
+
+  message("Citation metadata updated and saved to ", output_file)
 }
+
+
+# Enhanced function to check file/directory access and associated diagnostics
+investigate_file_or_directory <- function(path) {
+
+  logger::log_debug("\nStep 1: Checking ownership and permissions... {path}\n")
+  # Check if the path exists
+  if (!file.exists(path)) {
+    stop("Path does not exist: ", path)
+  }
+
+  permissions <- system(paste("ls -ld", shQuote(path), "| awk '{print $1}'"), intern = TRUE)
+  logger::log_debug(paste("permissions for", path, "are:",  permissions))
+
+}
+
+
+
+
 
