@@ -15,9 +15,11 @@
     <div class="frame frame-default frame-type-textmedia frame-layout-0">
       <div class="ce-textpic ce-right ce-intext">
         <div class="ce-bodytext">
+            <% if (method.subtitle && method.subtitle != "NA") { %>
           <p>
-            By <%= method.author %>.
+            <%= method.subtitle %>
           </p>
+            <% } %>
         </div>
       </div>
     </div>

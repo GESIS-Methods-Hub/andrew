@@ -85,7 +85,7 @@
     "title": "Linked Data",
     "subtitle": "Survey data linked with other data sources",
     "abstract": "We refer to linked data as a distinct type of social science data that combines survey data with other data sources via a matching process. The additional data can stem from an array of other sources, such as administrative records, geospatial data, sensor-based measurements, or digital traces. By linking different data types, researchers can cross-validate information, explore complex relationships, and address questions that would not be possible with survey data alone. This approach is increasingly popular as it enhances the validity and scope of findings across various research fields.",
-    "cover_image": "static/AdobeStock_941281453.jpeg",
+    "cover_image": "static/AdobeStock_942957053.jpeg",
     "content_set": [
       {
         "web_address": "https://github.com/StefanJuenger/zipmatching",
