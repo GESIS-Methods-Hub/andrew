@@ -18,6 +18,13 @@ construct_image_and_repo_name <- function (contribution_row) {
   git_repo <- contribution_row["slang"]
   git_commit_sha <- contribution_row["git_sha"]
 
+  # Check if the 'version' field exists in the row
+  if (hasName(contribution_row, "version")) {
+    git_commit_sha <- contribution_row[["version"]]
+  } else {
+    git_commit_sha <- contribution_row[["git_sha"]]
+  }
+
   docker_repository <- stringr::str_interp(
     "andrew/${git_repo}",
     list(git_repo = git_repo)

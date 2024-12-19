@@ -34,6 +34,7 @@ donwload_single_http_contribution <- function(contribution_row) {
 #'
 #' @examples
 donwload_single_git_contribution <- function(contribution_row) {
+  version <- contribution_row["version"]
   git_repo_path <- contribution_row["tmp_path"]
   # git_repo_path <- as.character(git_repo_path[[1]])
 
@@ -49,20 +50,36 @@ donwload_single_git_contribution <- function(contribution_row) {
       fs::path_real() |>
       git2r::repository()
 
-    repo |>
-      git2r::reset(reset_type = "hard", path = ".")
+    # repo |>
+    #  git2r::reset(reset_type = "hard", path = ".")
 
-    repo |>
-      git2r::pull()
+    # only update if it is not in a detached state because a tag was previously selected.
+    if (!git2r::is_detached(repo)) {
+      repo |>
+        git2r::pull()
+    }
   } else {
     logger::log_debug("{git_repo_path} not found.")
     logger::log_debug("Downloading {git_url} ...")
     fs::dir_create(git_repo_path)
-    git2r::clone(
+    repo <- git2r::clone(
       git_url,
       fs::path_real(git_repo_path)
     )
+    # Check out the desired tag
     logger::log_debug("Download of {git_url} completed.")
+  }
+  if (!is.na(version)) {
+    logger::log_debug("switching to version {version}")
+
+    # Run 'git fetch --all' in the specified directory
+    system(paste("cd", shQuote(git_repo_path), "&& git fetch --all"), intern = TRUE)
+
+    git2r::checkout(repo, version, force=TRUE)
+    logger::log_debug(paste("Checked out tag:", version))
+  }
+  else {
+    logger::log_debug("Did not find any git tags as version in contribution.json, continuing with main branch")
   }
 }
 

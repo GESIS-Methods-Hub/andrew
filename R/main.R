@@ -125,7 +125,6 @@ main <- function(config_filename = "config.yaml",
     if (any(stages == "create_linklist")) {
       logger::log_info("STAGE: Creating Linklist")
       create_linklist()
-
     }
 
 

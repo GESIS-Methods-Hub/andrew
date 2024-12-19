@@ -1,7 +1,8 @@
 [
   {
     "web_address": "https://github.com/kraemefe/resquin-tool-application",
-    "filename": "Resquin_Tutorial.qmd"
+    "filename": "Resquin_Tutorial.qmd",
+    "version": "v1.0.0"
   },
   {
     "web_address": "https://github.com/StefanJuenger/zipmatching",
@@ -9,11 +10,13 @@
   },
   {
     "web_address": "https://github.com/juliandehne/delab-trees",
-    "filename": "index.ipynb"
+    "filename": "index.ipynb",
+    "version": "v0.4.2"
   },
   {
     "web_address": "https://github.com/lukasbirki/tool_valitext",
-    "filename": "index.qmd"
+    "filename": "index.qmd",
+    "version": "final"
   },
   {
     "web_address": "https://github.com/GESIS-Methods-Hub/ZIS_R_tutor.git",
@@ -21,6 +24,8 @@
   },
   {
     "web_address": "https://github.com/YannikPeters/DQ_Tool_TextPreprocessing",
-    "filename": "index.qmd"
+    "filename": "index.qmd",
+    "version": "v1.0.3"
   }
 ]
+

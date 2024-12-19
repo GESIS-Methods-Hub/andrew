@@ -8,7 +8,7 @@ stages:
 
 testing:
   minimal_example: true
-  debug: false
+  debug: true
   trace_files: false # todo add this as switch to only trace files if debugging an issue
 
 
